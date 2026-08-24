@@ -23,20 +23,24 @@
 namespace Accord.Math.Optimization
 {
     using System;
+#if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
-    using Accord.Compat;
     using System.Security.Permissions;
+#endif
+    using Accord.Compat;
 
     /// <summary>
     ///   Line Search Failed Exception.
     /// </summary>
-    /// 
+    ///
     /// <remarks>
     ///   This exception may be thrown by the <see cref="BroydenFletcherGoldfarbShanno">L-BFGS Optimizer</see>
     ///   when the line search routine used by the optimization method fails.
     /// </remarks>
-    /// 
+    ///
+#if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class LineSearchFailedException : Exception
     {
         int info;
@@ -91,6 +95,7 @@ namespace Accord.Math.Optimization
             : base(message, innerException)
         { }
 
+#if !NET10_0_OR_GREATER
         /// <summary>
         ///   Initializes a new instance of the <see cref="LineSearchFailedException"/> class.
         /// </summary>
@@ -102,11 +107,12 @@ namespace Accord.Math.Optimization
         /// <exception cref="T:System.Runtime.Serialization.SerializationException">
         /// The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
         /// </exception>
-        /// 
+        ///
         protected LineSearchFailedException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+#endif
 
-#if !NETSTANDARD1_4
+#if !NETSTANDARD1_4 && !NET10_0_OR_GREATER
         /// <summary>
         ///   When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
         /// </summary>

@@ -25,6 +25,7 @@ namespace Accord.Math
     using Accord.Math.Random;
     using System;
     using System.Runtime.CompilerServices;
+    using Range = Accord.Range;
 
     /// <summary>
     ///   Set of mathematical tools.

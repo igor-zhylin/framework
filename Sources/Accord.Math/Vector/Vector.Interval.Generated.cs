@@ -30,6 +30,7 @@ namespace Accord.Math
 {
     using System;
     using Accord.Math;
+    using Range = Accord.Range;
 
     public static partial class Vector
     {

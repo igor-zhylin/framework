@@ -31,6 +31,7 @@ namespace Accord.Math
     using System;
     using System.Collections.Generic;
     using Accord.Math;
+    using Range = Accord.Range;
 
     public static partial class Vector
     {

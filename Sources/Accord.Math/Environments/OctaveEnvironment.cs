@@ -363,7 +363,8 @@ namespace Accord.Math.Environments
         /// <summary>
         ///   Return definition operator.
         /// </summary>
-        /// 
+        ///
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. This type name may become a reserved word in a future release. This is a deliberate DSL-style name (mirrors Octave's "ret" keyword) and is part of this class's protected surface, so it is kept as-is.
         protected class retm
         {
             /// <summary>
@@ -383,11 +384,13 @@ namespace Accord.Math.Environments
                 }
             }
         }
+#pragma warning restore CS8981
 
         /// <summary>
         ///   Matrix definition operator.
         /// </summary>
-        /// 
+        ///
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. This type name may become a reserved word in a future release. This is a deliberate DSL-style name (mirrors Octave's "mat" keyword) and is part of this class's protected surface, so it is kept as-is.
         protected class mat
         {
             /// <summary>
@@ -573,6 +576,7 @@ namespace Accord.Math.Environments
                 return matrix.GetHashCode();
             }
         }
+#pragma warning restore CS8981
 
 #if !NETSTANDARD1_4
         /// <summary>

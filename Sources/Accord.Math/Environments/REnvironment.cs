@@ -64,7 +64,8 @@ namespace Accord.Math.Environments
         /// <summary>
         ///   Vector definition operator.
         /// </summary>
-        /// 
+        ///
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. This type name may become a reserved word in a future release. This is a deliberate DSL-style name (mirrors R's vector-construction idiom) and is part of this class's protected surface, so it is kept as-is.
         protected class vec
         {
             /// <summary>
@@ -132,11 +133,13 @@ namespace Accord.Math.Environments
                 return v.vector;
             }
         }
+#pragma warning restore CS8981
 
         /// <summary>
         ///   Matrix definition operator.
         /// </summary>
-        /// 
+        ///
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. This type name may become a reserved word in a future release. This is a deliberate DSL-style name (mirrors R's matrix-construction idiom) and is part of this class's protected surface, so it is kept as-is.
         protected class mat
         {
             /// <summary>
@@ -205,5 +208,6 @@ namespace Accord.Math.Environments
                 return v.matrix;
             }
         }
+#pragma warning restore CS8981
     }
 }

@@ -10,6 +10,7 @@ namespace Accord.Math
 {
     using System;
     using Accord;
+    using Range = Accord.Range;
     using Accord.Compat;
 
     /// <summary>
