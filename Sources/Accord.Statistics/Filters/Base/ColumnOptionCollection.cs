@@ -93,7 +93,7 @@ namespace Accord.Statistics.Filters
         /// 
         /// <returns>True if the options was contained in the collection; false otherwise.</returns>
         /// 
-        public bool TryGetValue(String columnName, out TOptions options)
+        new public bool TryGetValue(String columnName, out TOptions options)
         {
             return base.Dictionary.TryGetValue(columnName, out options);
         }
