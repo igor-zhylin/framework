@@ -289,7 +289,7 @@ namespace Accord
         {
             // http://stackoverflow.com/a/17457085/262032
 
-#if NETSTANDARD1_4 || NETSTANDARD2_0
+#if NETSTANDARD1_4 || NETSTANDARD2_0 || NET10_0_OR_GREATER
             var type = typeof(StreamReader).GetTypeInfo();
             char[] charBuffer = (char[])type.GetDeclaredField("_charBuffer").GetValue(reader);
             int charPos = (int)type.GetDeclaredField("_charPos").GetValue(reader);
