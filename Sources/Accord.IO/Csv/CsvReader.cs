@@ -254,13 +254,14 @@ namespace Accord.IO
             DefaultParseErrorAction = ParseErrorAction.RaiseEvent;
         }
 
+#if !NET10_0_OR_GREATER
         /// <summary>
         ///   Creates a new CsvReader to read from a Web URL.
         /// </summary>
-        /// 
+        ///
         /// <param name="url">The url pointing to the .csv file.</param>
         /// <param name="hasHeaders"><see langword="true"/> if field names are located on the first non commented line, otherwise, <see langword="false"/>.</param>
-        /// 
+        ///
         public static CsvReader FromUrl(string url, bool hasHeaders)
         {
             WebClient client = ExtensionMethods.NewWebClient();
@@ -269,6 +270,7 @@ namespace Accord.IO
             MemoryStream stream = new MemoryStream(bytes);
             return new CsvReader(stream, hasHeaders);
         }
+#endif
 
         /// <summary>
         ///   Creates a new CsvReader to read from a string.
@@ -2062,6 +2064,11 @@ namespace Accord.IO
         /// <remarks>
         /// 	Calls <see cref="M:Dispose(Boolean)"/> with the disposing parameter set to <see langword="true"/> to free unmanaged and managed resources.
         /// </remarks>
+        // CA1063 expects Dispose() to be exactly "Dispose(true); GC.SuppressFinalize(this);" with no
+        // extra guard. The _isDisposed check here is redundant (Dispose(bool) below is already
+        // idempotent) but harmless, so the analyzer is suppressed rather than altering long-standing
+        // disposal code.
+#pragma warning disable CA1063 // Implement IDisposable Correctly
         public void Dispose()
         {
             if (!_isDisposed)
@@ -2070,6 +2077,7 @@ namespace Accord.IO
                 GC.SuppressFinalize(this);
             }
         }
+#pragma warning restore CA1063
 
         /// <summary>
         ///   Closes the <see cref="T:System.Data.IDataReader" /> Object.
@@ -2144,6 +2152,10 @@ namespace Accord.IO
         /// <summary>
         /// Releases unmanaged resources and performs other cleanup operations before the instance is reclaimed by garbage collection.
         /// </summary>
+        // CA1063 expects the finalizer body to be exactly "Dispose(false);"; the DEBUG-only
+        // diagnostic write above it is intentional (long-standing) so the analyzer is suppressed
+        // instead of removing the diagnostic.
+#pragma warning disable CA1063 // Implement IDisposable Correctly
         ~CsvReader()
         {
 #if DEBUG
@@ -2152,6 +2164,7 @@ namespace Accord.IO
 
             Dispose(false);
         }
+#pragma warning restore CA1063
 #endif
 
 

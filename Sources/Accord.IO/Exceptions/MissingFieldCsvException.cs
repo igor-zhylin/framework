@@ -35,19 +35,23 @@ namespace Accord.IO
 {
     using System;
     using System.Globalization;
+#if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.Compat;
     using System.Security.Permissions;
 
     /// <summary>
     ///   Represents the exception that is thrown when a there is a missing field in a record of the CSV file.
     /// </summary>
-    /// 
+    ///
     /// <remarks>
     ///   MissingFieldException would have been a better name, but there is already a <see cref="T:System.MissingFieldException"/>.
     /// </remarks>
-    /// 
+    ///
+#if !NET10_0_OR_GREATER
     [Serializable()]
+#endif
     public class MissingFieldCsvException
         : MalformedCsvException
     {
@@ -113,17 +117,19 @@ namespace Accord.IO
         {
         }
 
+#if !NET10_0_OR_GREATER
         /// <summary>
         ///   Initializes a new instance of the MissingFieldCsvException class with serialized data.
         /// </summary>
-        /// 
+        ///
         /// <param name="info">The <see cref="T:SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:StreamingContext"/> that contains contextual information about the source or destination.</param>
-        /// 
+        ///
         protected MissingFieldCsvException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
 
     }
 }

@@ -35,7 +35,9 @@ namespace Accord.IO
 {
     using System;
     using System.Globalization;
+#if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.IO.Resources;
     using Accord.Compat;
     using System.Security.Permissions;
@@ -43,8 +45,10 @@ namespace Accord.IO
     /// <summary>
     ///   Represents the exception that is thrown when a CSV file is malformed.
     /// </summary>
-    /// 
+    ///
+#if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class MalformedCsvException : Exception
     {
         string message;
@@ -123,7 +127,7 @@ namespace Accord.IO
                 CurrentRecordIndex, CurrentFieldIndex, CurrentPosition, RawData);
         }
 
-#if !NETSTANDARD1_4
+#if !NETSTANDARD1_4 && !NET10_0_OR_GREATER
         /// <summary>
         /// Initializes a new instance of the MalformedCsvException class with serialized data.
         /// </summary>
@@ -181,7 +185,7 @@ namespace Accord.IO
         /// 
         public override string Message { get { return message; } }
 
-#if !NETSTANDARD1_4
+#if !NETSTANDARD1_4 && !NET10_0_OR_GREATER
         /// <summary>
         ///   When overridden in a derived class, sets the <see cref="T:SerializationInfo"/> with information about the exception.
         /// </summary>
