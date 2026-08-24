@@ -20,6 +20,8 @@ obj
 /Debug
 
 /Docs
+/docs/superpowers/
+/.superpowers/
 /Unit Tests/Accord.Tests.Math.Cpp/Debug
 /Unit Tests/Accord.Tests.Math.Cpp/Release
 /Unit Tests/packages
