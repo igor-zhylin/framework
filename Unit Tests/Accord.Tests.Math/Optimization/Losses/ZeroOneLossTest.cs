@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Optimization.Losses;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class ZeroOneLossTest
@@ -33,7 +34,7 @@ namespace Accord.Tests.Math
         {
             int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             double loss = new ZeroOneLoss(expected).Loss(expected); 
-            Assert.Zero(loss);
+            ClassicAssert.Zero(loss);
         }
         
         [Test]
@@ -42,7 +43,7 @@ namespace Accord.Tests.Math
             int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             int[] actual =   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
             double loss = new ZeroOneLoss(expected).Loss(actual); 
-            Assert.AreEqual(1.0, loss, 1e-10);
+            ClassicAssert.AreEqual(1.0, loss, 1e-10);
         }
         
         [Test]
@@ -54,7 +55,7 @@ namespace Accord.Tests.Math
             {
                 Mean = false
             }.Loss(actual); 
-            Assert.AreEqual(5.0, loss, 1e-10);
+            ClassicAssert.AreEqual(5.0, loss, 1e-10);
         }
         
         [Test]
@@ -63,7 +64,7 @@ namespace Accord.Tests.Math
             double[] expected = {0, 1.01, 0.99, 0};
             int[] actual =   {0, 1, 1, 0};
             double loss = new ZeroOneLoss(expected).Loss(actual); 
-            Assert.Zero(loss);
+            ClassicAssert.Zero(loss);
         }
         
         [Test]
@@ -76,7 +77,7 @@ namespace Accord.Tests.Math
             };
             int[] actual =   {0, 1, 0, 1};
             double loss = new ZeroOneLoss(expected).Loss(actual); 
-            Assert.Zero(loss);
+            ClassicAssert.Zero(loss);
         }
         
         [Test]
@@ -85,14 +86,14 @@ namespace Accord.Tests.Math
             int[] expected = {-1, -1, 1, -1};
             int[] actual =   {0, 0, 1, 0};
             double loss = new ZeroOneLoss(expected).Loss(actual); 
-            Assert.Zero(loss);
+            ClassicAssert.Zero(loss);
         }
         
         [Test]
         public void gh_824()
         {
             double loss = new ZeroOneLoss(new [] {0, 1}).Loss(new [] {0, 2}); 
-            Assert.AreEqual(0.5, loss, 1e-10);
+            ClassicAssert.AreEqual(0.5, loss, 1e-10);
         }
     }
 }

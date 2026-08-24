@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Accord;
 using Accord.Math.Geometry;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests.Math
 {
@@ -129,35 +130,35 @@ namespace Accord.Tests.Math
         [Test]
         public void IsCircleTest( )
         {
-            Assert.AreEqual( true, shapeChecker.IsCircle( idealCicle ) );
-            Assert.AreEqual( true, shapeChecker.IsCircle( distorredCircle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsCircle( idealCicle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsCircle( distorredCircle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsCircle( square1 ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( square2 ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( square3 ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( rectangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( square1 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( square2 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( square3 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( rectangle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsCircle( triangle1 ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( equilateralTriangle ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( isoscelesTriangle ) );
-            Assert.AreEqual( false, shapeChecker.IsCircle( rectangledTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( triangle1 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( equilateralTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( isoscelesTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsCircle( rectangledTriangle ) );
         }
 
         [Test]
         public void IsQuadrilateralTest( )
         {
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( square1 ) );
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( square2 ) );
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( square3 ) );
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( rectangle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( square1 ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( square2 ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( square3 ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( rectangle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( idealCicle ) );
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( distorredCircle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( idealCicle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( distorredCircle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( triangle1 ) );
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( equilateralTriangle ) );
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( isoscelesTriangle ) );
-            Assert.AreEqual( false, shapeChecker.IsQuadrilateral( rectangledTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( triangle1 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( equilateralTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( isoscelesTriangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsQuadrilateral( rectangledTriangle ) );
         }
 
         [Test]
@@ -165,30 +166,30 @@ namespace Accord.Tests.Math
         {
             List<IntPoint> corners;
 
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( square1, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
-            Assert.AreEqual( true, CompareShape( corners, square1Test ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( square1, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, CompareShape( corners, square1Test ) );
 
-            Assert.AreEqual( true, shapeChecker.IsQuadrilateral( square2, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
-            Assert.AreEqual( true, CompareShape( corners, square2Test ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsQuadrilateral( square2, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, CompareShape( corners, square2Test ) );
         }
 
         [Test]
         public void IsTriangleTest( )
         {
-            Assert.AreEqual( true, shapeChecker.IsTriangle( triangle1 ) );
-            Assert.AreEqual( true, shapeChecker.IsTriangle( equilateralTriangle ) );
-            Assert.AreEqual( true, shapeChecker.IsTriangle( isoscelesTriangle ) );
-            Assert.AreEqual( true, shapeChecker.IsTriangle( rectangledTriangle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsTriangle( triangle1 ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsTriangle( equilateralTriangle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsTriangle( isoscelesTriangle ) );
+            ClassicAssert.AreEqual( true, shapeChecker.IsTriangle( rectangledTriangle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsTriangle( idealCicle ) );
-            Assert.AreEqual( false, shapeChecker.IsTriangle( distorredCircle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( idealCicle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( distorredCircle ) );
 
-            Assert.AreEqual( false, shapeChecker.IsTriangle( square1 ) );
-            Assert.AreEqual( false, shapeChecker.IsTriangle( square2 ) );
-            Assert.AreEqual( false, shapeChecker.IsTriangle( square3 ) );
-            Assert.AreEqual( false, shapeChecker.IsTriangle( rectangle ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( square1 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( square2 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( square3 ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsTriangle( rectangle ) );
         }
 
         [Test]
@@ -196,43 +197,43 @@ namespace Accord.Tests.Math
         {
             List<IntPoint> corners;
 
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( triangle1, out corners ) );
-            Assert.AreEqual( 3, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( equilateralTriangle, out corners ) );
-            Assert.AreEqual( 3, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( isoscelesTriangle, out corners ) );
-            Assert.AreEqual( 3, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( rectangledTriangle, out corners ) );
-            Assert.AreEqual( 3, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( triangle1, out corners ) );
+            ClassicAssert.AreEqual( 3, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( equilateralTriangle, out corners ) );
+            ClassicAssert.AreEqual( 3, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( isoscelesTriangle, out corners ) );
+            ClassicAssert.AreEqual( 3, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( rectangledTriangle, out corners ) );
+            ClassicAssert.AreEqual( 3, corners.Count );
 
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( square1, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( square2, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( square3, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
-            Assert.AreEqual( true, shapeChecker.IsConvexPolygon( rectangle, out corners ) );
-            Assert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( square1, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( square2, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( square3, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
+            ClassicAssert.AreEqual( true, shapeChecker.IsConvexPolygon( rectangle, out corners ) );
+            ClassicAssert.AreEqual( 4, corners.Count );
 
-            Assert.AreEqual( false, shapeChecker.IsConvexPolygon( idealCicle, out corners ) );
-            Assert.AreEqual( false, shapeChecker.IsConvexPolygon( distorredCircle, out corners ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsConvexPolygon( idealCicle, out corners ) );
+            ClassicAssert.AreEqual( false, shapeChecker.IsConvexPolygon( distorredCircle, out corners ) );
         }
 
         [Test]
         public void CheckShapeTypeTest( )
         {
-            Assert.AreEqual( ShapeType.Circle, shapeChecker.CheckShapeType( idealCicle ) );
-            Assert.AreEqual( ShapeType.Circle, shapeChecker.CheckShapeType( distorredCircle ) );
+            ClassicAssert.AreEqual( ShapeType.Circle, shapeChecker.CheckShapeType( idealCicle ) );
+            ClassicAssert.AreEqual( ShapeType.Circle, shapeChecker.CheckShapeType( distorredCircle ) );
 
-            Assert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square1 ) );
-            Assert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square2 ) );
-            Assert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square3 ) );
-            Assert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( rectangle ) );
+            ClassicAssert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square1 ) );
+            ClassicAssert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square2 ) );
+            ClassicAssert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( square3 ) );
+            ClassicAssert.AreEqual( ShapeType.Quadrilateral, shapeChecker.CheckShapeType( rectangle ) );
 
-            Assert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( triangle1 ) );
-            Assert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( equilateralTriangle ) );
-            Assert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( isoscelesTriangle ) );
-            Assert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( rectangledTriangle ) );
+            ClassicAssert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( triangle1 ) );
+            ClassicAssert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( equilateralTriangle ) );
+            ClassicAssert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( isoscelesTriangle ) );
+            ClassicAssert.AreEqual( ShapeType.Triangle, shapeChecker.CheckShapeType( rectangledTriangle ) );
         }
 
         private bool CompareShape( List<IntPoint> shape1, List<IntPoint> shape2 )
@@ -285,7 +286,7 @@ namespace Accord.Tests.Math
         [TestCase( PolygonSubType.Unknown, new int[] { 0, 0, 100, 0, 90, 50, 40, 70, 10, 40 } )]     // unknown if 5 corners or more
         public void CheckPolygonSubTypeTest( PolygonSubType expectedSubType, int[] corners )
         {
-            Assert.AreEqual( expectedSubType, shapeChecker.CheckPolygonSubType( GetListOfPointFromArray( corners ) ) );
+            ClassicAssert.AreEqual( expectedSubType, shapeChecker.CheckPolygonSubType( GetListOfPointFromArray( corners ) ) );
         }
 
         private List<IntPoint> GetListOfPointFromArray( int[] points )

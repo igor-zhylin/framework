@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math.Comparers;
 
@@ -56,22 +57,22 @@ namespace Accord.Tests.Math
             actual = new double[] { 0, -1, 2, Double.PositiveInfinity, Double.NegativeInfinity };
             expected = new double[] { Double.NegativeInfinity, -1, 0, 2, Double.PositiveInfinity };
             Array.Sort(actual, new GeneralComparer(ComparerDirection.Ascending, useAbsoluteValues: false));
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
             actual = new double[] { 0, -1, 2, Double.PositiveInfinity, Double.NegativeInfinity };
             expected = new double[] { Double.PositiveInfinity, 2, 0, -1, Double.NegativeInfinity };
             Array.Sort(actual, new GeneralComparer(ComparerDirection.Descending, false));
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
             actual = new double[] { 0, -1, 2, Double.PositiveInfinity, Double.NegativeInfinity };
             expected = new double[] { Double.PositiveInfinity, Double.NegativeInfinity, 2, -1, 0 };
             Array.Sort(actual, new GeneralComparer(ComparerDirection.Descending, true));
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
             actual = new double[] { 0, -1, 2, Double.PositiveInfinity, Double.NegativeInfinity };
             expected = new double[] { Double.PositiveInfinity, Double.NegativeInfinity, 2, -1, 0 };
             Array.Sort(actual, new GeneralComparer(ComparerDirection.Descending, Math.Abs));
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
         }
     }
 }

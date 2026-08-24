@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Accord;
 using Accord.Math.Metrics;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests.Math
 {
@@ -37,22 +38,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => dist.GetDistance(p0, q4));
 
             double result = dist.GetDistance(p0, q0);
-            Assert.AreEqual(result, .2, 0.00001);
+            ClassicAssert.AreEqual(result, .2, 0.00001);
 
             result = dist.GetDistance(p1, q1);
-            Assert.AreEqual(result, 0.029857, 0.00001);
+            ClassicAssert.AreEqual(result, 0.029857, 0.00001);
 
             result = dist.GetDistance(p2, q2);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = dist.GetDistance(p3, q3);
-            Assert.AreEqual(result, 0, 0.00001);
+            ClassicAssert.AreEqual(result, 0, 0.00001);
 
             result = dist.GetDistance(p4, q4);
-            Assert.AreEqual(result, 0.039354, 0.00001);
+            ClassicAssert.AreEqual(result, 0.039354, 0.00001);
 
             result = dist.GetDistance(p5, q5);
-            Assert.AreEqual(result, 0.031026, 0.00001);
+            ClassicAssert.AreEqual(result, 0.031026, 0.00001);
         }
 
         [Test]
@@ -64,22 +65,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => sim.GetSimilarityScore(p0, q4));
 
             double result = sim.GetSimilarityScore(p0, q0);
-            Assert.AreEqual(result, .8, 0.00001);
+            ClassicAssert.AreEqual(result, .8, 0.00001);
 
             result = sim.GetSimilarityScore(p1, q1);
-            Assert.AreEqual(result, 0.97014, 0.00001);
+            ClassicAssert.AreEqual(result, 0.97014, 0.00001);
 
             result = sim.GetSimilarityScore(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = sim.GetSimilarityScore(p3, q3);
-            Assert.AreEqual(result, 1, 0.00001);
+            ClassicAssert.AreEqual(result, 1, 0.00001);
 
             result = sim.GetSimilarityScore(p4, q4);
-            Assert.AreEqual(result, 0.96065, 0.00001);
+            ClassicAssert.AreEqual(result, 0.96065, 0.00001);
 
             result = sim.GetSimilarityScore(p5, q5);
-            Assert.AreEqual(result, 0.96897, 0.00001);
+            ClassicAssert.AreEqual(result, 0.96897, 0.00001);
         }
 
         [Test]
@@ -91,22 +92,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => dist.GetDistance(p0, q4));
 
             double result = dist.GetDistance(p0, q0);
-            Assert.AreEqual(result, .70711, 0.00001);
+            ClassicAssert.AreEqual(result, .70711, 0.00001);
 
             result = dist.GetDistance(p1, q1);
-            Assert.AreEqual(result, 1.11803, 0.00001);
+            ClassicAssert.AreEqual(result, 1.11803, 0.00001);
 
             result = dist.GetDistance(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p3, q3);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p4, q4);
-            Assert.AreEqual(result, 2.39792, 0.00001);
+            ClassicAssert.AreEqual(result, 2.39792, 0.00001);
 
             result = dist.GetDistance(p5, q5);
-            Assert.AreEqual(result, 4.24264, 0.00001);
+            ClassicAssert.AreEqual(result, 4.24264, 0.00001);
         }
 
         [Test]
@@ -117,22 +118,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => sim.GetSimilarityScore(p0, q4));
 
             double result = sim.GetSimilarityScore(p0, q0);
-            Assert.AreEqual(result, 0.58578, 0.00001);
+            ClassicAssert.AreEqual(result, 0.58578, 0.00001);
 
             result = sim.GetSimilarityScore(p1, q1);
-            Assert.AreEqual(result, 0.47213, 0.00001);
+            ClassicAssert.AreEqual(result, 0.47213, 0.00001);
 
             result = sim.GetSimilarityScore(p2, q2);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = sim.GetSimilarityScore(p3, q3);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = sim.GetSimilarityScore(p4, q4);
-            Assert.AreEqual(result, 0.2943, 0.00001);
+            ClassicAssert.AreEqual(result, 0.2943, 0.00001);
 
             result = sim.GetSimilarityScore(p5, q5);
-            Assert.AreEqual(result, 0.19074, 0.00001);
+            ClassicAssert.AreEqual(result, 0.19074, 0.00001);
         }
 
         [Test]
@@ -144,22 +145,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => dist.GetDistance(p0, q4));
 
             double result = dist.GetDistance(p0, q0);
-            Assert.AreEqual(result, 2);
+            ClassicAssert.AreEqual(result, 2);
 
             result = dist.GetDistance(p1, q1);
-            Assert.AreEqual(result, 2);
+            ClassicAssert.AreEqual(result, 2);
 
             result = dist.GetDistance(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p3, q3);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p4, q4);
-            Assert.AreEqual(result, 4);
+            ClassicAssert.AreEqual(result, 4);
 
             result = dist.GetDistance(p5, q5);
-            Assert.AreEqual(result, 9);
+            ClassicAssert.AreEqual(result, 9);
         }
 
         [Test]
@@ -170,22 +171,22 @@ namespace Accord.Tests.Math
             //Assert.Throws<ArgumentException>(() => dist.GetDistance(p0, q4));
 
             double result = dist.GetDistance(p0, q0);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = dist.GetDistance(p1, q1);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = dist.GetDistance(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p3, q3);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p4, q4);
-            Assert.AreEqual(result, 0.66666, 0.00001);
+            ClassicAssert.AreEqual(result, 0.66666, 0.00001);
 
             result = dist.GetDistance(p5, q5);
-            Assert.AreEqual(result, 0.9, 0.1);
+            ClassicAssert.AreEqual(result, 0.9, 0.1);
         }
 
         [Test]
@@ -196,22 +197,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => dist.GetDistance(p0, q4));
 
             double result = dist.GetDistance(p0, q0);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = dist.GetDistance(p1, q1);
-            Assert.AreEqual(result, 1.5);
+            ClassicAssert.AreEqual(result, 1.5);
 
             result = dist.GetDistance(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p3, q3);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = dist.GetDistance(p4, q4);
-            Assert.AreEqual(result, 4.5);
+            ClassicAssert.AreEqual(result, 4.5);
 
             result = dist.GetDistance(p5, q5);
-            Assert.AreEqual(result, 12);
+            ClassicAssert.AreEqual(result, 12);
         }
 
         [Test]
@@ -222,22 +223,22 @@ namespace Accord.Tests.Math
             // Assert.Throws<ArgumentException>(() => sim.GetSimilarityScore(p0, q4));
 
             double result = sim.GetSimilarityScore(p0, q0);
-            Assert.AreEqual(result, -1);
+            ClassicAssert.AreEqual(result, -1);
 
             result = sim.GetSimilarityScore(p1, q1);
-            Assert.AreEqual(result, 1);
+            ClassicAssert.AreEqual(result, 1);
 
             result = sim.GetSimilarityScore(p2, q2);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = sim.GetSimilarityScore(p3, q3);
-            Assert.AreEqual(result, 0);
+            ClassicAssert.AreEqual(result, 0);
 
             result = sim.GetSimilarityScore(p4, q4);
-            Assert.AreEqual(result, 0.396059, 0.00001);
+            ClassicAssert.AreEqual(result, 0.396059, 0.00001);
 
             result = sim.GetSimilarityScore(p5, q5);
-            Assert.AreEqual(result, 0.85470, 0.00001);
+            ClassicAssert.AreEqual(result, 0.85470, 0.00001);
         }
     }
 }

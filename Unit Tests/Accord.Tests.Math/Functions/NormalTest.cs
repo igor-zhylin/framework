@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -54,7 +55,7 @@ namespace Accord.Tests.Math
             double value = 0.42;
             double expected = 0.662757273151751;
             double actual = Normal.Function(value);
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
         }
 
         [Test]
@@ -63,7 +64,7 @@ namespace Accord.Tests.Math
             double value = 0.662757273151751;
             double expected = 0.42;
             double actual = Normal.Inverse(value);
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
         }
 
         [Test]
@@ -78,12 +79,12 @@ namespace Accord.Tests.Math
             double hphi = Normal.HighAccuracyFunction(x);
 
 
-            Assert.AreEqual(0.66275727315175048, phi);
-            Assert.AreEqual(0.33724272684824952, phic);
-            Assert.AreEqual(-0.20189347914185085, inv);
+            ClassicAssert.AreEqual(0.66275727315175048, phi);
+            ClassicAssert.AreEqual(0.33724272684824952, phic);
+            ClassicAssert.AreEqual(-0.20189347914185085, inv);
 
-            Assert.AreEqual(0.66275727315175048, hphi);
-            Assert.AreEqual(0.33724272684824946, hphic, 1e-10);
+            ClassicAssert.AreEqual(0.66275727315175048, hphi);
+            ClassicAssert.AreEqual(0.33724272684824946, hphic, 1e-10);
         }
 
         [Test]
@@ -95,10 +96,10 @@ namespace Accord.Tests.Math
             double hphic = Normal.HighAccuracyComplemented(x);
             double hphi = Normal.HighAccuracyFunction(x);
 
-            Assert.AreEqual(1.0, phi);
-            Assert.AreEqual(3.4845465199504055E-62, phic);
-            Assert.AreEqual(0.99999999999999556, hphi);
-            Assert.AreEqual(3.48454651995264E-62, hphic);
+            ClassicAssert.AreEqual(1.0, phi);
+            ClassicAssert.AreEqual(3.4845465199504055E-62, phic);
+            ClassicAssert.AreEqual(0.99999999999999556, hphi);
+            ClassicAssert.AreEqual(3.48454651995264E-62, hphic);
         }
 
 
@@ -111,10 +112,10 @@ namespace Accord.Tests.Math
                 double c = Normal.Bivariate(+0, -1, 0.0);
                 double d = Normal.Bivariate(-1, -1, 0.0);
 
-                Assert.AreEqual(a, 0.25);
-                Assert.AreEqual(b, 0.07932762696572859, 1e-10);
-                Assert.AreEqual(c, 0.07932762696572859, 1e-10);
-                Assert.AreEqual(d, 0.02517148960005514, 1e-10);
+                ClassicAssert.AreEqual(a, 0.25);
+                ClassicAssert.AreEqual(b, 0.07932762696572859, 1e-10);
+                ClassicAssert.AreEqual(c, 0.07932762696572859, 1e-10);
+                ClassicAssert.AreEqual(d, 0.02517148960005514, 1e-10);
             }
 
             {
@@ -123,10 +124,10 @@ namespace Accord.Tests.Math
                 double c = Normal.Bivariate(0, 1, 0.0);
                 double d = Normal.Bivariate(1, 1, 0.0);
 
-                Assert.AreEqual(a, 0.25);
-                Assert.AreEqual(b, 0.4206723730342714, 1e-10);
-                Assert.AreEqual(c, 0.4206723730342714, 1e-10);
-                Assert.AreEqual(d, 0.707860981737141, 1e-10);
+                ClassicAssert.AreEqual(a, 0.25);
+                ClassicAssert.AreEqual(b, 0.4206723730342714, 1e-10);
+                ClassicAssert.AreEqual(c, 0.4206723730342714, 1e-10);
+                ClassicAssert.AreEqual(d, 0.707860981737141, 1e-10);
             }
 
             {
@@ -135,10 +136,10 @@ namespace Accord.Tests.Math
                 double c = Normal.Bivariate(+0, -1, 0.99);
                 double d = Normal.Bivariate(-1, -1, 0.99);
 
-                Assert.AreEqual(a, 0.477473293177794, 1e-6);
-                Assert.AreEqual(b, 0.1586552539314527, 1e-10);
-                Assert.AreEqual(c, 0.1586552539314527, 1e-10);
-                Assert.AreEqual(d, 0.1450035348479944, 1e-8);
+                ClassicAssert.AreEqual(a, 0.477473293177794, 1e-6);
+                ClassicAssert.AreEqual(b, 0.1586552539314527, 1e-10);
+                ClassicAssert.AreEqual(c, 0.1586552539314527, 1e-10);
+                ClassicAssert.AreEqual(d, 0.1450035348479944, 1e-8);
             }
 
             {
@@ -147,10 +148,10 @@ namespace Accord.Tests.Math
                 double c = Normal.Bivariate(0, 1, 0.99);
                 double d = Normal.Bivariate(1, 1, 0.99);
 
-                Assert.AreEqual(a, 0.477473293177794, 1e-6);
-                Assert.AreEqual(b, 0.4999999999999956, 1e-10);
-                Assert.AreEqual(c, 0.4999999999999956, 1e-10);
-                Assert.AreEqual(d, 0.8276930269850803, 1e-8);
+                ClassicAssert.AreEqual(a, 0.477473293177794, 1e-6);
+                ClassicAssert.AreEqual(b, 0.4999999999999956, 1e-10);
+                ClassicAssert.AreEqual(c, 0.4999999999999956, 1e-10);
+                ClassicAssert.AreEqual(d, 0.8276930269850803, 1e-8);
             }
 
             {
@@ -164,13 +165,13 @@ namespace Accord.Tests.Math
                 double g = Normal.Bivariate(-1, -1, 0.42);
 
 
-                Assert.AreEqual(a, 0.3189849652491711, 1e-10);
-                Assert.AreEqual(b, 0.4611405565191831, 1e-10);
-                Assert.AreEqual(c, 0.4611405565191831, 1e-10);
-                Assert.AreEqual(d, 0.7379699765574815, 1e-10);
-                Assert.AreEqual(e, 0.1197958104506402, 1e-10);
-                Assert.AreEqual(f, 0.1197958104506402, 1e-10);
-                Assert.AreEqual(g, 0.05528048442039563, 1e-10);
+                ClassicAssert.AreEqual(a, 0.3189849652491711, 1e-10);
+                ClassicAssert.AreEqual(b, 0.4611405565191831, 1e-10);
+                ClassicAssert.AreEqual(c, 0.4611405565191831, 1e-10);
+                ClassicAssert.AreEqual(d, 0.7379699765574815, 1e-10);
+                ClassicAssert.AreEqual(e, 0.1197958104506402, 1e-10);
+                ClassicAssert.AreEqual(f, 0.1197958104506402, 1e-10);
+                ClassicAssert.AreEqual(g, 0.05528048442039563, 1e-10);
             }
 
         }

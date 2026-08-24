@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Collections.Generic;
     using System;
     using System.Data;
@@ -51,7 +52,7 @@ namespace Accord.Tests.Math
 
             double[,] actual = Matrix.Submatrix(value, new int[] { 0, 2 });
 
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
         }
 
         [Test]
@@ -73,13 +74,13 @@ namespace Accord.Tests.Math
             double[,] actual;
 
             actual = Matrix.Submatrix(value, new int[] { 0, 2 });
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
             actual = Matrix.Submatrix(value, new int[] { 0, 2 }, null);
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
             actual = Matrix.Submatrix(value, null, null);
-            Assert.IsTrue(Matrix.IsEqual(actual, value));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, value));
         }
 
         [Test]
@@ -105,7 +106,7 @@ namespace Accord.Tests.Math
 
             double[][] actual = Matrix.Submatrix(data, rowIndexes, j0, j1);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual));
 
 
 
@@ -118,7 +119,7 @@ namespace Accord.Tests.Math
 
             double[][] actual2 = Matrix.Submatrix(data, null, j0, j1);
 
-            Assert.IsTrue(Matrix.IsEqual(expected2, actual2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected2, actual2));
         }
 
         [Test]
@@ -144,7 +145,7 @@ namespace Accord.Tests.Math
             double[,] actual;
 
             actual = Matrix.Submatrix(value, rowIndexes, j0, j1);
-            Assert.IsTrue(Matrix.IsEqual(actual, expected));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected));
 
 
             double[,] expected2 = new double[,]
@@ -155,10 +156,10 @@ namespace Accord.Tests.Math
             };
 
             actual = Matrix.Submatrix(value, null, j0, j1);
-            Assert.IsTrue(Matrix.IsEqual(actual, expected2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected2));
 
             actual = Matrix.Submatrix(value, null, null);
-            Assert.IsTrue(Matrix.IsEqual(actual, value));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, value));
         }
 
         [Test]
@@ -170,18 +171,18 @@ namespace Accord.Tests.Math
 
             double[][] groups = value.Subgroups(idx);
 
-            Assert.AreEqual(2, groups.Length);
-            Assert.AreEqual(3, groups[0].Length);
-            Assert.AreEqual(4, groups[1].Length);
+            ClassicAssert.AreEqual(2, groups.Length);
+            ClassicAssert.AreEqual(3, groups[0].Length);
+            ClassicAssert.AreEqual(4, groups[1].Length);
 
-            Assert.AreEqual(groups[0][0], 1);
-            Assert.AreEqual(groups[0][1], 2);
-            Assert.AreEqual(groups[0][2], 3);
+            ClassicAssert.AreEqual(groups[0][0], 1);
+            ClassicAssert.AreEqual(groups[0][1], 2);
+            ClassicAssert.AreEqual(groups[0][2], 3);
 
-            Assert.AreEqual(groups[1][0], 4);
-            Assert.AreEqual(groups[1][1], 5);
-            Assert.AreEqual(groups[1][2], 6);
-            Assert.AreEqual(groups[1][3], 7);
+            ClassicAssert.AreEqual(groups[1][0], 4);
+            ClassicAssert.AreEqual(groups[1][1], 5);
+            ClassicAssert.AreEqual(groups[1][2], 6);
+            ClassicAssert.AreEqual(groups[1][3], 7);
         }
 
         [Test]
@@ -193,22 +194,22 @@ namespace Accord.Tests.Math
 
             double[][] groups = value.Subgroups(idx, 5);
 
-            Assert.AreEqual(5, groups.Length);
+            ClassicAssert.AreEqual(5, groups.Length);
 
-            Assert.AreEqual(3, groups[0].Length);
-            Assert.AreEqual(0, groups[1].Length);
-            Assert.AreEqual(0, groups[2].Length);
-            Assert.AreEqual(0, groups[3].Length);
-            Assert.AreEqual(4, groups[4].Length);
+            ClassicAssert.AreEqual(3, groups[0].Length);
+            ClassicAssert.AreEqual(0, groups[1].Length);
+            ClassicAssert.AreEqual(0, groups[2].Length);
+            ClassicAssert.AreEqual(0, groups[3].Length);
+            ClassicAssert.AreEqual(4, groups[4].Length);
 
-            Assert.AreEqual(groups[0][0], 1);
-            Assert.AreEqual(groups[0][1], 2);
-            Assert.AreEqual(groups[0][2], 3);
+            ClassicAssert.AreEqual(groups[0][0], 1);
+            ClassicAssert.AreEqual(groups[0][1], 2);
+            ClassicAssert.AreEqual(groups[0][2], 3);
 
-            Assert.AreEqual(groups[4][0], 4);
-            Assert.AreEqual(groups[4][1], 5);
-            Assert.AreEqual(groups[4][2], 6);
-            Assert.AreEqual(groups[4][3], 7);
+            ClassicAssert.AreEqual(groups[4][0], 4);
+            ClassicAssert.AreEqual(groups[4][1], 5);
+            ClassicAssert.AreEqual(groups[4][2], 6);
+            ClassicAssert.AreEqual(groups[4][3], 7);
         }
     }
 }

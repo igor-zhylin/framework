@@ -27,6 +27,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Differentiation;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
 
     [TestFixture]
@@ -71,7 +72,7 @@ namespace Accord.Tests.Math
 
                     double actual = function(x[i]);
 
-                    Assert.AreEqual(expected, actual, 1e-8);
+                    ClassicAssert.AreEqual(expected, actual, 1e-8);
                 }
             }
 
@@ -82,7 +83,7 @@ namespace Accord.Tests.Math
                     double[] actual = gradient(x[i]);
 
                     for (int j = 0; j < actual.Length; j++)
-                        Assert.AreEqual(expected[j], actual[j], 1e-8);
+                        ClassicAssert.AreEqual(expected[j], actual[j], 1e-8);
                 }
             }
         }
@@ -125,7 +126,7 @@ namespace Accord.Tests.Math
 
                     double actual = function(x[i]);
 
-                    Assert.AreEqual(expected, actual, 1e-8);
+                    ClassicAssert.AreEqual(expected, actual, 1e-8);
                 }
             }
 
@@ -136,7 +137,7 @@ namespace Accord.Tests.Math
                     double[] actual = gradient(x[i]);
 
                     for (int j = 0; j < actual.Length; j++)
-                        Assert.AreEqual(expected[j], actual[j], 1e-8);
+                        ClassicAssert.AreEqual(expected[j], actual[j], 1e-8);
                 }
             }
         }
@@ -176,7 +177,7 @@ namespace Accord.Tests.Math
                     double[] actual = gradient(x[i]);
 
                     for (int j = 0; j < actual.Length; j++)
-                        Assert.AreEqual(expected[j], actual[j], 1e-6);
+                        ClassicAssert.AreEqual(expected[j], actual[j], 1e-6);
                 }
             }
         }
@@ -216,7 +217,7 @@ namespace Accord.Tests.Math
                     double[] actual = gradient(x[i]);
 
                     for (int j = 0; j < actual.Length; j++)
-                        Assert.AreEqual(expected[j], actual[j], 1e-8);
+                        ClassicAssert.AreEqual(expected[j], actual[j], 1e-8);
                 }
             }
         }
@@ -240,9 +241,9 @@ namespace Accord.Tests.Math
                     double a = actual.Function(new[] { x, y });
                     double e = expected();
 
-                    Assert.AreEqual(e, a, 1e-10);
-                    Assert.IsFalse(double.IsNaN(a));
-                    Assert.IsFalse(double.IsNaN(e));
+                    ClassicAssert.AreEqual(e, a, 1e-10);
+                    ClassicAssert.IsFalse(double.IsNaN(a));
+                    ClassicAssert.IsFalse(double.IsNaN(e));
                 }
             }
         }
@@ -270,9 +271,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
                 }
             }
@@ -293,9 +294,9 @@ namespace Accord.Tests.Math
                 double a = actual.Function(new[] { x });
                 double e = expected();
 
-                Assert.AreEqual(e, a, 1e-10);
-                Assert.IsFalse(double.IsNaN(a));
-                Assert.IsFalse(double.IsNaN(e));
+                ClassicAssert.AreEqual(e, a, 1e-10);
+                ClassicAssert.IsFalse(double.IsNaN(a));
+                ClassicAssert.IsFalse(double.IsNaN(e));
             }
         }
 
@@ -322,9 +323,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
                 }
             }
@@ -355,7 +356,7 @@ namespace Accord.Tests.Math
                 var fl = f[l];
                 var gl = g[l];
 
-                Assert.AreEqual(fl.NumberOfVariables, gl.NumberOfVariables);
+                ClassicAssert.AreEqual(fl.NumberOfVariables, gl.NumberOfVariables);
 
                 for (int i = 0; i < 10; i++)
                     for (int j = 0; j < 10; j++)
@@ -368,9 +369,9 @@ namespace Accord.Tests.Math
                             double a = fl.Function(new[] { x, y, z }.First(fl.NumberOfVariables));
                             double e = gl.Function(new[] { x, y, z }.First(fl.NumberOfVariables));
 
-                            Assert.AreEqual(e, a, 1e-10);
-                            Assert.IsFalse(double.IsNaN(a));
-                            Assert.IsFalse(double.IsNaN(e));
+                            ClassicAssert.AreEqual(e, a, 1e-10);
+                            ClassicAssert.IsFalse(double.IsNaN(a));
+                            ClassicAssert.IsFalse(double.IsNaN(e));
                         }
             }
         }
@@ -394,9 +395,9 @@ namespace Accord.Tests.Math
                     double a = actual.Function(new[] { x, y });
                     double e = expected();
 
-                    Assert.AreEqual(e, a, 1e-10);
-                    Assert.IsFalse(double.IsNaN(a));
-                    Assert.IsFalse(double.IsNaN(e));
+                    ClassicAssert.AreEqual(e, a, 1e-10);
+                    ClassicAssert.IsFalse(double.IsNaN(a));
+                    ClassicAssert.IsFalse(double.IsNaN(e));
                 }
             }
         }
@@ -422,9 +423,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -443,9 +444,9 @@ namespace Accord.Tests.Math
                 double a = actual.Function(new[] { x });
                 double e = expected();
 
-                Assert.AreEqual(e, a, 1e-10);
-                Assert.IsFalse(Double.IsNaN(a));
-                Assert.IsFalse(Double.IsNaN(e));
+                ClassicAssert.AreEqual(e, a, 1e-10);
+                ClassicAssert.IsFalse(Double.IsNaN(a));
+                ClassicAssert.IsFalse(Double.IsNaN(e));
             }
         }
 
@@ -470,9 +471,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(Double.IsNaN(a));
-                        Assert.IsFalse(Double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(Double.IsNaN(a));
+                        ClassicAssert.IsFalse(Double.IsNaN(e));
                     }
         }
 
@@ -497,9 +498,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(Double.IsNaN(a));
-                        Assert.IsFalse(Double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(Double.IsNaN(a));
+                        ClassicAssert.IsFalse(Double.IsNaN(e));
                     }
         }
 
@@ -527,9 +528,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected1() + expected2();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(Double.IsNaN(a));
-                        Assert.IsFalse(Double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(Double.IsNaN(a));
+                        ClassicAssert.IsFalse(Double.IsNaN(e));
                     }
         }
 
@@ -567,9 +568,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(arg);
                         double e = actual1.Function(arg) + actual2.Function(arg);
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -606,7 +607,7 @@ namespace Accord.Tests.Math
             double check = result1 + 2 * result2;   // should be the same
             #endregion
 
-            Assert.AreEqual(result, check);
+            ClassicAssert.AreEqual(result, check);
         }
 
         [Test]
@@ -643,9 +644,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(arg);
                         double e = (weight1 * actual1.Function(arg)) + (weight2 * actual2.Function(arg));
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -683,9 +684,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(arg);
                         double e = actual1.Function(arg) - actual2.Function(arg);
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -712,9 +713,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = scalar * expected1();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -746,9 +747,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(arg);
                         double e = actual1.Function(arg) * scalar;
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -774,9 +775,9 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = -expected1();
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
         }
 
@@ -802,15 +803,15 @@ namespace Accord.Tests.Math
                         double a = actual.Function(new[] { x, y, z });
                         double e = expected1() / 5;
 
-                        Assert.AreEqual(e, a, 1e-10);
-                        Assert.IsFalse(double.IsNaN(a));
-                        Assert.IsFalse(double.IsNaN(e));
+                        ClassicAssert.AreEqual(e, a, 1e-10);
+                        ClassicAssert.IsFalse(double.IsNaN(a));
+                        ClassicAssert.IsFalse(double.IsNaN(e));
                     }
 
             Assert.Throws<DivideByZeroException>(() =>
             {
                 var resultant = actual / 0;
-                Assert.Null(resultant);
+                ClassicAssert.Null(resultant);
             });
         }
 
@@ -829,7 +830,7 @@ namespace Accord.Tests.Math
             Assert.Throws<NonSymmetricMatrixException>(() =>
             {
                 var target = new QuadraticObjectiveFunction(quadraticTerms, linearTerms);
-                Assert.NotNull(target);
+                ClassicAssert.NotNull(target);
             });
         }
 
@@ -848,8 +849,8 @@ namespace Accord.Tests.Math
             double result2 = f2.Function(arg);
             double expected = correct.Function(arg);
 
-            Assert.AreEqual(expected, result1);
-            Assert.AreEqual(expected, result2);
+            ClassicAssert.AreEqual(expected, result1);
+            ClassicAssert.AreEqual(expected, result2);
         }
     }
 }

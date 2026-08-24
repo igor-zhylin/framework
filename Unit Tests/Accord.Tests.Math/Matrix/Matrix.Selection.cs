@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Comparers;
     using Accord.Statistics.Distributions.Univariate;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Collections.Generic;
     using Accord.Statistics;
@@ -38,24 +39,24 @@ namespace Accord.Tests.Math
         {
             int[] a = { 2, 7, 3, 5, 4 };
             int pivot = Matrix.Partition(a, 0, a.Length);
-            Assert.IsTrue(a.IsEqual(new[] { 2, 3, 4, 5, 7 }));
-            // Assert.IsTrue(a.IsEqual(new[] { 2, 3, 7, 5, 4 }));
+            ClassicAssert.IsTrue(a.IsEqual(new[] { 2, 3, 4, 5, 7 }));
+            // ClassicAssert.IsTrue(a.IsEqual(new[] { 2, 3, 7, 5, 4 }));
 
             a = new int[] { 7, 6, 5, 4, 3, 2, 1, 0 };
             pivot = Matrix.Partition(a, 0, a.Length);
-            Assert.IsTrue(a.IsEqual(new[] { 0, 3, 2, 1, 4, 5, 7, 6 }));
-            // Assert.IsTrue(a.IsEqual(new[] { 0, 2, 3, 1, 4, 6, 5, 7 }));
+            ClassicAssert.IsTrue(a.IsEqual(new[] { 0, 3, 2, 1, 4, 5, 7, 6 }));
+            // ClassicAssert.IsTrue(a.IsEqual(new[] { 0, 2, 3, 1, 4, 6, 5, 7 }));
 
             a = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
             Matrix.Partition(a, 0, a.Length);
-            Assert.IsTrue(a.IsEqual(new[] { 0, 1, 2, 3, 4, 5, 6, 7 }));
+            ClassicAssert.IsTrue(a.IsEqual(new[] { 0, 1, 2, 3, 4, 5, 6, 7 }));
 
             a = new int[] { 2, 7, 3, 4, 5, 6, 1, 8 };
             double expected = (int)Measures.Median(a.Submatrix(4, 7));
             int actual = Matrix.Partition(a, 4, 7);
-            Assert.AreEqual(actual, expected);
-            //Assert.IsTrue(a.IsEqual(new[] { 2, 7, 3, 4, 5, 1, 6, 8 }));
-            Assert.IsTrue(a.IsEqual(new[] { 2, 7, 3, 4, 1, 5, 6, 8 }));
+            ClassicAssert.AreEqual(actual, expected);
+            //ClassicAssert.IsTrue(a.IsEqual(new[] { 2, 7, 3, 4, 5, 1, 6, 8 }));
+            ClassicAssert.IsTrue(a.IsEqual(new[] { 2, 7, 3, 4, 1, 5, 6, 8 }));
         }
 
 
@@ -67,7 +68,7 @@ namespace Accord.Tests.Math
             int[] a = { 10, 2, 6, 11, 9, 3, 4, 12, 8, 7, 1, 5 };
             Sort.NthElement(a, 0, a.Length, 6);
             int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            Assert.IsTrue(a.IsEqual(expected));
+            ClassicAssert.IsTrue(a.IsEqual(expected));
         }
 
         [Test]
@@ -90,29 +91,29 @@ namespace Accord.Tests.Math
 
                     Sort.NthElement(a, 0, a.Length - 1, nth);
                     Sort.NthElement(b, bk, 0, b.Length - 1, nth);
-                    Assert.IsTrue(a.IsEqual(b));
-                    Assert.IsTrue(a.IsEqual(bk));
+                    ClassicAssert.IsTrue(a.IsEqual(b));
+                    ClassicAssert.IsTrue(a.IsEqual(bk));
 
                     Func<double, double, int> comparer = (x, y) => x.CompareTo(y);
                     Sort.NthElement(c, 0, a.Length - 1, nth, comparer);
                     Sort.NthElement(d, dk, 0, b.Length - 1, nth, comparer);
                     var str = random.ToString(CSharpArrayFormatProvider.InvariantCulture);
-                    Assert.IsTrue(a.IsEqual(c));
-                    Assert.IsTrue(c.IsEqual(d));
-                    Assert.IsTrue(d.IsEqual(dk));
+                    ClassicAssert.IsTrue(a.IsEqual(c));
+                    ClassicAssert.IsTrue(c.IsEqual(d));
+                    ClassicAssert.IsTrue(d.IsEqual(dk));
 
                     Func<double, double, int> comparer2 = (x, y) => -x.CompareTo(y);
                     Sort.NthElement(e, 0, a.Length - 1, nth, comparer2, asc: false);
                     Sort.NthElement(f, fk, 0, b.Length - 1, nth, comparer2, asc: false);
-                    Assert.IsTrue(a.IsEqual(e));
-                    Assert.IsTrue(e.IsEqual(f));
-                    Assert.IsTrue(f.IsEqual(fk));
+                    ClassicAssert.IsTrue(a.IsEqual(e));
+                    ClassicAssert.IsTrue(e.IsEqual(f));
+                    ClassicAssert.IsTrue(f.IsEqual(fk));
 
-                    Assert.IsTrue(a.IsEqual(c));
-                    Assert.IsTrue(a.IsEqual(d));
-                    Assert.IsTrue(a.IsEqual(e));
-                    Assert.IsTrue(a.IsEqual(f));
-                    Assert.IsTrue(a.IsEqual(fk));
+                    ClassicAssert.IsTrue(a.IsEqual(c));
+                    ClassicAssert.IsTrue(a.IsEqual(d));
+                    ClassicAssert.IsTrue(a.IsEqual(e));
+                    ClassicAssert.IsTrue(a.IsEqual(f));
+                    ClassicAssert.IsTrue(a.IsEqual(fk));
                 }
             }
         }
@@ -137,29 +138,29 @@ namespace Accord.Tests.Math
 
                     Sort.NthElement(a, 0, a.Length - 1, nth);
                     Sort.NthElement(b, bk, 0, b.Length - 1, nth);
-                    Assert.IsTrue(a.IsEqual(b));
-                    Assert.IsTrue(a.IsEqual(bk));
+                    ClassicAssert.IsTrue(a.IsEqual(b));
+                    ClassicAssert.IsTrue(a.IsEqual(bk));
 
                     Func<double, double, int> comparer = (x, y) => x.CompareTo(y);
                     Sort.NthElement(c, 0, a.Length - 1, nth, comparer);
                     Sort.NthElement(d, dk, 0, b.Length - 1, nth, comparer);
                     var str = random.ToString(CSharpArrayFormatProvider.InvariantCulture);
-                    Assert.IsTrue(a.IsEqual(c));
-                    Assert.IsTrue(c.IsEqual(d));
-                    Assert.IsTrue(d.IsEqual(dk));
+                    ClassicAssert.IsTrue(a.IsEqual(c));
+                    ClassicAssert.IsTrue(c.IsEqual(d));
+                    ClassicAssert.IsTrue(d.IsEqual(dk));
 
                     Func<double, double, int> comparer2 = (x, y) => -x.CompareTo(y);
                     Sort.NthElement(e, 0, a.Length - 1, nth, comparer2, asc: false);
                     Sort.NthElement(f, fk, 0, b.Length - 1, nth, comparer2, asc: false);
-                    Assert.IsTrue(a.IsEqual(e));
-                    Assert.IsTrue(e.IsEqual(f));
-                    Assert.IsTrue(f.IsEqual(fk));
+                    ClassicAssert.IsTrue(a.IsEqual(e));
+                    ClassicAssert.IsTrue(e.IsEqual(f));
+                    ClassicAssert.IsTrue(f.IsEqual(fk));
 
-                    Assert.IsTrue(a.IsEqual(c));
-                    Assert.IsTrue(a.IsEqual(d));
-                    Assert.IsTrue(a.IsEqual(e));
-                    Assert.IsTrue(a.IsEqual(f));
-                    Assert.IsTrue(a.IsEqual(fk));
+                    ClassicAssert.IsTrue(a.IsEqual(c));
+                    ClassicAssert.IsTrue(a.IsEqual(d));
+                    ClassicAssert.IsTrue(a.IsEqual(e));
+                    ClassicAssert.IsTrue(a.IsEqual(f));
+                    ClassicAssert.IsTrue(a.IsEqual(fk));
                 }
             }
         }
@@ -174,11 +175,11 @@ namespace Accord.Tests.Math
 
             Sort.NthElement(a, 0, a.Length, a.Length / 2);
             double median = a[a.Length / 2];
-            Assert.AreEqual(5, median);
+            ClassicAssert.AreEqual(5, median);
 
             double r = Sort.NthElement(a, 0, a.Length, 1, asc: false);
-            Assert.AreEqual(a[1], 7);
-            Assert.AreEqual(r, 7);
+            ClassicAssert.AreEqual(a[1], 7);
+            ClassicAssert.AreEqual(r, 7);
         }
 
         [Test]
@@ -189,7 +190,7 @@ namespace Accord.Tests.Math
             double[] a = { 0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25 };
             Sort.NthElement(a, 0, a.Length, 3);
             double[] expected = { 0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25 };
-            Assert.IsTrue(a.IsEqual(expected));
+            ClassicAssert.IsTrue(a.IsEqual(expected));
 
             Func<double, double, int> greater = (double elem1, double elem2) =>
             {
@@ -202,12 +203,12 @@ namespace Accord.Tests.Math
 
             Sort.NthElement(a, 0, a.Length, 4, greater);
             expected = new double[] { 25, 24, 23, 22, 21, 20, 15, 14, 13, 12, 11, 10, 5, 4, 3, 2, 1, 0 };
-            Assert.IsTrue(a.IsEqual(expected));
+            ClassicAssert.IsTrue(a.IsEqual(expected));
 
             Vector.Shuffle(a);
             Sort.NthElement(a, 0, a.Length, 4, greater);
             expected = new double[] { 25, 24, 23, 22, 21, 20, 15, 14, 13, 12, 11, 10, 5, 4, 3, 2, 1, 0 };
-            Assert.IsTrue(a.IsEqual(expected));
+            ClassicAssert.IsTrue(a.IsEqual(expected));
         }
 
         [Test]
@@ -233,7 +234,7 @@ namespace Accord.Tests.Math
                     Sort.Partial(copy, i);
 
                     for (int j = 0; j <= i; j++)
-                        Assert.AreEqual(sorted[j], copy[j]);
+                        ClassicAssert.AreEqual(sorted[j], copy[j]);
                 }
 
                 sorted = v.Sorted();
@@ -244,9 +245,9 @@ namespace Accord.Tests.Math
                     Sort.Partial(copy, idx, i);
 
                     for (int j = 0; j <= i; j++)
-                        Assert.AreEqual(sorted[j], copy[j]);
+                        ClassicAssert.AreEqual(sorted[j], copy[j]);
 
-                    Assert.AreEqual(copy, v.Get(idx));
+                    ClassicAssert.AreEqual(copy, v.Get(idx));
                 }
 
                 sorted = v.Sorted(asc: false);
@@ -256,7 +257,7 @@ namespace Accord.Tests.Math
                     Sort.Partial(copy, i, asc: false);
 
                     for (int j = 0; j <= i; j++)
-                        Assert.AreEqual(sorted[j], copy[j]);
+                        ClassicAssert.AreEqual(sorted[j], copy[j]);
                 }
 
                 sorted = v.Sorted(asc: false);
@@ -267,9 +268,9 @@ namespace Accord.Tests.Math
                     Sort.Partial(copy, idx, i, asc: false);
 
                     for (int j = 0; j <= i; j++)
-                        Assert.AreEqual(sorted[j], copy[j]);
+                        ClassicAssert.AreEqual(sorted[j], copy[j]);
 
-                    Assert.AreEqual(copy, v.Get(idx));
+                    ClassicAssert.AreEqual(copy, v.Get(idx));
                 }
             }
         }
@@ -291,12 +292,12 @@ namespace Accord.Tests.Math
                         int[] expectedBottom = sorted.First(n);
                         int[] bottomIdx = random.Bottom(n);
                         int[] actualBottom = random.Submatrix(bottomIdx);
-                        Assert.IsTrue(actualBottom.IsEqual(expectedBottom));
+                        ClassicAssert.IsTrue(actualBottom.IsEqual(expectedBottom));
 
                         int[] expectedTop = sorted.Last(n).Reversed();
                         int[] topIdx = random.Top(n);
                         int[] actualTop = random.Submatrix(topIdx);
-                        Assert.IsTrue(actualTop.IsEqual(expectedTop));
+                        ClassicAssert.IsTrue(actualTop.IsEqual(expectedTop));
                     }
                 }
             }
@@ -328,11 +329,11 @@ namespace Accord.Tests.Math
                     Sort.Insertion(e, comparer: greater, asc: true);
                     e = e.Reversed();
 
-                    Assert.IsTrue(expected.IsEqual(a));
-                    Assert.IsTrue(expected.IsEqual(b));
-                    Assert.IsTrue(expected.IsEqual(c));
-                    Assert.IsTrue(expected.IsEqual(d));
-                    Assert.IsTrue(expected.IsEqual(e));
+                    ClassicAssert.IsTrue(expected.IsEqual(a));
+                    ClassicAssert.IsTrue(expected.IsEqual(b));
+                    ClassicAssert.IsTrue(expected.IsEqual(c));
+                    ClassicAssert.IsTrue(expected.IsEqual(d));
+                    ClassicAssert.IsTrue(expected.IsEqual(e));
                 }
             }
         }
@@ -368,23 +369,23 @@ namespace Accord.Tests.Math
                   compare: comparer);
 
             int[] expected = { 5, 4, 1, 2, 3, 0 };
-            Assert.IsTrue(idx.IsEqual(expected));
-            Assert.AreEqual(5, comparisons.Count);
+            ClassicAssert.IsTrue(idx.IsEqual(expected));
+            ClassicAssert.AreEqual(5, comparisons.Count);
 
-            Assert.AreEqual(4.47213595499958, comparisons[0].Item1);
-            Assert.AreEqual(2.8284271247461903, comparisons[0].Item2);
+            ClassicAssert.AreEqual(4.47213595499958, comparisons[0].Item1);
+            ClassicAssert.AreEqual(2.8284271247461903, comparisons[0].Item2);
 
-            Assert.AreEqual(4.47213595499958, comparisons[1].Item1);
-            Assert.AreEqual(2.8284271247461903, comparisons[1].Item2);
+            ClassicAssert.AreEqual(4.47213595499958, comparisons[1].Item1);
+            ClassicAssert.AreEqual(2.8284271247461903, comparisons[1].Item2);
 
-            Assert.AreEqual(5.8309518948453007, comparisons[2].Item1);
-            Assert.AreEqual(2.8284271247461903, comparisons[2].Item2);
+            ClassicAssert.AreEqual(5.8309518948453007, comparisons[2].Item1);
+            ClassicAssert.AreEqual(2.8284271247461903, comparisons[2].Item2);
 
-            Assert.AreEqual(5.8309518948453007, comparisons[3].Item1);
-            Assert.AreEqual(4.47213595499958, comparisons[3].Item2);
+            ClassicAssert.AreEqual(5.8309518948453007, comparisons[3].Item1);
+            ClassicAssert.AreEqual(4.47213595499958, comparisons[3].Item2);
 
-            Assert.AreEqual(1.4142135623730951, comparisons[4].Item1);
-            Assert.AreEqual(2.8284271247461903, comparisons[4].Item2);
+            ClassicAssert.AreEqual(1.4142135623730951, comparisons[4].Item1);
+            ClassicAssert.AreEqual(2.8284271247461903, comparisons[4].Item2);
         }
 
         [Test]
@@ -420,19 +421,19 @@ namespace Accord.Tests.Math
                     e = e.Reversed();
                     ei = ei.Reversed();
 
-                    Assert.IsTrue(a.IsSorted());
-                    Assert.IsTrue(a.IsSorted(ComparerDirection.Ascending));
-                    Assert.IsTrue(expected.IsEqual(a));
-                    Assert.IsTrue(expected.IsEqual(b));
-                    Assert.IsTrue(expected.IsEqual(c));
-                    Assert.IsTrue(expected.IsEqual(d));
-                    Assert.IsTrue(expected.IsEqual(e));
+                    ClassicAssert.IsTrue(a.IsSorted());
+                    ClassicAssert.IsTrue(a.IsSorted(ComparerDirection.Ascending));
+                    ClassicAssert.IsTrue(expected.IsEqual(a));
+                    ClassicAssert.IsTrue(expected.IsEqual(b));
+                    ClassicAssert.IsTrue(expected.IsEqual(c));
+                    ClassicAssert.IsTrue(expected.IsEqual(d));
+                    ClassicAssert.IsTrue(expected.IsEqual(e));
 
-                    Assert.IsTrue(expected.IsEqual(ai));
-                    Assert.IsTrue(expected.IsEqual(bi));
-                    Assert.IsTrue(expected.IsEqual(ci));
-                    Assert.IsTrue(expected.IsEqual(di));
-                    Assert.IsTrue(expected.IsEqual(ei));
+                    ClassicAssert.IsTrue(expected.IsEqual(ai));
+                    ClassicAssert.IsTrue(expected.IsEqual(bi));
+                    ClassicAssert.IsTrue(expected.IsEqual(ci));
+                    ClassicAssert.IsTrue(expected.IsEqual(di));
+                    ClassicAssert.IsTrue(expected.IsEqual(ei));
                 }
             }
         }
@@ -471,17 +472,17 @@ namespace Accord.Tests.Math
                     e = e.Reversed();
                     ei = ei.Reversed();
 
-                    Assert.IsTrue(a.IsSorted());
-                    Assert.IsTrue(a.IsSorted(ComparerDirection.Ascending));
-                    Assert.IsTrue(expected.IsEqual(a));
-                    Assert.IsTrue(expected.IsEqual(b));
-                    Assert.IsTrue(expected.IsEqual(c));
-                    Assert.IsTrue(expected.IsEqual(d));
-                    Assert.IsTrue(expected.IsEqual(e));
+                    ClassicAssert.IsTrue(a.IsSorted());
+                    ClassicAssert.IsTrue(a.IsSorted(ComparerDirection.Ascending));
+                    ClassicAssert.IsTrue(expected.IsEqual(a));
+                    ClassicAssert.IsTrue(expected.IsEqual(b));
+                    ClassicAssert.IsTrue(expected.IsEqual(c));
+                    ClassicAssert.IsTrue(expected.IsEqual(d));
+                    ClassicAssert.IsTrue(expected.IsEqual(e));
 
-                    Assert.IsTrue(ai.IsEqual(ci));
-                    Assert.IsTrue(ai.IsEqual(di));
-                    Assert.IsTrue(bi.IsEqual(ei));
+                    ClassicAssert.IsTrue(ai.IsEqual(ci));
+                    ClassicAssert.IsTrue(ai.IsEqual(di));
+                    ClassicAssert.IsTrue(bi.IsEqual(ei));
                 }
             }
         }
@@ -491,10 +492,10 @@ namespace Accord.Tests.Math
         {
             int[] a = { 2, 7, 3, 5, 4 };
 
-            Assert.AreEqual(new[] { 7, 3 }, a.Get(1, 3));
-            Assert.AreEqual(new[] { 4 }, a.Get(-1, 0));
-            Assert.AreEqual(new[] { 3, 5, 4 }, a.Get(-3, 0));
-            Assert.AreEqual(new[] { 2, 7, 3, 5 }, a.Get(0, -1));
+            ClassicAssert.AreEqual(new[] { 7, 3 }, a.Get(1, 3));
+            ClassicAssert.AreEqual(new[] { 4 }, a.Get(-1, 0));
+            ClassicAssert.AreEqual(new[] { 3, 5, 4 }, a.Get(-3, 0));
+            ClassicAssert.AreEqual(new[] { 2, 7, 3, 5 }, a.Get(0, -1));
         }
 
         [Test]
@@ -509,17 +510,17 @@ namespace Accord.Tests.Math
             int[,] actual;
 
             actual = a.Get(0, 2, 1, 3);
-            Assert.IsTrue(new[,] { { 7, 3 },
+            ClassicAssert.IsTrue(new[,] { { 7, 3 },
                                    { 2, 6 } }.IsEqual(actual));
 
             actual = a.Get(0, -1, -1, 0);
-            Assert.IsTrue(new[,] { { 4 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[,] { { 4 } }.IsEqual(actual));
 
             actual = a.Get(0, 1, -3, 0);
-            Assert.IsTrue(new[,] { { 3, 5, 4 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[,] { { 3, 5, 4 } }.IsEqual(actual));
 
             actual = a.Get(-1, 0, 0, -1);
-            Assert.IsTrue(new[,] { { 1, 2, 6, 8 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[,] { { 1, 2, 6, 8 } }.IsEqual(actual));
         }
 
         [Test]
@@ -534,17 +535,17 @@ namespace Accord.Tests.Math
             int[][] actual;
 
             actual = a.Get(0, 2, 1, 3);
-            Assert.IsTrue(new[] { new[] { 7, 3 },
+            ClassicAssert.IsTrue(new[] { new[] { 7, 3 },
                                     new[] { 2, 6 } }.IsEqual(actual));
 
             actual = a.Get(0, -1, -1, 0);
-            Assert.IsTrue(new[] { new[] { 4 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[] { new[] { 4 } }.IsEqual(actual));
 
             actual = a.Get(0, 1, -3, 0);
-            Assert.IsTrue(new[] { new[] { 3, 5, 4 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[] { new[] { 3, 5, 4 } }.IsEqual(actual));
 
             actual = a.Get(-1, 0, 0, -1);
-            Assert.IsTrue(new[] { new[] { 1, 2, 6, 8 } }.IsEqual(actual));
+            ClassicAssert.IsTrue(new[] { new[] { 1, 2, 6, 8 } }.IsEqual(actual));
         }
 
         [Test]
@@ -599,8 +600,8 @@ namespace Accord.Tests.Math
             };
             #endregion
 
-            Assert.AreEqual(expected1, sortedMatrix1);
-            Assert.AreEqual(expected2, sortedMatrix2);
+            ClassicAssert.AreEqual(expected1, sortedMatrix1);
+            ClassicAssert.AreEqual(expected2, sortedMatrix2);
         }
     }
 }

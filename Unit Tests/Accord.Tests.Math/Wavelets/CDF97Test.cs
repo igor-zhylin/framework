@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Wavelets;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     
@@ -64,17 +65,17 @@ namespace Accord.Tests.Math
                 -0.000000,  -0.000000,     4.114999,  -19.449089
             };
 
-            Assert.IsTrue(Matrix.IsEqual(x, original, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(x, original, 0.0001));
 
             // Do the forward 9/7 transform
             CDF97.FWT97(x);
 
-            Assert.IsTrue(Matrix.IsEqual(x, wc, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(x, wc, 0.0001));
 
             // Do the inverse 9/7 transform
             CDF97.IWT97(x);
 
-            Assert.IsTrue(Matrix.IsEqual(x, original, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(x, original, 0.0001));
 
         }
 
@@ -101,11 +102,11 @@ namespace Accord.Tests.Math
 
             double[,] actual = CDF97.FWT97(x, levels);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-5));
 
             actual = CDF97.IWT97(x, levels);
 
-            Assert.IsTrue(Matrix.IsEqual(x, actual, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(x, actual, 0.001));
 
         }
     }

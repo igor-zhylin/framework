@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Wavelets;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -55,11 +56,11 @@ namespace Accord.Tests.Math
 
             // string dataStr = data.ToString(CSharpMatrixFormatProvider.InvariantCulture);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, data, 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, data, 1e-5));
 
             Haar.IWT(data, 1);
 
-            Assert.IsTrue(Matrix.IsEqual(data, original, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(data, original, 0.0001));
         }
 
         [Test]
@@ -89,11 +90,11 @@ namespace Accord.Tests.Math
 
             string dataStr = data.ToString(CSharpMatrixFormatProvider.InvariantCulture);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, data, 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, data, 1e-5));
 
             Haar.IWT(data, levels);
 
-            Assert.IsTrue(Matrix.IsEqual(data, original, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(data, original, 0.0001));
         }
 
         [Test]
@@ -107,10 +108,10 @@ namespace Accord.Tests.Math
 
             var d = data.Multiply(Constants.Sqrt2);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, d, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, d, 0.001));
 
             Haar.IWT(data);
-            Assert.IsTrue(Matrix.IsEqual(original, data, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(original, data, 0.001));
         }
 
     }

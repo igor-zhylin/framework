@@ -30,6 +30,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Decompositions;
     using AForge;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.IO;
 
     [TestFixture]
@@ -52,13 +53,13 @@ namespace Accord.Tests.Math
             };
 
             object actual = a.To<double[,]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = a.To<double[,,]>();
-            Assert.AreNotEqual(expected, actual);
+            ClassicAssert.AreNotEqual(expected, actual);
 
             actual = a.To<double[,,]>().To<double[,]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -69,7 +70,7 @@ namespace Accord.Tests.Math
             double[,] expected = Matrix.Magic(3);
 
             object actual = a.To<double[,]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -80,7 +81,7 @@ namespace Accord.Tests.Math
             double[,] expected = Matrix.Magic(3);
 
             object actual = a.To<double[,]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -91,7 +92,7 @@ namespace Accord.Tests.Math
             double[][] expected = Jagged.Magic(3);
 
             object actual = a.To<double[][]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -127,14 +128,14 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.AreEqual(actual0, expected0);
-            Assert.AreEqual(actual1, expected1);
-            Assert.AreEqual(actual2, expected2);
+            ClassicAssert.AreEqual(actual0, expected0);
+            ClassicAssert.AreEqual(actual1, expected1);
+            ClassicAssert.AreEqual(actual2, expected2);
 
             // test squeeze
-            Assert.AreEqual(a, expected0.Squeeze());
-            Assert.AreEqual(a, expected1.Squeeze());
-            Assert.AreEqual(a, expected2.Squeeze());
+            ClassicAssert.AreEqual(a, expected0.Squeeze());
+            ClassicAssert.AreEqual(a, expected1.Squeeze());
+            ClassicAssert.AreEqual(a, expected2.Squeeze());
         }
 
         [Test]
@@ -149,15 +150,15 @@ namespace Accord.Tests.Math
 
             expected = a.Flatten(MatrixOrder.CRowMajor);
             actual = (double[])((Array)a).Flatten(MatrixOrder.CRowMajor);
-            Assert.AreEqual(expected, actual);
-            Assert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.CRowMajor));
-            Assert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.CRowMajor));
+            ClassicAssert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.CRowMajor));
+            ClassicAssert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.CRowMajor));
 
             expected = a.Flatten(MatrixOrder.FortranColumnMajor);
             actual = (double[])((Array)a).Flatten(MatrixOrder.FortranColumnMajor);
-            Assert.AreEqual(expected, actual);
-            Assert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
-            Assert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
+            ClassicAssert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
+            ClassicAssert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
 
 
             double[,,,] b =
@@ -168,15 +169,15 @@ namespace Accord.Tests.Math
 
             expected = a.Flatten(MatrixOrder.CRowMajor);
             actual = (double[])((Array)b).Flatten(MatrixOrder.CRowMajor);
-            Assert.AreEqual(expected, actual);
-            Assert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.CRowMajor));
-            Assert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.CRowMajor));
+            ClassicAssert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.CRowMajor));
+            ClassicAssert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.CRowMajor));
 
             expected = a.Flatten(MatrixOrder.FortranColumnMajor);
             actual = (double[])((Array)b).Flatten(MatrixOrder.FortranColumnMajor);
-            Assert.AreEqual(expected, actual);
-            Assert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
-            Assert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
+            ClassicAssert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(a, actual.Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
+            ClassicAssert.AreEqual(a, ((Array)actual).Reshape(a.GetLength(), MatrixOrder.FortranColumnMajor));
         }
 
         [Test]
@@ -196,7 +197,7 @@ namespace Accord.Tests.Math
             };
 
             Array actual = target.Transpose();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -215,7 +216,7 @@ namespace Accord.Tests.Math
             };
 
             int[,] actual = a.To<int[,]>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -228,7 +229,7 @@ namespace Accord.Tests.Math
 
             int expected = 1;
             int actual = a.To<int>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -241,7 +242,7 @@ namespace Accord.Tests.Math
 
             bool expected = true;
             bool actual = a.To<bool>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -254,7 +255,7 @@ namespace Accord.Tests.Math
 
             bool expected = false;
             bool actual = a.To<bool>();
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -284,7 +285,7 @@ namespace Accord.Tests.Math
                     { 1, 2 },
                 };
 
-                Assert.AreEqual(expected, r);
+                ClassicAssert.AreEqual(expected, r);
             }
 
             {
@@ -297,7 +298,7 @@ namespace Accord.Tests.Math
                     { 3, 4 },
                 };
 
-                Assert.AreEqual(expected, r);
+                ClassicAssert.AreEqual(expected, r);
             }
 
             {
@@ -311,7 +312,7 @@ namespace Accord.Tests.Math
                     { 2, 3 },
                 };
 
-                Assert.AreEqual(expected, r);
+                ClassicAssert.AreEqual(expected, r);
             }
         }
 
@@ -325,16 +326,16 @@ namespace Accord.Tests.Math
             };
 
             Array actual = Jagged.CreateAs(a, typeof(int));
-            Assert.AreEqual(new[] { 2, 3 }, actual.GetLength());
+            ClassicAssert.AreEqual(new[] { 2, 3 }, actual.GetLength());
 
             actual = Jagged.CreateAs(a.ToJagged(), typeof(int));
-            Assert.AreEqual(new[] { 2, 3 }, actual.GetLength());
+            ClassicAssert.AreEqual(new[] { 2, 3 }, actual.GetLength());
 
             actual = Matrix.CreateAs(a, typeof(int));
-            Assert.AreEqual(new[] { 2, 3 }, actual.GetLength());
+            ClassicAssert.AreEqual(new[] { 2, 3 }, actual.GetLength());
 
             actual = Matrix.CreateAs(a.ToJagged(), typeof(int));
-            Assert.AreEqual(new[] { 2, 3 }, actual.GetLength());
+            ClassicAssert.AreEqual(new[] { 2, 3 }, actual.GetLength());
         }
 
     }

@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;    
     
     [TestFixture]
@@ -74,10 +75,10 @@ namespace Accord.Tests.Math
             var v = criteria.OldValues; // { 1234.56, 95.212, 192.51 }
 
 
-            Assert.AreEqual(11, criteria.CurrentIteration);
-            Assert.AreEqual(1234.56, criteria.OldValues[0]);
-            Assert.AreEqual(95.212, criteria.OldValues[1]);
-            Assert.AreEqual(192.51, criteria.OldValues[2]);
+            ClassicAssert.AreEqual(11, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(1234.56, criteria.OldValues[0]);
+            ClassicAssert.AreEqual(95.212, criteria.OldValues[1]);
+            ClassicAssert.AreEqual(192.51, criteria.OldValues[2]);
         }
     }
 }

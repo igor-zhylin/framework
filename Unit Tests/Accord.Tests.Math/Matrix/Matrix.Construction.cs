@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Collections.Generic;
 
@@ -35,7 +36,7 @@ namespace Accord.Tests.Math
         public void create_nullable_test()
         {
             double?[] ones = Vector.Ones<double?>(5);
-            Assert.AreEqual(new double?[] { 1, 1, 1, 1, 1 }, ones);
+            ClassicAssert.AreEqual(new double?[] { 1, 1, 1, 1, 1 }, ones);
         }
 
         [Test]
@@ -45,7 +46,7 @@ namespace Accord.Tests.Math
 
             foreach (var idx in jagged.GetIndices(deep: true))
             {
-                Assert.AreEqual(0, jagged.GetValue(deep: true, indices: idx));
+                ClassicAssert.AreEqual(0, jagged.GetValue(deep: true, indices: idx));
                 jagged.SetValue(idx.Sum(), deep: true, indices: idx);
             }
 
@@ -55,7 +56,7 @@ namespace Accord.Tests.Math
                 new int[][] { new[] { 1 }, new[] { 2 }, new[] { 3 } }
             };
 
-            Assert.IsTrue(expected.IsEqual(jagged));
+            ClassicAssert.IsTrue(expected.IsEqual(jagged));
         }
 
         [Test]
@@ -65,7 +66,7 @@ namespace Accord.Tests.Math
 
             foreach (var idx in matrix.GetIndices())
             {
-                Assert.AreEqual(0, matrix.GetValue(deep: true, indices: idx));
+                ClassicAssert.AreEqual(0, matrix.GetValue(deep: true, indices: idx));
                 matrix.SetValue(idx.Sum(), deep: true, indices: idx);
             }
 
@@ -75,7 +76,7 @@ namespace Accord.Tests.Math
                 { { 1 }, { 2 }, { 3 } }
             };
 
-            Assert.IsTrue(expected.IsEqual(matrix));
+            ClassicAssert.IsTrue(expected.IsEqual(matrix));
         }
 
         [Test]
@@ -93,13 +94,13 @@ namespace Accord.Tests.Math
             foreach (object obj in Jagged.Enumerate(input, new int[] { 2, 3, 1 }))
                 actual.Add((int)obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
 
             actual.Clear();
             foreach (int obj in Jagged.Enumerate<int>(input, new int[] { 2, 3, 1 }))
                 actual.Add(obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
         }
 
         [Test]
@@ -117,13 +118,13 @@ namespace Accord.Tests.Math
             foreach (object obj in Jagged.Enumerate(input, new int[] { 2 }))
                 actual.AddRange((int[])obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
 
             actual.Clear();
             foreach (int[] obj in Jagged.Enumerate<int[]>(input, new int[] { 2 }))
                 actual.AddRange(obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
         }
 
         [Test]
@@ -141,13 +142,13 @@ namespace Accord.Tests.Math
             foreach (object obj in Jagged.Enumerate(input))
                 actual.Add((int)obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
 
             actual.Clear();
             foreach (int obj in Jagged.Enumerate<int>(input))
                 actual.Add(obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
         }
 
         [Test]
@@ -165,13 +166,13 @@ namespace Accord.Tests.Math
             foreach (object obj in Jagged.Enumerate(input, new int[] { 2, 3, 1 }))
                 actual.Add(obj == null ? 0 : (int)obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
 
             actual.Clear();
             foreach (int obj in Jagged.Enumerate<int>(input, new int[] { 2, 3, 1 }))
                 actual.Add(obj);
 
-            Assert.IsTrue(expected.IsEqual(actual.ToArray()));
+            ClassicAssert.IsTrue(expected.IsEqual(actual.ToArray()));
         }
 
 
@@ -183,27 +184,27 @@ namespace Accord.Tests.Math
 
             double[,] w1 = Matrix.Stack(x1, y1).Transpose();
 
-            Assert.AreEqual(1000, w1.Rows());
-            Assert.AreEqual(2, w1.Columns());
-            Assert.AreEqual(w1.Length, x1.Length + y1.Length);
+            ClassicAssert.AreEqual(1000, w1.Rows());
+            ClassicAssert.AreEqual(2, w1.Columns());
+            ClassicAssert.AreEqual(w1.Length, x1.Length + y1.Length);
 
             for (int i = 0; i < x1.Length; i++)
             {
-                Assert.AreEqual(1, x1[i]);
-                Assert.AreEqual(1, w1[i, 0]);
+                ClassicAssert.AreEqual(1, x1[i]);
+                ClassicAssert.AreEqual(1, w1[i, 0]);
             }
 
             for (int i = 0; i < y1.Length; i++)
             {
-                Assert.AreEqual(0, y1[i]);
-                Assert.AreEqual(0, w1[i, 1]);
+                ClassicAssert.AreEqual(0, y1[i]);
+                ClassicAssert.AreEqual(0, w1[i, 1]);
             }
 
             var x = w1.GetColumn(0);
             var y = w1.GetColumn(1);
 
-            Assert.IsTrue(x.IsEqual(x1));
-            Assert.IsTrue(y.IsEqual(y1));
+            ClassicAssert.IsTrue(x.IsEqual(x1));
+            ClassicAssert.IsTrue(y.IsEqual(y1));
         }
     }
 }

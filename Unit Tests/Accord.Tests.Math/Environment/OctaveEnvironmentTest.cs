@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Environments;
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.CodeDom.Compiler;
 
@@ -92,7 +93,7 @@ namespace Accord.Tests.Math
                 { 0, 0, 0, 0, 0, 0 },
             };
 
-            Assert.IsTrue(expectedD.IsEqual(D));
+            ClassicAssert.IsTrue(expectedD.IsEqual(D));
         }
 
         [Test]
@@ -135,9 +136,9 @@ namespace Accord.Tests.Math
                 { 0.57735026918962584, -0.40824829046386324, -0.70710678118654757 },
             };
 
-            Assert.IsTrue(expectedU.IsEqual(u, 1e-10));
-            Assert.IsTrue(expectedS.IsEqual(s, 1e-10));
-            Assert.IsTrue(expectedV.IsEqual(v, 1e-10));
+            ClassicAssert.IsTrue(expectedU.IsEqual(u, 1e-10));
+            ClassicAssert.IsTrue(expectedS.IsEqual(s, 1e-10));
+            ClassicAssert.IsTrue(expectedV.IsEqual(v, 1e-10));
         }
 
         [Test]

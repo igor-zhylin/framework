@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Comparers;
     using Accord.Statistics.Distributions.Univariate;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Collections.Generic;
 
@@ -46,7 +47,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 10, 7 },
                  { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4).Transpose();
             m.Set(10, 2, -1, null); // tested against numpy
@@ -56,7 +57,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 10, 7 },
                  { 8, 9, 10, 11 },
             }.Transpose();
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
         }
 
         [Test]
@@ -73,7 +74,7 @@ namespace Accord.Tests.Math
                  { 10, 10, 10, 10 },
                  { 10, 10, 10, 10 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
             m.Set(10, null, 2, 3);
@@ -83,7 +84,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 10, 7 },
                  { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
             m.Set(10, 2, 3, null);
@@ -93,7 +94,7 @@ namespace Accord.Tests.Math
                 { 4, 5, 6, 7 },
                 { 10, 10, 10, 10 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
             m.Set(10, 0, 1,
@@ -104,7 +105,7 @@ namespace Accord.Tests.Math
                 { 4, 5, 6, 7 },
                 { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m.Set(42, new[] { 2 }, new[] { 3 });
             expected = new int[,]
@@ -113,7 +114,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 6, 7 },
                  { 8, 9, 10, 42 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
@@ -124,7 +125,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 10, 7 },
                  { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4).Transpose();
             m.Set(10, 2, -1, null);
@@ -134,7 +135,7 @@ namespace Accord.Tests.Math
                  { 4, 5, 10, 7 },
                  { 8, 9, 10, 11 },
             }.Transpose();
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
             m.Set(10, 1, -1, null);
@@ -144,7 +145,7 @@ namespace Accord.Tests.Math
                 { 10, 10, 10, 10 },
                 { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m.Set(10, 0, -1,
                       0, -2);
@@ -154,7 +155,7 @@ namespace Accord.Tests.Math
                 { 10, 10, 10, 10 },
                 { 8, 9, 10, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m = Vector.Interval(0, 12).Reshape(3, 4);
             m.Set(42, new[] { -1 }, new[] { -2 });
@@ -164,7 +165,7 @@ namespace Accord.Tests.Math
                 { 4, 5, 6, 7 },
                 { 8, 9, 42, 11 },
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
         }
 
         //[Test]
@@ -201,21 +202,21 @@ namespace Accord.Tests.Math
             {
                 0, 1, 2, 3, 42
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m.Set(10, 0);
             expected = new int[]
             {
                 10, 1, 2, 3, 42
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
 
             m.Set(42, new[] { 4, 2 });
             expected = new int[]
             {
                 10, 1, 42, 3, 42
             };
-            Assert.AreEqual(expected, m);
+            ClassicAssert.AreEqual(expected, m);
         }
 
     }

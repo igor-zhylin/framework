@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 #if NET35
     using Accord.Compat;
@@ -41,7 +42,7 @@ namespace Accord.Tests.Math
             Complex[] x = { new Complex(1, 5), new Complex(2, -1), new Complex(-5, 1) };
             Complex[] expected = { new Complex(Math.Sqrt(26), 0), new Complex(Math.Sqrt(5), 0), new Complex(Math.Sqrt(26), 0) };
             Complex[] actual = ComplexMatrix.Abs(x);
-            Assert.IsTrue(expected.IsEqual(actual, 1e-5));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 1e-5));
         }
 
         [Test]
@@ -50,7 +51,7 @@ namespace Accord.Tests.Math
             Complex[] x = { new Complex(1, 5), new Complex(2, -1), new Complex(-5, 1) };
             double[] expected = { 5, -1, 1 };
             double[] actual = ComplexMatrix.Im(x);
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -60,7 +61,7 @@ namespace Accord.Tests.Math
             double[] expected = { Math.Sqrt(26), Math.Sqrt(5), Math.Sqrt(26) };
             double[] actual = ComplexMatrix.Magnitude(x);
 
-            Assert.IsTrue(expected.IsEqual(actual, 1e-12));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 1e-12));
         }
 
         [Test]
@@ -71,7 +72,7 @@ namespace Accord.Tests.Math
             Complex[] expected = { new Complex(-18, 40), new Complex(13, -26), new Complex(12, -44) };
             Complex[] actual = ComplexMatrix.Multiply(a, b);
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -82,7 +83,7 @@ namespace Accord.Tests.Math
             double[] actual = ComplexMatrix.Phase(x);
 
             for (int i = 0; i < x.Length; i++)
-                Assert.AreEqual(x[i].Phase, Math.Atan2(x[i].Imaginary, x[i].Real));
+                ClassicAssert.AreEqual(x[i].Phase, Math.Atan2(x[i].Imaginary, x[i].Real));
         }
 
 
@@ -93,7 +94,7 @@ namespace Accord.Tests.Math
             double[] expected = { 1, 2, -5 };
             double[] actual = ComplexMatrix.Re(x);
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -103,7 +104,7 @@ namespace Accord.Tests.Math
             Complex expected = new Complex(-2, 5);
             Complex actual = ComplexMatrix.Sum(x);
 
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -119,7 +120,7 @@ namespace Accord.Tests.Math
 
             double[,] actual = ComplexMatrix.ToArray(c);
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
 
@@ -141,7 +142,7 @@ namespace Accord.Tests.Math
             };
 
             double[,] actual = ComplexMatrix.Im(x);
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -162,7 +163,7 @@ namespace Accord.Tests.Math
             };
 
             double[,] actual = ComplexMatrix.Re(x);
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
     }
 }

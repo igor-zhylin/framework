@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -55,8 +56,8 @@ namespace Accord.Tests.Math
             double value = criteria.OldValue; // 1234.56
 
 
-            Assert.AreEqual(11, criteria.CurrentIteration);
-            Assert.AreEqual(1234.56, criteria.OldValue);
+            ClassicAssert.AreEqual(11, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(1234.56, criteria.OldValue);
         }
 
         [Test]
@@ -69,9 +70,9 @@ namespace Accord.Tests.Math
                 criteria.NewValue /= 10.0;
             } while (!criteria.HasConverged);
 
-            Assert.AreEqual(10, criteria.CurrentIteration);
-            Assert.AreEqual(-11, Math.Log10(criteria.OldValue));
-            Assert.AreEqual(-12, Math.Log10(criteria.NewValue));
+            ClassicAssert.AreEqual(10, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(-11, Math.Log10(criteria.OldValue));
+            ClassicAssert.AreEqual(-12, Math.Log10(criteria.NewValue));
         }
 
         [Test]
@@ -84,9 +85,9 @@ namespace Accord.Tests.Math
                 criteria.NewValue /= 10.0;
             } while (!criteria.HasConverged);
 
-            Assert.AreEqual(1, criteria.CurrentIteration);
-            Assert.AreEqual(-2, Math.Log10(criteria.OldValue));
-            Assert.AreEqual(-3, Math.Log10(criteria.NewValue));
+            ClassicAssert.AreEqual(1, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(-2, Math.Log10(criteria.OldValue));
+            ClassicAssert.AreEqual(-3, Math.Log10(criteria.NewValue));
         }
 
         [Test]
@@ -96,53 +97,53 @@ namespace Accord.Tests.Math
             criteria.CurrentIteration = -2;
 
             criteria.NewValue /= 10.0;
-            Assert.AreEqual(0.9, criteria.Delta, 1e-10);
-            Assert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(0.1, criteria.NewValue, 1e-10);
-            Assert.AreEqual(1, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(0.9, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(0.1, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(1, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue /= 10.0;
-            Assert.AreEqual(0.09, criteria.Delta, 1e-10);
-            Assert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(0.01, criteria.NewValue, 1e-10);
-            Assert.AreEqual(0.1, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(0.09, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(0.01, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(0.1, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue /= 10.0;
-            Assert.AreEqual(0.009, criteria.Delta, 1e-10);
-            Assert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(0.001, criteria.NewValue, 1e-10);
-            Assert.AreEqual(0.01, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(0.009, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(0.9, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(0.001, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(0.01, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue = criteria.NewValue * 1e-3;
-            Assert.AreEqual(0.000999, criteria.Delta, 1e-10);
-            Assert.AreEqual(0.999, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(1E-06, criteria.NewValue, 1e-10);
-            Assert.AreEqual(0.001, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(0.000999, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(0.999, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(1E-06, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(0.001, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue = criteria.NewValue - (criteria.NewValue * 1e-3);
-            Assert.AreEqual(1e-9, criteria.Delta, 1e-10);
-            Assert.AreEqual(1e-3, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(9.9899999999999988E-07, criteria.NewValue, 1e-10);
-            Assert.AreEqual(1E-06, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(1e-9, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(1e-3, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(9.9899999999999988E-07, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(1E-06, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue = criteria.NewValue - (criteria.NewValue * 1e-5);
-            Assert.AreEqual(9.999999999E-11, criteria.Delta, 1e-10);
-            Assert.AreEqual(1e-5, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(9.9899000999999985E-07, criteria.NewValue, 1e-10);
-            Assert.AreEqual(9.9899999999999988E-07, criteria.OldValue, 1e-10);
-            Assert.IsFalse(criteria.HasConverged);
+            ClassicAssert.AreEqual(9.999999999E-11, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(1e-5, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(9.9899000999999985E-07, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(9.9899999999999988E-07, criteria.OldValue, 1e-10);
+            ClassicAssert.IsFalse(criteria.HasConverged);
 
             criteria.NewValue = criteria.NewValue - (criteria.NewValue * 1e-6);
-            Assert.AreEqual(9.999999999E-11, criteria.Delta, 1e-10);
-            Assert.AreEqual(1.0000000000115289E-06, criteria.RelativeDelta, 1e-10);
-            Assert.AreEqual(9.9898901100998984E-07, criteria.NewValue, 1e-10);
-            Assert.AreEqual(9.9899000999999985E-07, criteria.OldValue, 1e-10);
-            Assert.IsTrue(criteria.HasConverged);
+            ClassicAssert.AreEqual(9.999999999E-11, criteria.Delta, 1e-10);
+            ClassicAssert.AreEqual(1.0000000000115289E-06, criteria.RelativeDelta, 1e-10);
+            ClassicAssert.AreEqual(9.9898901100998984E-07, criteria.NewValue, 1e-10);
+            ClassicAssert.AreEqual(9.9899000999999985E-07, criteria.OldValue, 1e-10);
+            ClassicAssert.IsTrue(criteria.HasConverged);
         }
 
         [Test]

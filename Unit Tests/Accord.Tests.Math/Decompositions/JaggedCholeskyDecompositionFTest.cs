@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class JaggedCholeskyDecompositionFTest
@@ -60,7 +61,7 @@ namespace Accord.Tests.Math
                         thrown = true;
                     }
 
-                    Assert.IsTrue(thrown);
+                    ClassicAssert.IsTrue(thrown);
                 }
             }
         }
@@ -89,13 +90,13 @@ namespace Accord.Tests.Math
             var chol = new JaggedCholeskyDecompositionF(value);
             float[][] L = chol.LeftTriangularFactor;
 
-            Assert.IsTrue(Matrix.IsEqual(L, expected, 1e-4f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(L, expected, 1e-4f));
 
             // Decomposition Identity
-            Assert.IsTrue(Matrix.IsEqual(Matrix.Multiply(L, L.Transpose()), value, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(Matrix.Multiply(L, L.Transpose()), value, 1e-3f));
 
-            Assert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-5);
-            Assert.IsTrue(chol.IsPositiveDefinite);
+            ClassicAssert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-5);
+            ClassicAssert.IsTrue(chol.IsPositiveDefinite);
         }
 
         [Test]
@@ -116,12 +117,12 @@ namespace Accord.Tests.Math
             float[][] expected = Matrix.ColumnVector(new float[] { 2.5f, 4.0f, 3.5f }).ToJagged();
 
             float[][] actual = chol.Solve(B);
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-6f));
-            Assert.AreNotEqual(actual, B);
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-6f));
+            ClassicAssert.AreNotEqual(actual, B);
 
             actual = chol.Solve(B, true);
-            Assert.AreEqual(actual, B);
-            Assert.IsTrue(Matrix.IsEqual(expected, B, 1e-6f));
+            ClassicAssert.AreEqual(actual, B);
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, B, 1e-6f));
         }
 
         [Test]
@@ -142,11 +143,11 @@ namespace Accord.Tests.Math
             float[] expected = new float[] { 2.5f, 4.0f, 3.5f };
             float[] actual = chol.Solve(B);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-5f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-5f));
 
             actual = chol.Solve(B, true);
-            Assert.AreEqual(actual, B);
-            Assert.IsTrue(Matrix.IsEqual(expected, B, 1e-5f));
+            ClassicAssert.AreEqual(actual, B);
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, B, 1e-5f));
         }
 
         [Test]
@@ -175,7 +176,7 @@ namespace Accord.Tests.Math
 
             float[][] actual = chol.Solve(B);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
         }
 
         [Test]
@@ -198,7 +199,7 @@ namespace Accord.Tests.Math
             float[] actual = chol.Solve(B);
 
             for (int i = 0; i < actual.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-3);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-3);
         }
 
         [Test]
@@ -225,7 +226,7 @@ namespace Accord.Tests.Math
 
             float[][] actual = chol.Inverse();
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
         }
 
         [Test]
@@ -239,7 +240,7 @@ namespace Accord.Tests.Math
             };
 
             var chol = new JaggedCholeskyDecompositionF(value, robust: false);
-            Assert.IsTrue(chol.IsPositiveDefinite);
+            ClassicAssert.IsTrue(chol.IsPositiveDefinite);
             float[][] L = chol.LeftTriangularFactor;
 
             float[][] expected =
@@ -250,10 +251,10 @@ namespace Accord.Tests.Math
             };
 
             float[][] actual = chol.Inverse();
-            Assert.IsTrue(actual.IsEqual(expected, 1e-5f));
+            ClassicAssert.IsTrue(actual.IsEqual(expected, 1e-5f));
 
             float[][] inv = chol.Solve(Jagged.Identity<float>(3));
-            Assert.IsTrue(inv.IsEqual(expected, 1e-5f));
+            ClassicAssert.IsTrue(inv.IsEqual(expected, 1e-5f));
         }
 
         [Test]
@@ -273,7 +274,7 @@ namespace Accord.Tests.Math
             float[] actual = chol.InverseDiagonal();
 
             for (int i = 0; i < actual.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-6f);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-6f);
         }
 
         [Test]
@@ -293,7 +294,7 @@ namespace Accord.Tests.Math
             float[] actual = chol.InverseDiagonal();
 
             for (int i = 0; i < actual.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-6f);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-6f);
         }
 
         [Test]
@@ -314,7 +315,7 @@ namespace Accord.Tests.Math
             float[] actual = chol.InverseDiagonal();
 
             for (int i = 0; i < actual.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-4f);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-4f);
         }
 
         [Test]
@@ -331,7 +332,7 @@ namespace Accord.Tests.Math
 
             float[][] original = value.MemberwiseClone();
 
-            Assert.IsTrue(value.IsSymmetric());
+            ClassicAssert.IsTrue(value.IsSymmetric());
 
             var chol = new JaggedCholeskyDecompositionF(value, robust: false, inPlace: true);
             float[] diagonal = value.Diagonal();
@@ -339,7 +340,7 @@ namespace Accord.Tests.Math
             // Upper triangular should contain the original matrix (except diagonal)
             for (int i = 1; i < value.Length; i++)
                 for (int j = i + 1; j < value.Length; j++)
-                    Assert.AreEqual(original[i][j], value[i][j]);
+                    ClassicAssert.AreEqual(original[i][j], value[i][j]);
 
             // Lower triangular should contain the Cholesky factorization
             float[][] expected =
@@ -354,7 +355,7 @@ namespace Accord.Tests.Math
             float[][] L = chol.LeftTriangularFactor;
             for (int i = 0; i < value.Length; i++)
                 for (int j = 0; j <= i; j++)
-                    Assert.AreEqual(expected[i][j], value[i][j], 1e-3);
+                    ClassicAssert.AreEqual(expected[i][j], value[i][j], 1e-3);
         }
 
         [Test]
@@ -386,15 +387,15 @@ namespace Accord.Tests.Math
             var chol = new JaggedCholeskyDecompositionF(value, true);
             float[][] L = chol.LeftTriangularFactor;
             float[][] D = chol.DiagonalMatrix;
-            Assert.IsTrue(Matrix.IsEqual(L, expected, 0.001f));
-            Assert.IsTrue(Matrix.IsEqual(D, diagonal, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(L, expected, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(D, diagonal, 0.001f));
 
             // Decomposition Identity
-            Assert.IsTrue(Matrix.IsEqual(Matrix.Multiply(Matrix.Multiply(L, D), L.Transpose()), value, 1e-3f));
-            Assert.IsTrue(Matrix.IsEqual(chol.Reverse(), value, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(Matrix.Multiply(Matrix.Multiply(L, D), L.Transpose()), value, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(chol.Reverse(), value, 1e-3f));
 
-            Assert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-10);
-            Assert.IsTrue(chol.IsPositiveDefinite);
+            ClassicAssert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-10);
+            ClassicAssert.IsTrue(chol.IsPositiveDefinite);
         }
 
         [Test]
@@ -428,15 +429,15 @@ namespace Accord.Tests.Math
             float[][] L = chol.LeftTriangularFactor;
             float[][] D = chol.DiagonalMatrix;
 
-            Assert.IsTrue(Matrix.IsEqual(L, expected, 1e-3f));
-            Assert.IsTrue(Matrix.IsEqual(D, diagonal, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(L, expected, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(D, diagonal, 1e-3f));
 
             // Decomposition Identity
-            Assert.IsTrue(Matrix.IsEqual(Matrix.Multiply(Matrix.Multiply(L, D), L.Transpose()), value, 1e-3f));
-            Assert.IsTrue(Matrix.IsEqual(chol.Reverse(), value, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(Matrix.Multiply(Matrix.Multiply(L, D), L.Transpose()), value, 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(chol.Reverse(), value, 1e-3f));
 
-            Assert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-4f);
-            Assert.IsFalse(chol.IsPositiveDefinite);
+            ClassicAssert.AreEqual(new JaggedLuDecompositionF(value).Determinant, chol.Determinant, 1e-4f);
+            ClassicAssert.IsFalse(chol.IsPositiveDefinite);
         }
 
         [Test]
@@ -462,11 +463,11 @@ namespace Accord.Tests.Math
             var chol = new JaggedCholeskyDecompositionF(value, robust: false, valueType: MatrixType.LowerTriangular);
             float[][] L = chol.LeftTriangularFactor;
 
-            Assert.IsTrue(Matrix.IsEqual(L, expected, 0.0001f));
-            Assert.AreEqual(4, chol.Determinant, 1e-6);
-            Assert.IsTrue(chol.IsPositiveDefinite);
+            ClassicAssert.IsTrue(Matrix.IsEqual(L, expected, 0.0001f));
+            ClassicAssert.AreEqual(4, chol.Determinant, 1e-6);
+            ClassicAssert.IsTrue(chol.IsPositiveDefinite);
             var reverse = chol.Reverse();
-            Assert.IsTrue(Matrix.IsEqual(reverse, value.GetSymmetric(MatrixType.LowerTriangular), 1e-6f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(reverse, value.GetSymmetric(MatrixType.LowerTriangular), 1e-6f));
 
 
 
@@ -480,11 +481,11 @@ namespace Accord.Tests.Math
             chol = new JaggedCholeskyDecompositionF(value, robust: true, valueType: MatrixType.LowerTriangular);
             L = chol.LeftTriangularFactor;
 
-            Assert.IsTrue(Matrix.IsEqual(L, expected2, 0.0001f));
-            Assert.AreEqual(4, chol.Determinant, 1e-6);
-            Assert.IsTrue(chol.IsPositiveDefinite);
+            ClassicAssert.IsTrue(Matrix.IsEqual(L, expected2, 0.0001f));
+            ClassicAssert.AreEqual(4, chol.Determinant, 1e-6);
+            ClassicAssert.IsTrue(chol.IsPositiveDefinite);
             reverse = chol.Reverse();
-            Assert.IsTrue(Matrix.IsEqual(reverse, value.GetSymmetric(MatrixType.LowerTriangular), 1e-6f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(reverse, value.GetSymmetric(MatrixType.LowerTriangular), 1e-6f));
         }
 
         [Test]
@@ -513,9 +514,9 @@ namespace Accord.Tests.Math
 
             float[][] actual = chol.SolveForDiagonal(B);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-4f));
             float[][] reverse = chol.Reverse();
-            Assert.IsTrue(Matrix.IsEqual(value, reverse, atol: 1e-3f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, reverse, atol: 1e-3f));
         }
     }
 }

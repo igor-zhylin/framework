@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -48,8 +49,8 @@ namespace Accord.Tests.Math
                     var inverse = target.Inverse();
                     var reverse = target.Reverse();
 
-                    Assert.IsTrue(Matrix.IsEqual(solution, inverse, 1e-4));
-                    Assert.IsTrue(Matrix.IsEqual(value, reverse, 1e-4));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(solution, inverse, 1e-4));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(value, reverse, 1e-4));
                 }
             }
         }
@@ -73,7 +74,7 @@ namespace Accord.Tests.Math
                     var solution = target.Solve(I);
                     var inverse = target.Inverse();
 
-                    Assert.IsTrue(Matrix.IsEqual(solution, inverse));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(solution, inverse));
                 }
             }
         }
@@ -94,8 +95,8 @@ namespace Accord.Tests.Math
             // Decomposition Identity
             var Q = target.OrthogonalFactor;
             var QQt = Q.DotWithTransposed(Q);
-            Assert.IsTrue(Matrix.IsEqual(QQt, Matrix.Identity(3), 1e-6));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
+            ClassicAssert.IsTrue(Matrix.IsEqual(QQt, Matrix.Identity(3), 1e-6));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
 
 
             // Linear system solving
@@ -103,7 +104,7 @@ namespace Accord.Tests.Math
             double[,] expected = Matrix.ColumnVector(new double[] { 2.5, 4.0, 3.5 });
             double[,] actual = target.Solve(B);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
         }
 
         [Test]
@@ -125,8 +126,8 @@ namespace Accord.Tests.Math
             var utf1 = target.UpperTriangularFactor;
             var utf2 = target.UpperTriangularFactor;
 
-            Assert.AreSame(Q1, Q2);
-            Assert.AreSame(utf1, utf2);
+            ClassicAssert.AreSame(Q1, Q2);
+            ClassicAssert.AreSame(utf1, utf2);
         }
 
 
@@ -151,11 +152,11 @@ namespace Accord.Tests.Math
             var target = new QrDecomposition(value);
 
             double[,] actual = target.Inverse();
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
 
             target = new QrDecomposition(value.Transpose(), true);
             actual = target.Inverse();
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
         }
 
         [Test]
@@ -175,7 +176,7 @@ namespace Accord.Tests.Math
             QrDecomposition target = new QrDecomposition(value);
             double[] actual = target.Solve(b);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.0000000000001));
         }
 
         [Test]
@@ -216,15 +217,15 @@ namespace Accord.Tests.Math
                 var target = new QrDecomposition(value);
                 double[,] actual = target.Solve(b);
 
-                Assert.IsTrue(Matrix.IsEqual(expected, actual, atol: 1e-4));
-                Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
+                ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, atol: 1e-4));
+                ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
 
 
                 var target2 = new JaggedQrDecomposition(value.ToJagged());
                 double[][] actual2 = target2.Solve(b.ToJagged());
 
-                Assert.IsTrue(Matrix.IsEqual(expected, actual2, atol: 1e-4));
-                Assert.IsTrue(Matrix.IsEqual(value, target2.Reverse(), 1e-6));
+                ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual2, atol: 1e-4));
+                ClassicAssert.IsTrue(Matrix.IsEqual(value, target2.Reverse(), 1e-6));
             }
 
             // Vectors
@@ -235,7 +236,7 @@ namespace Accord.Tests.Math
                 var target = new QrDecomposition(value);
                 double[] actual = target.Solve(b);
 
-                Assert.IsTrue(Matrix.IsEqual(expected, actual, atol: 1e-4));
+                ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, atol: 1e-4));
             }
         }
 
@@ -266,8 +267,8 @@ namespace Accord.Tests.Math
 
             var target = new QrDecomposition(b, true);
             double[,] actual = target.SolveTranspose(a);
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
-            Assert.IsTrue(Matrix.IsEqual(b.Transpose(), target.Reverse(), 1e-6));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
+            ClassicAssert.IsTrue(Matrix.IsEqual(b.Transpose(), target.Reverse(), 1e-6));
 
         }
     }

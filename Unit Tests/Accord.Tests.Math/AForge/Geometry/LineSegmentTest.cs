@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Accord.Math.Geometry;
 
 namespace Accord.Tests.Math
@@ -17,7 +18,7 @@ namespace Accord.Tests.Math
         {
             LineSegment segment = new LineSegment(new Point(sx, sy), new Point(ex, ey));
 
-            Assert.AreEqual(expectedResult, segment.Length);
+            ClassicAssert.AreEqual(expectedResult, segment.Length);
         }
 
 
@@ -33,7 +34,7 @@ namespace Accord.Tests.Math
             Point pt2 = new Point(x2, y2);
             LineSegment segment = new LineSegment(pt1, pt2);
 
-            Assert.AreEqual(expectedDistance, segment.DistanceToPoint(pt));
+            ClassicAssert.AreEqual(expectedDistance, segment.DistanceToPoint(pt));
         }
 
         // Denotes which versions of the test are supposed to return non-null values:
@@ -62,29 +63,29 @@ namespace Accord.Tests.Math
 
                if (type == IntersectionType.AllFour)
                {
-                   Assert.AreEqual(expectedIntersection, segSeg);
+                   ClassicAssert.AreEqual(expectedIntersection, segSeg);
                }
                else
                {
-                   Assert.AreEqual(null, segSeg);
+                   ClassicAssert.AreEqual(null, segSeg);
                }
 
                if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentA))
                {
-                   Assert.AreEqual(expectedIntersection, segLine);
+                   ClassicAssert.AreEqual(expectedIntersection, segLine);
                }
                else
                {
-                   Assert.AreEqual(null, segLine);
+                   ClassicAssert.AreEqual(null, segLine);
                }
 
                if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentB))
                {
-                   Assert.AreEqual(expectedIntersection, lineSeg);
+                   ClassicAssert.AreEqual(expectedIntersection, lineSeg);
                }
                else
                {
-                   Assert.AreEqual(null, lineSeg);
+                   ClassicAssert.AreEqual(null, lineSeg);
                }
            });
 
@@ -92,11 +93,11 @@ namespace Accord.Tests.Math
 
             if (type != IntersectionType.None)
             {
-                Assert.AreEqual(expectedIntersection, lineLine);
+                ClassicAssert.AreEqual(expectedIntersection, lineLine);
             }
             else
             {
-                Assert.AreEqual(null, lineLine);
+                ClassicAssert.AreEqual(null, lineLine);
             }
         }
 
@@ -117,14 +118,14 @@ namespace Accord.Tests.Math
             LineSegment segB = new LineSegment(new Point(bx1, by1), new Point(bx2, by2));
 
             // are we really parallel?
-            Assert.AreEqual(null, ((Line)segA).GetIntersectionWith((Line)segB));
+            ClassicAssert.AreEqual(null, ((Line)segA).GetIntersectionWith((Line)segB));
 
-            Assert.AreEqual(null, segA.GetIntersectionWith((Line)segB));
-            Assert.AreEqual(null, ((Line)segA).GetIntersectionWith(segB));
-            Assert.AreEqual(null, segB.GetIntersectionWith((Line)segA));
-            Assert.AreEqual(null, ((Line)segB).GetIntersectionWith(segA));
-            Assert.AreEqual(null, segB.GetIntersectionWith(segA));
-            Assert.AreEqual(null, segA.GetIntersectionWith(segB));
+            ClassicAssert.AreEqual(null, segA.GetIntersectionWith((Line)segB));
+            ClassicAssert.AreEqual(null, ((Line)segA).GetIntersectionWith(segB));
+            ClassicAssert.AreEqual(null, segB.GetIntersectionWith((Line)segA));
+            ClassicAssert.AreEqual(null, ((Line)segB).GetIntersectionWith(segA));
+            ClassicAssert.AreEqual(null, segB.GetIntersectionWith(segA));
+            ClassicAssert.AreEqual(null, segA.GetIntersectionWith(segB));
         }
 
 
@@ -145,8 +146,8 @@ namespace Accord.Tests.Math
             Assert.Throws<InvalidOperationException>(() => ((Line)segA).GetIntersectionWith(segB));
             Assert.Throws<InvalidOperationException>(() => segB.GetIntersectionWith((Line)segA));
             Assert.Throws<InvalidOperationException>(() => ((Line)segB).GetIntersectionWith(segA));
-            Assert.AreEqual(null, segB.GetIntersectionWith(segA));
-            Assert.AreEqual(null, segA.GetIntersectionWith(segB));
+            ClassicAssert.AreEqual(null, segB.GetIntersectionWith(segA));
+            ClassicAssert.AreEqual(null, segA.GetIntersectionWith(segB));
         }
 
 
@@ -171,8 +172,8 @@ namespace Accord.Tests.Math
             Assert.Throws<InvalidOperationException>(() => ((Line)segA).GetIntersectionWith(segB));
             Assert.Throws<InvalidOperationException>(() => segB.GetIntersectionWith((Line)segA));
             Assert.Throws<InvalidOperationException>(() => ((Line)segB).GetIntersectionWith(segA));
-            Assert.AreEqual(expectedIntersection, segB.GetIntersectionWith(segA));
-            Assert.AreEqual(expectedIntersection, segA.GetIntersectionWith(segB));
+            ClassicAssert.AreEqual(expectedIntersection, segB.GetIntersectionWith(segA));
+            ClassicAssert.AreEqual(expectedIntersection, segA.GetIntersectionWith(segB));
         }
 
 
@@ -202,7 +203,7 @@ namespace Accord.Tests.Math
             LineSegment segB = new LineSegment(new Point(32.0861f, 36.2358f), new Point(32.0859f, 36.0889f));
 
             Point? result = segA.GetIntersectionWith(segB);
-            Assert.IsNull(result);
+            ClassicAssert.IsNull(result);
         }
     }
 }

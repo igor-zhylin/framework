@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     
     [TestFixture]
@@ -68,7 +69,7 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -93,7 +94,7 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
    
     }

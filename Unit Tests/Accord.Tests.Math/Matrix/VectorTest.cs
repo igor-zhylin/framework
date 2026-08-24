@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Linq;
 
     [TestFixture]
@@ -37,9 +38,9 @@ namespace Accord.Tests.Math
             double[] u = Vector.Create(5, 1.0);
             int[] w = Vector.Create(1, 2, 3);
 
-            Assert.IsTrue(v.IsEqual(new[] { 0, 0, 0, 0, 0 }));
-            Assert.IsTrue(u.IsEqual(new[] { 1, 1, 1, 1, 1 }));
-            Assert.IsTrue(w.IsEqual(new[] { 1, 2, 3 }));
+            ClassicAssert.IsTrue(v.IsEqual(new[] { 0, 0, 0, 0, 0 }));
+            ClassicAssert.IsTrue(u.IsEqual(new[] { 1, 1, 1, 1, 1 }));
+            ClassicAssert.IsTrue(w.IsEqual(new[] { 1, 2, 3 }));
         }
 
         [Test]
@@ -47,7 +48,7 @@ namespace Accord.Tests.Math
         {
             double[] v = Vector.Ones(5);
             int[] idx = v.GetIndices();
-            Assert.IsTrue(idx.IsEqual(new[] { 0, 1, 2, 3, 4 }));
+            ClassicAssert.IsTrue(idx.IsEqual(new[] { 0, 1, 2, 3, 4 }));
         }
 
         [Test]
@@ -56,7 +57,7 @@ namespace Accord.Tests.Math
             // https://github.com/accord-net/framework/issues/862
             var r = Vector.Range(10000);
             int[] s = Vector.Sample(r, 10);
-            Assert.IsTrue(s.Any(x => x > 10));
+            ClassicAssert.IsTrue(s.Any(x => x > 10));
         }
 
     }

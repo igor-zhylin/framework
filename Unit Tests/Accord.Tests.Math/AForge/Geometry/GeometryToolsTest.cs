@@ -2,6 +2,7 @@
 using Accord;
 using Accord.Math.Geometry;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests.Math
 {
@@ -25,7 +26,7 @@ namespace Accord.Tests.Math
 
             float angle = GeometryTools.GetAngleBetweenVectors( startPoint, vector1end, vector2end );
 
-            Assert.AreEqual( expectedAngle,  angle, 0.00001f );
+            ClassicAssert.AreEqual( expectedAngle,  angle, 0.00001f );
         }
 
         
@@ -43,7 +44,7 @@ namespace Accord.Tests.Math
 
             float angle = GeometryTools.GetAngleBetweenLines( line1start, line1end, line2start, line2end );
 
-            Assert.AreEqual( expectedAngle, angle, 0.00001f );
+            ClassicAssert.AreEqual( expectedAngle, angle, 0.00001f );
         }
     }
 }

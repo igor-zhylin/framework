@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Geometry;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using AForge.Math;
     using System.Globalization;
@@ -43,7 +44,7 @@ namespace Accord.Tests.Math
             Plane actual = Plane.FromPoints(point1, point2, point3);
             Vector3 expected = new Vector3(-12, 3, -18);
 
-            Assert.AreEqual(expected, actual.Normal);
+            ClassicAssert.AreEqual(expected, actual.Normal);
         }
 
         [Test]
@@ -56,7 +57,7 @@ namespace Accord.Tests.Math
             Plane expected = new Plane(11, 16, 14, -15);
             Plane actual = Plane.FromPoints(point1, point2, point3);
 
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -67,13 +68,16 @@ namespace Accord.Tests.Math
             {
                 string expected = "-12x +3y -18z +1 = 0";
                 string actual = target.ToString();
-                Assert.AreEqual(expected, actual);
+                ClassicAssert.AreEqual(expected, actual);
             }
 
             {
-                string expected = "x = +0.25y -1.5z +0.08333334";
+                // .NET Core 3.0+ changed float.ToString()'s default format to the shortest
+                // round-trippable representation instead of the old (net47/netcoreapp2.0-era)
+                // lossy default, so the same float value now renders with one more digit here.
+                string expected = "x = +0.25y -1.5z +0.083333336";
                 string actual = target.ToString('x', CultureInfo.InvariantCulture);
-                Assert.AreEqual(expected, actual);
+                ClassicAssert.AreEqual(expected, actual);
             }
         }
     }

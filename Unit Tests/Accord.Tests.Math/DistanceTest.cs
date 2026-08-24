@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math.Decompositions;
     using Accord.Math.Distances;
@@ -54,7 +55,7 @@ namespace Accord.Tests.Math
 
             expected = 2.07735368677415;
             actual = Distance.Mahalanobis(x, y, cov.Inverse());
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
 
 
             x = new double[] { 7, 5, 1 };
@@ -62,7 +63,7 @@ namespace Accord.Tests.Math
 
             expected = 277.8828871106366;
             actual = Distance.Mahalanobis(x, y, cov.Inverse());
-            Assert.AreEqual(expected, actual, 0.0000000000001);
+            ClassicAssert.AreEqual(expected, actual, 0.0000000000001);
         }
 
         [Test]
@@ -87,7 +88,7 @@ namespace Accord.Tests.Math
 
             var inv = cov.Inverse();
             var pinv = svd.Inverse();
-            Assert.IsTrue(inv.IsEqual(pinv, 1e-6));
+            ClassicAssert.IsTrue(inv.IsEqual(pinv, 1e-6));
 
             x = new double[] { 2, 4, 1 };
             y = new double[] { 0, 0, 0 };
@@ -98,17 +99,17 @@ namespace Accord.Tests.Math
                 var ble = inv.Multiply(x);
                 var bli = pinv.Multiply(x);
 
-                Assert.IsTrue(bla.IsEqual(blo, 1e-6));
-                Assert.IsTrue(bla.IsEqual(ble, 1e-6));
-                Assert.IsTrue(bla.IsEqual(bli, 1e-6));
+                ClassicAssert.IsTrue(bla.IsEqual(blo, 1e-6));
+                ClassicAssert.IsTrue(bla.IsEqual(ble, 1e-6));
+                ClassicAssert.IsTrue(bla.IsEqual(bli, 1e-6));
             }
 
             expected = 2.0773536867741504;
             actual = Distance.Mahalanobis(x, y, inv);
-            Assert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
 
             actual = Distance.Mahalanobis(x, y, svd);
-            Assert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
 
 
             x = new double[] { 7, 5, 1 };
@@ -116,9 +117,9 @@ namespace Accord.Tests.Math
 
             expected = 277.8828871106366;
             actual = Distance.Mahalanobis(x, y, inv);
-            Assert.AreEqual(expected, actual, 1e-5);
+            ClassicAssert.AreEqual(expected, actual, 1e-5);
             actual = Distance.Mahalanobis(x, y, svd);
-            Assert.AreEqual(expected, actual, 1e-5);
+            ClassicAssert.AreEqual(expected, actual, 1e-5);
         }
 
         [Test]
@@ -131,31 +132,31 @@ namespace Accord.Tests.Math
             y = new double[] { 0, 0, 0 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, Matrix.Identity(3));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { 0.1, 0.12, -1 };
             y = new double[] { 195, 0, 2912 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, Matrix.Identity(3));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { -2, -4, -1 };
             y = new double[] { -2, -4, -1 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, Matrix.Identity(3));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { 2, 4, 1 };
             y = new double[] { 0, -7.2, 4.6 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, Matrix.Identity(3));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { -2, 4, 1 };
             y = new double[] { 0, -0.1, 4.2 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, Matrix.Identity(3));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -168,31 +169,31 @@ namespace Accord.Tests.Math
             y = new double[] { 0, 0, 0 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, new SingularValueDecomposition(Matrix.Identity(3)));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { 0.1, 0.12, -1 };
             y = new double[] { 195, 0, 2912 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, new SingularValueDecomposition(Matrix.Identity(3)));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { -2, -4, -1 };
             y = new double[] { -2, -4, -1 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, new SingularValueDecomposition(Matrix.Identity(3)));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { 2, 4, 1 };
             y = new double[] { 0, -7.2, 4.6 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, new SingularValueDecomposition(Matrix.Identity(3)));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             x = new double[] { -2, 4, 1 };
             y = new double[] { 0, -0.1, 4.2 };
             expected = Distance.Euclidean(x, y);
             actual = Distance.Mahalanobis(x, y, new SingularValueDecomposition(Matrix.Identity(3)));
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -214,8 +215,8 @@ namespace Accord.Tests.Math
             double expected = 0.14285714285714282;
             double actual = Distance.SquareMahalanobis(x, y, pinv);
 
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
         }
 
         [Test]
@@ -259,12 +260,12 @@ namespace Accord.Tests.Math
             #endregion
 
             double expected = Distance.Mahalanobis(x, y, new CholeskyDecomposition(covariance));
-            Assert.AreEqual(3.5185224171518357, expected, 1e-10);
-            Assert.AreEqual(expected, distance, 1e-10);
-            Assert.AreEqual(distance, a, 1e-10);
-            Assert.AreEqual(distance, b, 1e-10);
-            Assert.AreEqual(distance, c, 1e-10);
-            Assert.AreEqual(distance, d, 1e-10);
+            ClassicAssert.AreEqual(3.5185224171518357, expected, 1e-10);
+            ClassicAssert.AreEqual(expected, distance, 1e-10);
+            ClassicAssert.AreEqual(distance, a, 1e-10);
+            ClassicAssert.AreEqual(distance, b, 1e-10);
+            ClassicAssert.AreEqual(distance, c, 1e-10);
+            ClassicAssert.AreEqual(distance, d, 1e-10);
         }
 
         [Test]
@@ -308,12 +309,12 @@ namespace Accord.Tests.Math
             #endregion
 
             double expected = Math.Pow(Distance.SquareMahalanobis(x, y, new CholeskyDecomposition(covariance)), 2);
-            Assert.AreEqual(12.379999999999997, distance, 1e-10);
-            Assert.AreEqual(3.5185224171518357 * 3.5185224171518357, distance, 1e-10);
-            Assert.AreEqual(distance, a, 1e-10);
-            Assert.AreEqual(distance, b, 1e-10);
-            Assert.AreEqual(distance, c, 1e-10);
-            Assert.AreEqual(distance, d, 1e-10);
+            ClassicAssert.AreEqual(12.379999999999997, distance, 1e-10);
+            ClassicAssert.AreEqual(3.5185224171518357 * 3.5185224171518357, distance, 1e-10);
+            ClassicAssert.AreEqual(distance, a, 1e-10);
+            ClassicAssert.AreEqual(distance, b, 1e-10);
+            ClassicAssert.AreEqual(distance, c, 1e-10);
+            ClassicAssert.AreEqual(distance, d, 1e-10);
         }
 
         [Test]
@@ -323,7 +324,7 @@ namespace Accord.Tests.Math
             double[] y = { 0, 0 };
             double expected = 9;
             double actual = Distance.Manhattan(x, y);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -333,16 +334,16 @@ namespace Accord.Tests.Math
             double[] y = new double[] { 0, 0, 0 };
             double expected = 4.58257569495584;
             double actual = Distance.Euclidean(x, y);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
         public void EuclideanTest2()
         {
-            Assert.AreEqual(Distance.Euclidean(2, 4, 0, 1),
+            ClassicAssert.AreEqual(Distance.Euclidean(2, 4, 0, 1),
                 Distance.Euclidean(new double[] { 2, 4 }, new double[] { 0, 1 }));
 
-            Assert.AreEqual(Distance.SquareEuclidean(2, 4, 0, 1),
+            ClassicAssert.AreEqual(Distance.SquareEuclidean(2, 4, 0, 1),
                 Distance.SquareEuclidean(new double[] { 2, 4 }, new double[] { 0, 1 }));
         }
 
@@ -355,7 +356,7 @@ namespace Accord.Tests.Math
             int expected = 2;
 
             int actual = (int)Distance.Modular(a, b, modulo);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -377,10 +378,10 @@ namespace Accord.Tests.Math
             double b = Distance.Euclidean(new[] { x1, y1 }, new[] { x2, y2 });
             #endregion
 
-            Assert.AreEqual(3.9824615503479754, a, 1e-10);
-            Assert.AreEqual(a, b);
-            Assert.IsFalse(double.IsNaN(a));
-            Assert.IsFalse(double.IsNaN(b));
+            ClassicAssert.AreEqual(3.9824615503479754, a, 1e-10);
+            ClassicAssert.AreEqual(a, b);
+            ClassicAssert.IsFalse(double.IsNaN(a));
+            ClassicAssert.IsFalse(double.IsNaN(b));
         }
 
         [Test]
@@ -395,8 +396,8 @@ namespace Accord.Tests.Math
             double b = cos.Distance(new[] { 0.0, 2.0, 4.0 }, new[] { 2.0, 5.0, 1.0 }); // ~0.42845239335059182d
             #endregion
 
-            Assert.AreEqual(0.42845239335059182d, a, 1e-10);
-            Assert.AreEqual(a, b);
+            ClassicAssert.AreEqual(0.42845239335059182d, a, 1e-10);
+            ClassicAssert.AreEqual(a, b);
         }
 
 
@@ -404,79 +405,79 @@ namespace Accord.Tests.Math
         [Test]
         public void LevenshteinTest1()
         {
-            Assert.AreEqual(0, Distance.Levenshtein("", ""));
-            Assert.AreEqual(1, Distance.Levenshtein("", "a"));
-            Assert.AreEqual(1, Distance.Levenshtein("a", ""));
-            Assert.AreEqual(0, Distance.Levenshtein("a", "a"));
-            Assert.AreEqual(0, Distance.Levenshtein(null, null));
-            Assert.AreEqual(1, Distance.Levenshtein(null, "a"));
-            Assert.AreEqual(1, Distance.Levenshtein("a", null));
-            Assert.AreEqual(0, Distance.Levenshtein(null, ""));
-            Assert.AreEqual(5, Distance.Levenshtein("apple", "banana"));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein("", ""));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein("", "a"));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein("a", ""));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein("a", "a"));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(null, null));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein(null, "a"));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein("a", null));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(null, ""));
+            ClassicAssert.AreEqual(5, Distance.Levenshtein("apple", "banana"));
 
-            Assert.AreEqual(0, Distance.Levenshtein(new int[] { }, new int[] { }));
-            Assert.AreEqual(1, Distance.Levenshtein(new int[] { }, new int[] { 1 }));
-            Assert.AreEqual(1, Distance.Levenshtein(new int[] { 1 }, new int[] { }));
-            Assert.AreEqual(0, Distance.Levenshtein(new int[] { 1 }, new int[] { 1 }));
-            Assert.AreEqual(0, Distance.Levenshtein(null, null));
-            Assert.AreEqual(1, Distance.Levenshtein(null, new int[] { 1 }));
-            Assert.AreEqual(1, Distance.Levenshtein(new int[] { 1 }, null));
-            Assert.AreEqual(0, Distance.Levenshtein(new int[] { }, null));
-            Assert.AreEqual(0, Distance.Levenshtein(null, new int[] { }));
-            Assert.AreEqual(5, Distance.Levenshtein(new int[] { 1, 2, 2, 3, 4 }, new int[] { 5, 1, 6, 1, 6, 1 }));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(new int[] { }, new int[] { }));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein(new int[] { }, new int[] { 1 }));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein(new int[] { 1 }, new int[] { }));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(new int[] { 1 }, new int[] { 1 }));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(null, null));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein(null, new int[] { 1 }));
+            ClassicAssert.AreEqual(1, Distance.Levenshtein(new int[] { 1 }, null));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(new int[] { }, null));
+            ClassicAssert.AreEqual(0, Distance.Levenshtein(null, new int[] { }));
+            ClassicAssert.AreEqual(5, Distance.Levenshtein(new int[] { 1, 2, 2, 3, 4 }, new int[] { 5, 1, 6, 1, 6, 1 }));
         }
 
         [Test]
         public void IsMetricTest()
         {
-            Assert.IsTrue(Distance.IsMetric(Distance.Euclidean));
-            Assert.IsTrue(Distance.IsMetric((double[] a, double[] b) => Distance.Manhattan(a, b)));
-            Assert.IsTrue(Distance.IsMetric((int[] a, int[] b) => Distance.Manhattan(a, b)));
-            Assert.IsFalse(Distance.IsMetric(Distance.Hamming));
-            Assert.IsTrue(Distance.IsMetric((double[] a, double[] b) => new Minkowski(1).Distance(a, b)));
-            Assert.IsTrue(Distance.IsMetric((double[] a, double[] b) => new Levenshtein<double>().Distance(a, b)));
-            Assert.IsTrue(Distance.IsMetric(Distance.Chebyshev));
-            Assert.IsTrue(Distance.IsMetric(Distance.Hellinger));
+            ClassicAssert.IsTrue(Distance.IsMetric(Distance.Euclidean));
+            ClassicAssert.IsTrue(Distance.IsMetric((double[] a, double[] b) => Distance.Manhattan(a, b)));
+            ClassicAssert.IsTrue(Distance.IsMetric((int[] a, int[] b) => Distance.Manhattan(a, b)));
+            ClassicAssert.IsFalse(Distance.IsMetric(Distance.Hamming));
+            ClassicAssert.IsTrue(Distance.IsMetric((double[] a, double[] b) => new Minkowski(1).Distance(a, b)));
+            ClassicAssert.IsTrue(Distance.IsMetric((double[] a, double[] b) => new Levenshtein<double>().Distance(a, b)));
+            ClassicAssert.IsTrue(Distance.IsMetric(Distance.Chebyshev));
+            ClassicAssert.IsTrue(Distance.IsMetric(Distance.Hellinger));
 
-            Assert.IsFalse(Distance.IsMetric(Distance.Cosine));
-            Assert.IsFalse(Distance.IsMetric(Distance.SquareEuclidean));
-            Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Math.Pow(Distance.Manhattan(a, b), 2)));
-            Assert.IsFalse(Distance.IsMetric(Distance.BrayCurtis));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => new Minkowski(2).Distance(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => new Minkowski(3).Distance(a, b)));
+            ClassicAssert.IsFalse(Distance.IsMetric(Distance.Cosine));
+            ClassicAssert.IsFalse(Distance.IsMetric(Distance.SquareEuclidean));
+            ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Math.Pow(Distance.Manhattan(a, b), 2)));
+            ClassicAssert.IsFalse(Distance.IsMetric(Distance.BrayCurtis));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => new Minkowski(2).Distance(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => new Minkowski(3).Distance(a, b)));
 
-            Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Kulczynski(a, b)));
-            Assert.IsTrue(Distance.IsMetric((double[] a, double[] b) => Distance.Jaccard(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.RogersTanimoto(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.SokalMichener(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.SokalSneath(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Yule(a, b)));
-            // Assert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Dice(a, b)));
+            ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Kulczynski(a, b)));
+            ClassicAssert.IsTrue(Distance.IsMetric((double[] a, double[] b) => Distance.Jaccard(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.RogersTanimoto(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.SokalMichener(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.SokalSneath(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Yule(a, b)));
+            // ClassicAssert.IsFalse(Distance.IsMetric((double[] a, double[] b) => Distance.Dice(a, b)));
 
 
 
-            Assert.IsTrue(Distance.IsMetric<double[]>(new Euclidean()));
-            Assert.IsTrue(Distance.IsMetric<double[]>(new Manhattan()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new Hamming()));
-            Assert.IsTrue(Distance.IsMetric<double[]>(new Minkowski(1)));
-            Assert.IsTrue(Distance.IsMetric(new Levenshtein()));
-            Assert.IsTrue(Distance.IsMetric(new Chebyshev()));
-            Assert.IsFalse(Distance.IsMetric(new Cosine()));
-            Assert.IsTrue(Distance.IsMetric(new Hellinger()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new SquareEuclidean()));
-            Assert.IsFalse(Distance.IsMetric(new BrayCurtis()));
-            // Assert.IsFalse(Distance.IsMetric<double[]>(new Minkowski(2)));
-            // Assert.IsFalse(Distance.IsMetric<double[]>(new Minkowski(3)));
+            ClassicAssert.IsTrue(Distance.IsMetric<double[]>(new Euclidean()));
+            ClassicAssert.IsTrue(Distance.IsMetric<double[]>(new Manhattan()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Hamming()));
+            ClassicAssert.IsTrue(Distance.IsMetric<double[]>(new Minkowski(1)));
+            ClassicAssert.IsTrue(Distance.IsMetric(new Levenshtein()));
+            ClassicAssert.IsTrue(Distance.IsMetric(new Chebyshev()));
+            ClassicAssert.IsFalse(Distance.IsMetric(new Cosine()));
+            ClassicAssert.IsTrue(Distance.IsMetric(new Hellinger()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new SquareEuclidean()));
+            ClassicAssert.IsFalse(Distance.IsMetric(new BrayCurtis()));
+            // ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Minkowski(2)));
+            // ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Minkowski(3)));
 
-            Assert.IsFalse(Distance.IsMetric<double[]>(new Kulczynski()));
-            Assert.IsTrue(Distance.IsMetric<double[]>(new Jaccard<double>()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new RogersTanimoto()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new SokalMichener()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new SokalSneath()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new Yule()));
-            Assert.IsFalse(Distance.IsMetric<double[]>(new Dice()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Kulczynski()));
+            ClassicAssert.IsTrue(Distance.IsMetric<double[]>(new Jaccard<double>()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new RogersTanimoto()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new SokalMichener()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new SokalSneath()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Yule()));
+            ClassicAssert.IsFalse(Distance.IsMetric<double[]>(new Dice()));
 
-            // Assert.IsFalse(Distance.IsMetric(Dissimilarity.RusselRao));
+            // ClassicAssert.IsFalse(Distance.IsMetric(Dissimilarity.RusselRao));
         }
 
         [Test]
@@ -501,8 +502,8 @@ namespace Accord.Tests.Math
             #endregion
 
             double expected = 4.58257569495584;
-            Assert.AreEqual(a, expected);
-            Assert.AreEqual(b, expected);
+            ClassicAssert.AreEqual(a, expected);
+            ClassicAssert.AreEqual(b, expected);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -66,14 +67,14 @@ namespace Accord.Tests.Math
                     bool thrown = false;
                     try { Gamma.Function(xi); }
                     catch { thrown = true; }
-                    Assert.IsTrue(thrown);
+                    ClassicAssert.IsTrue(thrown);
                 }
                 else
                 {
                     double actual = Gamma.Function(xi);
                     if (Double.IsNaN(actual))
                         throw new Exception();
-                    Assert.AreEqual(expectedi, actual, System.Math.Abs(expectedi) * 1e-12);
+                    ClassicAssert.AreEqual(expectedi, actual, System.Math.Abs(expectedi) * 1e-12);
                 }
             }
         }
@@ -114,13 +115,13 @@ namespace Accord.Tests.Math
                     bool thrown = false;
                     try { Gamma.Function(xi); }
                     catch { thrown = true; }
-                    Assert.IsTrue(thrown);
+                    ClassicAssert.IsTrue(thrown);
                 }
                 else
                 {
                     double actual = Gamma.Log(xi);
 
-                    Assert.AreEqual(expectedi, actual, System.Math.Abs(expectedi) * 1e-14);
+                    ClassicAssert.AreEqual(expectedi, actual, System.Math.Abs(expectedi) * 1e-14);
                 }
             }
         }
@@ -152,7 +153,7 @@ namespace Accord.Tests.Math
                 double expectedi = expected[i];
                 double actual = Gamma.Digamma(xi);
 
-                Assert.AreEqual(expectedi, actual, 1e-10);
+                ClassicAssert.AreEqual(expectedi, actual, 1e-10);
             }
         }
 
@@ -173,16 +174,16 @@ namespace Accord.Tests.Math
             double upper = Gamma.UpperIncomplete(a, x); // 0.9999843149269364
 
 
-            Assert.AreEqual(0.9999843149269364, upper);
-            Assert.AreEqual(0.000015685073063633753, lower);
+            ClassicAssert.AreEqual(0.9999843149269364, upper);
+            ClassicAssert.AreEqual(0.000015685073063633753, lower);
 
-            Assert.AreEqual(5.4511741801042106, gamma);
-            Assert.AreEqual(-39.473585841300675, gammap);
-            Assert.AreEqual(1.6958310313607003, log);
-            Assert.AreEqual(3.6756317353404273, logp);
-            Assert.AreEqual(24.040352622960743, stir);
-            Assert.AreEqual(-6.2100942259248626, psi);
-            Assert.AreEqual(35.915302055854525, tri);
+            ClassicAssert.AreEqual(5.4511741801042106, gamma);
+            ClassicAssert.AreEqual(-39.473585841300675, gammap);
+            ClassicAssert.AreEqual(1.6958310313607003, log);
+            ClassicAssert.AreEqual(3.6756317353404273, logp);
+            ClassicAssert.AreEqual(24.040352622960743, stir);
+            ClassicAssert.AreEqual(-6.2100942259248626, psi);
+            ClassicAssert.AreEqual(35.915302055854525, tri);
         }
 
         [Test]
@@ -198,10 +199,10 @@ namespace Accord.Tests.Math
             double lower = Gamma.LowerIncomplete(a, x); // 0.000015685073063633753
             double upper = Gamma.UpperIncomplete(a, x); // 0.9999843149269364
 
-            Assert.AreEqual(3.4523682307588364, gamma, 1e-10); // https://www.wolframalpha.com/input/?i=gamma%5B-1.8209678549077879%5D
-            Assert.AreEqual(-4.1343001655848468, psi); // https://www.wolframalpha.com/input/?i=digamma(-1.8209678549077879)
-            Assert.AreEqual(34.283184056369407, tri);  // https://www.wolframalpha.com/input/?i=trigamma(-1.8209678549077879)
-            Assert.AreEqual(Math.Log(3.4523682307588364), log, 1e-10);
+            ClassicAssert.AreEqual(3.4523682307588364, gamma, 1e-10); // https://www.wolframalpha.com/input/?i=gamma%5B-1.8209678549077879%5D
+            ClassicAssert.AreEqual(-4.1343001655848468, psi); // https://www.wolframalpha.com/input/?i=digamma(-1.8209678549077879)
+            ClassicAssert.AreEqual(34.283184056369407, tri);  // https://www.wolframalpha.com/input/?i=trigamma(-1.8209678549077879)
+            ClassicAssert.AreEqual(Math.Log(3.4523682307588364), log, 1e-10);
         }
 
         [Test]
@@ -210,7 +211,7 @@ namespace Accord.Tests.Math
             double x = 171;
             double expected = 7.257415615308056e+306;
             double actual = Gamma.Function(x);
-            Assert.AreEqual(expected, actual, 1e+293);
+            ClassicAssert.AreEqual(expected, actual, 1e+293);
         }
 
         [Test]
@@ -220,7 +221,7 @@ namespace Accord.Tests.Math
             double expected = 172.35279713916282;
 
             double actual = Gamma.Log(x);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -229,7 +230,7 @@ namespace Accord.Tests.Math
             double x = 42;
             double expected = 3.7257176179372822;
             double actual = Gamma.Digamma(x);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -237,7 +238,7 @@ namespace Accord.Tests.Math
         {
             double expected = 35.342917352885181;
             double actual = Gamma.Multivariate(4, 2);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -250,63 +251,63 @@ namespace Accord.Tests.Math
 
             actual = Gamma.UpperIncomplete(0.000000, 2);
             expected = 1.000000;
-            Assert.AreEqual(expected, actual);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(0.250000, 2);
             expected = 0.017286;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(0.500000, 2);
             expected = 0.045500;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(0.750000, 2);
             expected = 0.085056;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(1.000000, 2);
             expected = 0.135335;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(1.250000, 2);
             expected = 0.194847;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(1.500000, 2);
             expected = 0.261464;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(1.750000, 2);
             expected = 0.332706;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(2.000000, 2);
             expected = 0.406006;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(2.250000, 2);
             expected = 0.478944;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(2.500000, 2);
             expected = 0.549416;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
             actual = Gamma.UpperIncomplete(2.750000, 2);
             expected = 0.615734;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
         }
 
         [Test]
@@ -319,7 +320,7 @@ namespace Accord.Tests.Math
                     double x = Gamma.UpperIncomplete(lambda, i);
                     double j = Gamma.InverseUpperIncomplete(lambda, x);
 
-                    Assert.IsTrue(Math.Abs(i - j) < 1e-2 * Math.Abs(j));
+                    ClassicAssert.IsTrue(Math.Abs(i - j) < 1e-2 * Math.Abs(j));
                 }
             }
         }

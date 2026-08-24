@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -50,7 +51,7 @@ namespace Accord.Tests.Math
         public void ExampleTest()
         {
             double x = OwensT.Function(h: 2, a: 42);
-            Assert.AreEqual(0.011375065974089608, x);
+            ClassicAssert.AreEqual(0.011375065974089608, x);
         }
 
         [Test]
@@ -196,7 +197,7 @@ namespace Accord.Tests.Math
                 double expected = table[i, 3];
                 double actual = OwensT.Function(H, A);
 
-                Assert.AreEqual(expected, actual, 1e-10);
+                ClassicAssert.AreEqual(expected, actual, 1e-10);
             }
         }
 

@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
     using System.Linq;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math;
     using Accord;
@@ -48,7 +49,7 @@ namespace Accord.Tests.Math
         {
             var zeroIndex = data.ToList().FindIndex(v => v == 0);
             var index = new BinarySearch(i => data[i], 0, data.Length - 1).FindRoot();
-            Assert.AreEqual(zeroIndex, index, String.Format("For {0}", String.Join(",", data)));
+            ClassicAssert.AreEqual(zeroIndex, index, String.Format("For {0}", String.Join(",", data)));
         }
     }
 
@@ -94,11 +95,11 @@ namespace Accord.Tests.Math
             BinarySearch search;
             search = new BinarySearch(function, -2, 3);
             double r1 = search.FindRoot();
-            Assert.AreEqual(-1, r1);
+            ClassicAssert.AreEqual(-1, r1);
 
             search = new BinarySearch(function, -10, -2);
             double r2 = search.FindRoot();
-            Assert.AreEqual(-3, r2);
+            ClassicAssert.AreEqual(-3, r2);
         }
 
         [Test]
@@ -113,7 +114,7 @@ namespace Accord.Tests.Math
 
             BinarySearch search = new BinarySearch(function, -6, -4);
             double root = search.FindRoot();
-            Assert.AreEqual(-5, root);
+            ClassicAssert.AreEqual(-5, root);
         }
 
         [Test]
@@ -123,12 +124,12 @@ namespace Accord.Tests.Math
             BinarySearch search = new BinarySearch(function, 0, elements.Length);
 
             int a1 = search.FindRoot();
-            Assert.AreEqual(1, a1);
+            ClassicAssert.AreEqual(1, a1);
 
             for (int i = 0; i < elements.Length; i++)
             {
                 int a2 = search.Find(elements[i]);
-                Assert.AreEqual(i, a2);
+                ClassicAssert.AreEqual(i, a2);
             }
         }
 
@@ -149,16 +150,16 @@ namespace Accord.Tests.Math
             int a7 = search.Find(elements.Min() - 1);
             int a8 = search.Find(elements.Min());
 
-            Assert.AreEqual(a1, 4);
-            Assert.AreEqual(a2, 5);
+            ClassicAssert.AreEqual(a1, 4);
+            ClassicAssert.AreEqual(a2, 5);
 
-            Assert.AreEqual(a3, 8);
-            Assert.AreEqual(a4, 8);
-            Assert.AreEqual(a5, 8);
+            ClassicAssert.AreEqual(a3, 8);
+            ClassicAssert.AreEqual(a4, 8);
+            ClassicAssert.AreEqual(a5, 8);
 
-            Assert.AreEqual(a6, 1);
-            Assert.AreEqual(a7, 0);
-            Assert.AreEqual(a8, 0);
+            ClassicAssert.AreEqual(a6, 1);
+            ClassicAssert.AreEqual(a7, 0);
+            ClassicAssert.AreEqual(a8, 0);
         }
 
     }

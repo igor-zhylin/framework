@@ -2,6 +2,7 @@
 using AForge;
 using AForge.Math;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Accord.Math;
 
 namespace Accord.Tests.Math
@@ -27,7 +28,7 @@ namespace Accord.Tests.Math
         [TestCase(int.MinValue, false)]
         public void IsPowerOf2Test(int valueToTest, bool expectedResult)
         {
-            Assert.AreEqual(expectedResult, Tools.IsPowerOf2(valueToTest));
+            ClassicAssert.AreEqual(expectedResult, Tools.IsPowerOf2(valueToTest));
         }
     }
 }

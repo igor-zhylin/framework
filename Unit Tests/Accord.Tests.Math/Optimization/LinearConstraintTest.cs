@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -86,9 +87,9 @@ namespace Accord.Tests.Math
             double v2 = lc2.GetViolation(vector);
             double v3 = lc3.GetViolation(vector);
 
-            Assert.AreEqual(expected, v1);
-            Assert.AreEqual(expected, v2);
-            Assert.AreEqual(expected, v3);
+            ClassicAssert.AreEqual(expected, v1);
+            ClassicAssert.AreEqual(expected, v2);
+            ClassicAssert.AreEqual(expected, v3);
         }
 
         [Test]
@@ -126,7 +127,7 @@ namespace Accord.Tests.Math
                         double[] x = { a, b };
                         double actual = c1.GetViolation(x);
                         double expected = c2.GetViolation(x);
-                        Assert.AreEqual(expected, actual);
+                        ClassicAssert.AreEqual(expected, actual);
                     }
                 }
             }
@@ -139,11 +140,11 @@ namespace Accord.Tests.Math
 
             var f = new QuadraticObjectiveFunction(() => a + b);
 
-            Assert.AreEqual(2, f.NumberOfVariables);
-            Assert.AreEqual(0, f.Variables["a"]);
-            Assert.AreEqual(1, f.Variables["b"]);
-            Assert.AreEqual(1, f.LinearTerms[0]);
-            Assert.AreEqual(1, f.LinearTerms[1]);
+            ClassicAssert.AreEqual(2, f.NumberOfVariables);
+            ClassicAssert.AreEqual(0, f.Variables["a"]);
+            ClassicAssert.AreEqual(1, f.Variables["b"]);
+            ClassicAssert.AreEqual(1, f.LinearTerms[0]);
+            ClassicAssert.AreEqual(1, f.LinearTerms[1]);
 
             var constraints1 = new[]
             {
@@ -167,14 +168,14 @@ namespace Accord.Tests.Math
                 new LinearConstraint(f, () => a - 1 <= -5)
             };
 
-            Assert.AreEqual(0.098, constraints1[0].Value);
-            Assert.AreEqual(0.098, constraints2[0].Value);
+            ClassicAssert.AreEqual(0.098, constraints1[0].Value);
+            ClassicAssert.AreEqual(0.098, constraints2[0].Value);
 
-            Assert.AreEqual(0, constraints1[2].Value);
-            Assert.AreEqual(0, constraints2[2].Value);
+            ClassicAssert.AreEqual(0, constraints1[2].Value);
+            ClassicAssert.AreEqual(0, constraints2[2].Value);
 
-            Assert.AreEqual(1, constraints1[1].Value);
-            Assert.AreEqual(1, constraints2[1].Value);
+            ClassicAssert.AreEqual(1, constraints1[1].Value);
+            ClassicAssert.AreEqual(1, constraints2[1].Value);
 
             for (int i = 0; i < constraints1.Length; i++)
             {
@@ -188,7 +189,7 @@ namespace Accord.Tests.Math
                         double[] x = { a, b };
                         double actual = c1.GetViolation(x);
                         double expected = c2.GetViolation(x);
-                        Assert.AreEqual(expected, actual);
+                        ClassicAssert.AreEqual(expected, actual);
                     }
                 }
             }
@@ -219,7 +220,7 @@ namespace Accord.Tests.Math
             double[] gradient = linearConstraint.Gradient(x);
 
             // Assert1
-            Assert.True(gradient.IsEqual(expected1));
+            ClassicAssert.True(gradient.IsEqual(expected1));
 
             // Arrange2
             linearConstraint.CombinedAs = combinedAs2;
@@ -228,7 +229,7 @@ namespace Accord.Tests.Math
             double[] gradient2 = linearConstraint.Gradient(x);
 
             // Assert2
-            Assert.True(gradient2.IsEqual(expected2));
+            ClassicAssert.True(gradient2.IsEqual(expected2));
 
             // Arrange3
             linearConstraint.VariablesAtIndices = indices2;
@@ -237,7 +238,7 @@ namespace Accord.Tests.Math
             double[] gradient3 = linearConstraint.Gradient(x);
 
             // Assert3
-            Assert.True(gradient3.IsEqual(expected3));
+            ClassicAssert.True(gradient3.IsEqual(expected3));
         }
 
         [Test]
@@ -258,7 +259,7 @@ namespace Accord.Tests.Math
             double[] gradient = linearConstraint.Gradient(x);
 
             // Assert1
-            Assert.True(gradient.IsEqual(combinedAs1));
+            ClassicAssert.True(gradient.IsEqual(combinedAs1));
 
             // Arrange2
             linearConstraint.CombinedAs = combinedAs2;
@@ -267,7 +268,7 @@ namespace Accord.Tests.Math
             double[] gradient2 = linearConstraint.Gradient(x);
 
             // Assert2
-            Assert.True(gradient2.IsEqual(combinedAs2));
+            ClassicAssert.True(gradient2.IsEqual(combinedAs2));
         }
 
     }

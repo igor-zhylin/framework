@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class BesselTest
@@ -52,7 +53,7 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = Bessel.Y0(64);
-            Assert.AreEqual(0.037067103232088, actual, 0.000001);
+            ClassicAssert.AreEqual(0.037067103232088, actual, 0.000001);
         }
 
         [Test]
@@ -61,13 +62,13 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = Bessel.J(0, 1);
-            Assert.AreEqual(0.765197686557967, actual, 0.000001);
+            ClassicAssert.AreEqual(0.765197686557967, actual, 0.000001);
 
             actual = Bessel.J(0, 5);
-            Assert.AreEqual(-0.177596771314338, actual, 0.000001);
+            ClassicAssert.AreEqual(-0.177596771314338, actual, 0.000001);
 
             actual = Bessel.J(2, 17.3);
-            Assert.AreEqual(0.117351128521774, actual, 0.000001);
+            ClassicAssert.AreEqual(0.117351128521774, actual, 0.000001);
         }
 
         [Test]
@@ -76,10 +77,10 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = Bessel.Y(2, 4);
-            Assert.AreEqual(0.215903594603615, actual, 0.000001);
+            ClassicAssert.AreEqual(0.215903594603615, actual, 0.000001);
 
             actual = Bessel.Y(0, 64);
-            Assert.AreEqual(0.037067103232088, actual, 0.000001);
+            ClassicAssert.AreEqual(0.037067103232088, actual, 0.000001);
         }
 
         [Test]
@@ -88,10 +89,10 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = Bessel.J0(1);
-            Assert.AreEqual(0.765197686557967, actual, 0.000001);
+            ClassicAssert.AreEqual(0.765197686557967, actual, 0.000001);
 
             actual = Bessel.J0(5);
-            Assert.AreEqual(-0.177596771314338, actual, 0.000001);
+            ClassicAssert.AreEqual(-0.177596771314338, actual, 0.000001);
         }
 
     }

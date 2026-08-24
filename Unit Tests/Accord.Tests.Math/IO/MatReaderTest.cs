@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Tests.Math.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.IO;
 
@@ -74,12 +75,12 @@ namespace Accord.Tests.Math
             // The a matrix should be equal to { 1, 2, 3, 4 }
             #endregion
 
-            Assert.AreEqual(typeof(int[,]), t);
-            Assert.AreEqual(new int[,]
+            ClassicAssert.AreEqual(typeof(int[,]), t);
+            ClassicAssert.AreEqual(new int[,]
             {
                 { 1, 2, 3, 4 },
             }, matrix);
-            Assert.AreEqual(new[] { "a" }, names);
+            ClassicAssert.AreEqual(new[] { "a" }, names);
         }
 
         [Test]
@@ -108,11 +109,11 @@ namespace Accord.Tests.Math
             string[] names = reader.FieldNames; // should contain "arr"
             #endregion
 
-            Assert.AreEqual(new sbyte[,]
+            ClassicAssert.AreEqual(new sbyte[,]
             {
                 { -128, 127 },
             }, matrix);
-            Assert.AreEqual(new[] { "arr" }, names);
+            ClassicAssert.AreEqual(new[] { "arr" }, names);
         }
 
         [Test]
@@ -157,14 +158,14 @@ namespace Accord.Tests.Math
             var s = reader["structure"]["string"].GetValue<string>();
             #endregion
 
-            Assert.AreEqual(typeof(byte[,]), aType);
-            Assert.AreEqual(typeof(string), reader["structure"]["string"].ValueType);
+            ClassicAssert.AreEqual(typeof(byte[,]), aType);
+            ClassicAssert.AreEqual(typeof(string), reader["structure"]["string"].ValueType);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Thu Feb 22 01:39:50 2007",
                 reader.Description);
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             byte[,] expected =
             {
@@ -172,8 +173,8 @@ namespace Accord.Tests.Math
                 { 4, 5, 6 },
             };
 
-            Assert.IsTrue(expected.IsEqual(a));
-            Assert.AreEqual("ala ma kota", s);
+            ClassicAssert.IsTrue(expected.IsEqual(a));
+            ClassicAssert.AreEqual("ala ma kota", s);
         }
 
 
@@ -187,12 +188,12 @@ namespace Accord.Tests.Math
             var file = GetMat("int8.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Jun 27 17:40:39 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as sbyte[,];
@@ -202,7 +203,7 @@ namespace Accord.Tests.Math
                 { -128, 127 },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -211,12 +212,12 @@ namespace Accord.Tests.Math
             var file = GetMat("int32.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Tue Dec 04 11:46:17 2012",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["a"];
             var value = node.Value as int[,];
@@ -226,7 +227,7 @@ namespace Accord.Tests.Math
                 { 1, 2, 3, 4 },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -235,12 +236,12 @@ namespace Accord.Tests.Math
             var file = GetMat("int64.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Jun 27 17:41:23 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as long[,];
@@ -250,7 +251,7 @@ namespace Accord.Tests.Math
                 { 0, -1 },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -259,12 +260,12 @@ namespace Accord.Tests.Math
             var file = GetMat("a64.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, written by Octave 3.8.1, 2014-07-14 10:52:44 UTC",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["A64"];
             var value = node.Value as long[,];
@@ -278,7 +279,7 @@ namespace Accord.Tests.Math
                {   79,   64,   32,  -73,  -53,   -8,   75,   77,   23,     8 },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -287,12 +288,12 @@ namespace Accord.Tests.Math
             var file = GetMat("uint64.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Jun 27 17:43:04 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as ulong[,];
@@ -302,7 +303,7 @@ namespace Accord.Tests.Math
                 { 0, unchecked ((System.UInt64)(-1)) },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -311,12 +312,12 @@ namespace Accord.Tests.Math
             var file = GetMat("single.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Jun 04 13:29:10 2008",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as float[,];
@@ -326,7 +327,7 @@ namespace Accord.Tests.Math
                 { 1.1f, 2.2f, 3.3f } 
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -335,12 +336,12 @@ namespace Accord.Tests.Math
             var file = GetMat("matnativedouble.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Wed Feb 21 18:57:45 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as byte[,];
@@ -352,7 +353,7 @@ namespace Accord.Tests.Math
                 { 3, 6 } 
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -361,12 +362,12 @@ namespace Accord.Tests.Math
             var file = GetMat("matnativedouble2.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Fri Mar 02 12:35:43 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["arr"];
             var value = node.Value as double[,];
@@ -378,7 +379,7 @@ namespace Accord.Tests.Math
                 { 3.3, 6.6 } 
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -387,12 +388,12 @@ namespace Accord.Tests.Math
             var file = GetMat("logical.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Mon Feb 25 20:07:08 2013",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["bool"];
             var value = node.Value as byte[,];
@@ -402,7 +403,7 @@ namespace Accord.Tests.Math
                 { 1, 0 },
             };
 
-            Assert.IsTrue(expected.IsEqual(value));
+            ClassicAssert.IsTrue(expected.IsEqual(value));
         }
 
         [Test]
@@ -411,19 +412,19 @@ namespace Accord.Tests.Math
             var file = GetMat("simplestruct.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Thu Feb 22 01:39:50 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var node = reader["structure"];
 
             var value1 = node["a"];
             var value2 = node["string"];
 
-            Assert.AreEqual("a", value1.Name);
+            ClassicAssert.AreEqual("a", value1.Name);
             var a = value1.Value as byte[,];
 
             byte[,] expected = 
@@ -432,11 +433,11 @@ namespace Accord.Tests.Math
                 { 4, 5, 6 },
             };
 
-            Assert.IsTrue(expected.IsEqual(a));
+            ClassicAssert.IsTrue(expected.IsEqual(a));
 
-            Assert.AreEqual("string", value2.Name);
+            ClassicAssert.AreEqual("string", value2.Name);
             var s = value2.Value as string;
-            Assert.AreEqual("ala ma kota", s);
+            ClassicAssert.AreEqual("ala ma kota", s);
         }
 
         [Test]
@@ -445,24 +446,24 @@ namespace Accord.Tests.Math
             var file = GetMat("cell.mat");
             MatReader reader = new MatReader(file);
 
-            Assert.AreEqual(
+            ClassicAssert.AreEqual(
                 "MATLAB 5.0 MAT-file, Platform: PCWIN, Created on: Thu Feb 22 03:12:25 2007",
                 reader.Description);
 
-            Assert.AreEqual(256, reader.Version);
-            Assert.IsFalse(reader.BigEndian);
+            ClassicAssert.AreEqual(256, reader.Version);
+            ClassicAssert.IsFalse(reader.BigEndian);
 
             var cel = reader["cel"];
-            Assert.IsNotNull(cel["xBF"]);
-            Assert.IsNotNull(cel["xY"]);
-            Assert.IsNotNull(cel["nscan"]);
-            Assert.IsNotNull(cel["Sess"]);
-            Assert.IsNotNull(cel["xX"]);
+            ClassicAssert.IsNotNull(cel["xBF"]);
+            ClassicAssert.IsNotNull(cel["xY"]);
+            ClassicAssert.IsNotNull(cel["nscan"]);
+            ClassicAssert.IsNotNull(cel["Sess"]);
+            ClassicAssert.IsNotNull(cel["xX"]);
 
             var xBF = cel["xBF"];
 
-            Assert.AreEqual("xBF", xBF.Name);
-            Assert.AreEqual(9, xBF.Count);
+            ClassicAssert.AreEqual("xBF", xBF.Name);
+            ClassicAssert.AreEqual(9, xBF.Count);
 
             var T = xBF["T"];
             var T0 = xBF["T0"];
@@ -472,30 +473,30 @@ namespace Accord.Tests.Math
             var order = xBF["order"];
             var bf = xBF["bf"];
 
-            Assert.AreEqual(16, (T.Value as byte[,])[0, 0]);
-            Assert.AreEqual(1, (T0.Value as byte[,])[0, 0]);
-            Assert.AreEqual(0.1875, (dt.Value as double[,])[0, 0]);
-            Assert.AreEqual("scans", UNITS.Value as string);
-            Assert.AreEqual("hrf (with time derivative)", name.Value as string);
-            Assert.AreEqual(2, (order.Value as byte[,])[0, 0]);
-            Assert.IsTrue(expectedBfValues.IsEqual(bf.Value as double[,], 1e-15));
+            ClassicAssert.AreEqual(16, (T.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(1, (T0.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(0.1875, (dt.Value as double[,])[0, 0]);
+            ClassicAssert.AreEqual("scans", UNITS.Value as string);
+            ClassicAssert.AreEqual("hrf (with time derivative)", name.Value as string);
+            ClassicAssert.AreEqual(2, (order.Value as byte[,])[0, 0]);
+            ClassicAssert.IsTrue(expectedBfValues.IsEqual(bf.Value as double[,], 1e-15));
 
             var nscan = cel["nscan"];
-            Assert.AreEqual(0, nscan.Count);
-            Assert.AreEqual(96, (nscan.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(0, nscan.Count);
+            ClassicAssert.AreEqual(96, (nscan.Value as byte[,])[0, 0]);
 
             var xY = cel["xY"];
 
-            Assert.AreEqual("xY", xY.Name);
-            Assert.AreEqual(1, xY.Count);
+            ClassicAssert.AreEqual("xY", xY.Name);
+            ClassicAssert.AreEqual(1, xY.Count);
 
             var RT = xY["RT"];
-            Assert.AreEqual(3, (RT.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(3, (RT.Value as byte[,])[0, 0]);
 
             var xX = cel["xX"];
 
-            Assert.AreEqual("xX", xX.Name);
-            Assert.AreEqual(6, xX.Count);
+            ClassicAssert.AreEqual("xX", xX.Name);
+            ClassicAssert.AreEqual(6, xX.Count);
 
             var X = xX["X"];
             var iH = xX["iH"];
@@ -504,21 +505,21 @@ namespace Accord.Tests.Math
             var iG = xX["iG"];
             var xname = xX["name"];
 
-            Assert.IsTrue(expectedxXValues.IsEqual(X.Value as double[,], 1e-15));
+            ClassicAssert.IsTrue(expectedxXValues.IsEqual(X.Value as double[,], 1e-15));
 
-            Assert.AreEqual("Sn(1) test*bf(1)", xname["0"].Value);
-            Assert.AreEqual("Sn(1) test*bf(2)", xname["1"].Value);
-            Assert.AreEqual("Sn(1) constant", xname["2"].Value);
+            ClassicAssert.AreEqual("Sn(1) test*bf(1)", xname["0"].Value);
+            ClassicAssert.AreEqual("Sn(1) test*bf(2)", xname["1"].Value);
+            ClassicAssert.AreEqual("Sn(1) constant", xname["2"].Value);
 
 
 
             var Sess = cel["Sess"];
 
-            Assert.AreEqual(5, Sess.Count);
+            ClassicAssert.AreEqual(5, Sess.Count);
 
             var U = Sess["U"];
 
-            Assert.AreEqual(7, U.Count);
+            ClassicAssert.AreEqual(7, U.Count);
 
             var Uname = U["name"];
             var Uons = U["ons"];
@@ -528,53 +529,53 @@ namespace Accord.Tests.Math
             var Upst = U["pst"];
             var P = U["P"];
 
-            Assert.AreEqual("test", (Uname["0"] as MatNode).Value as string);
-            Assert.AreEqual(8.00000000000000e+00, (Uons.Value as byte[,])[0, 0]);
-            Assert.AreEqual(2.40000000000000e+01, (Uons.Value as byte[,])[1, 0]);
-            Assert.AreEqual(4.00000000000000e+01, (Uons.Value as byte[,])[2, 0]);
-            Assert.AreEqual(5.60000000000000e+01, (Uons.Value as byte[,])[3, 0]);
-            Assert.AreEqual(7.20000000000000e+01, (Uons.Value as byte[,])[4, 0]);
-            Assert.AreEqual(8.80000000000000e+01, (Uons.Value as byte[,])[5, 0]);
+            ClassicAssert.AreEqual("test", (Uname["0"] as MatNode).Value as string);
+            ClassicAssert.AreEqual(8.00000000000000e+00, (Uons.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(2.40000000000000e+01, (Uons.Value as byte[,])[1, 0]);
+            ClassicAssert.AreEqual(4.00000000000000e+01, (Uons.Value as byte[,])[2, 0]);
+            ClassicAssert.AreEqual(5.60000000000000e+01, (Uons.Value as byte[,])[3, 0]);
+            ClassicAssert.AreEqual(7.20000000000000e+01, (Uons.Value as byte[,])[4, 0]);
+            ClassicAssert.AreEqual(8.80000000000000e+01, (Uons.Value as byte[,])[5, 0]);
 
             for (int i = 0; i < 6; i++)
-                Assert.AreEqual(8, (Udur.Value as byte[,])[i, 0]);
+                ClassicAssert.AreEqual(8, (Udur.Value as byte[,])[i, 0]);
 
-            Assert.AreEqual(1.87500000000000e-01, (Udt.Value as double[,])[0, 0]);
+            ClassicAssert.AreEqual(1.87500000000000e-01, (Udt.Value as double[,])[0, 0]);
 
             var sparse = Uu.Value as MatSparse;
-            Assert.AreEqual(774, sparse.Rows.Length);
-            Assert.AreEqual(2, sparse.Columns.Length);
-            Assert.AreEqual(774, sparse.Values.Length);
+            ClassicAssert.AreEqual(774, sparse.Rows.Length);
+            ClassicAssert.AreEqual(2, sparse.Columns.Length);
+            ClassicAssert.AreEqual(774, sparse.Values.Length);
 
             int j = 0;
             for (int i = 160; i <= 288; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
             for (int i = 416; i <= 544; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
             for (int i = 672; i <= 800; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
             for (int i = 928; i <= 1056; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
             for (int i = 1184; i <= 1312; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
             for (int i = 1440; i <= 1568; i++, j++)
-                Assert.AreEqual(i - 1, sparse.Rows[j]);
+                ClassicAssert.AreEqual(i - 1, sparse.Rows[j]);
 
-            Assert.AreEqual(774, j);
+            ClassicAssert.AreEqual(774, j);
             for (int i = 0; i < sparse.Values.Length; i++)
-                Assert.AreEqual(1.0, sparse.Values.GetValue(i));
+                ClassicAssert.AreEqual(1.0, sparse.Values.GetValue(i));
 
-            Assert.AreEqual(2, sparse.Columns.Length);
-            Assert.AreEqual(0, sparse.Columns[0]);
-            Assert.AreEqual(774, sparse.Columns[1]);
+            ClassicAssert.AreEqual(2, sparse.Columns.Length);
+            ClassicAssert.AreEqual(0, sparse.Columns[0]);
+            ClassicAssert.AreEqual(774, sparse.Columns[1]);
 
-            Assert.AreEqual(-21, (Upst.Value as short[,])[0, 0]);
-            Assert.AreEqual(24, (Upst.Value as short[,])[0, 95]);
+            ClassicAssert.AreEqual(-21, (Upst.Value as short[,])[0, 0]);
+            ClassicAssert.AreEqual(24, (Upst.Value as short[,])[0, 95]);
 
 
             var Pname = P["name"];
@@ -582,41 +583,41 @@ namespace Accord.Tests.Math
             var Ph = P["h"];
             var Pi = P["i"];
 
-            Assert.AreEqual("none", Pname.Value);
+            ClassicAssert.AreEqual("none", Pname.Value);
             var ppv = PP.Value as ushort[,];
-            Assert.AreEqual(6, ppv.Length);
-            Assert.AreEqual(2.40000000000000e+01, ppv[0, 0]);
-            Assert.AreEqual(7.20000000000000e+01, ppv[1, 0]);
-            Assert.AreEqual(1.20000000000000e+02, ppv[2, 0]);
-            Assert.AreEqual(1.68000000000000e+02, ppv[3, 0]);
-            Assert.AreEqual(2.16000000000000e+02, ppv[4, 0]);
-            Assert.AreEqual(2.64000000000000e+02, ppv[5, 0]);
+            ClassicAssert.AreEqual(6, ppv.Length);
+            ClassicAssert.AreEqual(2.40000000000000e+01, ppv[0, 0]);
+            ClassicAssert.AreEqual(7.20000000000000e+01, ppv[1, 0]);
+            ClassicAssert.AreEqual(1.20000000000000e+02, ppv[2, 0]);
+            ClassicAssert.AreEqual(1.68000000000000e+02, ppv[3, 0]);
+            ClassicAssert.AreEqual(2.16000000000000e+02, ppv[4, 0]);
+            ClassicAssert.AreEqual(2.64000000000000e+02, ppv[5, 0]);
 
-            Assert.AreEqual(0, (Ph.Value as byte[,])[0, 0]);
-            Assert.AreEqual(1, (Pi.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(0, (Ph.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(1, (Pi.Value as byte[,])[0, 0]);
 
             var C = Sess["C"];
-            Assert.AreEqual(2, C.Count);
+            ClassicAssert.AreEqual(2, C.Count);
 
-            Assert.AreEqual(0, (C["C"].Value as byte[,]).Length);
-            Assert.IsNull(C["name"].Value);
+            ClassicAssert.AreEqual(0, (C["C"].Value as byte[,]).Length);
+            ClassicAssert.IsNull(C["name"].Value);
 
             var row = Sess["row"];
             for (int i = 0; i < 96; i++)
-                Assert.AreEqual(i + 1, (row.Value as byte[,])[0, i]);
+                ClassicAssert.AreEqual(i + 1, (row.Value as byte[,])[0, i]);
 
             var col = Sess["col"];
-            Assert.AreEqual(1, (col.Value as byte[,])[0, 0]);
-            Assert.AreEqual(2, (col.Value as byte[,])[0, 1]);
+            ClassicAssert.AreEqual(1, (col.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(2, (col.Value as byte[,])[0, 1]);
 
             var Fc = Sess["Fc"];
 
             var Fci = Fc["i"];
             var Fname = Fc["name"];
 
-            Assert.AreEqual(1, (Fci.Value as byte[,])[0, 0]);
-            Assert.AreEqual(2, (Fci.Value as byte[,])[0, 1]);
-            Assert.AreEqual("test", Fname.Value);
+            ClassicAssert.AreEqual(1, (Fci.Value as byte[,])[0, 0]);
+            ClassicAssert.AreEqual(2, (Fci.Value as byte[,])[0, 1]);
+            ClassicAssert.AreEqual("test", Fname.Value);
         }
 
 

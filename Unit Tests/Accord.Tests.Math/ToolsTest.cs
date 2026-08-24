@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using AForge;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class AForgeToolsTest
@@ -41,10 +42,10 @@ namespace Accord.Tests.Math
             double x = 0.2;
 
             double actual = Tools.Scale(fromMin, fromMax, toMin, toMax, x);
-            Assert.AreEqual(20.0, actual);
+            ClassicAssert.AreEqual(20.0, actual);
 
             float actualF = Tools.Scale((float)fromMin, (float)fromMax, (float)toMin, (float)toMax, (float)x);
-            Assert.AreEqual(20f, actualF);
+            ClassicAssert.AreEqual(20f, actualF);
         }
 
 
@@ -56,7 +57,7 @@ namespace Accord.Tests.Math
             int x = 50;
             int expected = 25;
             int actual = Tools.Scale(from, to, x);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
 
@@ -68,7 +69,7 @@ namespace Accord.Tests.Math
             double x = 0;
             double expected = 25;
             double actual = Tools.Scale(from, to, x);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
 
@@ -96,7 +97,7 @@ namespace Accord.Tests.Math
 
             var actual = Tools.Scale(toMin, toMax, x);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual));
 
         }
 
@@ -111,12 +112,12 @@ namespace Accord.Tests.Math
             float[] x = { 0.2f, 0.34f };
 
             float[] actual = Tools.Scale(fromMin, fromMax, toMin, toMax, x);
-            Assert.AreEqual(20.0, actual[0]);
-            Assert.AreEqual(34.0, actual[1]);
+            ClassicAssert.AreEqual(20.0, actual[0]);
+            ClassicAssert.AreEqual(34.0, actual[1]);
 
             float[] actualF = Tools.Scale(fromMin, fromMax, toMin, toMax, x);
-            Assert.AreEqual(20f, actualF[0]);
-            Assert.AreEqual(34f, actualF[1]);
+            ClassicAssert.AreEqual(20f, actualF[0]);
+            ClassicAssert.AreEqual(34f, actualF[1]);
         }
 
 
@@ -126,7 +127,7 @@ namespace Accord.Tests.Math
             double d = 0.42;
             double expected = 0.447692023527421;
             double actual = Tools.Atanh(d);
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
         }
 
 
@@ -136,7 +137,7 @@ namespace Accord.Tests.Math
             double d = 0.42;
             double expected = 0.408540207829808;
             double actual = Tools.Asinh(d);
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
         }
 
 
@@ -146,7 +147,7 @@ namespace Accord.Tests.Math
             double x = 3.14;
             double expected = 1.810991348900196;
             double actual = Tools.Acosh(x);
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
         }
 
 
@@ -158,7 +159,7 @@ namespace Accord.Tests.Math
             float expected = 1f / (float)System.Math.Sqrt(f);
             float actual = Tools.InvSqrt(f);
 
-            Assert.AreEqual(expected, actual, 0.001);
+            ClassicAssert.AreEqual(expected, actual, 0.001);
         }
 
         [Test]
@@ -181,35 +182,35 @@ namespace Accord.Tests.Math
 
             actual = Accord.Math.Tools.Direction(center, w);
             expected = (int)System.Math.Floor(0 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, nw);
             expected = (int)System.Math.Floor(45 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, n);
             expected = (int)System.Math.Floor(90 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, ne);
             expected = (int)System.Math.Floor(135 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, e);
             expected = (int)System.Math.Floor(180 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, se);
             expected = (int)System.Math.Floor(225 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, s);
             expected = (int)System.Math.Floor(270 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             actual = Accord.Math.Tools.Direction(center, sw);
             expected = (int)System.Math.Floor(315 / 18.0);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
     }

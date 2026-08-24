@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Integration;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -50,7 +51,7 @@ namespace Accord.Tests.Math
 
             double area = MonteCarloIntegration.Integrate(x => H(x[0], x[1]), from, to, samples);
 
-            Assert.AreEqual(Math.PI, area, 5e-3);
+            ClassicAssert.AreEqual(Math.PI, area, 5e-3);
         }
 
 

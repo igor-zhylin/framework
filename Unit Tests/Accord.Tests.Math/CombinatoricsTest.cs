@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using System.Linq;
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class CombinatoricsTest
@@ -61,7 +62,7 @@ namespace Accord.Tests.Math
                     new int[] { 1, 1, 1 },
                 };
 
-                Assert.IsTrue(expected.IsEqual(table));
+                ClassicAssert.IsTrue(expected.IsEqual(table));
             }
 
             {
@@ -101,7 +102,7 @@ namespace Accord.Tests.Math
 
                 int[][] actual = Combinatorics.TruthTable(symbols, length);
 
-                Assert.IsTrue(expected.IsEqual(actual));
+                ClassicAssert.IsTrue(expected.IsEqual(actual));
             }
         }
 
@@ -135,7 +136,7 @@ namespace Accord.Tests.Math
                 new int[] { 1, 2, 1 },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -161,7 +162,7 @@ namespace Accord.Tests.Math
 
             int[][] actual = Combinatorics.Sequences(symbols).Select(x => (int[])x.Clone()).ToArray();
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -182,7 +183,7 @@ namespace Accord.Tests.Math
             int i = 0;
             foreach (int[] row in Combinatorics.Sequences(2, 3))
             {
-                Assert.IsTrue(row.IsEqual(expected[i++]));
+                ClassicAssert.IsTrue(row.IsEqual(expected[i++]));
             }
         }
 
@@ -214,13 +215,13 @@ namespace Accord.Tests.Math
             foreach (var p in Combinatorics.Permutations(values))
                 permutations.Add(p);
 
-            Assert.AreEqual(6, permutations.Count);
-            Assert.IsTrue(permutations[0].IsEqual(new[] { 1, 2, 3 }));
-            Assert.IsTrue(permutations[1].IsEqual(new[] { 1, 3, 2 }));
-            Assert.IsTrue(permutations[2].IsEqual(new[] { 2, 1, 3 }));
-            Assert.IsTrue(permutations[3].IsEqual(new[] { 2, 3, 1 }));
-            Assert.IsTrue(permutations[4].IsEqual(new[] { 3, 1, 2 }));
-            Assert.IsTrue(permutations[5].IsEqual(new[] { 3, 2, 1 }));
+            ClassicAssert.AreEqual(6, permutations.Count);
+            ClassicAssert.IsTrue(permutations[0].IsEqual(new[] { 1, 2, 3 }));
+            ClassicAssert.IsTrue(permutations[1].IsEqual(new[] { 1, 3, 2 }));
+            ClassicAssert.IsTrue(permutations[2].IsEqual(new[] { 2, 1, 3 }));
+            ClassicAssert.IsTrue(permutations[3].IsEqual(new[] { 2, 3, 1 }));
+            ClassicAssert.IsTrue(permutations[4].IsEqual(new[] { 3, 1, 2 }));
+            ClassicAssert.IsTrue(permutations[5].IsEqual(new[] { 3, 2, 1 }));
         }
 
         [Test]
@@ -273,7 +274,7 @@ namespace Accord.Tests.Math
             string str = combinations.Apply(x => x.ToArray()).ToCSharp();
 
             for (int i = 0; i < combinations.Length; i++)
-                Assert.AreEqual(combinations[i], expected[i]);
+                ClassicAssert.AreEqual(combinations[i], expected[i]);
         }
 
 
@@ -313,7 +314,7 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < combinations.Length; i++)
             {
-                Assert.AreEqual(combinations[i], expected[i]);
+                ClassicAssert.AreEqual(combinations[i], expected[i]);
             }
         }
 
@@ -370,7 +371,7 @@ namespace Accord.Tests.Math
             for (int i = 0; i < subsets.Length; i++)
             {
                 int[] actual = subsets[i].ToArray();
-                Assert.AreEqual(actual, expected[i]);
+                ClassicAssert.AreEqual(actual, expected[i]);
             }
         }
 
@@ -413,7 +414,7 @@ namespace Accord.Tests.Math
             for (int i = 0; i < subsets.Length; i++)
             {
                 int[] actual = subsets[i].ToArray();
-                Assert.AreEqual(actual, expected[i]);
+                ClassicAssert.AreEqual(actual, expected[i]);
             }
         }
 #endif

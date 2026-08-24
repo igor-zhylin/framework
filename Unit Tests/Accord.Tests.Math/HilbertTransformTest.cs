@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Compat;
     using System.Numerics;
 
@@ -39,22 +40,22 @@ namespace Accord.Tests.Math
             Complex[] actual = (Complex[])original.Clone();
             HilbertTransform.FHT(actual, FourierTransform.Direction.Forward);
 
-            Assert.AreEqual(actual[0].Real, 1);
-            Assert.AreEqual(actual[1].Real, 2);
-            Assert.AreEqual(actual[2].Real, 3);
-            Assert.AreEqual(actual[3].Real, 4);
+            ClassicAssert.AreEqual(actual[0].Real, 1);
+            ClassicAssert.AreEqual(actual[1].Real, 2);
+            ClassicAssert.AreEqual(actual[2].Real, 3);
+            ClassicAssert.AreEqual(actual[3].Real, 4);
 
-            Assert.AreEqual(actual[0].Imaginary, +1, 0.000000001);
-            Assert.AreEqual(actual[1].Imaginary, -1, 0.000000001);
-            Assert.AreEqual(actual[2].Imaginary, -1, 0.000000001);
-            Assert.AreEqual(actual[3].Imaginary, +1, 0.000000001);
+            ClassicAssert.AreEqual(actual[0].Imaginary, +1, 0.000000001);
+            ClassicAssert.AreEqual(actual[1].Imaginary, -1, 0.000000001);
+            ClassicAssert.AreEqual(actual[2].Imaginary, -1, 0.000000001);
+            ClassicAssert.AreEqual(actual[3].Imaginary, +1, 0.000000001);
 
             HilbertTransform.FHT(actual, FourierTransform.Direction.Backward);
 
-            Assert.AreEqual(actual[0], original[0]);
-            Assert.AreEqual(actual[1], original[1]);
-            Assert.AreEqual(actual[2], original[2]);
-            Assert.AreEqual(actual[3], original[3]);
+            ClassicAssert.AreEqual(actual[0], original[0]);
+            ClassicAssert.AreEqual(actual[1], original[1]);
+            ClassicAssert.AreEqual(actual[2], original[2]);
+            ClassicAssert.AreEqual(actual[3], original[3]);
         }
 
         [Test]
@@ -68,10 +69,10 @@ namespace Accord.Tests.Math
 
             HilbertTransform.FHT(actual, FourierTransform.Direction.Backward);
 
-            Assert.AreEqual(actual[0], original[0], 0.08);
-            Assert.AreEqual(actual[1], original[1], 0.08);
-            Assert.AreEqual(actual[2], original[2], 0.08);
-            Assert.AreEqual(actual[3], original[3], 0.08);
+            ClassicAssert.AreEqual(actual[0], original[0], 0.08);
+            ClassicAssert.AreEqual(actual[1], original[1], 0.08);
+            ClassicAssert.AreEqual(actual[2], original[2], 0.08);
+            ClassicAssert.AreEqual(actual[3], original[3], 0.08);
         }
     }
 }

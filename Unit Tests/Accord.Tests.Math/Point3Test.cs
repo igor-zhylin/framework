@@ -22,6 +22,7 @@
 
 using Accord.Math.Geometry;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System;
 using Accord.Math;
 
@@ -61,7 +62,7 @@ namespace Accord.Tests.Math
                 bool expected = true;
                 bool actual = Point3.Collinear(p1, p2, p3);
 
-                Assert.AreEqual(expected, actual);
+                ClassicAssert.AreEqual(expected, actual);
             }
 
             {
@@ -72,7 +73,7 @@ namespace Accord.Tests.Math
                 bool expected = false;
                 bool actual = Point3.Collinear(p1, p2, p3);
 
-                Assert.AreEqual(expected, actual);
+                ClassicAssert.AreEqual(expected, actual);
             }
 
             {
@@ -83,7 +84,7 @@ namespace Accord.Tests.Math
                 bool expected = false;
                 bool actual = Point3.Collinear(p1, p2, p3);
 
-                Assert.AreEqual(expected, actual);
+                ClassicAssert.AreEqual(expected, actual);
             }
         }
     }

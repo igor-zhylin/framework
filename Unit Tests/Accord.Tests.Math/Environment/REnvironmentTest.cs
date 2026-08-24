@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using Accord.Math.Environments;
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -56,10 +57,10 @@ namespace Accord.Tests.Math
             var m = matrix(x, 2, 2);
 
             double[,] actual  = m;
-            Assert.AreEqual(1, actual[0, 0]);
-            Assert.AreEqual(3, actual[0, 1]);
-            Assert.AreEqual(2, actual[1, 0]);
-            Assert.AreEqual(4, actual[1, 1]);
+            ClassicAssert.AreEqual(1, actual[0, 0]);
+            ClassicAssert.AreEqual(3, actual[0, 1]);
+            ClassicAssert.AreEqual(2, actual[1, 0]);
+            ClassicAssert.AreEqual(4, actual[1, 1]);
         }
 
       

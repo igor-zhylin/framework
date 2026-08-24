@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Accord.Math.Geometry;
 
 namespace Accord.Tests.Math
@@ -27,12 +28,12 @@ namespace Accord.Tests.Math
             List<IntPoint> optimizedShape = optimizer.OptimizeShape(shape);
 
             // check number of points in result shape
-            Assert.AreEqual(expectedShape.Count, optimizedShape.Count);
+            ClassicAssert.AreEqual(expectedShape.Count, optimizedShape.Count);
 
             // check that all points matches with expected
             for (int i = 0, n = optimizedShape.Count; i < n; i++)
             {
-                Assert.AreEqual(expectedShape[i], optimizedShape[i]);
+                ClassicAssert.AreEqual(expectedShape[i], optimizedShape[i]);
             }
         }
     }

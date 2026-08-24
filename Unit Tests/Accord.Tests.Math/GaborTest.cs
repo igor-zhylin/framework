@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
 
     [TestFixture]
@@ -59,8 +60,8 @@ namespace Accord.Tests.Math
 
             double[,] actual = Gabor.Kernel2D(sigma: 0.1, theta: 0.2, lambda: 0.3, psi: 0.4, gamma: 0.5);
 
-            Assert.AreEqual(actual.GetLength(0), expected.GetLength(0));
-            Assert.AreEqual(actual.GetLength(1), expected.GetLength(1));
+            ClassicAssert.AreEqual(actual.GetLength(0), expected.GetLength(0));
+            ClassicAssert.AreEqual(actual.GetLength(1), expected.GetLength(1));
 
             for (int i = 0; i < actual.GetLength(0); i++)
             {
@@ -69,7 +70,7 @@ namespace Accord.Tests.Math
                     double e = expected[i, j];
                     double a = actual[i, j];
 
-                    Assert.AreEqual(e, a, System.Math.Abs(e * 1e-10));
+                    ClassicAssert.AreEqual(e, a, System.Math.Abs(e * 1e-10));
                 }
             }
         }
@@ -88,8 +89,8 @@ namespace Accord.Tests.Math
 
             double[,] actual = Gabor.Kernel2D(sigma: 1, theta: 2, lambda: 3, psi: 4, gamma: 5);
 
-            Assert.AreEqual(actual.GetLength(0), expected.GetLength(0));
-            Assert.AreEqual(actual.GetLength(1), expected.GetLength(1));
+            ClassicAssert.AreEqual(actual.GetLength(0), expected.GetLength(0));
+            ClassicAssert.AreEqual(actual.GetLength(1), expected.GetLength(1));
 
             for (int i = 0; i < actual.GetLength(0); i++)
             {
@@ -98,7 +99,7 @@ namespace Accord.Tests.Math
                     double e = expected[i, j];
                     double a = actual[i, j];
 
-                    Assert.AreEqual(e, a, System.Math.Abs(e * 1e-10));
+                    ClassicAssert.AreEqual(e, a, System.Math.Abs(e * 1e-10));
                 }
             }
         }

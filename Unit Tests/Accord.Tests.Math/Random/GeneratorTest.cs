@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Accord.Math;
@@ -46,7 +47,7 @@ namespace Accord.Tests.Math
             Accord.Math.Random.Generator.Seed = 0;
             var l = create(100, 10, reset: false);
             int sameCount = count(l);
-            Assert.IsTrue(sameCount > 50);
+            ClassicAssert.IsTrue(sameCount > 50);
         }
 
         [Test]
@@ -64,8 +65,8 @@ namespace Accord.Tests.Math
                 values[i] = Accord.Math.Random.Generator.Random.Next();
             });
 
-            Assert.IsTrue(seeds.All(x => x == 0));
-            Assert.IsTrue(values.All(x => x == values[0]));
+            ClassicAssert.IsTrue(seeds.All(x => x == 0));
+            ClassicAssert.IsTrue(values.All(x => x == values[0]));
         }
 
         [Test]
@@ -74,7 +75,7 @@ namespace Accord.Tests.Math
             Accord.Math.Random.Generator.Seed = -1;
             var l = create(1000, 10, reset: false);
             int sameCount = count(l);
-            Assert.IsTrue(sameCount > 30);
+            ClassicAssert.IsTrue(sameCount > 30);
         }
 
         [Test]
@@ -83,7 +84,7 @@ namespace Accord.Tests.Math
             Accord.Math.Random.Generator.Seed = 1;
             var l = create(100, 10, reset: false);
             int sameCount = count(l);
-            Assert.IsTrue(sameCount == 0);
+            ClassicAssert.IsTrue(sameCount == 0);
         }
 
         [Test]
@@ -97,7 +98,7 @@ namespace Accord.Tests.Math
             double[][] l = create(rows, cols, reset: true);
 
             int sameCount = count(l);
-            Assert.IsTrue(sameCount == 0);
+            ClassicAssert.IsTrue(sameCount == 0);
         }
 
         [Test]
@@ -107,7 +108,7 @@ namespace Accord.Tests.Math
 
             var l = create(100, 10, reset: false);
             int sameCount = count(l);
-            Assert.IsTrue(sameCount == 0);
+            ClassicAssert.IsTrue(sameCount == 0);
         }
 
         [Test]
@@ -117,19 +118,19 @@ namespace Accord.Tests.Math
             int[] actual = random(3);
             int[] expected = new int[] { 1559595546, 1755192844, 1649316166 };
             var str = actual.ToCSharp();
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
 
             Accord.Math.Random.Generator.Seed = -1;
             actual = random(3);
             expected = new int[] { 534011718, 237820880, 1002897798 };
             str = actual.ToCSharp();
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
 
             Accord.Math.Random.Generator.Seed = 1;
             actual = random(3);
             expected = new int[] { 607892308, 1910784178, 911229122 };
             str = actual.ToCSharp();
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -166,7 +167,7 @@ namespace Accord.Tests.Math
                 t[i].Join();
 
             int[] keys = values.Keys.ToArray().Sorted();
-            Assert.AreEqual(100, keys.Length);
+            ClassicAssert.AreEqual(100, keys.Length);
 
             int? ex = null;
             for (int i = 0; i < keys.Length; i++)
@@ -175,12 +176,12 @@ namespace Accord.Tests.Math
                 if (ex == null)
                     ex = l[0];
                 else
-                    Assert.AreEqual(ex.Value, l[0]);
+                    ClassicAssert.AreEqual(ex.Value, l[0]);
 
                 var s = seeds[keys[i]];
-                // Assert.AreEqual(2, s.Count);
-                Assert.IsNull(s[0]);
-                Assert.AreEqual(0, s[1]);
+                // ClassicAssert.AreEqual(2, s.Count);
+                ClassicAssert.IsNull(s[0]);
+                ClassicAssert.AreEqual(0, s[1]);
             }
         }
 

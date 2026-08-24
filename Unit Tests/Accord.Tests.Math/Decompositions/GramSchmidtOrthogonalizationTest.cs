@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -57,7 +58,7 @@ namespace Accord.Tests.Math
             };
 
             var svd = new SingularValueDecomposition(value);
-            Assert.AreEqual(2, svd.Rank);
+            ClassicAssert.AreEqual(2, svd.Rank);
 
 
             var target = new GramSchmidtOrthogonalization(value);
@@ -69,8 +70,8 @@ namespace Accord.Tests.Math
             double[,] transpose = Q.Transpose();
             double[,] m = Matrix.Multiply(Q, transpose);
 
-            Assert.IsTrue(Matrix.IsEqual(m, Matrix.Identity(2), 1e-10));
-            Assert.IsTrue(Matrix.IsEqual(inv, transpose, 1e-10));
+            ClassicAssert.IsTrue(Matrix.IsEqual(m, Matrix.Identity(2), 1e-10));
+            ClassicAssert.IsTrue(Matrix.IsEqual(inv, transpose, 1e-10));
         }
 
     }

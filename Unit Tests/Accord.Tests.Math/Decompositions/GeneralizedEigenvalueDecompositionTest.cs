@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -66,7 +67,7 @@ namespace Accord.Tests.Math
                 // Compute the determinant equation show above
                 double det = Matrix.Determinant(A.Subtract(lambda[i].Multiply(B))); // almost zero
 
-                Assert.IsTrue(det < 1e-6);
+                ClassicAssert.IsTrue(det < 1e-6);
             }
 
 
@@ -85,8 +86,8 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.IsTrue(Matrix.IsEqual(gevd.Eigenvectors, expectedVectors, 0.00000000001));
-            Assert.IsTrue(Matrix.IsEqual(gevd.DiagonalMatrix, expectedValues, 0.00000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(gevd.Eigenvectors, expectedVectors, 0.00000000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(gevd.DiagonalMatrix, expectedValues, 0.00000000001));
         }
 
         [Test]
@@ -100,8 +101,8 @@ namespace Accord.Tests.Math
             double[,] expectedVectors = Matrix.Identity(100);
             double[,] expectedValues = Matrix.Identity(100);
 
-            Assert.IsTrue(Matrix.IsEqual(gevd.Eigenvectors, expectedVectors));
-            Assert.IsTrue(Matrix.IsEqual(gevd.DiagonalMatrix, expectedValues));
+            ClassicAssert.IsTrue(Matrix.IsEqual(gevd.Eigenvectors, expectedVectors));
+            ClassicAssert.IsTrue(Matrix.IsEqual(gevd.DiagonalMatrix, expectedValues));
         }
 
         [Test]
@@ -123,7 +124,7 @@ namespace Accord.Tests.Math
                     var AV = Matrix.Multiply(A, V);
                     var BVD = Matrix.Multiply(Matrix.Multiply(B, V), D);
 
-                    Assert.IsTrue(Matrix.IsEqual(AV, BVD, 0.0000001));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(AV, BVD, 0.0000001));
                 }
             }
 
@@ -142,7 +143,7 @@ namespace Accord.Tests.Math
                 var AV = Matrix.Multiply(A, V);
                 var BVD = Matrix.Multiply(Matrix.Multiply(B, V), D);
 
-                Assert.IsTrue(Matrix.IsEqual(AV, BVD, 0.0000001));
+                ClassicAssert.IsTrue(Matrix.IsEqual(AV, BVD, 0.0000001));
             }
         }
 
@@ -181,7 +182,7 @@ namespace Accord.Tests.Math
             // A*V = B*V*D
             var AV = Matrix.Multiply(A, V);
             var BVD = Matrix.Multiply(Matrix.Multiply(B, V), D);
-            Assert.IsTrue(Matrix.IsEqual(AV, BVD, 0.000001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(AV, BVD, 0.000001));
 
             double[,] expectedVectors =
             {
@@ -197,8 +198,8 @@ namespace Accord.Tests.Math
                 {   0,	0,	0.186046511627907}
             };
 
-            //Assert.IsTrue(Matrix.IsEqual(V, expectedVectors,0.001));
-            Assert.IsTrue(Matrix.IsEqual(D, expectedValues, 0.00001));
+            //ClassicAssert.IsTrue(Matrix.IsEqual(V, expectedVectors,0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(D, expectedValues, 0.00001));
 
         }
 

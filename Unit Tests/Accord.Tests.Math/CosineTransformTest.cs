@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using AForge.Math;
 
     [TestFixture]
@@ -62,7 +63,7 @@ namespace Accord.Tests.Math
                 { -0.2970, -0.0627,  0.1960,  0.0644, -0.1136, -0.1031 ,   0.1887  ,  0.1444  },
             };
 
-            Assert.IsTrue(actual.IsEqual(expected, atol: 0.05));
+            ClassicAssert.IsTrue(actual.IsEqual(expected, atol: 0.05));
         }
 
         [Test]
@@ -96,7 +97,7 @@ namespace Accord.Tests.Math
                 { 0.996078431372549, 0.996078431372549, 0.996078431372549, 0.996078431372549, 0.996078431372549, 0.996078431372549, 0.996078431372549, 0.996078431372549 }
             };
 
-            Assert.IsTrue(actual.IsEqual(expected, atol: 0.05));
+            ClassicAssert.IsTrue(actual.IsEqual(expected, atol: 0.05));
         }
     }
 }

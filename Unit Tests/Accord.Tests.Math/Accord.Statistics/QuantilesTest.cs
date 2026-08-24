@@ -26,6 +26,7 @@ namespace Accord.Tests.Statistics
     using Accord.Math;
     using Accord.Statistics;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     class QuantilesTest
@@ -180,7 +181,7 @@ namespace Accord.Tests.Statistics
 
         private static void Assert_AreEqual(double[] expected, double[] actual, double rtol = 1e-8)
         {
-            Assert.IsTrue(expected.IsEqual(actual, rtol: rtol));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, rtol: rtol));
         }
     }
 }

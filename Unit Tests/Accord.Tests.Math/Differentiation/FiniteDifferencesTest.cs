@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Differentiation;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math.Optimization;
 
     [TestFixture]
@@ -45,7 +46,7 @@ namespace Accord.Tests.Math
             double[] expected = BroydenFletcherGoldfarbShannoTest.rosenbrockGradient(inputs);
             double[] actual = target.Compute(inputs);
 
-            Assert.IsTrue(expected.IsEqual(actual, 0.05));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 0.05));
         }
 
         [Test]
@@ -67,7 +68,7 @@ namespace Accord.Tests.Math
             double[] expected = { -2400, 0 };
             double[] actual = target.Compute(inputs);
 
-            Assert.IsTrue(expected.IsEqual(actual, 1e-5));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 1e-5));
         }
 
         [Test]
@@ -88,8 +89,8 @@ namespace Accord.Tests.Math
             double[] result = calculator.Compute(2, -1); // answer is (4, 1)
             #endregion
 
-            Assert.AreEqual(4, result[0], 1e-10);
-            Assert.AreEqual(1, result[1], 1e-10);
+            ClassicAssert.AreEqual(4, result[0], 1e-10);
+            ClassicAssert.AreEqual(1, result[1], 1e-10);
         }
 
         [Test]
@@ -115,7 +116,7 @@ namespace Accord.Tests.Math
                 new double[] { 0, 0 },
             };
 
-            Assert.IsTrue(result.IsEqual(expected, 1e-8));
+            ClassicAssert.IsTrue(result.IsEqual(expected, 1e-8));
         }
 
         [Test]
@@ -132,7 +133,7 @@ namespace Accord.Tests.Math
                 new double[] { 1, 0 },
             };
 
-            Assert.IsTrue(result.IsEqual(expected, 1e-8));
+            ClassicAssert.IsTrue(result.IsEqual(expected, 1e-8));
         }
 
         [Test]
@@ -163,7 +164,7 @@ namespace Accord.Tests.Math
                     double[][] actual = calculator.Hessian(value);
                     double[][] expected = expectedFormula(value);
 
-                    Assert.IsTrue(actual.IsEqual(expected, rtol: 1e-5));
+                    ClassicAssert.IsTrue(actual.IsEqual(expected, rtol: 1e-5));
                 }
             }
         }
@@ -186,7 +187,7 @@ namespace Accord.Tests.Math
 
                 double[][] result = calculator.Hessian(Vector.Random(Size));
 
-                Assert.IsTrue(result.IsEqual(Q, Tolerance));
+                ClassicAssert.IsTrue(result.IsEqual(Q, Tolerance));
             }
         }
 
@@ -249,22 +250,22 @@ namespace Accord.Tests.Math
             double[] result = calculator.Compute(aParam);
             double[][] actual = calculator.Hessian(aParam);
 
-            Assert.AreEqual(actual[0][0], -57.6160442364672, 1e-2);
-            Assert.AreEqual(actual[0][1], -1.27840745168738, 1e-2);
-            Assert.AreEqual(actual[0][2], 0.0255249049748045, 1e-2);
-            Assert.AreEqual(actual[0][3], 0.0231494572415752, 1e-2);
-            Assert.AreEqual(actual[1][0], -1.27840745168738, 1e-2);
-            Assert.AreEqual(actual[1][1], 173.045435758468, 1e-1);
-            Assert.AreEqual(actual[1][2], 29.9809421733244, 1e-2);
-            Assert.AreEqual(actual[1][3], 29.8568458845239, 1e-1);
-            Assert.AreEqual(actual[2][0], 0.0255249049748045, 1e-2);
-            Assert.AreEqual(actual[2][1], 29.9809421733244, 1e-2);
-            Assert.AreEqual(actual[2][2], 5.2012616436059, 1e-2);
-            Assert.AreEqual(actual[2][3], 5.17856868498256, 1e-2);
-            Assert.AreEqual(actual[3][0], 0.0231494572415752, 1e-2);
-            Assert.AreEqual(actual[3][1], 29.8568458845239, 1e-2);
-            Assert.AreEqual(actual[3][2], 5.17856868498256, 1e-2);
-            Assert.AreEqual(actual[3][3], 5.15878895157584, 1e-2);
+            ClassicAssert.AreEqual(actual[0][0], -57.6160442364672, 1e-2);
+            ClassicAssert.AreEqual(actual[0][1], -1.27840745168738, 1e-2);
+            ClassicAssert.AreEqual(actual[0][2], 0.0255249049748045, 1e-2);
+            ClassicAssert.AreEqual(actual[0][3], 0.0231494572415752, 1e-2);
+            ClassicAssert.AreEqual(actual[1][0], -1.27840745168738, 1e-2);
+            ClassicAssert.AreEqual(actual[1][1], 173.045435758468, 1e-1);
+            ClassicAssert.AreEqual(actual[1][2], 29.9809421733244, 1e-2);
+            ClassicAssert.AreEqual(actual[1][3], 29.8568458845239, 1e-1);
+            ClassicAssert.AreEqual(actual[2][0], 0.0255249049748045, 1e-2);
+            ClassicAssert.AreEqual(actual[2][1], 29.9809421733244, 1e-2);
+            ClassicAssert.AreEqual(actual[2][2], 5.2012616436059, 1e-2);
+            ClassicAssert.AreEqual(actual[2][3], 5.17856868498256, 1e-2);
+            ClassicAssert.AreEqual(actual[3][0], 0.0231494572415752, 1e-2);
+            ClassicAssert.AreEqual(actual[3][1], 29.8568458845239, 1e-2);
+            ClassicAssert.AreEqual(actual[3][2], 5.17856868498256, 1e-2);
+            ClassicAssert.AreEqual(actual[3][3], 5.15878895157584, 1e-2);
         }
 
     }

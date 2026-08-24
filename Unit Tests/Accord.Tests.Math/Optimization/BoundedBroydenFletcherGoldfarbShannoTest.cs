@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -36,7 +37,7 @@ namespace Accord.Tests.Math
             Func<double[], double> f = rosenbrockFunction;
             Func<double[], double[]> g = rosenbrockGradient;
 
-            Assert.AreEqual(104, f(new[] { -1.0, 2.0 }));
+            ClassicAssert.AreEqual(104, f(new[] { -1.0, 2.0 }));
 
 
             int n = 2; // number of variables
@@ -47,25 +48,25 @@ namespace Accord.Tests.Math
             lbfgs.FunctionTolerance = 1e-10;
 
             double expected = 0;
-            Assert.IsTrue(lbfgs.Minimize(initial));
+            ClassicAssert.IsTrue(lbfgs.Minimize(initial));
             double actual = lbfgs.Value;
 
 
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
 
             double[] result = lbfgs.Solution;
 
-            //Assert.AreEqual(49, lbfgs.Evaluations);
-            //Assert.AreEqual(40, lbfgs.Iterations);
-            Assert.AreEqual(1.0, result[0], 1e-6);
-            Assert.AreEqual(1.0, result[1], 1e-6);
+            //ClassicAssert.AreEqual(49, lbfgs.Evaluations);
+            //ClassicAssert.AreEqual(40, lbfgs.Iterations);
+            ClassicAssert.AreEqual(1.0, result[0], 1e-6);
+            ClassicAssert.AreEqual(1.0, result[1], 1e-6);
 
             double y = f(result);
             double[] d = g(result);
 
-            Assert.AreEqual(0, y, 1e-10);
-            Assert.AreEqual(0, d[0], 1e-6);
-            Assert.AreEqual(0, d[1], 1e-6);
+            ClassicAssert.AreEqual(0, y, 1e-10);
+            ClassicAssert.AreEqual(0, d[0], 1e-6);
+            ClassicAssert.AreEqual(0, d[1], 1e-6);
         }
 
         [Test]
@@ -103,7 +104,7 @@ namespace Accord.Tests.Math
             var lbfgs = new BoundedBroydenFletcherGoldfarbShanno(numberOfVariables: 2, function: f, gradient: g);
 
             // And then minimize the function:
-            Assert.IsTrue(lbfgs.Minimize());
+            ClassicAssert.IsTrue(lbfgs.Minimize());
             double minValue = lbfgs.Value;
             double[] solution = lbfgs.Solution;
 
@@ -114,10 +115,10 @@ namespace Accord.Tests.Math
             // http://www.wolframalpha.com/input/?i=maximize+%28exp%28-%28x-1%29%C2%B2%29+%2B+exp%28-%28y-2%29%C2%B2%2F2%29%29
 
             double expected = -2;
-            Assert.AreEqual(expected, minValue, 1e-10);
+            ClassicAssert.AreEqual(expected, minValue, 1e-10);
 
-            Assert.AreEqual(1, solution[0], 1e-3);
-            Assert.AreEqual(2, solution[1], 1e-3);
+            ClassicAssert.AreEqual(1, solution[0], 1e-3);
+            ClassicAssert.AreEqual(2, solution[1], 1e-3);
 
         }
 
@@ -169,7 +170,7 @@ namespace Accord.Tests.Math
                 Function = (x) => 0.0
             };
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
 
             // The optimizer should use finite differences as the gradient
         }
@@ -216,14 +217,14 @@ namespace Accord.Tests.Math
             double minimum = target.Value;
             double[] solution = target.Solution;
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
-            Assert.AreEqual(0, minimum, 1e-10);
-            Assert.AreEqual(-1, solution[0], 1e-5);
-            Assert.AreEqual(0, solution[1], 1e-5);
+            ClassicAssert.AreEqual(0, minimum, 1e-10);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-5);
+            ClassicAssert.AreEqual(0, solution[1], 1e-5);
 
             double expectedMinimum = function(target.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
      
@@ -249,7 +250,7 @@ namespace Accord.Tests.Math
 
                 lbfgs.FunctionTolerance = 1e3;
 
-                Assert.IsTrue(lbfgs.Minimize(start));
+                ClassicAssert.IsTrue(lbfgs.Minimize(start));
                 double minValue = lbfgs.Value;
                 double[] solution = lbfgs.Solution;
 
@@ -259,7 +260,7 @@ namespace Accord.Tests.Math
                     errors++;
             }
 
-            Assert.IsTrue(errors < 1000);
+            ClassicAssert.IsTrue(errors < 1000);
         }
 
         private static void createExpDiff(out Func<double[], double> f, out Func<double[], double[]> g)

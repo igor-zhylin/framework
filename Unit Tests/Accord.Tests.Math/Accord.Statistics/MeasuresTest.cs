@@ -26,6 +26,7 @@ namespace Accord.Tests.Statistics
     using Accord.Math;
     using Accord.Statistics;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     class MeasuresTest
@@ -75,8 +76,8 @@ namespace Accord.Tests.Statistics
             double[] ewm = timeSeries.ExponentialWeightedMean(window, alpha); // (5.47, 5.20)
             #endregion
 
-            Assert.AreEqual(5.3708532126850983, ewm[0], Tolerance);
-            Assert.AreEqual(5.2012181301523794, ewm[1], Tolerance);
+            ClassicAssert.AreEqual(5.3708532126850983, ewm[0], Tolerance);
+            ClassicAssert.AreEqual(5.2012181301523794, ewm[1], Tolerance);
         }
 
         [Test]
@@ -114,10 +115,10 @@ namespace Accord.Tests.Statistics
             double[,] ewmCov = timeSeries.ExponentialWeightedCovariance(window, alpha);
             #endregion
 
-            Assert.AreEqual(3.796312193730190, ewmCov[0, 0], Tolerance);
-            Assert.AreEqual(0.550757446419597, ewmCov[1, 0], Tolerance);
-            Assert.AreEqual(0.550757446419597, ewmCov[0, 1], Tolerance);
-            Assert.AreEqual(12.99750453306480, ewmCov[1, 1], Tolerance);
+            ClassicAssert.AreEqual(3.796312193730190, ewmCov[0, 0], Tolerance);
+            ClassicAssert.AreEqual(0.550757446419597, ewmCov[1, 0], Tolerance);
+            ClassicAssert.AreEqual(0.550757446419597, ewmCov[0, 1], Tolerance);
+            ClassicAssert.AreEqual(12.99750453306480, ewmCov[1, 1], Tolerance);
         }
 
         [Test]
@@ -147,7 +148,7 @@ namespace Accord.Tests.Statistics
             double ewm = timeSeries.ExponentialWeightedMean(window, alpha);
             #endregion
 
-            Assert.AreEqual(5.3708532126850983, ewm, Tolerance);
+            ClassicAssert.AreEqual(5.3708532126850983, ewm, Tolerance);
         }
 
         [Test]
@@ -177,7 +178,7 @@ namespace Accord.Tests.Statistics
             double ewVar = timeSeries.ExponentialWeightedVariance(window, alpha);
             #endregion
 
-            Assert.AreEqual(3.796312193730190, ewVar, Tolerance);
+            ClassicAssert.AreEqual(3.796312193730190, ewVar, Tolerance);
         }
 
         [Test]
@@ -194,7 +195,7 @@ namespace Accord.Tests.Statistics
             double[] ewmas = this.series.ExponentialWeightedMean(alpha);
 
             // Assert
-            Assert.True(ewmas.IsEqual(expected, Tolerance), "EWMA does not agree with expected");
+            ClassicAssert.True(ewmas.IsEqual(expected, Tolerance), "EWMA does not agree with expected");
         }
 
         [Test]
@@ -220,8 +221,8 @@ namespace Accord.Tests.Statistics
             double[] ewmas = this.series.ExponentialWeightedMean(alpha);
 
             // Assert
-            Assert.AreEqual(ewmas[0], ewma1, Tolerance);
-            Assert.AreEqual(ewmas[1], ewma2, Tolerance);
+            ClassicAssert.AreEqual(ewmas[0], ewma1, Tolerance);
+            ClassicAssert.AreEqual(ewmas[1], ewma2, Tolerance);
         }
 
         [Test]
@@ -248,8 +249,8 @@ namespace Accord.Tests.Statistics
             double[] ewmas = this.series.ExponentialWeightedMean(window, alpha);
 
             // Assert
-            Assert.AreEqual(ewmas[0], ewma1, Tolerance);
-            Assert.AreEqual(ewmas[1], ewma2, Tolerance);
+            ClassicAssert.AreEqual(ewmas[0], ewma1, Tolerance);
+            ClassicAssert.AreEqual(ewmas[1], ewma2, Tolerance);
         }
 
         [Test]
@@ -276,8 +277,8 @@ namespace Accord.Tests.Statistics
             double[,] ewmas = this.series.ExponentialWeightedCovariance(window, alpha, unbiased: false);
 
             // Assert
-            Assert.AreEqual(ewmas[0, 0], ewma1, Tolerance);
-            Assert.AreEqual(ewmas[1, 1], ewma2, Tolerance);
+            ClassicAssert.AreEqual(ewmas[0, 0], ewma1, Tolerance);
+            ClassicAssert.AreEqual(ewmas[1, 1], ewma2, Tolerance);
         }
 
         [Test]
@@ -303,8 +304,8 @@ namespace Accord.Tests.Statistics
             double[,] ewmas = this.series.ExponentialWeightedCovariance(alpha, unbiased: true);
 
             // Assert
-            Assert.AreEqual(ewmas[0, 0], ewma1, Tolerance);
-            Assert.AreEqual(ewmas[1, 1], ewma2, Tolerance);
+            ClassicAssert.AreEqual(ewmas[0, 0], ewma1, Tolerance);
+            ClassicAssert.AreEqual(ewmas[1, 1], ewma2, Tolerance);
         }
 
         [Test]
@@ -325,7 +326,7 @@ namespace Accord.Tests.Statistics
             double[,] ewmCov = this.series.ExponentialWeightedCovariance(alpha, unbiased: true);
 
             // Assert
-            Assert.True(ewmCov.IsEqual(expected, Tolerance), "EWM Covariance does not agree with expected");
+            ClassicAssert.True(ewmCov.IsEqual(expected, Tolerance), "EWM Covariance does not agree with expected");
         }
 
         [Test]
@@ -346,7 +347,7 @@ namespace Accord.Tests.Statistics
             double[,] ewmCov = this.series.ExponentialWeightedCovariance(alpha, unbiased: false);
 
             // Assert
-            Assert.True(ewmCov.IsEqual(expected, Tolerance), "EWM Covariance does not agree with expected");
+            ClassicAssert.True(ewmCov.IsEqual(expected, Tolerance), "EWM Covariance does not agree with expected");
         }
     }
 }

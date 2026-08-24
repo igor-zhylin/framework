@@ -27,6 +27,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
 
     [TestFixture]
@@ -77,13 +78,13 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(f, constraints);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
-            Assert.IsFalse(Double.IsNaN(minValue));
-            Assert.AreEqual(1, minValue, 1e-5);
-            Assert.AreEqual(0, solver.Solution[0], 1e-5);
-            Assert.AreEqual(0, solver.Solution[1], 1e-5);
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.AreEqual(1, minValue, 1e-5);
+            ClassicAssert.AreEqual(0, solver.Solution[0], 1e-5);
+            ClassicAssert.AreEqual(0, solver.Solution[1], 1e-5);
         }
 
 
@@ -129,16 +130,16 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(f, constraints);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
-            Assert.AreEqual(0, minValue, 1e-10);
-            Assert.AreEqual(1, solver.Solution[0], 1e-5);
-            Assert.AreEqual(1, solver.Solution[1], 1e-5);
+            ClassicAssert.AreEqual(0, minValue, 1e-10);
+            ClassicAssert.AreEqual(1, solver.Solution[0], 1e-5);
+            ClassicAssert.AreEqual(1, solver.Solution[1], 1e-5);
 
-            Assert.IsFalse(Double.IsNaN(minValue));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[0]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[1]));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[0]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[1]));
         }
 
 #if !NET35
@@ -193,17 +194,17 @@ namespace Accord.Tests.Math
 
             bool success = solver.Minimize();
             double minValue = solver.Value;
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
-            Assert.AreEqual(-6.9, minValue, 1e-1);
-            Assert.AreEqual(+1.73, solver.Solution[0], 1e-2);
-            Assert.AreEqual(-2.00, solver.Solution[1], 1e-2);
-            Assert.AreEqual(+1.73, solver.Solution[2], 1e-2);
+            ClassicAssert.AreEqual(-6.9, minValue, 1e-1);
+            ClassicAssert.AreEqual(+1.73, solver.Solution[0], 1e-2);
+            ClassicAssert.AreEqual(-2.00, solver.Solution[1], 1e-2);
+            ClassicAssert.AreEqual(+1.73, solver.Solution[2], 1e-2);
 
-            Assert.IsFalse(Double.IsNaN(minValue));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[0]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[1]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[2]));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[0]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[1]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[2]));
 
         }
 
@@ -268,15 +269,15 @@ namespace Accord.Tests.Math
             solver.Solution[1] = 1;
             solver.Solution[2] = 1;
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
-            Assert.AreEqual(1, solver.Solution[0] + solver.Solution[1], 1e-4);
+            ClassicAssert.AreEqual(1, solver.Solution[0] + solver.Solution[1], 1e-4);
 
-            Assert.IsFalse(Double.IsNaN(minValue));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[0]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[1]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[2]));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[0]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[1]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[2]));
         }
 
         [Test]
@@ -345,14 +346,14 @@ namespace Accord.Tests.Math
             double minValue = solver.Value;
             #endregion
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(0, minValue, 1e-10);
-            Assert.AreEqual(1, solver.Solution[0], 1e-6);
-            Assert.AreEqual(1, solver.Solution[1], 1e-6);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(0, minValue, 1e-10);
+            ClassicAssert.AreEqual(1, solver.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(1, solver.Solution[1], 1e-6);
 
-            Assert.IsFalse(Double.IsNaN(minValue));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[0]));
-            Assert.IsFalse(Double.IsNaN(solver.Solution[1]));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[0]));
+            ClassicAssert.IsFalse(Double.IsNaN(solver.Solution[1]));
         }
 
         [Test]
@@ -403,14 +404,14 @@ namespace Accord.Tests.Math
             double minValue = solver.Value;
             #endregion
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(0, minValue, 1e-10);
-            Assert.AreEqual(1, solver.Solution[0], 1e-6);
-            Assert.AreEqual(1, solver.Solution[1], 1e-6);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(0, minValue, 1e-10);
+            ClassicAssert.AreEqual(1, solver.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(1, solver.Solution[1], 1e-6);
 
-            Assert.IsFalse(double.IsNaN(minValue));
-            Assert.IsFalse(double.IsNaN(solver.Solution[0]));
-            Assert.IsFalse(double.IsNaN(solver.Solution[1]));
+            ClassicAssert.IsFalse(double.IsNaN(minValue));
+            ClassicAssert.IsFalse(double.IsNaN(solver.Solution[0]));
+            ClassicAssert.IsFalse(double.IsNaN(solver.Solution[1]));
         }
 
         [Test]
@@ -457,7 +458,7 @@ namespace Accord.Tests.Math
                 {
                     double expected = i * 2 + j * 3;
                     double actual = objective.Function(new double[] { i, j });
-                    Assert.AreEqual(expected, actual);
+                    ClassicAssert.AreEqual(expected, actual);
                 }
             }
 
@@ -484,7 +485,7 @@ namespace Accord.Tests.Math
                 {
                     double expected = i * (2 * i + 0 * j) + j * (0 * i + 2 * j);
                     double actual = constraints[0].Function(new double[] { i, j });
-                    Assert.AreEqual(expected, actual);
+                    ClassicAssert.AreEqual(expected, actual);
                 }
             }
 
@@ -496,7 +497,7 @@ namespace Accord.Tests.Math
                 {
                     double expected = i + j;
                     double actual = constraints[1].Function(new double[] { i, j });
-                    Assert.AreEqual(expected, actual);
+                    ClassicAssert.AreEqual(expected, actual);
                 }
             }
 
@@ -507,14 +508,14 @@ namespace Accord.Tests.Math
             AugmentedLagrangian solver =
                 new AugmentedLagrangian(inner, objective, constraints);
 
-            Assert.AreEqual(inner, solver.Optimizer);
+            ClassicAssert.AreEqual(inner, solver.Optimizer);
 
-            Assert.IsTrue(solver.Maximize());
+            ClassicAssert.IsTrue(solver.Maximize());
             double maxValue = solver.Value;
 
-            Assert.AreEqual(6, maxValue, tol);
-            Assert.AreEqual(-3, solver.Solution[0], tol);
-            Assert.AreEqual(4, solver.Solution[1], tol);
+            ClassicAssert.AreEqual(6, maxValue, tol);
+            ClassicAssert.AreEqual(-3, solver.Solution[0], tol);
+            ClassicAssert.AreEqual(4, solver.Solution[1], tol);
         }
 
         private static void test2(IGradientOptimizationMethod inner)
@@ -549,7 +550,7 @@ namespace Accord.Tests.Math
                 {
                     double expected = i * 2 + j * 3;
                     double actual = objective.Function(new double[] { i, j });
-                    Assert.AreEqual(expected, actual);
+                    ClassicAssert.AreEqual(expected, actual);
                 }
             }
 
@@ -572,7 +573,7 @@ namespace Accord.Tests.Math
 
                     double expected = i * (2 * i + 0 * j) + j * (0 * i + 2 * j);
                     double actual = constraints[0].Function(input);
-                    Assert.AreEqual(expected, actual);
+                    ClassicAssert.AreEqual(expected, actual);
                 }
             }
 
@@ -581,14 +582,14 @@ namespace Accord.Tests.Math
             AugmentedLagrangian solver =
                 new AugmentedLagrangian(inner, objective, constraints);
 
-            Assert.AreEqual(inner, solver.Optimizer);
+            ClassicAssert.AreEqual(inner, solver.Optimizer);
 
-            Assert.IsTrue(solver.Maximize());
+            ClassicAssert.IsTrue(solver.Maximize());
             double maxValue = solver.Value;
 
-            Assert.AreEqual(18.02, maxValue, 1e-2);
-            Assert.AreEqual(2.77, solver.Solution[0], 1e-2);
-            Assert.AreEqual(4.16, solver.Solution[1], 1e-2);
+            ClassicAssert.AreEqual(18.02, maxValue, 1e-2);
+            ClassicAssert.AreEqual(2.77, solver.Solution[0], 1e-2);
+            ClassicAssert.AreEqual(4.16, solver.Solution[1], 1e-2);
         }
 
 #endif
@@ -617,19 +618,19 @@ namespace Accord.Tests.Math
             target.Tolerance = 0;
             AugmentedLagrangian solver = new AugmentedLagrangian(target, function, constraints);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
 
             double[] solution = solver.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
 
-            Assert.AreEqual(-0.5, minimum, 1e-5);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(-sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-0.5, minimum, 1e-5);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -666,8 +667,8 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < constraints.Length; i++)
             {
-                Assert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[i].ShouldBe);
-                Assert.AreEqual(0, constraints[i].Value);
+                ClassicAssert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[i].ShouldBe);
+                ClassicAssert.AreEqual(0, constraints[i].Value);
             }
 
             var inner = new BroydenFletcherGoldfarbShanno(3);
@@ -676,9 +677,9 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(inner, function, constraints);
 
-            Assert.AreEqual(inner, solver.Optimizer);
+            ClassicAssert.AreEqual(inner, solver.Optimizer);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
             double[] solution = solver.Solution;
 
@@ -689,11 +690,11 @@ namespace Accord.Tests.Math
 
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], solver.Solution[i], 1e-3);
-            Assert.AreEqual(-0.078567420132031968, minimum, 1e-4);
+                ClassicAssert.AreEqual(expected[i], solver.Solution[i], 1e-3);
+            ClassicAssert.AreEqual(-0.078567420132031968, minimum, 1e-4);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -767,8 +768,8 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < constraints.Length; i++)
             {
-                Assert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[i].ShouldBe);
-                Assert.AreEqual(0, constraints[i].Value);
+                ClassicAssert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[i].ShouldBe);
+                ClassicAssert.AreEqual(0, constraints[i].Value);
             }
 
             var inner = new BroydenFletcherGoldfarbShanno(3);
@@ -777,9 +778,9 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(inner, function, constraints);
 
-            Assert.AreEqual(inner, solver.Optimizer);
+            ClassicAssert.AreEqual(inner, solver.Optimizer);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
             double[] solution = solver.Solution;
 
@@ -790,11 +791,11 @@ namespace Accord.Tests.Math
 
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], solver.Solution[i], 1e-3);
-            Assert.AreEqual(-0.078567420132031968, minimum, 1e-4);
+                ClassicAssert.AreEqual(expected[i], solver.Solution[i], 1e-3);
+            ClassicAssert.AreEqual(-0.078567420132031968, minimum, 1e-4);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -845,14 +846,14 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(f, constraints);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
-            Assert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
 
             // According to the example, the solution is $(1.4, 1.7)$.
-            Assert.AreEqual(1.4, solver.Solution[0], 1e-5);
-            Assert.AreEqual(1.7, solver.Solution[1], 1e-5);
+            ClassicAssert.AreEqual(1.4, solver.Solution[0], 1e-5);
+            ClassicAssert.AreEqual(1.7, solver.Solution[1], 1e-5);
         }
 
 
@@ -903,14 +904,14 @@ namespace Accord.Tests.Math
 
             var solver = new AugmentedLagrangian(f, constraints);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
-            Assert.IsFalse(Double.IsNaN(minValue));
+            ClassicAssert.IsFalse(Double.IsNaN(minValue));
 
             // The solution is $(0.0, 1.0)$.
-            Assert.AreEqual(0.0, solver.Solution[0], 1e-5);
-            Assert.AreEqual(1.0, solver.Solution[1], 1e-5);
+            ClassicAssert.AreEqual(0.0, solver.Solution[0], 1e-5);
+            ClassicAssert.AreEqual(1.0, solver.Solution[1], 1e-5);
         }
     }
 }

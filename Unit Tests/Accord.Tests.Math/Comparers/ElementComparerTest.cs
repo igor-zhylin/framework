@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math.Comparers;
 
@@ -72,7 +73,7 @@ namespace Accord.Tests.Math
                 new double[] { -1, 5, 4 },
             };
 
-            Assert.IsTrue(values.IsEqual(expected));
+            ClassicAssert.IsTrue(values.IsEqual(expected));
         }
     }
 }

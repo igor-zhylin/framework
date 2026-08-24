@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -46,13 +47,18 @@ namespace Accord.Tests.Math
             };
 
 
-            var nmf = new NonnegativeMatrixFactorization(X, 3);
+            // maxiter raised from the 100-iteration default: X[0,1] is exactly 0, and NMF's
+            // multiplicative update rule can only approach an exact-zero target asymptotically,
+            // never reach it in a fixed iteration count. Under net10.0's JIT/FP behavior, 100
+            // iterations left that one near-zero cell just outside the (unchanged) 0.05
+            // tolerance; 200 iterations converges comfortably under it (~0.026 max abs diff).
+            var nmf = new NonnegativeMatrixFactorization(X, 3, 200);
 
             var H = nmf.RightNonnegativeFactors;
             var W = nmf.LeftNonnegativeFactors;
 
             var R = Matrix.Multiply(W, H).Transpose();
-            Assert.IsTrue(R.IsEqual(X, 0.05));
+            ClassicAssert.IsTrue(R.IsEqual(X, 0.05));
         }
 
         [Test]
@@ -79,8 +85,8 @@ namespace Accord.Tests.Math
             var H = nmf.RightNonnegativeFactors;
             var W = nmf.LeftNonnegativeFactors;
 
-            Assert.IsFalse(H.Has(0));
-            Assert.IsFalse(W.Has(0));
+            ClassicAssert.IsFalse(H.Has(0));
+            ClassicAssert.IsFalse(W.Has(0));
         }
 
     }

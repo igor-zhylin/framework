@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class CobylaTest
@@ -38,17 +39,17 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(2, function);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
 
             double[] solution = cobyla.Solution;
 
-            Assert.AreEqual(0, minimum, 1e-10);
-            Assert.AreEqual(-1, solution[0], 1e-5);
-            Assert.AreEqual(0, solution[1], 1e-5);
+            ClassicAssert.AreEqual(0, minimum, 1e-10);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-5);
+            ClassicAssert.AreEqual(0, solution[1], 1e-5);
 
             double expectedMinimum = function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -73,19 +74,19 @@ namespace Accord.Tests.Math
             var status = cobyla.Status;
 
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
             double minimum = cobyla.Value;
 
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
 
-            Assert.AreEqual(-0.5, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(-sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-0.5, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -104,19 +105,19 @@ namespace Accord.Tests.Math
             for (int i = 0; i < cobyla.Solution.Length; i++)
                 cobyla.Solution[i] = 1;
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
 
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
 
-            Assert.AreEqual(-0.5, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(-sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-0.5, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -141,15 +142,15 @@ namespace Accord.Tests.Math
 
             bool success = cobyla.Minimize();
             double minimum = cobyla.Value;
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
 
-            Assert.AreEqual(-0.5, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(-sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-0.5, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf, solution[1], 1e-5);
         }
 
         [Test]
@@ -237,7 +238,7 @@ namespace Accord.Tests.Math
             for (int i = 0; i < cobyla.Solution.Length; i++)
                 cobyla.Solution[i] = 1;
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
@@ -250,11 +251,11 @@ namespace Accord.Tests.Math
 
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
-            Assert.AreEqual(-0.078567420132031968, minimum, 1e-10);
+                ClassicAssert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
+            ClassicAssert.AreEqual(-0.078567420132031968, minimum, 1e-10);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -266,16 +267,16 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
-            Assert.AreEqual(0, minimum, 1e-8);
-            Assert.AreEqual(-1, solution[0], 1e-5);
-            Assert.AreEqual(1, solution[1], 1e-4);
+            ClassicAssert.AreEqual(0, minimum, 1e-8);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-5);
+            ClassicAssert.AreEqual(1, solution[1], 1e-4);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -287,16 +288,16 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
-            Assert.AreEqual(-0, minimum, 1e-6);
-            Assert.AreEqual(-1, solution[0], 1e-3);
-            Assert.AreEqual(+1, solution[1], 1e-3);
+            ClassicAssert.AreEqual(-0, minimum, 1e-6);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-3);
+            ClassicAssert.AreEqual(+1, solution[1], 1e-3);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -314,17 +315,17 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
-            Assert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -346,15 +347,15 @@ namespace Accord.Tests.Math
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double sqrthalf = Math.Sqrt(0.5);
-            Assert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -372,17 +373,17 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
-            Assert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -400,17 +401,17 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
             double sqrthalf = Math.Sqrt(0.5);
-            Assert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
-            Assert.AreEqual(sqrthalf, solution[0], 1e-5);
-            Assert.AreEqual(sqrthalf, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-sqrthalf * 2, minimum, 1e-10);
+            ClassicAssert.AreEqual(sqrthalf, solution[0], 1e-5);
+            ClassicAssert.AreEqual(sqrthalf, solution[1], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -430,7 +431,7 @@ namespace Accord.Tests.Math
 
                 Cobyla cobyla = new Cobyla(function, constraints);
 
-                Assert.IsTrue(cobyla.Minimize());
+                ClassicAssert.IsTrue(cobyla.Minimize());
                 double minimum = cobyla.Value;
             }
             catch (Exception)
@@ -438,7 +439,7 @@ namespace Accord.Tests.Math
                 thrown = true;
             }
 
-            Assert.IsTrue(thrown);
+            ClassicAssert.IsTrue(thrown);
         }
 
         [Test]
@@ -459,19 +460,19 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
-            Assert.AreEqual(-3, minimum, 1e-5);
-            Assert.AreEqual(0.0, solution[0], 1e-5);
-            Assert.AreEqual(-3.0, solution[1], 1e-5);
-            Assert.AreEqual(-3.0, solution[2], 1e-5);
+            ClassicAssert.AreEqual(-3, minimum, 1e-5);
+            ClassicAssert.AreEqual(0.0, solution[0], 1e-5);
+            ClassicAssert.AreEqual(-3.0, solution[1], 1e-5);
+            ClassicAssert.AreEqual(-3.0, solution[2], 1e-5);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
 
-            Assert.IsTrue(Accord.Math.Random.Generator.HasBeenAccessed);
+            ClassicAssert.IsTrue(Accord.Math.Random.Generator.HasBeenAccessed);
         }
 
         [Test]
@@ -499,7 +500,7 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
@@ -509,11 +510,11 @@ namespace Accord.Tests.Math
             };
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
-            Assert.AreEqual(-44, minimum, 1e-10);
+                ClassicAssert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
+            ClassicAssert.AreEqual(-44, minimum, 1e-10);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -540,7 +541,7 @@ namespace Accord.Tests.Math
 
             Cobyla cobyla = new Cobyla(function, constraints);
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
@@ -550,11 +551,11 @@ namespace Accord.Tests.Math
             };
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
-            Assert.AreEqual(680.63005737443393, minimum, 1e-6);
+                ClassicAssert.AreEqual(expected[i], cobyla.Solution[i], 1e-4);
+            ClassicAssert.AreEqual(680.63005737443393, minimum, 1e-6);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -591,7 +592,7 @@ namespace Accord.Tests.Math
             for (int i = 0; i < cobyla.Solution.Length; i++)
                 cobyla.Solution[i] = 1;
 
-            Assert.IsTrue(cobyla.Minimize());
+            ClassicAssert.IsTrue(cobyla.Minimize());
             double minimum = cobyla.Value;
             double[] solution = cobyla.Solution;
 
@@ -601,11 +602,11 @@ namespace Accord.Tests.Math
             };
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], cobyla.Solution[i], 1e-2);
-            Assert.AreEqual(-0.86602540378486847, minimum, 1e-10);
+                ClassicAssert.AreEqual(expected[i], cobyla.Solution[i], 1e-2);
+            ClassicAssert.AreEqual(-0.86602540378486847, minimum, 1e-10);
 
             double expectedMinimum = function.Function(cobyla.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
     }

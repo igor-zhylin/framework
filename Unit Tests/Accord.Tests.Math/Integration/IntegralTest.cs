@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Integration;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -42,24 +43,24 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = TrapezoidalRule.Integrate(function1, 0, 2, 1);
-            Assert.AreEqual(4.0486368718741526, actual, 1e-15);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(4.0486368718741526, actual, 1e-15);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
 
             actual = TrapezoidalRule.Integrate(function1, 0, 2, 2);
-            Assert.AreEqual(3.6081715993899337, actual, 1e-15);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(3.6081715993899337, actual, 1e-15);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
 
             actual = TrapezoidalRule.Integrate(function1, 0, 2, 4);
-            Assert.AreEqual(3.4971047822027077, actual, 1e-15);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(3.4971047822027077, actual, 1e-15);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
 
             actual = TrapezoidalRule.Integrate(function1, 0, 2, 8);
-            Assert.AreEqual(3.4692784302833672, actual, 1e-15);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(3.4692784302833672, actual, 1e-15);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
 
             actual = TrapezoidalRule.Integrate(function1, 0, 2, 16);
-            Assert.AreEqual(3.4623181105467689, actual, 1e-15);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(3.4623181105467689, actual, 1e-15);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
         }
 
         [Test]
@@ -87,10 +88,10 @@ namespace Accord.Tests.Math
                 Double.NegativeInfinity, Double.PositiveInfinity); // Output should be 0.99999...
 
 
-            Assert.AreEqual(1.6829414086350976, trapez); // 1.6829414086350976
-            Assert.AreEqual(1.682941969615797, romberg); // 1.682941969615797
-            Assert.AreEqual(1.6829419595739716, nagk); // 1.6829419595739716
-            Assert.AreEqual(0.99999999999999978, iagk); // 0.99999999999999978
+            ClassicAssert.AreEqual(1.6829414086350976, trapez); // 1.6829414086350976
+            ClassicAssert.AreEqual(1.682941969615797, romberg); // 1.682941969615797
+            ClassicAssert.AreEqual(1.6829419595739716, nagk); // 1.6829419595739716
+            ClassicAssert.AreEqual(0.99999999999999978, iagk); // 0.99999999999999978
         }
 
         private static double function2(double x)
@@ -106,19 +107,19 @@ namespace Accord.Tests.Math
             double actual;
 
             actual = RombergMethod.Integrate(function2, 1, 2, 1);
-            Assert.AreEqual(0.75, actual);
+            ClassicAssert.AreEqual(0.75, actual);
 
             actual = RombergMethod.Integrate(function2, 1, 2, 2);
-            Assert.AreEqual(0.69444444444444431, actual);
+            ClassicAssert.AreEqual(0.69444444444444431, actual);
 
             actual = RombergMethod.Integrate(function2, 1, 2, 4);
-            Assert.AreEqual(0.6931474776448322, actual);
+            ClassicAssert.AreEqual(0.6931474776448322, actual);
 
             actual = RombergMethod.Integrate(function2, 1, 2, 8);
-            Assert.AreEqual(0.6931471805599444, actual);
+            ClassicAssert.AreEqual(0.6931471805599444, actual);
 
             actual = RombergMethod.Integrate(function2, 1, 2, 16);
-            Assert.AreEqual(0.69314718055994151, actual);
+            ClassicAssert.AreEqual(0.69314718055994151, actual);
         }
 
 
@@ -133,7 +134,7 @@ namespace Accord.Tests.Math
             double expected = Math.Sin(2);
             double actual = NonAdaptiveGaussKronrod.Integrate(Math.Cos, 0, 2);
 
-            Assert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
         }
 
     }

@@ -26,6 +26,7 @@ namespace Accord.Tests.Math
     using Accord.Collections;
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Linq;
     using System.Collections.Generic;
 
@@ -59,40 +60,40 @@ namespace Accord.Tests.Math
             var collection = t as ICollection<KeyValuePair<int, string>>;
 
             var values = collection.ToArray();
-            Assert.AreEqual(0, values.Length);
+            ClassicAssert.AreEqual(0, values.Length);
 
             t.Add(new KeyValuePair<int, string>(1, "1"));
             values = collection.ToArray();
-            Assert.AreEqual(1, values.Length);
+            ClassicAssert.AreEqual(1, values.Length);
 
             t.Add(new KeyValuePair<int, string>(2, "2"));
             values = collection.ToArray();
-            Assert.AreEqual(2, values.Length);
-            Assert.AreEqual("1", values[0].Value);
-            Assert.AreEqual("2", values[1].Value);
+            ClassicAssert.AreEqual(2, values.Length);
+            ClassicAssert.AreEqual("1", values[0].Value);
+            ClassicAssert.AreEqual("2", values[1].Value);
 
 
             t.Add(new KeyValuePair<int, string>(1, "bla"));
             values = collection.ToArray();
-            Assert.AreEqual(2, values.Length);
-            Assert.AreEqual("bla", values[0].Value);
-            Assert.AreEqual("2", values[1].Value);
+            ClassicAssert.AreEqual(2, values.Length);
+            ClassicAssert.AreEqual("bla", values[0].Value);
+            ClassicAssert.AreEqual("2", values[1].Value);
 
             var node1 = t.Remove(new KeyValuePair<int, string>(1, "-"));
-            Assert.IsNotNull(node1);
+            ClassicAssert.IsNotNull(node1);
             values = collection.ToArray();
-            Assert.AreEqual(1, values.Length);
-            Assert.AreEqual("2", values[0].Value);
+            ClassicAssert.AreEqual(1, values.Length);
+            ClassicAssert.AreEqual("2", values[0].Value);
 
             var node2 = t.Remove(new KeyValuePair<int, string>(1, "-"));
-            Assert.IsNull(node2);
+            ClassicAssert.IsNull(node2);
             values = collection.ToArray();
-            Assert.AreEqual(1, values.Length);
-            Assert.AreEqual("2", values[0].Value);
+            ClassicAssert.AreEqual(1, values.Length);
+            ClassicAssert.AreEqual("2", values[0].Value);
 
             var node3 = t.Remove(new KeyValuePair<int, string>(2, "-"));
             values = collection.ToArray();
-            Assert.AreEqual(0, values.Length);
+            ClassicAssert.AreEqual(0, values.Length);
         }
 
         [Test]
@@ -125,13 +126,13 @@ namespace Accord.Tests.Math
             {
                 var node = t.Add(k[i]);
 
-                Assert.IsNotNull(node);
-                Assert.AreEqual(k[i], node.Value);
+                ClassicAssert.IsNotNull(node);
+                ClassicAssert.AreEqual(k[i], node.Value);
 
-                Assert.IsTrue(t.check());
+                ClassicAssert.IsTrue(t.check());
             }
 
-            Assert.AreEqual(k.Length, t.Count);
+            ClassicAssert.AreEqual(k.Length, t.Count);
 
 
             // Check that all elements are in the tree
@@ -139,39 +140,39 @@ namespace Accord.Tests.Math
             {
                 var node = t.Find(k[i]);
 
-                Assert.IsNotNull(node);
-                Assert.AreEqual(k[i], node.Value);
+                ClassicAssert.IsNotNull(node);
+                ClassicAssert.AreEqual(k[i], node.Value);
 
-                Assert.IsTrue(t.Contains(k[i]));
-                Assert.IsTrue(t.Contains(node));
+                ClassicAssert.IsTrue(t.Contains(k[i]));
+                ClassicAssert.IsTrue(t.Contains(node));
             }
 
             // Enumerate the values (must be in order)
             int arrayIndex = 0;
             foreach (var node in t)
-                Assert.AreEqual(sorted[arrayIndex++], node.Value);
+                ClassicAssert.AreEqual(sorted[arrayIndex++], node.Value);
 
             // Start from min and go navigating up to max
             var min = t.Min();
-            Assert.IsNotNull(min);
-            Assert.AreEqual(k.Min(), min.Value);
+            ClassicAssert.IsNotNull(min);
+            ClassicAssert.AreEqual(k.Min(), min.Value);
 
             for (int i = 0; i < k.Length; i++)
             {
-                Assert.IsNotNull(min);
+                ClassicAssert.IsNotNull(min);
                 min = t.GetNextNode(min);
             }
-            Assert.IsNull(min); // the last should be null.
+            ClassicAssert.IsNull(min); // the last should be null.
 
             // Start from max and go navigating down to min
             var max = t.Max();
-            Assert.AreEqual(k.Max(), max.Value);
+            ClassicAssert.AreEqual(k.Max(), max.Value);
             for (int i = 0; i < k.Length; i++)
             {
-                Assert.IsNotNull(max);
+                ClassicAssert.IsNotNull(max);
                 max = t.GetPreviousNode(max);
             }
-            Assert.IsNull(max); // the last should be null.
+            ClassicAssert.IsNull(max); // the last should be null.
 
 
             // Exercise the tree
@@ -193,16 +194,16 @@ namespace Accord.Tests.Math
                 int kd = k[i];
 
                 var node = t.Find(kd);
-                Assert.IsNotNull(node);
+                ClassicAssert.IsNotNull(node);
 
                 node.Value = knew;
 
-                Assert.IsNotNull(t.Resort(node));
-                Assert.IsTrue(t.check());
+                ClassicAssert.IsNotNull(t.Resort(node));
+                ClassicAssert.IsTrue(t.check());
 
                 k[i] = -1 - knew;
 
-                Assert.AreEqual(k.Length, t.Count);
+                ClassicAssert.AreEqual(k.Length, t.Count);
             }
 
             for (int i = 0; i < k.Length; i++)
@@ -227,9 +228,9 @@ namespace Accord.Tests.Math
 
                 if (node.Value > kd)
                 {
-                    Assert.IsNull(le);
-                    Assert.IsNotNull(gt);
-                    Assert.AreEqual(gt, node);
+                    ClassicAssert.IsNull(le);
+                    ClassicAssert.IsNotNull(gt);
+                    ClassicAssert.AreEqual(gt, node);
                 }
                 else
                 {
@@ -240,8 +241,8 @@ namespace Accord.Tests.Math
                         succ = t.GetNextNode(node);
                     } while (succ != null && succ.Value <= kd);
 
-                    Assert.AreEqual(node, le);
-                    Assert.AreEqual(succ, gt);
+                    ClassicAssert.AreEqual(node, le);
+                    ClassicAssert.AreEqual(succ, gt);
                 }
             }
 
@@ -261,16 +262,16 @@ namespace Accord.Tests.Math
                 int kd = k[i];
 
                 var node = t.Find(kd);
-                Assert.IsNotNull(node);
+                ClassicAssert.IsNotNull(node);
 
                 node = t.Remove(node);
-                Assert.IsTrue(t.check());
+                ClassicAssert.IsTrue(t.check());
 
                 k[i] = -1 - k[i];
             }
 
             // The tree should be empty
-            Assert.AreEqual(0, t.Count);
+            ClassicAssert.AreEqual(0, t.Count);
         }
 
         private static void duplicates(int n)
@@ -294,13 +295,13 @@ namespace Accord.Tests.Math
             {
                 var node = t.Add(k[i]);
 
-                Assert.IsNotNull(node);
-                Assert.AreEqual(k[i], node.Value);
+                ClassicAssert.IsNotNull(node);
+                ClassicAssert.AreEqual(k[i], node.Value);
 
-                Assert.IsTrue(t.check());
+                ClassicAssert.IsTrue(t.check());
             }
 
-            Assert.AreEqual(k.Length, t.Count);
+            ClassicAssert.AreEqual(k.Length, t.Count);
 
 
             // Check that all elements are in the tree
@@ -308,17 +309,17 @@ namespace Accord.Tests.Math
             {
                 var node = t.Find(k[i]);
 
-                Assert.IsNotNull(node);
-                Assert.AreEqual(k[i], node.Value);
+                ClassicAssert.IsNotNull(node);
+                ClassicAssert.AreEqual(k[i], node.Value);
 
-                Assert.IsTrue(t.Contains(k[i]));
-                Assert.IsTrue(t.Contains(node));
+                ClassicAssert.IsTrue(t.Contains(k[i]));
+                ClassicAssert.IsTrue(t.Contains(node));
             }
 
             // Enumerate the values (must be in order)
             int arrayIndex = 0;
             foreach (var node in t)
-                Assert.AreEqual(sorted[arrayIndex++], node.Value);
+                ClassicAssert.AreEqual(sorted[arrayIndex++], node.Value);
 
 
 
@@ -327,18 +328,18 @@ namespace Accord.Tests.Math
             {
                 var node = t.Add(k[i]);
 
-                Assert.IsNotNull(node);
-                Assert.AreEqual(k[i], node.Value);
+                ClassicAssert.IsNotNull(node);
+                ClassicAssert.AreEqual(k[i], node.Value);
 
-                Assert.IsTrue(t.check());
+                ClassicAssert.IsTrue(t.check());
             }
 
-            Assert.IsTrue(t.check());
+            ClassicAssert.IsTrue(t.check());
 
             // Enumerate the values (must be in order)
             arrayIndex = 0;
             foreach (var node in t)
-                Assert.AreEqual(sorted[arrayIndex++], node.Value);
+                ClassicAssert.AreEqual(sorted[arrayIndex++], node.Value);
         }
 
     }

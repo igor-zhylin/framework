@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class NormTest
@@ -62,7 +63,7 @@ namespace Accord.Tests.Math
             };
 
             double[] actual = Norm.Euclidean(a, 1);
-            Assert.IsTrue(expected.IsEqual(actual, 0.001));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 0.001));
 
 
             double[] expected2 = 
@@ -71,10 +72,10 @@ namespace Accord.Tests.Math
             };
 
             double[] actual2 = Norm.Euclidean(a, 0);
-            Assert.IsTrue(expected2.IsEqual(actual2, 0.001));
+            ClassicAssert.IsTrue(expected2.IsEqual(actual2, 0.001));
 
             double actual3 = Norm.Euclidean(a.GetRow(0));
-            Assert.AreEqual(21.9634, actual3, 0.001);
+            ClassicAssert.AreEqual(21.9634, actual3, 0.001);
         }
 
         [Test]
@@ -89,7 +90,7 @@ namespace Accord.Tests.Math
 
             double expected = 9.071111071571606;
             double actual = Norm.Norm2(a);
-            Assert.AreEqual(expected, actual, 1e-12);
+            ClassicAssert.AreEqual(expected, actual, 1e-12);
         }
 
         [Test]
@@ -104,7 +105,7 @@ namespace Accord.Tests.Math
 
             double expected = 11;
             double actual = Norm.Norm1(a);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -115,7 +116,7 @@ namespace Accord.Tests.Math
             double expected = 74.330343736592520;
             double actual = Norm.Frobenius(a);
 
-            Assert.AreEqual(expected, actual, 1e-12);
+            ClassicAssert.AreEqual(expected, actual, 1e-12);
 
         }
 
@@ -135,7 +136,7 @@ namespace Accord.Tests.Math
             };
 
             float[] actual = Norm.Euclidean(a, 1);
-            Assert.IsTrue(expected.IsEqual(actual, 0.001f));
+            ClassicAssert.IsTrue(expected.IsEqual(actual, 0.001f));
 
 
             float[] expected2 = 
@@ -144,10 +145,10 @@ namespace Accord.Tests.Math
             };
 
             float[] actual2 = Norm.Euclidean(a, 0);
-            Assert.IsTrue(expected2.IsEqual(actual2, 0.001f));
+            ClassicAssert.IsTrue(expected2.IsEqual(actual2, 0.001f));
 
             float actual3 = Norm.Euclidean(a.GetRow(0));
-            Assert.AreEqual(21.9634f, actual3, 0.001);
+            ClassicAssert.AreEqual(21.9634f, actual3, 0.001);
         }
 
     }

@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Diagnostics;
 
     [TestFixture]
@@ -61,13 +62,13 @@ namespace Accord.Tests.Math
             // https://www.wolframalpha.com/input/?i=min+10+*+(x%2B1)%5E2+%2B+y%5E2
             #endregion
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(0, minimum, 1e-10);
-            Assert.AreEqual(-1, solution[0], 1e-5);
-            Assert.AreEqual(0, solution[1], 1e-5);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(0, minimum, 1e-10);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-5);
+            ClassicAssert.AreEqual(0, solution[1], 1e-5);
 
             double expectedMinimum = function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -78,16 +79,16 @@ namespace Accord.Tests.Math
 
             NelderMead solver = new NelderMead(function);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
             double[] solution = solver.Solution;
 
-            Assert.AreEqual(0, minimum, 1e-10);
-            Assert.AreEqual(-1, solution[0], 1e-5);
-            Assert.AreEqual(1, solution[1], 1e-4);
+            ClassicAssert.AreEqual(0, minimum, 1e-10);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-5);
+            ClassicAssert.AreEqual(1, solution[1], 1e-4);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -98,17 +99,17 @@ namespace Accord.Tests.Math
 
             NelderMead solver = new NelderMead(function);
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
             double[] solution = solver.Solution;
 
-            Assert.AreEqual(2, solution.Length);
-            Assert.AreEqual(-0, minimum, 1e-6);
-            Assert.AreEqual(-1, solution[0], 1e-3);
-            Assert.AreEqual(+1, solution[1], 1e-3);
+            ClassicAssert.AreEqual(2, solution.Length);
+            ClassicAssert.AreEqual(-0, minimum, 1e-6);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-3);
+            ClassicAssert.AreEqual(+1, solution[1], 1e-3);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -121,17 +122,17 @@ namespace Accord.Tests.Math
 
             solver.NumberOfVariables = 2;
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minimum = solver.Value;
             double[] solution = solver.Solution;
 
-            Assert.AreEqual(5, solution.Length);
-            Assert.AreEqual(-0, minimum, 1e-6);
-            Assert.AreEqual(-1, solution[0], 1e-3);
-            Assert.AreEqual(+1, solution[1], 1e-3);
+            ClassicAssert.AreEqual(5, solution.Length);
+            ClassicAssert.AreEqual(-0, minimum, 1e-6);
+            ClassicAssert.AreEqual(-1, solution[0], 1e-3);
+            ClassicAssert.AreEqual(+1, solution[1], 1e-3);
 
             double expectedMinimum = function.Function(solver.Solution);
-            Assert.AreEqual(expectedMinimum, minimum);
+            ClassicAssert.AreEqual(expectedMinimum, minimum);
         }
 
         [Test]
@@ -158,8 +159,8 @@ namespace Accord.Tests.Math
             nm.Minimize(init);
 
             // Solution
-            Assert.AreEqual(1, nm.Solution[0], 1e-7);
-            Assert.AreEqual(-2, nm.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(1, nm.Solution[0], 1e-7);
+            ClassicAssert.AreEqual(-2, nm.Solution[1], 1e-6);
         }
     }
 }

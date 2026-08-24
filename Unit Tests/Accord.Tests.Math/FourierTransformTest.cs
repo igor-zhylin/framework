@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math.Transforms;
     using Accord.Compat;
@@ -54,10 +55,10 @@ namespace Accord.Tests.Math
             double[] re2 = output.Re(); 
             double[] im2 = output.Im();
 
-            Assert.IsTrue(re.IsEqual(new[] { 20, 0, 12, 0 }, 1e-8));
-            Assert.IsTrue(im.IsEqual(new[] { 0, -4, 0, 4 }, 1e-8));
-            Assert.IsTrue(re2.IsEqual(new[] { 8, 4, 8, 0 }, 1e-8));
-            Assert.IsTrue(im2.IsEqual(new[] { 0, 0, 0, 0 }, 1e-8));
+            ClassicAssert.IsTrue(re.IsEqual(new[] { 20, 0, 12, 0 }, 1e-8));
+            ClassicAssert.IsTrue(im.IsEqual(new[] { 0, -4, 0, 4 }, 1e-8));
+            ClassicAssert.IsTrue(re2.IsEqual(new[] { 8, 4, 8, 0 }, 1e-8));
+            ClassicAssert.IsTrue(im2.IsEqual(new[] { 0, 0, 0, 0 }, 1e-8));
         }
 
         [Test]
@@ -99,8 +100,8 @@ namespace Accord.Tests.Math
             string a = re.ToCSharp();
             string b = im.ToCSharp();
 
-            Assert.IsTrue(re.IsEqual(expectedRe, 1e-3));
-            Assert.IsTrue(im.IsEqual(expectedIm, 1e-3));
+            ClassicAssert.IsTrue(re.IsEqual(expectedRe, 1e-3));
+            ClassicAssert.IsTrue(im.IsEqual(expectedIm, 1e-3));
             var expected = new Complex[][]
             {
                 new Complex[] { 1, 4, 8, 0 },
@@ -108,8 +109,8 @@ namespace Accord.Tests.Math
                 new Complex[] { 0, 0, 8, 0 },
             };
 
-            Assert.IsTrue(input.Re().IsEqual(expected.Re(), 1e-3));
-            Assert.IsTrue(input.Im().IsEqual(expected.Im(), 1e-3));
+            ClassicAssert.IsTrue(input.Re().IsEqual(expected.Re(), 1e-3));
+            ClassicAssert.IsTrue(input.Im().IsEqual(expected.Im(), 1e-3));
         }
 
         [Test]
@@ -132,10 +133,10 @@ namespace Accord.Tests.Math
             double[] re2 = output.Re();
             double[] im2 = output.Im();
 
-            Assert.IsTrue(re.IsEqual(new[] { 20, 0, 12, 0 }, 1e-8));
-            Assert.IsTrue(im.IsEqual(new[] { 0, -4, 0, 4 }, 1e-8));
-            Assert.IsTrue(re2.IsEqual(new[] { 8, 4, 8, 0 }, 1e-8));
-            Assert.IsTrue(im2.IsEqual(new[] { 0, 0, 0, 0 }, 1e-8));
+            ClassicAssert.IsTrue(re.IsEqual(new[] { 20, 0, 12, 0 }, 1e-8));
+            ClassicAssert.IsTrue(im.IsEqual(new[] { 0, -4, 0, 4 }, 1e-8));
+            ClassicAssert.IsTrue(re2.IsEqual(new[] { 8, 4, 8, 0 }, 1e-8));
+            ClassicAssert.IsTrue(im2.IsEqual(new[] { 0, 0, 0, 0 }, 1e-8));
         }
 
         [Test]
@@ -177,8 +178,8 @@ namespace Accord.Tests.Math
             string a = re.ToCSharp();
             string b = im.ToCSharp();
 
-            Assert.IsTrue(re.IsEqual(expectedRe, 1e-3));
-            Assert.IsTrue(im.IsEqual(expectedIm, 1e-3));
+            ClassicAssert.IsTrue(re.IsEqual(expectedRe, 1e-3));
+            ClassicAssert.IsTrue(im.IsEqual(expectedIm, 1e-3));
             var expected = new Complex[][]
             {
                 new Complex[] { 1, 4, 8, 0 },
@@ -186,8 +187,8 @@ namespace Accord.Tests.Math
                 new Complex[] { 0, 0, 8, 0 },
             };
 
-            Assert.IsTrue(input.Re().IsEqual(expected.Re(), 1e-3));
-            Assert.IsTrue(input.Im().IsEqual(expected.Im(), 1e-3));
+            ClassicAssert.IsTrue(input.Re().IsEqual(expected.Re(), 1e-3));
+            ClassicAssert.IsTrue(input.Im().IsEqual(expected.Im(), 1e-3));
         }
 
 
@@ -206,8 +207,8 @@ namespace Accord.Tests.Math
 
             FourierTransform2.DFT2(input, FourierTransform.Direction.Forward);
 
-            Assert.AreEqual(3, input.Rows());
-            Assert.AreEqual(2, input.Columns());
+            ClassicAssert.AreEqual(3, input.Rows());
+            ClassicAssert.AreEqual(2, input.Columns());
 
             // Also should not throw (symmetric check, doesn't throw now):
             Complex[][] input2 = new[]
@@ -218,8 +219,8 @@ namespace Accord.Tests.Math
 
             FourierTransform2.DFT2(input2, FourierTransform.Direction.Forward);
 
-            Assert.AreEqual(3, input.Rows());
-            Assert.AreEqual(2, input.Columns());
+            ClassicAssert.AreEqual(3, input.Rows());
+            ClassicAssert.AreEqual(2, input.Columns());
         }
 
         [Test]
@@ -265,7 +266,7 @@ namespace Accord.Tests.Math
                 }
             }
 
-            Assert.IsTrue(maxLogError < -12.9);
+            ClassicAssert.IsTrue(maxLogError < -12.9);
         }
 
 
@@ -287,7 +288,7 @@ namespace Accord.Tests.Math
             FourierTransform2.FFT(actualoutreal, actualoutimag, FourierTransform.Direction.Forward);
 
             double error = log10RmsErr(refoutreal, refoutimag, actualoutreal, actualoutimag);
-            Assert.IsTrue(error < -12.9);
+            ClassicAssert.IsTrue(error < -12.9);
 
 
             // Test Complex overloads
@@ -301,7 +302,7 @@ namespace Accord.Tests.Math
             actualoutimag = input.Im();
 
             double newError = log10RmsErr(refoutreal, refoutimag, actualoutreal, actualoutimag);
-            Assert.AreEqual(error, newError);
+            ClassicAssert.AreEqual(error, newError);
         }
 
 
@@ -327,7 +328,7 @@ namespace Accord.Tests.Math
             FourierTransform2.Convolve(input0real, input0imag, input1real, input1imag, actualoutreal, actualoutimag);
 
             double error = log10RmsErr(refoutreal, refoutimag, actualoutreal, actualoutimag);
-            Assert.IsTrue(error < 13);
+            ClassicAssert.IsTrue(error < 13);
 
 
 
@@ -346,7 +347,7 @@ namespace Accord.Tests.Math
             actualoutimag = actualout.Im();
 
             double newError = log10RmsErr(refoutreal, refoutimag, actualoutreal, actualoutimag);
-            Assert.AreEqual(error, newError);
+            ClassicAssert.AreEqual(error, newError);
         }
 
 

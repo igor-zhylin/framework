@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;    
     
     [TestFixture]
@@ -56,8 +57,8 @@ namespace Accord.Tests.Math
             double value = criteria.OldValue; // 1371.7333333
 
 
-            Assert.AreEqual(10, criteria.CurrentIteration);
-            Assert.AreEqual(1371.7333333333333, criteria.OldValue);
+            ClassicAssert.AreEqual(10, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(1371.7333333333333, criteria.OldValue);
         }
 
         [Test]
@@ -70,9 +71,9 @@ namespace Accord.Tests.Math
                 criteria.NewValue /= 10.0;
             } while (!criteria.HasConverged);
 
-            Assert.AreEqual(4, criteria.CurrentIteration);
-            Assert.AreEqual(-5, Math.Log10(criteria.OldValue));
-            Assert.AreEqual(-6, Math.Log10(criteria.NewValue));
+            ClassicAssert.AreEqual(4, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(-5, Math.Log10(criteria.OldValue));
+            ClassicAssert.AreEqual(-6, Math.Log10(criteria.NewValue));
         }
 
         [Test]
@@ -85,9 +86,9 @@ namespace Accord.Tests.Math
                 criteria.NewValue /= 10.0;
             } while (!criteria.HasConverged);
 
-            Assert.AreEqual(1, criteria.CurrentIteration);
-            Assert.AreEqual(-2, Math.Log10(criteria.OldValue));
-            Assert.AreEqual(-3, Math.Log10(criteria.NewValue));
+            ClassicAssert.AreEqual(1, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(-2, Math.Log10(criteria.OldValue));
+            ClassicAssert.AreEqual(-3, Math.Log10(criteria.NewValue));
         }
 
         [Test]
@@ -100,9 +101,9 @@ namespace Accord.Tests.Math
                 criteria.NewValue /= 10.0;
             } while (!criteria.HasConverged);
 
-            Assert.AreEqual(4, criteria.CurrentIteration);
-            Assert.AreEqual(-5, Math.Log10(criteria.OldValue));
-            Assert.AreEqual(-6, Math.Log10(criteria.NewValue));
+            ClassicAssert.AreEqual(4, criteria.CurrentIteration);
+            ClassicAssert.AreEqual(-5, Math.Log10(criteria.OldValue));
+            ClassicAssert.AreEqual(-6, Math.Log10(criteria.NewValue));
         }
 
         [Test]

@@ -27,6 +27,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.IO;
     using Accord.Tests.Math.Properties;
     using System.Globalization;
@@ -59,26 +60,26 @@ namespace Accord.Tests.Math
 
             double[] expectedSolution = { 0.4761905, 1.0476190, 2.0952381 };
             double expected = -2.380952;
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double actual = target.Value;
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
-            Assert.AreEqual(3, target.Iterations);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(3, target.Iterations);
 
-            Assert.AreEqual(0.4761905, target.Solution[0], 1e-6);
-            Assert.AreEqual(1.0476190, target.Solution[1], 1e-6);
-            Assert.AreEqual(2.0952381, target.Solution[2], 0.02);
+            ClassicAssert.AreEqual(0.4761905, target.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(1.0476190, target.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(2.0952381, target.Solution[2], 0.02);
 
-            Assert.AreEqual(0.0000000, target.Lagrangian[0], 1e-6);
-            Assert.AreEqual(0.2380952, target.Lagrangian[1], 1e-6);
-            Assert.AreEqual(2.0952381, target.Lagrangian[2], 1e-6);
+            ClassicAssert.AreEqual(0.0000000, target.Lagrangian[0], 1e-6);
+            ClassicAssert.AreEqual(0.2380952, target.Lagrangian[1], 1e-6);
+            ClassicAssert.AreEqual(2.0952381, target.Lagrangian[2], 1e-6);
 
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -99,26 +100,26 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(D, d.Multiply(-1), A.Transpose(), b);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double actual = target.Value;
-            Assert.AreEqual(-12.41011, actual, 1e-5);
-            Assert.IsFalse(double.IsNaN(actual));
-            Assert.AreEqual(3, target.Iterations);
-            Assert.AreEqual(0, target.Deletions);
+            ClassicAssert.AreEqual(-12.41011, actual, 1e-5);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(3, target.Iterations);
+            ClassicAssert.AreEqual(0, target.Deletions);
 
-            Assert.AreEqual(0.4157303, target.Solution[0], 1e-6);
-            Assert.AreEqual(2.1123596, target.Solution[1], 1e-6);
-            Assert.AreEqual(4.2247191, target.Solution[2], 1e-6);
+            ClassicAssert.AreEqual(0.4157303, target.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(2.1123596, target.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(4.2247191, target.Solution[2], 1e-6);
 
-            Assert.AreEqual(0.1460674, target.Lagrangian[0], 1e-6);
-            Assert.AreEqual(0.0000000, target.Lagrangian[1], 1e-6);
-            Assert.AreEqual(1.2247191, target.Lagrangian[2], 1e-6);
+            ClassicAssert.AreEqual(0.1460674, target.Lagrangian[0], 1e-6);
+            ClassicAssert.AreEqual(0.0000000, target.Lagrangian[1], 1e-6);
+            ClassicAssert.AreEqual(1.2247191, target.Lagrangian[2], 1e-6);
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -151,24 +152,24 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(D, d.Multiply(-1), A.Transpose(), b);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double actual = target.Value;
-            Assert.AreEqual(64.8, actual, 1e-10);
-            Assert.IsFalse(double.IsNaN(actual));
-            Assert.AreEqual(2, target.Iterations);
-            Assert.AreEqual(0, target.Deletions);
+            ClassicAssert.AreEqual(64.8, actual, 1e-10);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(2, target.Iterations);
+            ClassicAssert.AreEqual(0, target.Deletions);
 
-            Assert.AreEqual(4.8, target.Solution[0], 1e-6);
-            Assert.AreEqual(0.2, target.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(4.8, target.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(0.2, target.Solution[1], 1e-6);
 
-            Assert.AreEqual(17.6, target.Lagrangian[0]);
-            Assert.AreEqual(0.00, target.Lagrangian[1]);
+            ClassicAssert.AreEqual(17.6, target.Lagrangian[0]);
+            ClassicAssert.AreEqual(0.00, target.Lagrangian[1]);
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -199,32 +200,32 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(D, d.Multiply(-1), A.Transpose(), b);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double actual = target.Value;
 
-            Assert.AreEqual(6.8, actual, 1e-5);
-            Assert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(6.8, actual, 1e-5);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
 
-            Assert.AreEqual(4, target.Iterations);
-            Assert.AreEqual(0, target.Deletions);
+            ClassicAssert.AreEqual(4, target.Iterations);
+            ClassicAssert.AreEqual(0, target.Deletions);
 
-            Assert.AreEqual(+1.4, target.Solution[0], 1e-6);
-            Assert.AreEqual(+0.8, target.Solution[1], 1e-6);
-            Assert.AreEqual(-0.4, target.Solution[2], 1e-6);
+            ClassicAssert.AreEqual(+1.4, target.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(+0.8, target.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(-0.4, target.Solution[2], 1e-6);
 
-            Assert.AreEqual(2.5333333, target.Lagrangian[0], 1e-6);
-            Assert.AreEqual(9.7333333, target.Lagrangian[1], 1e-6);
-            Assert.AreEqual(0.8666667, target.Lagrangian[2], 1e-6);
+            ClassicAssert.AreEqual(2.5333333, target.Lagrangian[0], 1e-6);
+            ClassicAssert.AreEqual(9.7333333, target.Lagrangian[1], 1e-6);
+            ClassicAssert.AreEqual(0.8666667, target.Lagrangian[2], 1e-6);
 
-            Assert.AreEqual(1, target.ActiveConstraints[0]);
-            Assert.AreEqual(0, target.ActiveConstraints[1]);
-            Assert.AreEqual(2, target.ActiveConstraints[2]);
+            ClassicAssert.AreEqual(1, target.ActiveConstraints[0]);
+            ClassicAssert.AreEqual(0, target.ActiveConstraints[1]);
+            ClassicAssert.AreEqual(2, target.ActiveConstraints[2]);
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -253,27 +254,27 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(D, d.Multiply(-1), A.Transpose(), b);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double actual = target.Value;
 
-            Assert.AreEqual(-249.0, actual, 1e-6);
-            Assert.IsFalse(double.IsNaN(actual));
-            Assert.AreEqual(1, target.Iterations);
-            Assert.AreEqual(0, target.Deletions);
+            ClassicAssert.AreEqual(-249.0, actual, 1e-6);
+            ClassicAssert.IsFalse(double.IsNaN(actual));
+            ClassicAssert.AreEqual(1, target.Iterations);
+            ClassicAssert.AreEqual(0, target.Deletions);
 
-            Assert.AreEqual(3, target.Solution[0], 1e-6);
-            Assert.AreEqual(5, target.Solution[1], 1e-6);
-            Assert.AreEqual(7, target.Solution[2], 1e-6);
+            ClassicAssert.AreEqual(3, target.Solution[0], 1e-6);
+            ClassicAssert.AreEqual(5, target.Solution[1], 1e-6);
+            ClassicAssert.AreEqual(7, target.Solution[2], 1e-6);
 
-            Assert.AreEqual(0, target.Lagrangian[0]);
-            Assert.AreEqual(0, target.Lagrangian[1]);
-            Assert.AreEqual(0, target.Lagrangian[2]);
+            ClassicAssert.AreEqual(0, target.Lagrangian[0]);
+            ClassicAssert.AreEqual(0, target.Lagrangian[1]);
+            ClassicAssert.AreEqual(0, target.Lagrangian[2]);
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -305,21 +306,21 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(cma, dva.Multiply(-1), Ama.Transpose(), bva, meq);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double value = target.Value;
 
             for (int i = 0; i < target.Solution.Length; i += 2)
             {
                 int N = target.Solution.Length / 2;
-                Assert.AreEqual(1.0 / N, target.Solution[i], 1e-6);
-                Assert.AreEqual(0.0, target.Solution[i + 1], 1e-6);
+                ClassicAssert.AreEqual(1.0 / N, target.Solution[i], 1e-6);
+                ClassicAssert.AreEqual(0.0, target.Solution[i + 1], 1e-6);
             }
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
         }
 
@@ -347,8 +348,8 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani target = new GoldfarbIdnani(f, constraints);
 
-            Assert.IsTrue(A.IsEqual(target.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(target.ConstraintValues));
+            ClassicAssert.IsTrue(A.IsEqual(target.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(target.ConstraintValues));
         }
 
         [Test]
@@ -452,19 +453,19 @@ namespace Accord.Tests.Math
             #endregion
 
 
-            Assert.IsTrue(A.IsEqual(solver.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(solver.ConstraintValues));
-            Assert.AreEqual(numberOfEqualities, solver.NumberOfEqualities);
+            ClassicAssert.IsTrue(A.IsEqual(solver.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(solver.ConstraintValues));
+            ClassicAssert.AreEqual(numberOfEqualities, solver.NumberOfEqualities);
 
-            Assert.AreEqual(170, minValue, 1e-10);
-            Assert.AreEqual(10, solver.Solution[0]);
-            Assert.AreEqual(05, solver.Solution[1]);
+            ClassicAssert.AreEqual(170, minValue, 1e-10);
+            ClassicAssert.AreEqual(10, solver.Solution[0]);
+            ClassicAssert.AreEqual(05, solver.Solution[1]);
 
             foreach (double v in solver.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in solver.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -507,8 +508,8 @@ namespace Accord.Tests.Math
             double minValue = solver.Value;
             #endregion
 
-            Assert.AreEqual(170, solver.Value);
-            Assert.IsTrue(success);
+            ClassicAssert.AreEqual(170, solver.Value);
+            ClassicAssert.IsTrue(success);
 
             double[,] A =
             {
@@ -522,8 +523,8 @@ namespace Accord.Tests.Math
                 10,
             };
 
-            Assert.IsTrue(A.IsEqual(solver.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(solver.ConstraintValues));
+            ClassicAssert.IsTrue(A.IsEqual(solver.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(solver.ConstraintValues));
 
 
             double[,] Q =
@@ -538,8 +539,8 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
         }
 
         [Test]
@@ -568,13 +569,13 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
-            Assert.AreEqual(-100, f.ConstantTerm);
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.AreEqual(-100, f.ConstantTerm);
 
             bool success = solver.Minimize();
-            Assert.AreEqual(70, solver.Value);
-            Assert.IsTrue(success);
+            ClassicAssert.AreEqual(70, solver.Value);
+            ClassicAssert.IsTrue(success);
         }
 
         [Test]
@@ -603,13 +604,13 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
-            Assert.AreEqual(100, f.ConstantTerm);
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.AreEqual(100, f.ConstantTerm);
 
             bool success = solver.Minimize();
-            Assert.AreEqual(270, solver.Value);
-            Assert.IsTrue(success);
+            ClassicAssert.AreEqual(270, solver.Value);
+            ClassicAssert.IsTrue(success);
         }
 
         [Test]
@@ -644,8 +645,8 @@ namespace Accord.Tests.Math
                 10,
             };
 
-            Assert.IsTrue(A.IsEqual(target.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(target.ConstraintValues));
+            ClassicAssert.IsTrue(A.IsEqual(target.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(target.ConstraintValues));
 
             double[,] Q =
             {
@@ -659,8 +660,8 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
         }
 
         [Test]
@@ -685,16 +686,16 @@ namespace Accord.Tests.Math
             bool success = target.Minimize();
             double value = target.Value;
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
-            Assert.AreEqual(14376 / 109.0, value, 1e-10);
+            ClassicAssert.AreEqual(14376 / 109.0, value, 1e-10);
 
-            Assert.AreEqual(-186 / 109.0, target.Solution[0], 1e-10);
-            Assert.AreEqual(-284 / 109.0, target.Solution[1], 1e-10);
-            Assert.AreEqual(-1024 / 109.0, target.Solution[2], 1e-10);
+            ClassicAssert.AreEqual(-186 / 109.0, target.Solution[0], 1e-10);
+            ClassicAssert.AreEqual(-284 / 109.0, target.Solution[1], 1e-10);
+            ClassicAssert.AreEqual(-1024 / 109.0, target.Solution[2], 1e-10);
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
         }
 
@@ -718,15 +719,15 @@ namespace Accord.Tests.Math
             bool success = target.Minimize();
             double value = target.Value;
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(14376 / 109.0, value, 1e-10);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(14376 / 109.0, value, 1e-10);
 
-            Assert.AreEqual(-186 / 109.0, target.Solution[0], 1e-10);
-            Assert.AreEqual(-284 / 109.0, target.Solution[1], 1e-10);
-            Assert.AreEqual(-1024 / 109.0, target.Solution[2], 1e-10);
+            ClassicAssert.AreEqual(-186 / 109.0, target.Solution[0], 1e-10);
+            ClassicAssert.AreEqual(-284 / 109.0, target.Solution[1], 1e-10);
+            ClassicAssert.AreEqual(-1024 / 109.0, target.Solution[2], 1e-10);
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -764,8 +765,8 @@ namespace Accord.Tests.Math
                  1,
             };
 
-            Assert.IsTrue(A.IsEqual(target.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(target.ConstraintValues));
+            ClassicAssert.IsTrue(A.IsEqual(target.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(target.ConstraintValues));
 
             double[,] Q =
             {
@@ -779,28 +780,28 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
 
             bool success = target.Minimize();
             double minValue = target.Value;
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double[] solution = target.Solution;
 
-            Assert.AreEqual(7, minValue);
-            Assert.AreEqual(1, solution[0]);
-            Assert.AreEqual(1, solution[1]);
+            ClassicAssert.AreEqual(7, minValue);
+            ClassicAssert.AreEqual(1, solution[0]);
+            ClassicAssert.AreEqual(1, solution[1]);
 
-            Assert.AreEqual(8, target.Lagrangian[0], 1e-5);
-            Assert.AreEqual(7, target.Lagrangian[1], 1e-5);
+            ClassicAssert.AreEqual(8, target.Lagrangian[0], 1e-5);
+            ClassicAssert.AreEqual(7, target.Lagrangian[1], 1e-5);
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -838,8 +839,8 @@ namespace Accord.Tests.Math
                  1,
             };
 
-            Assert.IsTrue(A.IsEqual(target.ConstraintMatrix));
-            Assert.IsTrue(b.IsEqual(target.ConstraintValues));
+            ClassicAssert.IsTrue(A.IsEqual(target.ConstraintMatrix));
+            ClassicAssert.IsTrue(b.IsEqual(target.ConstraintValues));
 
             double[,] Q =
             {
@@ -853,12 +854,12 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(Q.IsEqual(actualQ));
-            Assert.IsTrue(d.IsEqual(actuald));
+            ClassicAssert.IsTrue(Q.IsEqual(actualQ));
+            ClassicAssert.IsTrue(d.IsEqual(actuald));
 
             bool success = target.Minimize();
 
-            Assert.IsFalse(success);
+            ClassicAssert.IsFalse(success);
         }
 
         [Test]
@@ -928,34 +929,34 @@ namespace Accord.Tests.Math
             var actualQ = f.QuadraticTerms;
             var actuald = f.LinearTerms;
 
-            Assert.IsTrue(expectedA.IsEqual(actualA));
-            Assert.IsTrue(expectedb.IsEqual(actualb));
-            Assert.IsTrue(expectedQ.IsEqual(actualQ));
-            Assert.IsTrue(expectedd.IsEqual(actuald));
+            ClassicAssert.IsTrue(expectedA.IsEqual(actualA));
+            ClassicAssert.IsTrue(expectedb.IsEqual(actualb));
+            ClassicAssert.IsTrue(expectedQ.IsEqual(actualQ));
+            ClassicAssert.IsTrue(expectedd.IsEqual(actuald));
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double min = target.Value;
 
             double[] solution = target.Solution;
 
-            Assert.AreEqual(0, solution[0], 1e-10);
-            Assert.AreEqual(0, solution[1], 1e-10);
+            ClassicAssert.AreEqual(0, solution[0], 1e-10);
+            ClassicAssert.AreEqual(0, solution[1], 1e-10);
 
-            Assert.AreEqual(0.0, min, 1e-10);
+            ClassicAssert.AreEqual(0.0, min, 1e-10);
 
-            Assert.AreEqual(0, target.Lagrangian[0], 1e-10);
-            Assert.AreEqual(5, target.Lagrangian[1], 1e-10);
-            Assert.AreEqual(5, target.Lagrangian[2], 1e-10);
-            Assert.AreEqual(0, target.Lagrangian[3], 1e-10);
+            ClassicAssert.AreEqual(0, target.Lagrangian[0], 1e-10);
+            ClassicAssert.AreEqual(5, target.Lagrangian[1], 1e-10);
+            ClassicAssert.AreEqual(5, target.Lagrangian[2], 1e-10);
+            ClassicAssert.AreEqual(0, target.Lagrangian[3], 1e-10);
 
 
-            Assert.IsFalse(Double.IsNaN(min));
+            ClassicAssert.IsFalse(Double.IsNaN(min));
 
             foreach (double v in target.Solution)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
 
             foreach (double v in target.Lagrangian)
-                Assert.IsFalse(double.IsNaN(v));
+                ClassicAssert.IsFalse(double.IsNaN(v));
         }
 
         [Test]
@@ -993,11 +994,11 @@ namespace Accord.Tests.Math
             double maxValue = solver.Value;
             #endregion
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(25 / 16.0, maxValue);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(25 / 16.0, maxValue);
 
-            Assert.AreEqual(-5 / 8.0, solver.Solution[0]);
-            Assert.AreEqual(5 / 8.0, solver.Solution[1]);
+            ClassicAssert.AreEqual(-5 / 8.0, solver.Solution[0]);
+            ClassicAssert.AreEqual(5 / 8.0, solver.Solution[1]);
         }
 
         [Test]
@@ -1023,8 +1024,8 @@ namespace Accord.Tests.Math
             bool status = classSolver.Minimize();
             double result = classSolver.Value;
 
-            Assert.IsTrue(status);
-            Assert.AreEqual(15553.60, result, 1e-10);
+            ClassicAssert.IsTrue(status);
+            ClassicAssert.AreEqual(15553.60, result, 1e-10);
         }
 
         [Test]
@@ -1032,7 +1033,7 @@ namespace Accord.Tests.Math
         {
             var fr = CultureInfo.GetCultureInfo("fr-FR");
 
-            Assert.AreEqual(",", fr.NumberFormat.NumberDecimalSeparator);
+            ClassicAssert.AreEqual(",", fr.NumberFormat.NumberDecimalSeparator);
 
             String strObjective = 0.5.ToString(fr)
                 + "x² +" + 0.2.ToString(fr) + "y² +"
@@ -1055,8 +1056,8 @@ namespace Accord.Tests.Math
             bool status = classSolver.Minimize();
             double result = classSolver.Value;
 
-            Assert.IsTrue(status);
-            Assert.AreEqual(15553.60, result, 1e-10);
+            ClassicAssert.IsTrue(status);
+            ClassicAssert.AreEqual(15553.60, result, 1e-10);
         }
 
         [Test]
@@ -1083,8 +1084,8 @@ namespace Accord.Tests.Math
             bool status = classSolver.Minimize();
             double result = classSolver.Value;
 
-            Assert.IsTrue(status);
-            Assert.AreEqual(15553.60, result, 1e-10);
+            ClassicAssert.IsTrue(status);
+            ClassicAssert.AreEqual(15553.60, result, 1e-10);
         }
 
         [Test]
@@ -1110,8 +1111,8 @@ namespace Accord.Tests.Math
             bool status = classSolver.Minimize();
             double result = classSolver.Value;
 
-            Assert.IsTrue(status);
-            Assert.AreEqual(15553.60, result, 1e-10);
+            ClassicAssert.IsTrue(status);
+            ClassicAssert.AreEqual(15553.60, result, 1e-10);
         }
 
         [Test]
@@ -1131,7 +1132,7 @@ namespace Accord.Tests.Math
                 { 0.064073439, 0.014732381, 0.067615114, 0.11539609  }
             };
 
-            Assert.IsTrue(Q.IsPositiveDefinite());
+            ClassicAssert.IsTrue(Q.IsPositiveDefinite());
 
             double[] d = { 0, 0, 0, 0 };
 
@@ -1148,10 +1149,10 @@ namespace Accord.Tests.Math
             constraints.Add(new LinearConstraint(f, "d >= 0"));
             constraints.Add(new LinearConstraint(f, "a >= 0.5"));
 
-            Assert.AreEqual(1, constraints[6].CombinedAs[0]);
-            Assert.AreEqual(0.5, constraints[6].Value);
-            Assert.AreEqual(0.1, constraints[6].GetViolation(new double[] { 0.6 }), 1e-10);
-            Assert.AreEqual(-0.1, constraints[6].GetViolation(new double[] { 0.4 }), 1e-10);
+            ClassicAssert.AreEqual(1, constraints[6].CombinedAs[0]);
+            ClassicAssert.AreEqual(0.5, constraints[6].Value);
+            ClassicAssert.AreEqual(0.1, constraints[6].GetViolation(new double[] { 0.6 }), 1e-10);
+            ClassicAssert.AreEqual(-0.1, constraints[6].GetViolation(new double[] { 0.4 }), 1e-10);
 
             bool psd = Q.IsPositiveDefinite();
 
@@ -1167,7 +1168,7 @@ namespace Accord.Tests.Math
             GoldfarbIdnani solver = new GoldfarbIdnani(f, constraints);
 
             // And attempt to solve it.
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
             double[] expected = { 0.50000000000000, 0.30967169476486, 0.19032830523514, 0 };
@@ -1176,14 +1177,14 @@ namespace Accord.Tests.Math
             for (int i = 0; i < constraints.Count; i++)
             {
                 double error = constraints[i].GetViolation(actual);
-                Assert.IsTrue(error >= 0);
+                ClassicAssert.IsTrue(error >= 0);
             }
 
             for (int i = 0; i < expected.Length; i++)
             {
                 double e = expected[i];
                 double a = actual[i];
-                Assert.AreEqual(e, a, 1e-10);
+                ClassicAssert.AreEqual(e, a, 1e-10);
             }
         }
 
@@ -1204,7 +1205,7 @@ namespace Accord.Tests.Math
                 { 0.064073439, 0.014732381, 0.067615114, 0.11539609  }
             };
 
-            Assert.IsTrue(Q.IsPositiveDefinite());
+            ClassicAssert.IsTrue(Q.IsPositiveDefinite());
 
             double[] d = { 0, 0, 0, 0 };
 
@@ -1221,10 +1222,10 @@ namespace Accord.Tests.Math
             constraints.Add(new LinearConstraint(f, "-d <= 0"));
             constraints.Add(new LinearConstraint(f, "-a + 0.5 <= 0.0"));
 
-            Assert.AreEqual(-1, constraints[6].CombinedAs[0]);
-            Assert.AreEqual(-0.5, constraints[6].Value);
-            Assert.AreEqual(0.1, constraints[6].GetViolation(new double[] { 0.6 }), 1e-10);
-            Assert.AreEqual(-0.1, constraints[6].GetViolation(new double[] { 0.4 }), 1e-10);
+            ClassicAssert.AreEqual(-1, constraints[6].CombinedAs[0]);
+            ClassicAssert.AreEqual(-0.5, constraints[6].Value);
+            ClassicAssert.AreEqual(0.1, constraints[6].GetViolation(new double[] { 0.6 }), 1e-10);
+            ClassicAssert.AreEqual(-0.1, constraints[6].GetViolation(new double[] { 0.4 }), 1e-10);
 
             bool psd = Q.IsPositiveDefinite();
 
@@ -1236,7 +1237,7 @@ namespace Accord.Tests.Math
             GoldfarbIdnani solver = new GoldfarbIdnani(f, constraints);
 
             // And attempt to solve it.
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
             double minValue = solver.Value;
 
             double[] expected = { 0.50000000000000, 0.30967169476486, 0.19032830523514, 0 };
@@ -1245,14 +1246,14 @@ namespace Accord.Tests.Math
             for (int i = 0; i < constraints.Count; i++)
             {
                 double error = constraints[i].GetViolation(actual);
-                Assert.IsTrue(error >= 0);
+                ClassicAssert.IsTrue(error >= 0);
             }
 
             for (int i = 0; i < expected.Length; i++)
             {
                 double e = expected[i];
                 double a = actual[i];
-                Assert.AreEqual(e, a, 1e-10);
+                ClassicAssert.AreEqual(e, a, 1e-10);
             }
         }
 
@@ -1269,13 +1270,13 @@ namespace Accord.Tests.Math
             bvec.CopyTo(b, 0);
 
             bool psd = Q.IsPositiveDefinite();
-            Assert.IsTrue(psd);
+            ClassicAssert.IsTrue(psd);
 
             GoldfarbIdnani gfI = new GoldfarbIdnani(Q, dvec, AMat, b, 2);
 
             bool success = gfI.Minimize();
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double[] soln = gfI.Solution;
             double value = Math.Sqrt(Matrix.Multiply(Matrix.Multiply(soln, Q), soln.Transpose())[0]);
@@ -1295,9 +1296,9 @@ namespace Accord.Tests.Math
                 soln[1], soln[12], soln[13]
             };
 
-            Assert.AreEqual(expectedSol, actualSol, 1e-8);
+            ClassicAssert.AreEqual(expectedSol, actualSol, 1e-8);
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-5);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-5);
         }
 
         [Test]
@@ -1312,16 +1313,16 @@ namespace Accord.Tests.Math
             bvec.CopyTo(b, 0);
 
             bool psd = Q.IsPositiveDefinite();
-            Assert.IsTrue(psd);
+            ClassicAssert.IsTrue(psd);
 
             GoldfarbIdnani gfI = new GoldfarbIdnani(Q, dvec, AMat, b, 2);
 
             for (int i = 0; i < gfI.ConstraintTolerances.Length; i++)
-                Assert.AreEqual(LinearConstraint.DefaultTolerance, gfI.ConstraintTolerances[i]);
+                ClassicAssert.AreEqual(LinearConstraint.DefaultTolerance, gfI.ConstraintTolerances[i]);
 
             bool success = gfI.Minimize();
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double[] soln = gfI.Solution;
             double value = Math.Sqrt(Matrix.Multiply(Matrix.Multiply(soln, Q), soln.Transpose())[0]);
@@ -1341,9 +1342,9 @@ namespace Accord.Tests.Math
                 soln[1], soln[12], soln[13]
             };
 
-            Assert.AreEqual(expectedSol, actualSol, 1e-8);
+            ClassicAssert.AreEqual(expectedSol, actualSol, 1e-8);
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-5);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-5);
         }
 
         [Test]
@@ -1358,7 +1359,7 @@ namespace Accord.Tests.Math
             bvec.CopyTo(b, 0);
 
             bool psd = Q.IsPositiveDefinite();
-            Assert.IsTrue(psd);
+            ClassicAssert.IsTrue(psd);
 
             GoldfarbIdnani gfI = new GoldfarbIdnani(Q, dvec, AMat, b, 2);
 
@@ -1367,7 +1368,7 @@ namespace Accord.Tests.Math
 
             bool success = gfI.Minimize();
 
-            Assert.IsTrue(success);
+            ClassicAssert.IsTrue(success);
 
             double[] soln = gfI.Solution;
             double value = Math.Sqrt(Matrix.Multiply(Matrix.Multiply(soln, Q), soln.Transpose())[0]);
@@ -1390,9 +1391,9 @@ namespace Accord.Tests.Math
                 soln[1], soln[3], soln[4], soln[12], soln[13], soln[18]
             };
 
-            Assert.AreEqual(expectedSol, actualSol, 1e-8);
+            ClassicAssert.AreEqual(expectedSol, actualSol, 1e-8);
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i], actual[i], 1e-5);
+                ClassicAssert.AreEqual(expected[i], actual[i], 1e-5);
         }
 
         [Test]
@@ -1422,7 +1423,7 @@ namespace Accord.Tests.Math
             DMat[3, 1] = DMat[1, 3];
             DMat[3, 2] = DMat[2, 3];
 
-            Assert.IsTrue(DMat.IsSymmetric());
+            ClassicAssert.IsTrue(DMat.IsSymmetric());
 
 
             double[,] AMat = new double[9, 4];
@@ -1438,29 +1439,29 @@ namespace Accord.Tests.Math
 
             GoldfarbIdnani gfI = new GoldfarbIdnani(DMat, dvec, AMat, bvec, 1);
 
-            Assert.AreEqual(4, gfI.NumberOfVariables);
-            Assert.AreEqual(9, gfI.NumberOfConstraints);
+            ClassicAssert.AreEqual(4, gfI.NumberOfVariables);
+            ClassicAssert.AreEqual(9, gfI.NumberOfConstraints);
 
-            Assert.IsTrue(gfI.Minimize());
+            ClassicAssert.IsTrue(gfI.Minimize());
 
-            Assert.IsTrue(oldA.IsEqual(AMat));
-            Assert.IsTrue(oldD.IsEqual(DMat));
-            Assert.IsTrue(oldb.IsEqual(bvec));
-            Assert.IsTrue(oldd.IsEqual(dvec));
+            ClassicAssert.IsTrue(oldA.IsEqual(AMat));
+            ClassicAssert.IsTrue(oldD.IsEqual(DMat));
+            ClassicAssert.IsTrue(oldb.IsEqual(bvec));
+            ClassicAssert.IsTrue(oldd.IsEqual(dvec));
 
             double[] soln = gfI.Solution;
             double value = gfI.Value;
 
-            Assert.AreEqual(0, soln[0], 1e-10);
-            Assert.AreEqual(0.73222257311567, soln[1], 1e-5);
-            Assert.AreEqual(0, soln[2], 1e-10);
-            Assert.AreEqual(0.2677742688433, soln[3], 1e-8);
-            Assert.AreEqual(-0.00079179497009427, value, 1e-6);
+            ClassicAssert.AreEqual(0, soln[0], 1e-10);
+            ClassicAssert.AreEqual(0.73222257311567, soln[1], 1e-5);
+            ClassicAssert.AreEqual(0, soln[2], 1e-10);
+            ClassicAssert.AreEqual(0.2677742688433, soln[3], 1e-8);
+            ClassicAssert.AreEqual(-0.00079179497009427, value, 1e-6);
 
             double[] lagrangian = gfI.Lagrangian;
             double[] expected = { 0.0003730054618697, 0.00016053620578588, 0, 0, 0, 0.000060343913971918, 0, 0, 0 };
             for (int i = 0; i < lagrangian.Length; i++)
-                Assert.AreEqual(expected[i], lagrangian[i], 1e-4);
+                ClassicAssert.AreEqual(expected[i], lagrangian[i], 1e-4);
         }
 
         private double[,] readMatrixFile(StringReader reader)
@@ -1614,7 +1615,7 @@ namespace Accord.Tests.Math
             //for (int i = 0; i < solver.ConstraintTolerances.Length; i++)
             //    solver.ConstraintTolerances[i] = 1e-1;
 
-            Assert.IsTrue(solver.Minimize());
+            ClassicAssert.IsTrue(solver.Minimize());
 
             QuadraticObjectiveFunction f = new QuadraticObjectiveFunction(Q, d);
             f.Function(solver.Solution);
@@ -1685,15 +1686,15 @@ namespace Accord.Tests.Math
             var tolerance = 0.001;
             target.ConstraintTolerances.ApplyInPlace(a => tolerance);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double[] solution = target.Solution;
 
-            Assert.AreEqual(4, solution[0], tolerance);
-            Assert.AreEqual(3, solution[1], tolerance);
-            Assert.AreEqual(0.75, solution[2], tolerance);
-            Assert.AreEqual(1.25, solution[3], tolerance);
-            Assert.AreEqual(0.25, solution[4], tolerance);
-            Assert.AreEqual(0.75, solution[5], tolerance);
+            ClassicAssert.AreEqual(4, solution[0], tolerance);
+            ClassicAssert.AreEqual(3, solution[1], tolerance);
+            ClassicAssert.AreEqual(0.75, solution[2], tolerance);
+            ClassicAssert.AreEqual(1.25, solution[3], tolerance);
+            ClassicAssert.AreEqual(0.25, solution[4], tolerance);
+            ClassicAssert.AreEqual(0.75, solution[5], tolerance);
         }
 
         [Test, Ignore("Same problem happens in R")]
@@ -1716,14 +1717,14 @@ namespace Accord.Tests.Math
             var Q = CsvReader.FromText(Resources.unf_1_quadTerms, hasHeaders: false).ToMatrix();
             double[] d = CsvReader.FromText(Resources.unf_1_linTerms, hasHeaders: false).ToMatrix().GetRow(0);
 
-            Assert.IsTrue(Q.IsSymmetric());
+            ClassicAssert.IsTrue(Q.IsSymmetric());
 
             GoldfarbIdnani target = new GoldfarbIdnani(Q, d, A, b);
-            Assert.AreEqual(12, target.NumberOfConstraints);
-            Assert.AreEqual(0, target.NumberOfEqualities);
-            Assert.AreEqual(32, target.NumberOfVariables);
+            ClassicAssert.AreEqual(12, target.NumberOfConstraints);
+            ClassicAssert.AreEqual(0, target.NumberOfEqualities);
+            ClassicAssert.AreEqual(32, target.NumberOfVariables);
 
-            Assert.IsTrue(target.Minimize());
+            ClassicAssert.IsTrue(target.Minimize());
             double[] solution = target.Solution;
 
             // Check:
@@ -1735,12 +1736,12 @@ namespace Accord.Tests.Math
 
             double tolerance = 1e-10;
 
-            Assert.AreEqual(4, solution[0], tolerance);
-            Assert.AreEqual(3, solution[1], tolerance);
-            Assert.AreEqual(0.75, solution[2], tolerance);
-            Assert.AreEqual(1.25, solution[3], tolerance);
-            Assert.AreEqual(0.25, solution[4], tolerance);
-            Assert.AreEqual(0.75, solution[5], tolerance);
+            ClassicAssert.AreEqual(4, solution[0], tolerance);
+            ClassicAssert.AreEqual(3, solution[1], tolerance);
+            ClassicAssert.AreEqual(0.75, solution[2], tolerance);
+            ClassicAssert.AreEqual(1.25, solution[3], tolerance);
+            ClassicAssert.AreEqual(0.25, solution[4], tolerance);
+            ClassicAssert.AreEqual(0.75, solution[5], tolerance);
         }
     }
 }

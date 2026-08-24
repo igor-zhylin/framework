@@ -23,6 +23,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using Accord.Math;
 
@@ -56,13 +57,13 @@ namespace Accord.Tests.Math
             double value = search.Value;        // should be zero
             #endregion
 
-            Assert.IsTrue(success1);
-            Assert.IsTrue(success2);
-            Assert.IsTrue(success3);
-            Assert.AreEqual(-2.6103173073566239, max);
-            Assert.AreEqual(1.2769839857480398, min);
-            Assert.AreEqual(0.10219566016872624, root);
-            Assert.AreEqual(0, value, 1e-5);
+            ClassicAssert.IsTrue(success1);
+            ClassicAssert.IsTrue(success2);
+            ClassicAssert.IsTrue(success3);
+            ClassicAssert.AreEqual(-2.6103173073566239, max);
+            ClassicAssert.AreEqual(1.2769839857480398, min);
+            ClassicAssert.AreEqual(0.10219566016872624, root);
+            ClassicAssert.AreEqual(0, value, 1e-5);
         }
 
 
@@ -78,11 +79,11 @@ namespace Accord.Tests.Math
 
             BrentSearch sut = new BrentSearch(f, lowerBound, upperBound, tolerance, maxIterations);
 
-            Assert.AreSame(f, sut.Function);
-            Assert.AreEqual(lowerBound, sut.LowerBound);
-            Assert.AreEqual(upperBound, sut.UpperBound);
-            Assert.AreEqual(tolerance, sut.Tolerance);
-            Assert.AreEqual(maxIterations, sut.MaxIterations);
+            ClassicAssert.AreSame(f, sut.Function);
+            ClassicAssert.AreEqual(lowerBound, sut.LowerBound);
+            ClassicAssert.AreEqual(upperBound, sut.UpperBound);
+            ClassicAssert.AreEqual(tolerance, sut.Tolerance);
+            ClassicAssert.AreEqual(maxIterations, sut.MaxIterations);
         }
 
 
@@ -98,15 +99,15 @@ namespace Accord.Tests.Math
             double expected = -3;
             double actual = BrentSearch.FindRoot(f, a, b);
 
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.IsFalse(Double.IsNaN(actual));
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.IsFalse(Double.IsNaN(actual));
 
             var search = new BrentSearch(f, a, b);
             bool isSuccess = search.FindRoot();
 
-            Assert.True(isSuccess);
-            Assert.AreEqual(BrentSearchStatus.Success, search.Status);
-            Assert.AreEqual(expected, search.Solution, 1e-6);
+            ClassicAssert.True(isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.Success, search.Status);
+            ClassicAssert.AreEqual(expected, search.Solution, 1e-6);
             Assert.That(Math.Abs(search.Value), Is.LessThan(1e-5));
         }
 
@@ -124,16 +125,16 @@ namespace Accord.Tests.Math
             double expected = -3;
             double actual = BrentSearch.Find(f, value, a, b);
 
-            Assert.AreEqual(expected, actual, 1e-6);
-            Assert.AreEqual(value, f(actual), 1e-5);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(value, f(actual), 1e-5);
 
             var search = new BrentSearch(f, a, b);
             bool isSuccess = search.Find(value);
 
-            Assert.True(isSuccess);
-            Assert.AreEqual(BrentSearchStatus.Success, search.Status);
-            Assert.AreEqual(expected, search.Solution, 1e-6);
-            Assert.AreEqual(value, search.Value, 1e-5);
+            ClassicAssert.True(isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.Success, search.Status);
+            ClassicAssert.AreEqual(expected, search.Solution, 1e-6);
+            ClassicAssert.AreEqual(value, search.Value, 1e-5);
         }
 
 
@@ -145,16 +146,16 @@ namespace Accord.Tests.Math
             double expected = -3 / 4d;
             double actual = BrentSearch.Maximize(f, -200, +200);
 
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
 
 
             var search = new BrentSearch(f, -200, 200);
             bool isSuccess = search.Maximize();
 
-            Assert.True(isSuccess);
-            Assert.AreEqual(BrentSearchStatus.Success, search.Status);
-            Assert.AreEqual(expected, search.Solution, 1e-10);
-            Assert.AreEqual(f(expected), search.Value, double.Epsilon);
+            ClassicAssert.True(isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.Success, search.Status);
+            ClassicAssert.AreEqual(expected, search.Solution, 1e-10);
+            ClassicAssert.AreEqual(f(expected), search.Value, double.Epsilon);
         }
 
 
@@ -166,16 +167,16 @@ namespace Accord.Tests.Math
             double expected = 3 / 4d;
             double actual = BrentSearch.Minimize(f, -200, +200);
 
-            Assert.AreEqual(expected, actual, 1e-10);
+            ClassicAssert.AreEqual(expected, actual, 1e-10);
 
 
             var search = new BrentSearch(f, -200, 200);
             bool isSuccess = search.Minimize();
 
-            Assert.True(isSuccess);
-            Assert.AreEqual(BrentSearchStatus.Success, search.Status);
-            Assert.AreEqual(expected, search.Solution, 1e-10);
-            Assert.AreEqual(f(expected), search.Value, double.Epsilon);
+            ClassicAssert.True(isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.Success, search.Status);
+            ClassicAssert.AreEqual(expected, search.Solution, 1e-10);
+            ClassicAssert.AreEqual(f(expected), search.Value, double.Epsilon);
         }
 
 
@@ -203,8 +204,8 @@ namespace Accord.Tests.Math
             var search = new BrentSearch(f, a, b);
             var isSuccess = search.FindRoot();
 
-            Assert.AreEqual(false, isSuccess);
-            Assert.AreEqual(BrentSearchStatus.RootNotBracketed, search.Status);
+            ClassicAssert.AreEqual(false, isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.RootNotBracketed, search.Status);
         }
 
 
@@ -232,8 +233,8 @@ namespace Accord.Tests.Math
             var search = new BrentSearch(f, a, b);
             var isSuccess = search.FindRoot();
 
-            Assert.AreEqual(false, isSuccess);
-            Assert.AreEqual(BrentSearchStatus.RootNotBracketed, search.Status);
+            ClassicAssert.AreEqual(false, isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.RootNotBracketed, search.Status);
         }
 
 
@@ -261,8 +262,8 @@ namespace Accord.Tests.Math
             var search = new BrentSearch(f, a, b, maxIterations: 5);
             var isSuccess = search.FindRoot();
 
-            Assert.AreEqual(false, isSuccess);
-            Assert.AreEqual(BrentSearchStatus.MaxIterationsReached, search.Status);
+            ClassicAssert.AreEqual(false, isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.MaxIterationsReached, search.Status);
 
             Assert.That(search.Solution, Is.GreaterThan(a).And.LessThan(b));
         }
@@ -292,8 +293,8 @@ namespace Accord.Tests.Math
             var search = new BrentSearch(f, a, b, maxIterations: 10);
             var isSuccess = search.Maximize();
 
-            Assert.AreEqual(false, isSuccess);
-            Assert.AreEqual(BrentSearchStatus.MaxIterationsReached, search.Status);
+            ClassicAssert.AreEqual(false, isSuccess);
+            ClassicAssert.AreEqual(BrentSearchStatus.MaxIterationsReached, search.Status);
 
             Assert.That(search.Solution, Is.GreaterThan(a).And.LessThan(b));
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Accord.Math.Geometry;
 
 namespace Accord.Tests.Math
@@ -21,17 +22,17 @@ namespace Accord.Tests.Math
 
             // test Point-Theta factory
             Line line = Line.FromPointTheta(pt, theta);
-            Assert.AreEqual(expectedSlope, line.Slope, Error);
-            Assert.AreEqual(expectedIntercept, line.Intercept, Error);
+            ClassicAssert.AreEqual(expectedSlope, line.Slope, Error);
+            ClassicAssert.AreEqual(expectedIntercept, line.Intercept, Error);
 
             // calculate radius
             float radius = pt.EuclideanNorm();
-            Assert.AreEqual(expectedRadius, radius, Error);
+            ClassicAssert.AreEqual(expectedRadius, radius, Error);
 
             // test R-Theta factory
             line = Line.FromRTheta(radius, theta);
-            Assert.AreEqual(expectedSlope, line.Slope, Error);
-            Assert.AreEqual(expectedIntercept, line.Intercept, Error);
+            ClassicAssert.AreEqual(expectedSlope, line.Slope, Error);
+            ClassicAssert.AreEqual(expectedIntercept, line.Intercept, Error);
         }
 
 
@@ -43,9 +44,9 @@ namespace Accord.Tests.Math
         {
             Line line = Line.FromPoints(new Point(sx, sy), new Point(ex, ey));
 
-            Assert.AreEqual(expectedResult, line.IsVertical);
-            Assert.AreEqual(expectedSlope, line.Slope);
-            Assert.AreEqual(expectedIntercept, line.Intercept);
+            ClassicAssert.AreEqual(expectedResult, line.IsVertical);
+            ClassicAssert.AreEqual(expectedSlope, line.Slope);
+            ClassicAssert.AreEqual(expectedIntercept, line.Intercept);
         }
 
 
@@ -57,9 +58,9 @@ namespace Accord.Tests.Math
         {
             Line line = Line.FromPoints(new Point(sx, sy), new Point(ex, ey));
 
-            Assert.AreEqual(expectedResult, line.IsHorizontal);
-            Assert.AreEqual(expectedSlope, line.Slope);
-            Assert.AreEqual(expectedIntercept, line.Intercept);
+            ClassicAssert.AreEqual(expectedResult, line.IsHorizontal);
+            ClassicAssert.AreEqual(expectedSlope, line.Slope);
+            ClassicAssert.AreEqual(expectedIntercept, line.Intercept);
         }
 
 
@@ -75,7 +76,7 @@ namespace Accord.Tests.Math
 
             float angle = line1.GetAngleBetweenLines(line2);
 
-            Assert.AreEqual(expectedAngle, angle, Error);
+            ClassicAssert.AreEqual(expectedAngle, angle, Error);
         }
 
 
@@ -97,11 +98,11 @@ namespace Accord.Tests.Math
 
             if (hasResult)
             {
-                Assert.IsTrue(result == new Point(xRet, yRet));
+                ClassicAssert.IsTrue(result == new Point(xRet, yRet));
             }
             else
             {
-                Assert.AreEqual(null, result);
+                ClassicAssert.AreEqual(null, result);
             }
         }
 
@@ -128,7 +129,7 @@ namespace Accord.Tests.Math
             Point pt2 = new Point(x2, y2);
             Line line = Line.FromPoints(pt1, pt2);
 
-            Assert.AreEqual(expectedDistance, line.DistanceToPoint(pt), Error);
+            ClassicAssert.AreEqual(expectedDistance, line.DistanceToPoint(pt), Error);
         }
     }
 }

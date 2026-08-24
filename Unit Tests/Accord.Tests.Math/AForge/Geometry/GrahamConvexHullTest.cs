@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Accord;
 using Accord.Math.Geometry;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests.Math
 {
@@ -117,13 +118,13 @@ namespace Accord.Tests.Math
 
         private void ComparePointsLists( List<IntPoint> list1, List<IntPoint> list2 )
         {
-            Assert.AreEqual( list1.Count, list2.Count );
+            ClassicAssert.AreEqual( list1.Count, list2.Count );
 
             if ( list1.Count == list2.Count )
             {
                 for ( int i = 0, n = list1.Count; i < n; i++ )
                 {
-                    Assert.AreEqual( list2[i], list1[i] );
+                    ClassicAssert.AreEqual( list2[i], list1[i] );
                 }
             }
         }

@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Accord.Math;
@@ -44,7 +45,7 @@ namespace Accord.Tests.Math
             var rng = new ZigguratNormalGenerator();
             double num = rng.Generate();
 
-            Assert.NotNull(rng);
+            ClassicAssert.NotNull(rng);
         }
 
         [Test]
@@ -57,7 +58,7 @@ namespace Accord.Tests.Math
             double num2 = rng2.Generate();
 
             Console.WriteLine(num1);
-            Assert.AreEqual(num1, num2);
+            ClassicAssert.AreEqual(num1, num2);
         }
 
         [Test]
@@ -66,7 +67,7 @@ namespace Accord.Tests.Math
             var rng = new ZigguratExponentialGenerator();
             double num = rng.Generate();
 
-            Assert.NotNull(rng);
+            ClassicAssert.NotNull(rng);
         }
 
         [Test]
@@ -79,7 +80,7 @@ namespace Accord.Tests.Math
                 double num = rng.Generate();
             }
 
-            Assert.NotNull(rng);
+            ClassicAssert.NotNull(rng);
         }
 
         [Test]
@@ -92,7 +93,7 @@ namespace Accord.Tests.Math
                 double num = rng.Generate();
             }
 
-            Assert.NotNull(rng);
+            ClassicAssert.NotNull(rng);
         }
 
         [Test]
@@ -104,7 +105,7 @@ namespace Accord.Tests.Math
             double num1 = rng1.Generate();
             double num2 = rng2.Generate();
 
-            Assert.AreEqual(num1, num2);
+            ClassicAssert.AreEqual(num1, num2);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System.Collections.Generic;
     using System;
     using Accord;
@@ -47,10 +48,10 @@ namespace Accord.Tests.Math
             // Matrix multiplication
             double[,] b = Matrix.Multiply(a, I);
 
-            Assert.AreEqual(1, b[0, 0]);
-            Assert.AreEqual(2, b[0, 1]);
-            Assert.AreEqual(3, b[1, 0]);
-            Assert.AreEqual(4, b[1, 1]);
+            ClassicAssert.AreEqual(1, b[0, 0]);
+            ClassicAssert.AreEqual(2, b[0, 1]);
+            ClassicAssert.AreEqual(3, b[1, 0]);
+            ClassicAssert.AreEqual(4, b[1, 1]);
         }
 
 
@@ -70,16 +71,16 @@ namespace Accord.Tests.Math
 
             str = "[1 2; 3 4]";
             actual = Matrix.Parse(str, OctaveMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = "1 2\r\n3 4";
             actual = Matrix.Parse(str, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"1 2
                     3 4";
             actual = Matrix.Parse(str, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"double[,]
                    {
@@ -87,7 +88,7 @@ namespace Accord.Tests.Math
                       { 3, 4 }
                    };";
             actual = Matrix.Parse(str, CSharpMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"double[][]
                    {
@@ -95,7 +96,7 @@ namespace Accord.Tests.Math
                       new double[] { 3, 4 }
                    };";
             actual = Matrix.Parse(str, CSharpJaggedMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -114,16 +115,16 @@ namespace Accord.Tests.Math
 
             str = "[1 2; 3 4]";
             actual = Matrix.ParseJagged(str, OctaveMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = "1 2\r\n3 4";
             actual = Matrix.ParseJagged(str, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"1 2
                     3 4";
             actual = Matrix.ParseJagged(str, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"double[,]
                    {
@@ -131,7 +132,7 @@ namespace Accord.Tests.Math
                       { 3, 4 }
                    };";
             actual = Matrix.ParseJagged(str, CSharpMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
 
             str = @"double[][]
                    {
@@ -139,7 +140,7 @@ namespace Accord.Tests.Math
                       new double[] { 3, 4 }
                    };";
             actual = Matrix.ParseJagged(str, CSharpJaggedMatrixFormatProvider.InvariantCulture);
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -155,12 +156,12 @@ namespace Accord.Tests.Math
 
             expected = "[1 2; 3 4]";
             actual = Matrix.ToString(matrix, OctaveMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = String.Format("1 2 {0}3 4", Environment.NewLine);
             actual = Matrix.ToString(matrix, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = String.Format("new double[][] {{{0}" +
@@ -168,7 +169,7 @@ namespace Accord.Tests.Math
                        "    new double[] {{ 3, 4 }} {0}" +
                        "}};", Environment.NewLine);
             actual = Matrix.ToString(matrix, CSharpJaggedMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = String.Format("new double[,] {{{0}" +
@@ -176,7 +177,7 @@ namespace Accord.Tests.Math
                        "    {{ 3, 4 }} {0}" +
                        "}};", Environment.NewLine);
             actual = Matrix.ToString(matrix, CSharpMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -192,12 +193,12 @@ namespace Accord.Tests.Math
 
             expected = "[1 2; 3 4]";
             actual = Matrix.ToString(matrix, OctaveMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "1 2 " + Environment.NewLine + "3 4";
             actual = Matrix.ToString(matrix, DefaultMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[][] {" + Environment.NewLine +
@@ -205,7 +206,7 @@ namespace Accord.Tests.Math
                        "    new double[] { 3, 4 } " + Environment.NewLine +
                        "};";
             actual = Matrix.ToString(matrix, CSharpJaggedMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[,] {" + Environment.NewLine +
@@ -213,7 +214,7 @@ namespace Accord.Tests.Math
                        "    { 3, 4 } " + Environment.NewLine +
                        "};";
             actual = Matrix.ToString(matrix, CSharpMatrixFormatProvider.InvariantCulture);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -229,43 +230,43 @@ namespace Accord.Tests.Math
 
             expected = "[1 2; 3 4]";
             actual = String.Format(OctaveMatrixFormatProvider.InvariantCulture, "{0:Ms}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "1 2 3 4";
             actual = String.Format(DefaultMatrixFormatProvider.InvariantCulture, "{0:Ms}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[][] { new double[] { 1, 2 }, new double[] { 3, 4 } };";
             actual = String.Format(CSharpJaggedMatrixFormatProvider.InvariantCulture, "{0:Ms}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[,] { { 1, 2 }, { 3, 4 } };";
             actual = String.Format(CSharpMatrixFormatProvider.InvariantCulture, "{0:Ms}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
 
             expected = "[1.00 2.00; 3.00 4.00]";
             actual = String.Format(OctaveMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "1.00 2.00 3.00 4.00";
             actual = String.Format(DefaultMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[][] { new double[] { 1.00, 2.00 }, new double[] { 3.00, 4.00 } };";
             actual = String.Format(CSharpJaggedMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
 
             expected = "new double[,] { { 1.00, 2.00 }, { 3.00, 4.00 } };";
             actual = String.Format(CSharpMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
         }
 
@@ -283,19 +284,19 @@ namespace Accord.Tests.Math
 
             expected = "[1.00 2.00; 3.00 4.00]";
             actual = String.Format(OctaveMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix as Array);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             expected = "1.00 2.00 3.00 4.00";
             actual = String.Format(DefaultMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix as Array);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             expected = "new double[][] { new double[] { 1.00, 2.00 }, new double[] { 3.00, 4.00 } };";
             actual = String.Format(CSharpJaggedMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix as Array);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
             expected = "new double[,] { { 1.00, 2.00 }, { 3.00, 4.00 } };";
             actual = String.Format(CSharpMatrixFormatProvider.InvariantCulture, "{0:Ms,N2}", matrix as Array);
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
 
         }
 
@@ -308,15 +309,15 @@ namespace Accord.Tests.Math
 
             str = x.ToString(DefaultArrayFormatProvider.CurrentCulture);
 
-            Assert.AreEqual("1 2 3", str);
+            ClassicAssert.AreEqual("1 2 3", str);
 
             str = x.ToString(OctaveArrayFormatProvider.CurrentCulture);
 
-            Assert.AreEqual("[1 2 3]", str);
+            ClassicAssert.AreEqual("[1 2 3]", str);
 
             str = x.ToString(CSharpArrayFormatProvider.CurrentCulture);
 
-            Assert.AreEqual("new double[] { 1, 2, 3 };", str);
+            ClassicAssert.AreEqual("new double[] { 1, 2, 3 };", str);
         }
 
         [Test]
@@ -328,8 +329,8 @@ namespace Accord.Tests.Math
             double[][] ax = Jagged.Parse(Properties.Resources.data16);
             double[] ay = Vector.Parse(Properties.Resources.labels16);
 
-            Assert.IsTrue(ex.IsEqual(ax));
-            Assert.IsTrue(ey.IsEqual(ay));
+            ClassicAssert.IsTrue(ex.IsEqual(ax));
+            ClassicAssert.IsTrue(ey.IsEqual(ay));
         }
     }
 }

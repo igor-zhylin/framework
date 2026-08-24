@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -50,7 +51,7 @@ namespace Accord.Tests.Math
                     double[][] solution = target.Solve(I);
                     double[][] inverse = target.Inverse();
 
-                    Assert.IsTrue(Matrix.IsEqual(solution, inverse));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(solution, inverse));
                 }
             }
         }
@@ -73,10 +74,10 @@ namespace Accord.Tests.Math
             };
 
             var actual = target.Solve(Matrix.JaggedIdentity(2));
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-5));
             actual = target.Inverse();
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-3));
         }
 
         [Test]
@@ -98,8 +99,8 @@ namespace Accord.Tests.Math
                     double[][] inverse = target.Inverse();
                     double[][] reverse = target.Reverse();
 
-                    Assert.IsTrue(Matrix.IsEqual(solution, inverse, 1e-4));
-                    Assert.IsTrue(Matrix.IsEqual(value, reverse, 1e-4));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(solution, inverse, 1e-4));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(value, reverse, 1e-4));
                 }
             }
         }
@@ -131,8 +132,8 @@ namespace Accord.Tests.Math
                 target.RightSingularVectors.Transpose());
 
             // Checking the decomposition
-            Assert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-2));
 
             // Checking values
             var U = new double[][]
@@ -142,7 +143,7 @@ namespace Accord.Tests.Math
             };
 
             // U should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
 
 
             double[][] V = new double[][]// economy svd
@@ -154,7 +155,7 @@ namespace Accord.Tests.Math
             };
 
             // V can be different, but for the economy SVD it is often equal
-            Assert.IsTrue(Matrix.IsEqual(target.RightSingularVectors.Submatrix(0, 3, 0, 1), V, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.RightSingularVectors.Submatrix(0, 3, 0, 1), V, 0.0001));
 
 
             double[][] S = 
@@ -164,7 +165,7 @@ namespace Accord.Tests.Math
             };
 
             // The diagonal values should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.Diagonal.First(2), Matrix.Diagonal(S), 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.Diagonal.First(2), Matrix.Diagonal(S), 0.001));
         }
 
 
@@ -191,8 +192,8 @@ namespace Accord.Tests.Math
                 target.RightSingularVectors.Transpose());
 
             // Checking the decomposition
-            Assert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-2));
 
             // Checking values
             double[][] U =
@@ -202,7 +203,7 @@ namespace Accord.Tests.Math
             };
 
             // U should be equal despite some sign changes
-            Assert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
 
 
             double[][] V = // economy svd
@@ -214,7 +215,7 @@ namespace Accord.Tests.Math
             };
 
             // V can be different, but for the economy SVD it is often equal
-            Assert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
 
 
             double[][] S = 
@@ -224,7 +225,7 @@ namespace Accord.Tests.Math
             };
 
             // The diagonal values should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
         }
 
 
@@ -249,8 +250,8 @@ namespace Accord.Tests.Math
                                 target.RightSingularVectors.Transpose());
 
             // Checking the decomposition
-            Assert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(actual, value, 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-5));
 
             double[][] U = // economy svd
             {
@@ -261,7 +262,7 @@ namespace Accord.Tests.Math
             };
 
             // U should be equal except for some sign changes
-            Assert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
 
 
 
@@ -273,7 +274,7 @@ namespace Accord.Tests.Math
             };
 
             // V should be equal except for some sign changes
-            Assert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
 
 
             double[][] S = 
@@ -283,7 +284,7 @@ namespace Accord.Tests.Math
             };
 
             // The diagonal values should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
         }
 
 
@@ -312,7 +313,7 @@ namespace Accord.Tests.Math
             };
 
             // U should be equal despite some sign changes
-            Assert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U, 0.001));
 
 
             // Checking values
@@ -325,7 +326,7 @@ namespace Accord.Tests.Math
             };
 
             // V should not have been computed.
-            Assert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V));
 
 
             double[][] S = 
@@ -335,7 +336,7 @@ namespace Accord.Tests.Math
             };
 
             // The diagonal values should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
         }
 
         [Test]
@@ -363,7 +364,7 @@ namespace Accord.Tests.Math
             };
 
             // U should not have been computed
-            Assert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.LeftSingularVectors, U));
 
 
             double[][] V = // economy svd
@@ -375,7 +376,7 @@ namespace Accord.Tests.Math
             };
 
             // V can be different, but for the economy SVD it is often equal
-            Assert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.RightSingularVectors, V, 0.0001));
 
 
 
@@ -386,7 +387,7 @@ namespace Accord.Tests.Math
             };
 
             // The diagonal values should be equal
-            Assert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(target.Diagonal, Matrix.Diagonal(S), 0.001));
         }
 
 
@@ -417,16 +418,16 @@ namespace Accord.Tests.Math
             var target1 = new JaggedSingularValueDecomposition(cvalue1, true, true, true, true);
             var target2 = new JaggedSingularValueDecomposition(cvalue2, true, true, true, true);
 
-            Assert.IsFalse(value1.IsEqual(cvalue1, 1e-3));
-            Assert.IsTrue(value2.IsEqual(cvalue2, 1e-3)); // due to auto-transpose
+            ClassicAssert.IsFalse(value1.IsEqual(cvalue1, 1e-3));
+            ClassicAssert.IsTrue(value2.IsEqual(cvalue2, 1e-3)); // due to auto-transpose
 
-            Assert.IsTrue(target1.LeftSingularVectors.IsEqual(target2.RightSingularVectors));
-            Assert.IsTrue(target1.RightSingularVectors.IsEqual(target2.LeftSingularVectors));
-            Assert.IsTrue(target1.DiagonalMatrix.IsEqual(target2.DiagonalMatrix));
-            Assert.IsTrue(Matrix.IsEqual(value1, target1.Reverse(), 1e-2));
-            Assert.IsTrue(Matrix.IsEqual(value2, target2.Reverse(), 1e-2));
+            ClassicAssert.IsTrue(target1.LeftSingularVectors.IsEqual(target2.RightSingularVectors));
+            ClassicAssert.IsTrue(target1.RightSingularVectors.IsEqual(target2.LeftSingularVectors));
+            ClassicAssert.IsTrue(target1.DiagonalMatrix.IsEqual(target2.DiagonalMatrix));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value1, target1.Reverse(), 1e-2));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value2, target2.Reverse(), 1e-2));
 
-            Assert.AreSame(target1.DiagonalMatrix, target1.DiagonalMatrix);
+            ClassicAssert.AreSame(target1.DiagonalMatrix, target1.DiagonalMatrix);
         }
 
         [Test]
@@ -461,7 +462,7 @@ namespace Accord.Tests.Math
                     target.RightSingularVectors.Transpose());
 
                 // Checking the decomposition
-                Assert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
+                ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
             }
 
             {
@@ -470,7 +471,7 @@ namespace Accord.Tests.Math
                 double[] expected = output;
                 double[] actual = value.Multiply(solution);
 
-                Assert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
+                ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
             }
         }
 
@@ -507,7 +508,7 @@ namespace Accord.Tests.Math
                     target.RightSingularVectors.Transpose());
 
                 // Checking the decomposition
-                Assert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
+                ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
             }
 
             {
@@ -519,7 +520,7 @@ namespace Accord.Tests.Math
                     );
 
                 // Checking the invers decomposition
-                Assert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
+                ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
             }
 
 
@@ -529,7 +530,7 @@ namespace Accord.Tests.Math
                 double[][] expected = Jagged.Diagonal(output);
                 double[][] actual = value.Dot(solution);
 
-                Assert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
+                ClassicAssert.IsTrue(Matrix.IsEqual(actual, expected, 1e-8));
             }
         }
 
@@ -558,11 +559,11 @@ namespace Accord.Tests.Math
                 new double[] { 1 }
             };
 
-            Assert.IsTrue(expected.IsEqual(X));
+            ClassicAssert.IsTrue(expected.IsEqual(X));
 
             X = new JaggedSingularValueDecomposition(A).Solve(B);
 
-            Assert.IsTrue(expected.IsEqual(X));
+            ClassicAssert.IsTrue(expected.IsEqual(X));
         }
     }
 }

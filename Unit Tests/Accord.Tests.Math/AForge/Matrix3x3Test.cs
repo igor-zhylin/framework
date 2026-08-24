@@ -2,6 +2,7 @@
 using AForge;
 using AForge.Math;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Accord.Math;
 
 namespace Accord.Tests.Math
@@ -64,7 +65,7 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < 9; i++)
             {
-                Assert.AreEqual(array[i], (float)(i + 1));
+                ClassicAssert.AreEqual(array[i], (float)(i + 1));
             }
         }
 
@@ -80,12 +81,12 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < 9; i++)
             {
-                Assert.AreEqual(array[i], (float)(i + 1));
+                ClassicAssert.AreEqual(array[i], (float)(i + 1));
             }
 
-            Assert.AreEqual(row0, matrix.GetRow(0));
-            Assert.AreEqual(row1, matrix.GetRow(1));
-            Assert.AreEqual(row2, matrix.GetRow(2));
+            ClassicAssert.AreEqual(row0, matrix.GetRow(0));
+            ClassicAssert.AreEqual(row1, matrix.GetRow(1));
+            ClassicAssert.AreEqual(row2, matrix.GetRow(2));
 
             Assert.Throws<ArgumentException>(() =>
             {
@@ -112,12 +113,12 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < 9; i++)
             {
-                Assert.AreEqual(array[i], (float)(i + 1));
+                ClassicAssert.AreEqual(array[i], (float)(i + 1));
             }
 
-            Assert.AreEqual(column0, matrix.GetColumn(0));
-            Assert.AreEqual(column1, matrix.GetColumn(1));
-            Assert.AreEqual(column2, matrix.GetColumn(2));
+            ClassicAssert.AreEqual(column0, matrix.GetColumn(0));
+            ClassicAssert.AreEqual(column1, matrix.GetColumn(1));
+            ClassicAssert.AreEqual(column2, matrix.GetColumn(2));
 
             Assert.Throws<ArgumentException>(() =>
             {
@@ -253,9 +254,9 @@ namespace Accord.Tests.Math
 
             matrix.ExtractYawPitchRoll(out extractedYaw, out extractedPitch, out extractedRoll);
 
-            Assert.AreEqual(radiansYaw, extractedYaw, Epsilon);
-            Assert.AreEqual(radiansPitch, extractedPitch, Epsilon);
-            Assert.AreEqual(radiansRoll, extractedRoll, Epsilon);
+            ClassicAssert.AreEqual(radiansYaw, extractedYaw, Epsilon);
+            ClassicAssert.AreEqual(radiansPitch, extractedPitch, Epsilon);
+            ClassicAssert.AreEqual(radiansRoll, extractedRoll, Epsilon);
         }
 
 
@@ -295,7 +296,7 @@ namespace Accord.Tests.Math
             matrix.V21 = v21;
             matrix.V22 = v22;
 
-            Assert.AreEqual(expectedDeterminant, matrix.Determinant);
+            ClassicAssert.AreEqual(expectedDeterminant, matrix.Determinant);
         }
 
 
@@ -321,7 +322,7 @@ namespace Accord.Tests.Math
             Matrix3x3 inverse = matrix.Inverse();
             Matrix3x3 identity = matrix * inverse;
 
-            Assert.AreEqual(true, ApproximateEquals(identity, Matrix3x3.Identity));
+            ClassicAssert.AreEqual(true, ApproximateEquals(identity, Matrix3x3.Identity));
         }
 
         [TestCase(1, 0, 0, 0, 1, 0, 1, 0, 0)]
@@ -363,7 +364,7 @@ namespace Accord.Tests.Math
 
             Matrix3x3 result = a1 + a2;
 
-            Assert.AreEqual(true, ApproximateEquals(result, expectedResult));
+            ClassicAssert.AreEqual(true, ApproximateEquals(result, expectedResult));
         }
 
         [Test]
@@ -385,7 +386,7 @@ namespace Accord.Tests.Math
 
             Matrix3x3 result = a1 - a2;
 
-            Assert.AreEqual(true, ApproximateEquals(result, expectedResult));
+            ClassicAssert.AreEqual(true, ApproximateEquals(result, expectedResult));
         }
 
         [Test]
@@ -407,7 +408,7 @@ namespace Accord.Tests.Math
 
             Matrix3x3 result = a1 * a2;
 
-            Assert.AreEqual(true, ApproximateEquals(result, expectedResult));
+            ClassicAssert.AreEqual(true, ApproximateEquals(result, expectedResult));
         }
 
         private void CompareMatrixWithArray(Matrix3x3 matrix, float[] array)
@@ -416,7 +417,7 @@ namespace Accord.Tests.Math
 
             for (int i = 0; i < 9; i++)
             {
-                Assert.AreEqual(matrixArray[i], array[i]);
+                ClassicAssert.AreEqual(matrixArray[i], array[i]);
             }
         }
 

@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Data;
 
@@ -43,15 +44,15 @@ namespace Accord.Tests.Math
             string[] columnNames = { "A", "B", };
             DataTable actual = Matrix.ToTable(matrix, columnNames);
 
-            Assert.AreEqual("A", actual.Columns[0].ColumnName);
-            Assert.AreEqual("B", actual.Columns[1].ColumnName);
+            ClassicAssert.AreEqual("A", actual.Columns[0].ColumnName);
+            ClassicAssert.AreEqual("B", actual.Columns[1].ColumnName);
 
-            Assert.AreEqual(1, (double)actual.Rows[0][0]);
-            Assert.AreEqual(2, (double)actual.Rows[0][1]);
-            Assert.AreEqual(3, (double)actual.Rows[1][0]);
-            Assert.AreEqual(4, (double)actual.Rows[1][1]);
-            Assert.AreEqual(5, (double)actual.Rows[2][0]);
-            Assert.AreEqual(6, (double)actual.Rows[2][1]);
+            ClassicAssert.AreEqual(1, (double)actual.Rows[0][0]);
+            ClassicAssert.AreEqual(2, (double)actual.Rows[0][1]);
+            ClassicAssert.AreEqual(3, (double)actual.Rows[1][0]);
+            ClassicAssert.AreEqual(4, (double)actual.Rows[1][1]);
+            ClassicAssert.AreEqual(5, (double)actual.Rows[2][0]);
+            ClassicAssert.AreEqual(6, (double)actual.Rows[2][1]);
         }
 
         [Test]
@@ -129,11 +130,11 @@ namespace Accord.Tests.Math
                 new[] { 7.3, 8.7 },
             };
 
-            Assert.AreEqual(ea, a);
-            Assert.AreEqual(ea.GetColumn(0).ToJagged(), b);
-            Assert.AreEqual(ea, c);
-            Assert.AreEqual(ea.ToSingle(), d);
-            Assert.AreEqual(ea.GetColumn(1).ToDecimal().ToJagged(), e);
+            ClassicAssert.AreEqual(ea, a);
+            ClassicAssert.AreEqual(ea.GetColumn(0).ToJagged(), b);
+            ClassicAssert.AreEqual(ea, c);
+            ClassicAssert.AreEqual(ea.ToSingle(), d);
+            ClassicAssert.AreEqual(ea.GetColumn(1).ToDecimal().ToJagged(), e);
         }
 
         [Test]
@@ -148,12 +149,12 @@ namespace Accord.Tests.Math
 
             DataTable actual = Matrix.ToTable(matrix);
 
-            Assert.AreEqual(1, (double)actual.Rows[0][0]);
-            Assert.AreEqual(2, (double)actual.Rows[0][1]);
-            Assert.AreEqual(3, (double)actual.Rows[1][0]);
-            Assert.AreEqual(4, (double)actual.Rows[1][1]);
-            Assert.AreEqual(5, (double)actual.Rows[2][0]);
-            Assert.AreEqual(6, (double)actual.Rows[2][1]);
+            ClassicAssert.AreEqual(1, (double)actual.Rows[0][0]);
+            ClassicAssert.AreEqual(2, (double)actual.Rows[0][1]);
+            ClassicAssert.AreEqual(3, (double)actual.Rows[1][0]);
+            ClassicAssert.AreEqual(4, (double)actual.Rows[1][1]);
+            ClassicAssert.AreEqual(5, (double)actual.Rows[2][0]);
+            ClassicAssert.AreEqual(6, (double)actual.Rows[2][1]);
         }
 
         [Test]
@@ -176,7 +177,7 @@ namespace Accord.Tests.Math
                 new double[] { 0, 0 },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 #endif
 
@@ -216,12 +217,12 @@ namespace Accord.Tests.Math
             Array values = jagged.DeepFlatten();
 
             // As a result, the resulting array is a simple int[] vector:
-            Assert.AreEqual(values.GetType(), typeof(int[]));
+            ClassicAssert.AreEqual(values.GetType(), typeof(int[]));
 
             // Some more checks
             int[] innerValues = values as int[];
-            Assert.AreEqual(24, innerValues.Length);
-            Assert.AreEqual(new[] { 24 }, innerValues.GetLength());
+            ClassicAssert.AreEqual(24, innerValues.Length);
+            ClassicAssert.AreEqual(new[] { 24 }, innerValues.GetLength());
 
 
             // Test #2: Transform the jagged matrix to a multidimensional matrix. The extension method called DeepToMatrix is available at:
@@ -229,12 +230,12 @@ namespace Accord.Tests.Math
             Array matrix = jagged.DeepToMatrix();
 
             // As a result, the resulting array is a multidimensional int[,,] array:
-            Assert.AreEqual(matrix.GetType(), typeof(int[,,]));
+            ClassicAssert.AreEqual(matrix.GetType(), typeof(int[,,]));
 
             // Some more checks
             int[,,] innerMatrix = matrix as int[,,];
             int[] shape = innerMatrix.GetLength();
-            Assert.AreEqual(new[] { 4, 2, 3 }, shape);
+            ClassicAssert.AreEqual(new[] { 4, 2, 3 }, shape);
 
 
             int[,,] expected =
@@ -260,7 +261,7 @@ namespace Accord.Tests.Math
             for (int i = 0; i < jagged.Length; i++)
                 for (int j = 0; j < jagged[i].Length; j++)
                     for (int k = 0; k < jagged[i][j].Length; k++)
-                        Assert.AreEqual(jagged[i][j][k], expected[i, j, k]);
+                        ClassicAssert.AreEqual(jagged[i][j][k], expected[i, j, k]);
         }
 
         [Test]
@@ -295,12 +296,12 @@ namespace Accord.Tests.Math
             double[][][] g = Matrix.To<double[][][]>(from);
             #endregion
 
-            Assert.IsTrue(a.IsEqual(b));
-            Assert.IsTrue(a.IsEqual(tensor));
-            Assert.IsTrue(a.IsEqual(d));
-            Assert.IsTrue(a.IsEqual(e));
-            Assert.IsTrue(a.IsEqual(e.Squeeze()));
-            Assert.IsTrue(a.IsEqual(f.Squeeze()));
+            ClassicAssert.IsTrue(a.IsEqual(b));
+            ClassicAssert.IsTrue(a.IsEqual(tensor));
+            ClassicAssert.IsTrue(a.IsEqual(d));
+            ClassicAssert.IsTrue(a.IsEqual(e));
+            ClassicAssert.IsTrue(a.IsEqual(e.Squeeze()));
+            ClassicAssert.IsTrue(a.IsEqual(f.Squeeze()));
         }
 
         [Test]
@@ -335,12 +336,12 @@ namespace Accord.Tests.Math
             double[][][] g = Matrix.To<double[][][]>(from);
             #endregion
 
-            Assert.IsTrue(a.IsEqual(b));
-            Assert.IsTrue(a.IsEqual(tensor));
-            Assert.IsTrue(a.IsEqual(d));
-            Assert.IsTrue(a.IsEqual(e));
-            Assert.IsTrue(a.IsEqual(e.Squeeze()));
-            Assert.IsTrue(a.IsEqual(f.Squeeze()));
+            ClassicAssert.IsTrue(a.IsEqual(b));
+            ClassicAssert.IsTrue(a.IsEqual(tensor));
+            ClassicAssert.IsTrue(a.IsEqual(d));
+            ClassicAssert.IsTrue(a.IsEqual(e));
+            ClassicAssert.IsTrue(a.IsEqual(e.Squeeze()));
+            ClassicAssert.IsTrue(a.IsEqual(f.Squeeze()));
         }
 
         [Test]
@@ -355,14 +356,14 @@ namespace Accord.Tests.Math
             {
                 double[][] expected = a.ToJagged();
                 double[][] actual = a.To<double[][]>();
-                Assert.IsTrue(expected.IsEqual(actual));
+                ClassicAssert.IsTrue(expected.IsEqual(actual));
             }
 
             {
                 double[][] c = a.ToJagged();
                 double[,] expected = c.ToMatrix();
                 double[,] actual = c.To<double[,]>();
-                Assert.IsTrue(expected.IsEqual(actual));
+                ClassicAssert.IsTrue(expected.IsEqual(actual));
             }
         }
 
@@ -434,13 +435,13 @@ namespace Accord.Tests.Math
             double[,] e = Matrix.To<double[,]>(from);
             double[][] f = Matrix.To<double[][]>(from);
 
-            Assert.IsTrue(expected.IsEqual(z));
-            Assert.IsTrue(expected.IsEqual(a));
-            Assert.IsTrue(expected.IsEqual(b));
-            Assert.IsTrue(expected.IsEqual(c));
-            Assert.IsTrue(expected.IsEqual(d));
-            Assert.IsTrue(expected.IsEqual(e));
-            Assert.IsTrue(expected.IsEqual(f));
+            ClassicAssert.IsTrue(expected.IsEqual(z));
+            ClassicAssert.IsTrue(expected.IsEqual(a));
+            ClassicAssert.IsTrue(expected.IsEqual(b));
+            ClassicAssert.IsTrue(expected.IsEqual(c));
+            ClassicAssert.IsTrue(expected.IsEqual(d));
+            ClassicAssert.IsTrue(expected.IsEqual(e));
+            ClassicAssert.IsTrue(expected.IsEqual(f));
         }
 
         private static void test<T>(T[][] from, double[][] expected)
@@ -453,13 +454,13 @@ namespace Accord.Tests.Math
             double[,] e = Matrix.To<double[,]>(from);
             double[][] f = Matrix.To<double[][]>(from);
 
-            Assert.IsTrue(expected.IsEqual(z));
-            Assert.IsTrue(expected.IsEqual(a));
-            Assert.IsTrue(expected.IsEqual(b));
-            Assert.IsTrue(expected.IsEqual(c));
-            Assert.IsTrue(expected.IsEqual(d));
-            Assert.IsTrue(expected.IsEqual(e));
-            Assert.IsTrue(expected.IsEqual(f));
+            ClassicAssert.IsTrue(expected.IsEqual(z));
+            ClassicAssert.IsTrue(expected.IsEqual(a));
+            ClassicAssert.IsTrue(expected.IsEqual(b));
+            ClassicAssert.IsTrue(expected.IsEqual(c));
+            ClassicAssert.IsTrue(expected.IsEqual(d));
+            ClassicAssert.IsTrue(expected.IsEqual(e));
+            ClassicAssert.IsTrue(expected.IsEqual(f));
         }
 
         private static void test<T>(T[] from, double[] expected)
@@ -468,9 +469,9 @@ namespace Accord.Tests.Math
             double[] actual2 = (double[])Matrix.Convert<double>(from);
             double[] actual3 = Matrix.To<double[]>(from);
 
-            Assert.IsTrue(expected.IsEqual(actual1));
-            Assert.IsTrue(expected.IsEqual(actual2));
-            Assert.IsTrue(expected.IsEqual(actual3));
+            ClassicAssert.IsTrue(expected.IsEqual(actual1));
+            ClassicAssert.IsTrue(expected.IsEqual(actual2));
+            ClassicAssert.IsTrue(expected.IsEqual(actual3));
         }
     }
 }

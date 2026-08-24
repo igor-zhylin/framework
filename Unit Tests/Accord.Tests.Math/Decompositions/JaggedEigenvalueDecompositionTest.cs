@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -78,17 +79,17 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.IsTrue(Matrix.IsEqual(expectedD, D, 0.00001));
-            Assert.IsTrue(Matrix.IsEqual(expectedQ, Q, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedD, D, 0.00001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedQ, Q, 0.0001));
 
 
             // Decomposition identity
             var actualA = Matrix.Dot(Matrix.Dot(Q, D), Q.Inverse());
 
-            Assert.IsTrue(Matrix.IsEqual(expectedD, D, 0.00001));
-            Assert.IsTrue(Matrix.IsEqual(A, actualA, 0.0001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedD, D, 0.00001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(A, actualA, 0.0001));
 
-            Assert.AreSame(target.DiagonalMatrix, target.DiagonalMatrix);
+            ClassicAssert.AreSame(target.DiagonalMatrix, target.DiagonalMatrix);
         }
 
 
@@ -118,8 +119,8 @@ namespace Accord.Tests.Math
             // Decomposition identity
             var actualA = Matrix.Dot(Matrix.Dot(Q, D), Q.Inverse());
 
-            Assert.IsTrue(Matrix.IsEqual(expectedD, D, 1e-5));
-            Assert.IsTrue(Matrix.IsEqual(A, actualA, 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedD, D, 1e-5));
+            ClassicAssert.IsTrue(Matrix.IsEqual(A, actualA, 1e-5));
         }
     }
 }

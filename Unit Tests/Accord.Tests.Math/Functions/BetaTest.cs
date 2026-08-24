@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
 
     [TestFixture]
@@ -57,56 +58,56 @@ namespace Accord.Tests.Math
             double actual = Beta.Incomplete(a, b, x);
             double expected = 0.36328125;
 
-            Assert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
         }
 
         [Test]
         public void FunctionTest()
         {
             double actual = Beta.Function(4, 0.42);
-            Assert.AreEqual(1.2155480852832423, actual);
+            ClassicAssert.AreEqual(1.2155480852832423, actual);
         }
 
         [Test]
         public void LogTest()
         {
             double actual = Beta.Log(4, 15.2);
-            Assert.AreEqual(-9.46087817876467, actual);
+            ClassicAssert.AreEqual(-9.46087817876467, actual);
         }
 
         [Test]
         public void Incbcf()
         {
             double actual = Beta.Incbcf(4, 2, 4.2);
-            Assert.AreEqual(-0.23046874999999992, actual);
+            ClassicAssert.AreEqual(-0.23046874999999992, actual);
         }
 
         [Test]
         public void Incbd()
         {
             double actual = Beta.Incbd(4, 2, 4.2);
-            Assert.AreEqual(0.7375, actual);
+            ClassicAssert.AreEqual(0.7375, actual);
         }
 
         [Test]
         public void IncompleteInverse()
         {
             double actual = Beta.IncompleteInverse(0.5, 0.6, 0.1);
-            Assert.AreEqual(0.019145979066925722, actual);
+            ClassicAssert.AreEqual(0.019145979066925722, actual);
         }
 
         [Test]
         public void PowerSeries()
         {
             double actual = Beta.PowerSeries(4, 2, 4.2);
-            Assert.AreEqual(-3671.801280000001, actual);
+            ClassicAssert.AreEqual(-3671.801280000001, actual);
         }
 
         [Test]
         public void Multinomial()
         {
             double actual = Beta.Multinomial(0.42, 0.5, 5.2 );
-            Assert.AreEqual(0.82641912952987062, actual);
+            ClassicAssert.AreEqual(0.82641912952987062, actual);
         }
 
         [Test]
@@ -118,7 +119,7 @@ namespace Accord.Tests.Math
             double expected = 0.696717907200000;
 
             double actual = Beta.Incomplete(aa, bb, xx);
-            Assert.AreEqual(expected, actual, 0.0000001);
+            ClassicAssert.AreEqual(expected, actual, 0.0000001);
         }
 
 
@@ -129,7 +130,7 @@ namespace Accord.Tests.Math
             double b = 3.0;
             double expected = 0.014770176060499;
             double actual = Beta.Function(a, b);
-            Assert.AreEqual(expected, actual, 1e-6);
+            ClassicAssert.AreEqual(expected, actual, 1e-6);
         }
     }
 }

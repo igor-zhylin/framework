@@ -27,6 +27,7 @@ namespace Accord.Tests.Math
     using Accord.Math;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Munkres;
 
     [TestFixture]
@@ -56,14 +57,14 @@ namespace Accord.Tests.Math
             double minimumCost = m.Value;   // should be 6
             #endregion
 
-            Assert.AreEqual(3, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(3, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(6, minimumCost);
-            Assert.AreEqual(0, solution[0]);
-            Assert.AreEqual(1, solution[1]);
-            Assert.AreEqual(2, solution[2]);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(6, minimumCost);
+            ClassicAssert.AreEqual(0, solution[0]);
+            ClassicAssert.AreEqual(1, solution[1]);
+            ClassicAssert.AreEqual(2, solution[2]);
         }
 
         [Test]
@@ -73,17 +74,17 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(5, m.NumberOfTasks);
-            Assert.AreEqual(5, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(5, m.NumberOfTasks);
+            ClassicAssert.AreEqual(5, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(15, m.Value);
-            Assert.AreEqual(2, m.Solution[0]);
-            Assert.AreEqual(1, m.Solution[1]);
-            Assert.AreEqual(0, m.Solution[2]);
-            Assert.AreEqual(4, m.Solution[3]);
-            Assert.AreEqual(3, m.Solution[4]);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(15, m.Value);
+            ClassicAssert.AreEqual(2, m.Solution[0]);
+            ClassicAssert.AreEqual(1, m.Solution[1]);
+            ClassicAssert.AreEqual(0, m.Solution[2]);
+            ClassicAssert.AreEqual(4, m.Solution[3]);
+            ClassicAssert.AreEqual(3, m.Solution[4]);
         }
 
         [Test]
@@ -100,15 +101,15 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(3, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(3, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(10, m.Value);
-            Assert.AreEqual(2, m.Solution[0]);
-            Assert.AreEqual(1, m.Solution[1]);
-            Assert.AreEqual(0, m.Solution[2]);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(10, m.Value);
+            ClassicAssert.AreEqual(2, m.Solution[0]);
+            ClassicAssert.AreEqual(1, m.Solution[1]);
+            ClassicAssert.AreEqual(0, m.Solution[2]);
         }
 
         [Test]
@@ -123,15 +124,15 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(4, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(4, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(10, m.Value);
-            Assert.AreEqual(2, m.Solution[0]);
-            Assert.AreEqual(1, m.Solution[1]);
-            Assert.AreEqual(0, m.Solution[2]);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(10, m.Value);
+            ClassicAssert.AreEqual(2, m.Solution[0]);
+            ClassicAssert.AreEqual(1, m.Solution[1]);
+            ClassicAssert.AreEqual(0, m.Solution[2]);
         }
 
         [Test]
@@ -148,14 +149,14 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix.Transpose());
 
-            Assert.AreEqual(4, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(4, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(10, m.Value);
-            Assert.IsTrue(m.starZ.IsEqual(new[] { 2, 1, 0, 3 }));
-            Assert.IsTrue(m.Solution.IsEqual(new[] { 2, 1, 0 }));
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(10, m.Value);
+            ClassicAssert.IsTrue(m.starZ.IsEqual(new[] { 2, 1, 0, 3 }));
+            ClassicAssert.IsTrue(m.Solution.IsEqual(new[] { 2, 1, 0 }));
         }
 
         [Test]
@@ -172,18 +173,18 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(3, m.NumberOfTasks);
-            Assert.AreEqual(4, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(3, m.NumberOfTasks);
+            ClassicAssert.AreEqual(4, m.NumberOfWorkers);
 
             bool success = m.Minimize();
 
-            Assert.AreEqual(3, m.validCol.Length);
-            Assert.AreEqual(4, m.validRow.Length);
+            ClassicAssert.AreEqual(3, m.validCol.Length);
+            ClassicAssert.AreEqual(4, m.validRow.Length);
 
-            Assert.IsTrue(success);
-            Assert.AreEqual(10, m.Value);
-            Assert.IsTrue(m.starZ.IsEqual(new[] { 2, 1, 0, 3 }));
-            Assert.IsTrue(m.Solution.IsEqual(new[] { 2, 1, 0, Double.NaN }));
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(10, m.Value);
+            ClassicAssert.IsTrue(m.starZ.IsEqual(new[] { 2, 1, 0, 3 }));
+            ClassicAssert.IsTrue(m.Solution.IsEqual(new[] { 2, 1, 0, Double.NaN }));
         }
 
         /*
@@ -210,7 +211,7 @@ namespace Accord.Tests.Math
 
             int step1 = m.RunStep(0);
 
-            Assert.AreEqual(1, step1);
+            ClassicAssert.AreEqual(1, step1);
 
             bool done = false;
             while (step1 >= 0)
@@ -218,28 +219,28 @@ namespace Accord.Tests.Math
                 step1 = m.RunStep(step1);
                 done = MunkresProgram.RunStep(done);
 
-                Assert.IsTrue(step1 == MunkresProgram.step || (step1 == -1 && MunkresProgram.step == 7));
-                Assert.IsTrue(m.C.IsEqual(MunkresProgram.C));
+                ClassicAssert.IsTrue(step1 == MunkresProgram.step || (step1 == -1 && MunkresProgram.step == 7));
+                ClassicAssert.IsTrue(m.C.IsEqual(MunkresProgram.C));
                 for (int i = 0; i < m.M.Length; i++)
                     for (int j = 0; j < m.M[i].Length; j++)
-                        Assert.AreEqual(m.M[i][j], MunkresProgram.M[i, j]);
+                        ClassicAssert.AreEqual(m.M[i][j], MunkresProgram.M[i, j]);
             }
 
-            Assert.AreEqual(9, m.NumberOfTasks);
-            Assert.AreEqual(9, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(9, m.NumberOfTasks);
+            ClassicAssert.AreEqual(9, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(275, m.Value, 1e-10);
-            Assert.AreEqual(8, m.Solution[0]);
-            Assert.AreEqual(5, m.Solution[1]);
-            Assert.AreEqual(7, m.Solution[2]);
-            Assert.AreEqual(2, m.Solution[3]);
-            Assert.AreEqual(1, m.Solution[4]);
-            Assert.AreEqual(4, m.Solution[5]);
-            Assert.AreEqual(6, m.Solution[6]);
-            Assert.AreEqual(3, m.Solution[7]);
-            Assert.AreEqual(0, m.Solution[8]);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(275, m.Value, 1e-10);
+            ClassicAssert.AreEqual(8, m.Solution[0]);
+            ClassicAssert.AreEqual(5, m.Solution[1]);
+            ClassicAssert.AreEqual(7, m.Solution[2]);
+            ClassicAssert.AreEqual(2, m.Solution[3]);
+            ClassicAssert.AreEqual(1, m.Solution[4]);
+            ClassicAssert.AreEqual(4, m.Solution[5]);
+            ClassicAssert.AreEqual(6, m.Solution[6]);
+            ClassicAssert.AreEqual(3, m.Solution[7]);
+            ClassicAssert.AreEqual(0, m.Solution[8]);
         }
         */
 
@@ -257,14 +258,14 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(3, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(3, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(1.5, m.Value);
-            Assert.IsTrue(m.starZ.IsEqual(new[] { 0, 1, 2 }));
-            Assert.IsTrue(m.Solution.IsEqual(new[] { 0, Double.NaN, 2 }));
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(1.5, m.Value);
+            ClassicAssert.IsTrue(m.starZ.IsEqual(new[] { 0, 1, 2 }));
+            ClassicAssert.IsTrue(m.Solution.IsEqual(new[] { 0, Double.NaN, 2 }));
         }
 
         public void minimize_invalid_row()
@@ -280,14 +281,14 @@ namespace Accord.Tests.Math
 
             var m = new Munkres(costMatrix);
 
-            Assert.AreEqual(3, m.NumberOfTasks);
-            Assert.AreEqual(3, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(3, m.NumberOfTasks);
+            ClassicAssert.AreEqual(3, m.NumberOfWorkers);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(1.5, m.Value);
-            Assert.IsTrue(m.starZ.IsEqual(new[] { 0, 1, 2 }));
-            Assert.IsTrue(m.Solution.IsEqual(new[] { 0, Double.NaN, 2 }));
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(1.5, m.Value);
+            ClassicAssert.IsTrue(m.starZ.IsEqual(new[] { 0, 1, 2 }));
+            ClassicAssert.IsTrue(m.Solution.IsEqual(new[] { 0, Double.NaN, 2 }));
         }
 
         [Test]
@@ -317,18 +318,18 @@ namespace Accord.Tests.Math
 
             Munkres m = new Munkres(costMatrix);
 
-            Assert.AreEqual(18, m.NumberOfTasks);
-            Assert.AreEqual(18, m.NumberOfWorkers);
-            Assert.AreEqual(18 * 18, m.NumberOfVariables);
+            ClassicAssert.AreEqual(18, m.NumberOfTasks);
+            ClassicAssert.AreEqual(18, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(18 * 18, m.NumberOfVariables);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(7931.5200000000032, m.Value);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(7931.5200000000032, m.Value);
 
             int[] expected = { 1, 2, 18, 14, 13, 7, 5, 10, 17, 4, 12, 8, 6, 11, 16, 15, 3, 9 };
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i] - 1, m.Solution[i]);
+                ClassicAssert.AreEqual(expected[i] - 1, m.Solution[i]);
         }
 
         [Test]
@@ -358,18 +359,18 @@ namespace Accord.Tests.Math
 
             Munkres m = new Munkres(costMatrix.ToJagged());
 
-            Assert.AreEqual(18, m.NumberOfTasks);
-            Assert.AreEqual(18, m.NumberOfWorkers);
-            Assert.AreEqual(18 * 18, m.NumberOfVariables);
+            ClassicAssert.AreEqual(18, m.NumberOfTasks);
+            ClassicAssert.AreEqual(18, m.NumberOfWorkers);
+            ClassicAssert.AreEqual(18 * 18, m.NumberOfVariables);
 
             bool success = m.Minimize();
-            Assert.IsTrue(success);
-            Assert.AreEqual(6998.4200000000255, m.Value, 1e-5);
+            ClassicAssert.IsTrue(success);
+            ClassicAssert.AreEqual(6998.4200000000255, m.Value, 1e-5);
 
             int[] expected = { 3, 18, 2, 4, 17, 8, 12, 6, 10, 14, 15, 9, 13, 7, 11, 5, 16, 1 };
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(expected[i] - 1, m.Solution[i]);
+                ClassicAssert.AreEqual(expected[i] - 1, m.Solution[i]);
         }
 
         [Test]
@@ -425,8 +426,8 @@ namespace Accord.Tests.Math
                 { 0,   466.560000000000,    466.560000000000,    0,   466.560000000000,    0,   466.560000000000,    0,   466.560000000000,    0,   466.560000000000,    0,   466.560000000000,    466.560000000000,    466.560000000000,    1399.68000000000,    466.560000000000,    466.560000000000 },
             };
 
-            Assert.AreEqual(min[2][6], expectedMin[2, 6]);
-            Assert.IsTrue(min.IsEqual(expectedMin));
+            ClassicAssert.AreEqual(min[2][6], expectedMin[2, 6]);
+            ClassicAssert.IsTrue(min.IsEqual(expectedMin));
 
             int[,] expectedM =
             {
@@ -450,8 +451,8 @@ namespace Accord.Tests.Math
                 { 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             };
 
-            Assert.AreEqual(M[2][6] ? 1 : 0, expectedM[2, 6]);
-            Assert.IsTrue(M.IsEqual(expectedM));
+            ClassicAssert.AreEqual(M[2][6] ? 1 : 0, expectedM[2, 6]);
+            ClassicAssert.IsTrue(M.IsEqual(expectedM));
         }
 
 
@@ -507,7 +508,7 @@ namespace Accord.Tests.Math
             double[] solution = munkres.Solution;
             double[] expected = { 0, 1, 24, 20, 31, 4, 17, 29, 11, 32, 5, 13, 22, 6, 9, 19, 7, 15, 3, 23, 2, 14, 10, 33, 21, 12, 26, 25, 16, 18, 8, 28, 30, 27 };
 
-            Assert.AreEqual(expected, solution);
+            ClassicAssert.AreEqual(expected, solution);
         }
     }
 }

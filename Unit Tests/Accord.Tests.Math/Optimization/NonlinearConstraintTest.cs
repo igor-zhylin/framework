@@ -25,6 +25,7 @@ namespace Accord.Tests.Math
     using System;
     using Accord.Math.Optimization;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
 
     [TestFixture]
@@ -59,15 +60,15 @@ namespace Accord.Tests.Math
                 new NonlinearConstraint(2, x =>  -(-x[0] * x[0] - x[1] * x[1]) <= 1.0),
             };
 
-            Assert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[0].ShouldBe);
-            Assert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[1].ShouldBe);
-            Assert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[2].ShouldBe);
-            Assert.AreEqual(ConstraintType.LesserThanOrEqualTo, constraints[3].ShouldBe);
+            ClassicAssert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[0].ShouldBe);
+            ClassicAssert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[1].ShouldBe);
+            ClassicAssert.AreEqual(ConstraintType.GreaterThanOrEqualTo, constraints[2].ShouldBe);
+            ClassicAssert.AreEqual(ConstraintType.LesserThanOrEqualTo, constraints[3].ShouldBe);
 
-            Assert.AreEqual(0.0, constraints[0].Value);
-            Assert.AreEqual(0.0, constraints[1].Value);
-            Assert.AreEqual(-1.0, constraints[2].Value);
-            Assert.AreEqual(1.0, constraints[3].Value);
+            ClassicAssert.AreEqual(0.0, constraints[0].Value);
+            ClassicAssert.AreEqual(0.0, constraints[1].Value);
+            ClassicAssert.AreEqual(-1.0, constraints[2].Value);
+            ClassicAssert.AreEqual(1.0, constraints[3].Value);
 
             foreach (var c1 in constraints)
             {
@@ -77,7 +78,7 @@ namespace Accord.Tests.Math
                 {
                     double v2 = c2.GetViolation(new double[] { 4, 2 });
 
-                    Assert.AreEqual(v1, v2);
+                    ClassicAssert.AreEqual(v1, v2);
                 }
             }
         }
@@ -99,7 +100,7 @@ namespace Accord.Tests.Math
                 double e = expected[i];
                 double a = targets[i].GetViolation(new double[] { 0.5 });
 
-                Assert.AreEqual(e, a);
+                ClassicAssert.AreEqual(e, a);
             }
 
             expected = new double[] { 0.5, -0.5 };
@@ -108,7 +109,7 @@ namespace Accord.Tests.Math
                 double e = expected[i];
                 double a = targets[i].GetViolation(new double[] { 1.5 });
 
-                Assert.AreEqual(e, a);
+                ClassicAssert.AreEqual(e, a);
             }
         }
 
@@ -129,7 +130,7 @@ namespace Accord.Tests.Math
                 double e = expected[i];
                 double a = targets[i].GetViolation(new double[] { 0.5 });
 
-                Assert.AreEqual(e, a);
+                ClassicAssert.AreEqual(e, a);
             }
 
             expected = new double[] { 0.5, -0.5 };
@@ -138,7 +139,7 @@ namespace Accord.Tests.Math
                 double e = expected[i];
                 double a = targets[i].GetViolation(new double[] { 2.5 });
 
-                Assert.AreEqual(e, a);
+                ClassicAssert.AreEqual(e, a);
             }
         }
 

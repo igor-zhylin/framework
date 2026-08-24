@@ -24,6 +24,7 @@ namespace Accord.Tests.Math
 {
     using Accord.Math.Decompositions;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using Accord.Math;
     using System;
 
@@ -51,7 +52,7 @@ namespace Accord.Tests.Math
                     var solution = target.Solve(I);
                     var inverse = target.Inverse();
 
-                    Assert.IsTrue(Matrix.IsEqual(solution, inverse));
+                    ClassicAssert.IsTrue(Matrix.IsEqual(solution, inverse));
                 }
             }
         }
@@ -80,7 +81,7 @@ namespace Accord.Tests.Math
 
             float[] actual = target.Solve(rhs);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
         }
 
         [Test]
@@ -104,7 +105,7 @@ namespace Accord.Tests.Math
 
             float[][] actualInverse = target.Inverse();
 
-            Assert.IsTrue(Matrix.IsEqual(expectedInverse, actualInverse, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedInverse, actualInverse, 0.001f));
         }
 
         [Test]
@@ -135,7 +136,7 @@ namespace Accord.Tests.Math
 
             float[][] actual = target.Solve(rhs);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
         }
 
         [Test]
@@ -165,8 +166,8 @@ namespace Accord.Tests.Math
             };
 
 
-            Assert.IsTrue(Matrix.IsEqual(expectedL, L, 0.001f));
-            Assert.IsTrue(Matrix.IsEqual(expectedU, U, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedL, L, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedU, U, 0.001f));
         }
 
         [Test]
@@ -186,7 +187,7 @@ namespace Accord.Tests.Math
 
             float[] actual = target.Solve(rhs);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
         }
 
         [Test]
@@ -212,7 +213,7 @@ namespace Accord.Tests.Math
             }
             catch (InvalidOperationException) { thrown = true; }
 
-            Assert.IsTrue(thrown);
+            ClassicAssert.IsTrue(thrown);
         }
 
         [Test]
@@ -240,7 +241,7 @@ namespace Accord.Tests.Math
             };
 
             float[][] actual = new JaggedLuDecompositionF(b, transpose: true).SolveTranspose(a);
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 0.001f));
         }
 
         [Test]
@@ -297,9 +298,9 @@ namespace Accord.Tests.Math
             #endregion
 
 
-            Assert.IsTrue(Matrix.IsEqual(matrix, reconstruction, 1e-4));
-            Assert.IsTrue(Matrix.IsEqual(expectedL, L, 1e-4));
-            Assert.IsTrue(Matrix.IsEqual(expectedU, U, 1e-4));
+            ClassicAssert.IsTrue(Matrix.IsEqual(matrix, reconstruction, 1e-4));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedL, L, 1e-4));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedU, U, 1e-4));
 
 
             lu = new JaggedLuDecomposition(matrix.Transpose(), true);
@@ -307,8 +308,8 @@ namespace Accord.Tests.Math
             L = lu.LowerTriangularFactor;
             U = lu.UpperTriangularFactor;
 
-            Assert.IsTrue(Matrix.IsEqual(expectedL, L, 0.001));
-            Assert.IsTrue(Matrix.IsEqual(expectedU, U, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedL, L, 0.001));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expectedU, U, 0.001));
         }
 
         [Test]
@@ -316,9 +317,9 @@ namespace Accord.Tests.Math
         {
             JaggedLuDecompositionF lu = new JaggedLuDecompositionF(
                 CholeskyDecompositionTest.bigmatrix.ToSingle().ToJagged());
-            Assert.AreEqual(0, lu.Determinant);
-            Assert.AreEqual(-2224.8931093738875, lu.LogDeterminant, 1e-3);
-            Assert.IsTrue(lu.Nonsingular);
+            ClassicAssert.AreEqual(0, lu.Determinant);
+            ClassicAssert.AreEqual(-2224.8931093738875, lu.LogDeterminant, 1e-3);
+            ClassicAssert.IsTrue(lu.Nonsingular);
         }
 
         [Test]
@@ -332,8 +333,8 @@ namespace Accord.Tests.Math
             };
 
             JaggedLuDecompositionF lu = new JaggedLuDecompositionF(value);
-            Assert.AreEqual(23, lu.Determinant);
-            Assert.IsTrue(lu.Nonsingular);
+            ClassicAssert.AreEqual(23, lu.Determinant);
+            ClassicAssert.IsTrue(lu.Nonsingular);
         }
 
         [Test]
@@ -347,12 +348,12 @@ namespace Accord.Tests.Math
             };
 
             JaggedLuDecompositionF lu = new JaggedLuDecompositionF(value);
-            Assert.AreEqual(23, lu.Determinant);
+            ClassicAssert.AreEqual(23, lu.Determinant);
 
             double expected = System.Math.Log(23);
             double actual = lu.LogDeterminant;
 
-            Assert.AreEqual(expected, actual, 1e-5);
+            ClassicAssert.AreEqual(expected, actual, 1e-5);
         }
 
         [Test]
@@ -376,8 +377,8 @@ namespace Accord.Tests.Math
 
             float[][] actual = target.SolveForDiagonal(rhs);
 
-            Assert.IsTrue(Matrix.IsEqual(expected, actual, 1e-6));
-            Assert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
+            ClassicAssert.IsTrue(Matrix.IsEqual(expected, actual, 1e-6));
+            ClassicAssert.IsTrue(Matrix.IsEqual(value, target.Reverse(), 1e-6));
         }
     }
 }
