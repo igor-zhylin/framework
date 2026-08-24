@@ -29,6 +29,7 @@ namespace Accord.Tests.IO
     using Accord.Math;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class NpyWriterTest
@@ -59,9 +60,9 @@ namespace Accord.Tests.IO
             byte[] expected = GetNpy("npy_byte.npy");
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(actual[i], expected[i]);
+                ClassicAssert.AreEqual(actual[i], expected[i]);
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -76,7 +77,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_byte.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -95,9 +96,9 @@ namespace Accord.Tests.IO
             // "{'descr': '|b1', 'fortran_order': False, 'shape': (2, 3), }          \n"
 
             for (int i = 0; i < expected.Length; i++)
-                Assert.AreEqual(actual[i], expected[i]);
+                ClassicAssert.AreEqual(actual[i], expected[i]);
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -112,7 +113,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_bool.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -127,7 +128,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_integer.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -142,7 +143,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_single.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -157,7 +158,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_double.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -172,7 +173,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(value);
             byte[] expected = GetNpy("npy_strings.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -187,7 +188,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_strings_var.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -202,7 +203,7 @@ namespace Accord.Tests.IO
             byte[] actual = NpyFormat.Save(input);
             byte[] expected = GetNpy("npy_strings_var.npy");
 
-            Assert.IsTrue(actual.IsEqual(expected));
+            ClassicAssert.IsTrue(actual.IsEqual(expected));
         }
 
         [Test]
@@ -226,7 +227,7 @@ namespace Accord.Tests.IO
 
             string[,] expectedMatrix = expectedJagged;
             string[,] actualMatrix = (string[,])NpyFormat.LoadMatrix(bytes);
-            Assert.IsTrue(actualMatrix.IsEqual(expectedMatrix));
+            ClassicAssert.IsTrue(actualMatrix.IsEqual(expectedMatrix));
         }
 
         [Test]
@@ -249,7 +250,7 @@ namespace Accord.Tests.IO
             };
 
             string[][] actualJagged = NpyFormat.Load<string[][]>(bytes);
-            Assert.IsTrue(actualJagged.IsEqual(expectedJagged));
+            ClassicAssert.IsTrue(actualJagged.IsEqual(expectedJagged));
         }
 
 
@@ -276,7 +277,7 @@ namespace Accord.Tests.IO
 
             var arrJagged = NpzFormat.Load<string[][]>(bytes);
             string[][] actualJagged = arrJagged["arr_0"];
-            Assert.IsTrue(actualJagged.IsEqual(expectedJagged));
+            ClassicAssert.IsTrue(actualJagged.IsEqual(expectedJagged));
 
 
             string[,] expectedMatrix =
@@ -288,7 +289,7 @@ namespace Accord.Tests.IO
 
             var arrMatrix = NpzFormat.Load<string[,]>(bytes);
             string[,] actualMatrix = arrMatrix["arr_0"];
-            Assert.IsTrue(actualJagged.IsEqual(expectedJagged));
+            ClassicAssert.IsTrue(actualJagged.IsEqual(expectedJagged));
         }
 #endif
     }

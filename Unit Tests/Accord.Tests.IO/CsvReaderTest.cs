@@ -24,6 +24,7 @@ namespace Accord.Tests.IO
 {
     using Accord.IO;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Data;
     using System.IO;
@@ -49,7 +50,7 @@ namespace Accord.Tests.IO
                 {"1", "2", "3" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
 #if !NO_DATA_TABLE
@@ -68,7 +69,7 @@ namespace Accord.Tests.IO
                     {"1", "2", "3" },
                 };
 
-                Assert.IsTrue(expected.IsEqual(actual));
+                ClassicAssert.IsTrue(expected.IsEqual(actual));
             }
 
             {
@@ -78,14 +79,14 @@ namespace Accord.Tests.IO
 
                 var actual = reader.ToTable();
 
-                Assert.AreEqual("a", actual.Columns[0].ColumnName);
-                Assert.AreEqual("b", actual.Columns[1].ColumnName);
-                Assert.AreEqual("c", actual.Columns[2].ColumnName);
+                ClassicAssert.AreEqual("a", actual.Columns[0].ColumnName);
+                ClassicAssert.AreEqual("b", actual.Columns[1].ColumnName);
+                ClassicAssert.AreEqual("c", actual.Columns[2].ColumnName);
 
-                Assert.AreEqual(1, actual.Rows.Count);
-                Assert.AreEqual("1", actual.Rows[0][0]);
-                Assert.AreEqual("2", actual.Rows[0][1]);
-                Assert.AreEqual("3", actual.Rows[0][2]);
+                ClassicAssert.AreEqual(1, actual.Rows.Count);
+                ClassicAssert.AreEqual("1", actual.Rows[0][0]);
+                ClassicAssert.AreEqual("2", actual.Rows[0][1]);
+                ClassicAssert.AreEqual("3", actual.Rows[0][2]);
             }
         }
 #endif
@@ -105,7 +106,7 @@ namespace Accord.Tests.IO
                 {"1", "2", "3" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -125,7 +126,7 @@ namespace Accord.Tests.IO
                 {"7", "8", "9" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -145,7 +146,7 @@ namespace Accord.Tests.IO
                 {"7", "8", "9" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -164,7 +165,7 @@ namespace Accord.Tests.IO
                 {"3", "4", },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -183,7 +184,7 @@ namespace Accord.Tests.IO
                 {"3", "4", },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -201,7 +202,7 @@ namespace Accord.Tests.IO
                 {  "John", "Doe",  "120 any st.", "Anytown, WW", "08123"}
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -220,7 +221,7 @@ namespace Accord.Tests.IO
                 { "2", "3", "4" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -239,7 +240,7 @@ namespace Accord.Tests.IO
                 { "2", "3", "4" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -258,7 +259,7 @@ namespace Accord.Tests.IO
                 { "4", "5", "ʤ" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -277,7 +278,7 @@ namespace Accord.Tests.IO
                 { "7", "8", "9" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -296,7 +297,7 @@ namespace Accord.Tests.IO
                 { "4", "5", "6" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -315,7 +316,7 @@ namespace Accord.Tests.IO
                 { "7", "8", "9" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -336,7 +337,7 @@ namespace Accord.Tests.IO
                 { "d", "e", "f" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -358,7 +359,7 @@ namespace Accord.Tests.IO
                 { "7", "8", "9"  },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -382,7 +383,7 @@ namespace Accord.Tests.IO
                 { "2.421", "3.141" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test, Ignore("Feature has been removed")]
@@ -406,7 +407,7 @@ namespace Accord.Tests.IO
                 { "2,421", "3,141" },
             };
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
     }
 

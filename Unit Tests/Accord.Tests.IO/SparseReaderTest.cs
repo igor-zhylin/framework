@@ -29,6 +29,7 @@ namespace Accord.Tests.IO
     using Accord.Math;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 #if NO_DEFAULT_ENCODING
     using Encoding = Accord.Compat.Encoding;
 #endif
@@ -66,32 +67,32 @@ namespace Accord.Tests.IO
             label = (int)r.Item2;
             description = reader.SampleDescriptions[0];
 
-            Assert.AreEqual(1, label);
-            Assert.AreEqual(String.Empty, description);
+            ClassicAssert.AreEqual(1, label);
+            ClassicAssert.AreEqual(String.Empty, description);
 
-            Assert.AreEqual(4, sample.Length);
-            Assert.AreEqual(-0.555556, sample[0], 0.0001);
-            Assert.AreEqual(+0.250000, sample[1], 0.0001);
-            Assert.AreEqual(-0.864407, sample[2], 0.0001);
-            Assert.AreEqual(-0.916667, sample[3], 0.0001);
+            ClassicAssert.AreEqual(4, sample.Length);
+            ClassicAssert.AreEqual(-0.555556, sample[0], 0.0001);
+            ClassicAssert.AreEqual(+0.250000, sample[1], 0.0001);
+            ClassicAssert.AreEqual(-0.864407, sample[2], 0.0001);
+            ClassicAssert.AreEqual(-0.916667, sample[3], 0.0001);
 
             var s = reader.ReadSparse();
             sample = s.Item1.ToSparse();
             label = (int)s.Item2;
             description = reader.SampleDescriptions[0];
 
-            Assert.AreEqual(1, label);
-            Assert.AreEqual(String.Empty, description);
+            ClassicAssert.AreEqual(1, label);
+            ClassicAssert.AreEqual(String.Empty, description);
 
-            Assert.AreEqual(8, sample.Length);
-            Assert.AreEqual(0, sample[0], 0.0001);
-            Assert.AreEqual(-0.666667, sample[1], 0.0001);
-            Assert.AreEqual(1, sample[2], 0.0001);
-            Assert.AreEqual(-0.166667, sample[3], 0.0001);
-            Assert.AreEqual(2, sample[4], 0.0001);
-            Assert.AreEqual(-0.864407, sample[5], 0.0001);
-            Assert.AreEqual(3, sample[6], 0.0001);
-            Assert.AreEqual(-0.916667, sample[7], 0.0001);
+            ClassicAssert.AreEqual(8, sample.Length);
+            ClassicAssert.AreEqual(0, sample[0], 0.0001);
+            ClassicAssert.AreEqual(-0.666667, sample[1], 0.0001);
+            ClassicAssert.AreEqual(1, sample[2], 0.0001);
+            ClassicAssert.AreEqual(-0.166667, sample[3], 0.0001);
+            ClassicAssert.AreEqual(2, sample[4], 0.0001);
+            ClassicAssert.AreEqual(-0.864407, sample[5], 0.0001);
+            ClassicAssert.AreEqual(3, sample[6], 0.0001);
+            ClassicAssert.AreEqual(-0.916667, sample[7], 0.0001);
 
 
             int count = 2;
@@ -104,13 +105,13 @@ namespace Accord.Tests.IO
                 sample = r.Item1;
                 label = (int)r.Item2;
                 description = reader.SampleDescriptions[0];
-                Assert.IsTrue(label >= 0 && label <= 3);
-                Assert.IsTrue(description == String.Empty);
-                Assert.AreEqual(4, sample.Length);
+                ClassicAssert.IsTrue(label >= 0 && label <= 3);
+                ClassicAssert.IsTrue(description == String.Empty);
+                ClassicAssert.AreEqual(4, sample.Length);
                 count++;
             }
 
-            Assert.AreEqual(150, count);
+            ClassicAssert.AreEqual(150, count);
         }
 
         [Test]
@@ -141,13 +142,13 @@ namespace Accord.Tests.IO
             int[] labels = r.Item2.ToInt32();
             string[] descriptions = reader.SampleDescriptions.ToArray();
 
-            Assert.AreEqual(150, samples.Length);
+            ClassicAssert.AreEqual(150, samples.Length);
 
             for (int i = 0; i < 150; i++)
             {
-                Assert.IsTrue(labels[i] >= 0 && labels[i] <= 3);
-                Assert.IsTrue(descriptions[i] == String.Empty);
-                Assert.AreEqual(4, samples[i].Length);
+                ClassicAssert.IsTrue(labels[i] >= 0 && labels[i] <= 3);
+                ClassicAssert.IsTrue(descriptions[i] == String.Empty);
+                ClassicAssert.AreEqual(4, samples[i].Length);
             }
         }
 
@@ -159,7 +160,7 @@ namespace Accord.Tests.IO
 
             SparseReader reader = new SparseReader(stream: file, encoding: Encoding.Default);
 
-            Assert.AreEqual(4, reader.Dimensions);
+            ClassicAssert.AreEqual(4, reader.Dimensions);
 
 
             var r = reader.ReadDenseToEnd();
@@ -168,13 +169,13 @@ namespace Accord.Tests.IO
             string[] descriptions = reader.SampleDescriptions.ToArray();
 
 
-            Assert.AreEqual(150, samples.Length);
+            ClassicAssert.AreEqual(150, samples.Length);
 
             for (int i = 0; i < 150; i++)
             {
-                Assert.IsTrue(labels[i] >= 0 && labels[i] <= 3);
-                Assert.IsTrue(descriptions[i] == String.Empty);
-                Assert.AreEqual(4, samples[i].Length);
+                ClassicAssert.IsTrue(labels[i] >= 0 && labels[i] <= 3);
+                ClassicAssert.IsTrue(descriptions[i] == String.Empty);
+                ClassicAssert.AreEqual(4, samples[i].Length);
             }
         }
 
@@ -186,19 +187,19 @@ namespace Accord.Tests.IO
 
             SparseReader reader = new SparseReader(stream: file, encoding: Encoding.Default);
 
-            Assert.AreEqual(123, reader.Dimensions);
+            ClassicAssert.AreEqual(123, reader.Dimensions);
 
             var r = reader.ReadDenseToEnd();
             double[][] samples = r.Item1;
             int[] labels = r.Item2.ToInt32();
             string[] descriptions = reader.SampleDescriptions.ToArray();
 
-            Assert.AreEqual(26049, samples.Length);
+            ClassicAssert.AreEqual(26049, samples.Length);
             for (int i = 0; i < labels.Length; i++)
             {
-                Assert.IsTrue(labels[i] == -1 || labels[i] == 1);
-                Assert.IsTrue(descriptions[i] == String.Empty);
-                Assert.AreEqual(123, samples[i].Length);
+                ClassicAssert.IsTrue(labels[i] == -1 || labels[i] == 1);
+                ClassicAssert.IsTrue(descriptions[i] == String.Empty);
+                ClassicAssert.AreEqual(123, samples[i].Length);
             }
         }
 
@@ -215,12 +216,12 @@ namespace Accord.Tests.IO
             int[] labels = r.Item2.ToInt32();
             string[] descriptions = reader.SampleDescriptions.ToArray();
 
-            Assert.AreEqual(26049, samples.Length);
+            ClassicAssert.AreEqual(26049, samples.Length);
             for (int i = 0; i < labels.Length; i++)
             {
-                Assert.IsTrue(labels[i] == -1 || labels[i] == 1);
-                Assert.IsTrue(descriptions[i] == String.Empty);
-                Assert.AreEqual(123, samples[i].Length);
+                ClassicAssert.IsTrue(labels[i] == -1 || labels[i] == 1);
+                ClassicAssert.IsTrue(descriptions[i] == String.Empty);
+                ClassicAssert.AreEqual(123, samples[i].Length);
             }
         }
     }

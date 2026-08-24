@@ -25,6 +25,7 @@ namespace Accord.Tests.IO
     using Accord.IO;
     using Accord.Math;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
     using System;
     using System.Data;
     using System.IO;
@@ -63,7 +64,7 @@ namespace Accord.Tests.IO
             double[,] sameMatrix = reader.ToMatrix();
             #endregion
 
-            Assert.IsTrue(values.IsEqual(sameMatrix));
+            ClassicAssert.IsTrue(values.IsEqual(sameMatrix));
         }
 
         [Test]
@@ -96,12 +97,12 @@ namespace Accord.Tests.IO
             double[][] sameMatrix = reader.ToJagged();
             #endregion
 
-            Assert.IsTrue(values.IsEqual(sameMatrix));
+            ClassicAssert.IsTrue(values.IsEqual(sameMatrix));
 
             double[] lastColumn = sameMatrix.GetColumn(-1);
             double[][] firstColumns = sameMatrix.Get(null, 0, -1);
-            Assert.AreEqual(lastColumn, new[] { 4.0, 8.0, 12 });
-            Assert.IsTrue(firstColumns.IsEqual(new []
+            ClassicAssert.AreEqual(lastColumn, new[] { 4.0, 8.0, 12 });
+            ClassicAssert.IsTrue(firstColumns.IsEqual(new []
                 {
                     new[] { 1, 2, 3.0   },
                     new[] { 5, 6, 7.0   },
@@ -151,9 +152,9 @@ namespace Accord.Tests.IO
                 "\"Josephine\",\"25\",\"Grenoble\"\r\n" +
                 "\"João\",\"22\",\"Valinhos\"\r\n";
 
-            Assert.AreEqual(text, expected.Replace("\r\n", Environment.NewLine));
+            ClassicAssert.AreEqual(text, expected.Replace("\r\n", Environment.NewLine));
 
-            Assert.IsTrue(table.ToMatrix<string>().IsEqual(sameTable.ToMatrix<string>()));
+            ClassicAssert.IsTrue(table.ToMatrix<string>().IsEqual(sameTable.ToMatrix<string>()));
         }
 #endif
 
@@ -185,7 +186,7 @@ namespace Accord.Tests.IO
             #endregion
 
             string[][] expected = values.Apply((x, i, j) => x.ToString());
-            Assert.IsTrue(expected.IsEqual(sameMatrix));
+            ClassicAssert.IsTrue(expected.IsEqual(sameMatrix));
         }
     }
 

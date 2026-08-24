@@ -26,6 +26,7 @@ namespace Accord.Tests.IO
     using Accord.IO;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class IdxReaderTest
@@ -39,8 +40,8 @@ namespace Accord.Tests.IO
 
             IdxReader reader = new IdxReader(fileName, compressed: true);
 
-            Assert.AreEqual(IdxDataType.UnsignedByte, reader.DataType);
-            Assert.AreEqual(10000, reader.Samples);
+            ClassicAssert.AreEqual(IdxDataType.UnsignedByte, reader.DataType);
+            ClassicAssert.AreEqual(10000, reader.Samples);
 
             var samples = new byte[reader.Samples][,];
 
@@ -49,8 +50,8 @@ namespace Accord.Tests.IO
 
             for (int i = 0; i < samples.Length; i++)
             {
-                Assert.AreEqual(28, samples[i].GetLength(0));
-                Assert.AreEqual(28, samples[i].GetLength(1));
+                ClassicAssert.AreEqual(28, samples[i].GetLength(0));
+                ClassicAssert.AreEqual(28, samples[i].GetLength(1));
             }
         }
 
@@ -65,8 +66,8 @@ namespace Accord.Tests.IO
 
             for (int i = 0; i < samples.Length; i++)
             {
-                Assert.AreEqual(28, samples[i].GetLength(0));
-                Assert.AreEqual(28, samples[i].GetLength(1));
+                ClassicAssert.AreEqual(28, samples[i].GetLength(0));
+                ClassicAssert.AreEqual(28, samples[i].GetLength(1));
             }
         }
 
@@ -81,7 +82,7 @@ namespace Accord.Tests.IO
             var samples = reader.ReadToEndAsVectors<byte>();
 
             for (int i = 0; i < samples.Length; i++)
-                Assert.AreEqual(28 * 28, samples[i].Length);
+                ClassicAssert.AreEqual(28 * 28, samples[i].Length);
         }
 
     }

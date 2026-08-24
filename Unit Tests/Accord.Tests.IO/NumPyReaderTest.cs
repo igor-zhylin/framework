@@ -29,6 +29,7 @@ namespace Accord.Tests.IO
     using Accord.Math;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class NpyFormatTest
@@ -53,7 +54,7 @@ namespace Accord.Tests.IO
                 { 4, 5, 6 }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -68,7 +69,7 @@ namespace Accord.Tests.IO
                 new byte[] { 4, 5, 6 }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -83,7 +84,7 @@ namespace Accord.Tests.IO
                 { false, false, false }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -98,7 +99,7 @@ namespace Accord.Tests.IO
                 new[] { false, false, false }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -113,7 +114,7 @@ namespace Accord.Tests.IO
                 { 4, 5, 6 }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -128,7 +129,7 @@ namespace Accord.Tests.IO
                 { 4, 5, 6 }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -143,7 +144,7 @@ namespace Accord.Tests.IO
                 { 4, 5, 6 }
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -158,7 +159,7 @@ namespace Accord.Tests.IO
                 { "d", "e", "f"}
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -173,7 +174,7 @@ namespace Accord.Tests.IO
                 { "d", "cs", "f"}
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
         [Test]
@@ -188,7 +189,7 @@ namespace Accord.Tests.IO
                 new[] { "d", "cs", "f"}
             };
 
-            Assert.IsTrue(result.IsEqual(expected));
+            ClassicAssert.IsTrue(result.IsEqual(expected));
         }
 
     }

@@ -26,6 +26,7 @@ namespace Accord.Tests.IO
     using Accord.IO;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 
     [TestFixture]
     public class UnipenReaderTest
@@ -44,16 +45,16 @@ namespace Accord.Tests.IO
 
             var reader = new UnipenReader(file, compressed: true);
 
-            Assert.AreEqual(new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }, reader.Lexicon);
-            Assert.AreEqual("DIGIT", reader.Hierarchy);
+            ClassicAssert.AreEqual(new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }, reader.Lexicon);
+            ClassicAssert.AreEqual("DIGIT", reader.Hierarchy);
 
 
             string label;
             string comment;
             double[][] values = reader.Read(out label, out comment);
 
-            Assert.AreEqual("8", label);
-            Assert.AreEqual("8  6  138", comment);
+            ClassicAssert.AreEqual("8", label);
+            ClassicAssert.AreEqual("8  6  138", comment);
         }
 
         [Test]
@@ -63,15 +64,15 @@ namespace Accord.Tests.IO
 
             var reader = new UnipenReader(file, compressed: true);
 
-            Assert.AreEqual(new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }, reader.Lexicon);
-            Assert.AreEqual("DIGIT", reader.Hierarchy);
+            ClassicAssert.AreEqual(new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }, reader.Lexicon);
+            ClassicAssert.AreEqual("DIGIT", reader.Hierarchy);
 
             var tuple = reader.ReadToEnd();
             double[][][] x = tuple.Item1;
             string[] y = tuple.Item2;
 
-            Assert.AreEqual(x.Length, y.Length);
-            Assert.AreEqual(3498, x.Length);
+            ClassicAssert.AreEqual(x.Length, y.Length);
+            ClassicAssert.AreEqual(3498, x.Length);
         }
 
     }

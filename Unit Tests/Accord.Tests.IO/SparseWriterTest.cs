@@ -29,6 +29,7 @@ namespace Accord.Tests.IO
     using Accord.Math;
     using Accord.Tests.IO.Properties;
     using NUnit.Framework;
+    using NUnit.Framework.Legacy;
 #if NO_DEFAULT_ENCODING
     using Encoding = Accord.Compat.Encoding;
 #endif
@@ -72,7 +73,7 @@ namespace Accord.Tests.IO
                 count++;
             }
 
-            Assert.AreEqual(150, count);
+            ClassicAssert.AreEqual(150, count);
 
             dst.Dispose();
             src.Dispose();
@@ -87,11 +88,11 @@ namespace Accord.Tests.IO
                     var expected = orig.ReadDense();
                     var actual = copy.ReadDense();
 
-                    Assert.AreEqual(actual.Item1, expected.Item1);
-                    Assert.AreEqual(actual.Item2, expected.Item2);
+                    ClassicAssert.AreEqual(actual.Item1, expected.Item1);
+                    ClassicAssert.AreEqual(actual.Item2, expected.Item2);
                 }
 
-                Assert.AreEqual(orig.EndOfStream, copy.EndOfStream);
+                ClassicAssert.AreEqual(orig.EndOfStream, copy.EndOfStream);
             }
 
             file = new MemoryStream(Encoding.Default.GetBytes(Accord.Tests.IO.Properties.Resources.iris_scale));
@@ -103,12 +104,12 @@ namespace Accord.Tests.IO
                     var expected = orig.ReadSparse();
                     var actual = copy.ReadSparse();
 
-                    Assert.AreEqual(actual.Item1.Values, expected.Item1.Values);
-                    Assert.AreEqual(actual.Item1.Indices, expected.Item1.Indices);
-                    Assert.AreEqual(actual.Item2, expected.Item2);
+                    ClassicAssert.AreEqual(actual.Item1.Values, expected.Item1.Values);
+                    ClassicAssert.AreEqual(actual.Item1.Indices, expected.Item1.Indices);
+                    ClassicAssert.AreEqual(actual.Item2, expected.Item2);
                 }
 
-                Assert.AreEqual(orig.EndOfStream, copy.EndOfStream);
+                ClassicAssert.AreEqual(orig.EndOfStream, copy.EndOfStream);
             }
         }
 
@@ -133,7 +134,7 @@ namespace Accord.Tests.IO
 ";
             expected = expected.Replace("\r\n", Environment.NewLine);
 
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -164,7 +165,7 @@ namespace Accord.Tests.IO
 ";
             expected = expected.Replace("\r\n", Environment.NewLine);
 
-            Assert.AreEqual(expected, actual);
+            ClassicAssert.AreEqual(expected, actual);
         }
     }
 }
