@@ -9,7 +9,9 @@
 namespace Accord
 {
     using System;
+    #if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.Compat;
 
     /// <summary>
@@ -20,7 +22,9 @@ namespace Accord
     /// has failed.</para>
     /// </remarks>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class ConnectionFailedException : Exception
     {
         /// <summary>
@@ -58,7 +62,9 @@ namespace Accord
     /// is lost. When the exception is caught, user may need to reconnect to the device.</para>
     /// </remarks>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class ConnectionLostException : Exception
     {
         /// <summary>
@@ -94,8 +100,10 @@ namespace Accord
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
         /// 
-        public ConnectionLostException(SerializationInfo info, StreamingContext context)
+        #if !NET10_0_OR_GREATER
+ public ConnectionLostException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+ #endif
     }
 
     /// <summary>
@@ -106,7 +114,9 @@ namespace Accord
     /// is not established, but user requests for its services.</para>
     /// </remarks>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class NotConnectedException : Exception
     {
         /// <summary>
@@ -142,8 +152,10 @@ namespace Accord
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
         /// 
-        public NotConnectedException(SerializationInfo info, StreamingContext context)
+        #if !NET10_0_OR_GREATER
+ public NotConnectedException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+ #endif
 
     }
 
@@ -155,7 +167,9 @@ namespace Accord
     /// is not available due to the fact that it is currently busy handling other request/connection.</para>
     /// </remarks>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class DeviceBusyException : Exception
     {
         /// <summary>
@@ -191,8 +205,10 @@ namespace Accord
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
         /// 
-        public DeviceBusyException(SerializationInfo info, StreamingContext context)
+        #if !NET10_0_OR_GREATER
+ public DeviceBusyException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+ #endif
     }
 
     /// <summary>
@@ -202,7 +218,9 @@ namespace Accord
     /// <remarks><para>The exception is thrown in the case if some error happens with a device, which
     /// may need to be reported to user.</para></remarks>
     ///
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class DeviceErrorException : Exception
     {
         /// <summary>
@@ -238,7 +256,9 @@ namespace Accord
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
         /// 
-        public DeviceErrorException(SerializationInfo info, StreamingContext context)
+        #if !NET10_0_OR_GREATER
+ public DeviceErrorException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+ #endif
     }
 }

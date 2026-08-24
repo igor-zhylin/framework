@@ -97,7 +97,7 @@ namespace Accord
         ///   </code>
         /// </example>
         /// 
-        public static void Add(this DataColumnCollection collection, OrderedDictionary<string, Type> columns)
+        public static void Add(this DataColumnCollection collection, Accord.Collections.OrderedDictionary<string, Type> columns)
         {
             foreach (var pair in columns)
                 collection.Add(pair.Key, pair.Value);
@@ -633,6 +633,7 @@ namespace Accord
         /// <typeparam name="T">The type of the object whose address needs to be retrieved.</typeparam>
         /// <param name="t">The object those address needs to be retrieved.</param>
         /// 
+#if !NET10_0_OR_GREATER
 #if NET45 || NET46 || NET462 || NETSTANDARD2_0
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
@@ -666,6 +667,7 @@ namespace Accord
         }
 #endif
 
+#if !NET10_0_OR_GREATER
         // TODO: Move this method to a more appropriate location
         internal static WebClient NewWebClient()
         {
@@ -677,13 +679,13 @@ namespace Accord
         /// <summary>
         ///   Attempts to download a file from the web multiple times before giving up.
         /// </summary>
-        /// 
+        ///
         /// <param name="client">The web client to use.</param>
         /// <param name="url">The URL of the file to be downloaded.</param>
         /// <param name="fileName">The disk location where the file should be stored.</param>
         /// <param name="maxAttempts">The maximum number of attempts.</param>
         /// <param name="overwrite">Do not overwrite <paramref name="fileName"/> if it already exists.</param>
-        /// 
+        ///
         internal static void DownloadFileWithRetry(this WebClient client, string url, string fileName, int maxAttempts = 3, bool overwrite = false)
         {
             if (!overwrite && File.Exists(fileName))
@@ -710,7 +712,8 @@ namespace Accord
                 }
             }
         }
-
+#endif
+#endif
 
 
         /// <summary>

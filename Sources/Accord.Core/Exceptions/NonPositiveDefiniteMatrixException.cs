@@ -23,7 +23,9 @@
 namespace Accord
 {
     using System;
+    #if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.Compat;
 
     /// <summary>
@@ -34,7 +36,9 @@ namespace Accord
     /// expects a matrix to have only positive eigenvalues, such when dealing with covariance matrices.</para>
     /// </remarks>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class NonPositiveDefiniteMatrixException : Exception
     {
         /// <summary>
@@ -75,8 +79,10 @@ namespace Accord
         /// The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
         /// </exception>
         /// 
-        protected NonPositiveDefiniteMatrixException(SerializationInfo info, StreamingContext context) :
+        #if !NET10_0_OR_GREATER
+ protected NonPositiveDefiniteMatrixException(SerializationInfo info, StreamingContext context) :
             base(info, context) { }
+ #endif
 
     }
 }

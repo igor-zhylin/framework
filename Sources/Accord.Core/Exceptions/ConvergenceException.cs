@@ -23,18 +23,22 @@
 namespace Accord
 {
     using System;
+#if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.Compat;
 
     /// <summary>
     ///   Algorithm Convergence Exception.
     /// </summary>
-    /// 
+    ///
     /// <remarks><para>The algorithm convergence exception is thrown in cases where a iterative
     /// algorithm could not converge to a finite solution.</para>
     /// </remarks>
-    /// 
+    ///
+#if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class ConvergenceException : Exception
     {
         /// <summary>
@@ -63,10 +67,11 @@ namespace Accord
             base(message, innerException) { }
 
 
+#if !NET10_0_OR_GREATER
         /// <summary>
         ///   Initializes a new instance of the <see cref="ConvergenceException"/> class.
         /// </summary>
-        /// 
+        ///
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
         /// <exception cref="T:System.ArgumentNullException">
@@ -75,9 +80,10 @@ namespace Accord
         /// <exception cref="T:System.Runtime.Serialization.SerializationException">
         /// The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
         /// </exception>
-        /// 
+        ///
         protected ConvergenceException(SerializationInfo info, StreamingContext context) :
             base(info, context) { }
+#endif
 
     }
 }

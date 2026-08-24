@@ -14,7 +14,9 @@ namespace Accord.Compat
 {
     using System;
     using System.Text.RegularExpressions;
+    #if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
 
     /// <summary>
     /// Complex number wrapper class.
@@ -40,7 +42,10 @@ namespace Accord.Compat
     /// </code>
     /// </remarks>
     /// 
-    public struct Complex : ICloneable, ISerializable
+    public struct Complex : ICloneable
+#if !NET10_0_OR_GREATER
+        , ISerializable
+#endif
     {
         /// <summary>
         /// Real part of the complex number.
@@ -1074,20 +1079,22 @@ namespace Accord.Compat
         }
         #endregion
 
+#if !NET10_0_OR_GREATER
         #region ISerializable Members
         /// <summary>
         /// Populates a <see cref="SerializationInfo"/> with the data needed to serialize the target object.
         /// </summary>
-        /// 
+        ///
         /// <param name="info">The <see cref="SerializationInfo"/> to populate with data. </param>
         /// <param name="context">The destination (see <see cref="StreamingContext"/>) for this serialization.</param>
-        /// 
+        ///
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Real", this.Real);
             info.AddValue("Imaginary", this.Imaginary);
         }
         #endregion
+#endif
     }
 }
 

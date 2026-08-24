@@ -23,18 +23,22 @@
 namespace Accord
 {
     using System;
+#if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
     using Accord.Compat;
 
     /// <summary>
     ///   Singular Matrix Exception.
     /// </summary>
-    /// 
+    ///
     /// <remarks><para>The singular matrix exception is thrown in cases where a method which
     /// performs matrix inversions has encountered a non-invertible matrix during the process.</para>
     /// </remarks>
-    /// 
+    ///
+#if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class SingularMatrixException : Exception
     {
         /// <summary>
@@ -62,10 +66,11 @@ namespace Accord
             base(message, innerException) { }
 
 
+#if !NET10_0_OR_GREATER
         /// <summary>
         /// Initializes a new instance of the <see cref="SingularMatrixException"/> class.
         /// </summary>
-        /// 
+        ///
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
         /// <exception cref="T:System.ArgumentNullException">
@@ -74,9 +79,10 @@ namespace Accord
         /// <exception cref="T:System.Runtime.Serialization.SerializationException">
         /// The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
         /// </exception>
-        /// 
+        ///
         protected SingularMatrixException(SerializationInfo info, StreamingContext context) :
             base(info, context) { }
+#endif
 
     }
 }

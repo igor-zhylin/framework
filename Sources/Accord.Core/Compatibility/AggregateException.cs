@@ -25,14 +25,18 @@ namespace Accord.Compat
 {
     using System;
     using System.Collections.Generic;
+    #if !NET10_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
 
     /// <summary>
     ///   Minimum AggregateException implementation for .NET 3.5 to
     ///   make Accord.NET work. This is not a complete implementation.
     /// </summary>
     /// 
+    #if !NET10_0_OR_GREATER
     [Serializable]
+#endif
     public class AggregateException : Exception
     {
 
@@ -101,8 +105,10 @@ namespace Accord.Compat
         /// The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
         /// </exception>
         /// 
-        protected AggregateException(SerializationInfo info, StreamingContext context) :
+        #if !NET10_0_OR_GREATER
+ protected AggregateException(SerializationInfo info, StreamingContext context) :
             base(info, context) { }
+ #endif
 
         /// <summary>
         /// Gets the inner exceptions.

@@ -46,6 +46,10 @@
     <DefineConstants>NETSTANDARD;NO_EXCEL;NO_CODE_PROVIDER;NO_BITMAP$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <DefineConstants>NETSTANDARD;NO_EXCEL;NO_CODE_PROVIDER;NO_BITMAP;NET10_0_OR_GREATER;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.4'">
     <DefineConstants>NO_EXPRESSIONS;NO_BINARY_SERIALIZATION;NO_DATA_TABLE;NO_DEFAULT_ENCODING;NO_CULTURE;NO_TRACE;NO_PARALLEL;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
