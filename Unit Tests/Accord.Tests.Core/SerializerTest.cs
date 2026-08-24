@@ -26,6 +26,7 @@ using System;
 using Accord.IO;
 using Accord.Math;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System.Collections.Generic;
 using System.IO;
 
@@ -53,7 +54,7 @@ namespace Accord.Tests
             string[][] actual;
             Serializer.Load("test.bin", out actual);
 
-            Assert.IsTrue(expected.IsEqual(actual));
+            ClassicAssert.IsTrue(expected.IsEqual(actual));
         }
 
         [Test]
@@ -79,8 +80,8 @@ namespace Accord.Tests
             range = Serializer.Load<DoubleRange>(filename);
             #endregion
 
-            Assert.AreEqual(range.Min, 4);
-            Assert.AreEqual(range.Max, 2);
+            ClassicAssert.AreEqual(range.Min, 4);
+            ClassicAssert.AreEqual(range.Max, 2);
         }
 
         [Test]
@@ -107,8 +108,8 @@ namespace Accord.Tests
             Serializer.Load(filename + ".gz", out range);
             #endregion
 
-            Assert.AreEqual(range.Min, 4);
-            Assert.AreEqual(range.Max, 2);
+            ClassicAssert.AreEqual(range.Min, 4);
+            ClassicAssert.AreEqual(range.Max, 2);
         }
 
         [Test]
@@ -125,7 +126,7 @@ namespace Accord.Tests
             Serializer.Load(filename, out a);
 
             foreach (int k in e.Keys)
-                Assert.AreEqual(e[k], a[k]);
+                ClassicAssert.AreEqual(e[k], a[k]);
         }
 
         [Test]
@@ -143,7 +144,7 @@ namespace Accord.Tests
             Serializer.Load(filename, out a, compression: SerializerCompression.GZip);
 
             foreach (int k in e.Keys)
-                Assert.AreEqual(e[k], a[k]);
+                ClassicAssert.AreEqual(e[k], a[k]);
         }
 
         [Test]
@@ -161,7 +162,7 @@ namespace Accord.Tests
             Serializer.Load(filename, out a, compression: SerializerCompression.None);
 
             foreach (int k in e.Keys)
-                Assert.AreEqual(e[k], a[k]);
+                ClassicAssert.AreEqual(e[k], a[k]);
         }
 
         [Test]

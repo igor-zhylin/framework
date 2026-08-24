@@ -22,6 +22,7 @@
 
 using Accord;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests
 {
@@ -31,11 +32,11 @@ namespace Accord.Tests
         [Test]
         public void CompareTest()
         {
-            Assert.IsTrue(10.IsLessThan(11));
-            Assert.IsTrue((-1).IsLessThanOrEqual(-1));
+            ClassicAssert.IsTrue(10.IsLessThan(11));
+            ClassicAssert.IsTrue((-1).IsLessThanOrEqual(-1));
 
-            Assert.IsTrue(10.IsGreaterThan(9));
-            Assert.IsTrue((-1).IsGreaterThanOrEqual(-2));
+            ClassicAssert.IsTrue(10.IsGreaterThan(9));
+            ClassicAssert.IsTrue((-1).IsGreaterThanOrEqual(-2));
         }
 
         [Test]
@@ -43,13 +44,13 @@ namespace Accord.Tests
         {
             var t = typeof(double);
             var r = t.MakeArrayType(rank: 3, jagged: true);
-            Assert.AreEqual(typeof(double[][][]), r);
+            ClassicAssert.AreEqual(typeof(double[][][]), r);
 
             r = t.MakeArrayType(rank: 1, jagged: true);
-            Assert.AreEqual(typeof(double[]), r);
+            ClassicAssert.AreEqual(typeof(double[]), r);
 
             r = t.MakeArrayType(rank: 0, jagged: true);
-            Assert.AreEqual(typeof(double), r);
+            ClassicAssert.AreEqual(typeof(double), r);
         }
     }
 }

@@ -23,6 +23,7 @@
 using Accord.Collections;
 using Accord.Math;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -113,11 +114,11 @@ namespace Accord.Tests
             // should return: "d", "b", "a", "c", "f", "e", "g"
             #endregion
 
-            Assert.AreEqual(new[] { "d", "b", "f", "a", "c", "e", "g" }, breadthFirst);
-            Assert.AreEqual(new[] { "d", "f", "g", "e", "b", "c", "a" }, depthFirst);
-            Assert.AreEqual(new[] { "a", "b", "c", "d", "e", "f", "g" }, inOrder);
-            Assert.AreEqual(new[] { "a", "c", "b", "e", "g", "f", "d" }, postOrder);
-            Assert.AreEqual(new[] { "d", "b", "a", "c", "f", "e", "g" }, preOrder);
+            ClassicAssert.AreEqual(new[] { "d", "b", "f", "a", "c", "e", "g" }, breadthFirst);
+            ClassicAssert.AreEqual(new[] { "d", "f", "g", "e", "b", "c", "a" }, depthFirst);
+            ClassicAssert.AreEqual(new[] { "a", "b", "c", "d", "e", "f", "g" }, inOrder);
+            ClassicAssert.AreEqual(new[] { "a", "c", "b", "e", "g", "f", "d" }, postOrder);
+            ClassicAssert.AreEqual(new[] { "d", "b", "a", "c", "f", "e", "g" }, preOrder);
         }
 
     }

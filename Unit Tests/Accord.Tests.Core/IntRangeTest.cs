@@ -22,6 +22,7 @@
 
 using Accord;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests
 {
@@ -41,7 +42,7 @@ namespace Accord.Tests
             IntRange range1 = new IntRange( min1, max1 );
             IntRange range2 = new IntRange( min2, max2 );
 
-            Assert.AreEqual( expectedResult, range1.IsOverlapping( range2 ) );
+            ClassicAssert.AreEqual( expectedResult, range1.IsOverlapping( range2 ) );
         }
 
         [TestCase( 0, 1, 0, 1 )]
@@ -51,8 +52,8 @@ namespace Accord.Tests
             IntRange iRange = new IntRange( iMin, iMax );
             Range range = iRange;
 
-            Assert.AreEqual( fMin, range.Min );
-            Assert.AreEqual( fMax, range.Max );
+            ClassicAssert.AreEqual( fMin, range.Min );
+            ClassicAssert.AreEqual( fMax, range.Max );
         }
 
         [TestCase( 1, 2, 1, 2, true )]
@@ -65,9 +66,9 @@ namespace Accord.Tests
             IntRange range1 = new IntRange( min1, max1 );
             IntRange range2 = new IntRange( min2, max2 );
 
-            Assert.AreEqual( range1.Equals( range2 ), areEqual );
-            Assert.AreEqual( range1 == range2, areEqual );
-            Assert.AreEqual( range1 != range2, !areEqual );
+            ClassicAssert.AreEqual( range1.Equals( range2 ), areEqual );
+            ClassicAssert.AreEqual( range1 == range2, areEqual );
+            ClassicAssert.AreEqual( range1 != range2, !areEqual );
         }
     }
 }

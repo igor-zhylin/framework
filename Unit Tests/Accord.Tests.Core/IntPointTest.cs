@@ -21,6 +21,7 @@
 //
 
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Accord.Tests
 {
@@ -39,7 +40,7 @@ namespace Accord.Tests
         {
             IntPoint point = new IntPoint( x, y );
 
-            Assert.AreEqual( point.EuclideanNorm( ), expectedNorm );
+            ClassicAssert.AreEqual( point.EuclideanNorm( ), expectedNorm );
         }
 
         [TestCase( 1, 2, 1, 2, true )]
@@ -51,7 +52,7 @@ namespace Accord.Tests
             IntPoint point1 = new IntPoint( x1, y1 );
             IntPoint point2 = new IntPoint( x2, y2 );
 
-            Assert.AreEqual( point1 == point2, areEqual );
+            ClassicAssert.AreEqual( point1 == point2, areEqual );
         }
 
         [TestCase( 1, 2, 1, 2, false )]
@@ -63,7 +64,7 @@ namespace Accord.Tests
             IntPoint point1 = new IntPoint( x1, y1 );
             IntPoint point2 = new IntPoint( x2, y2 );
 
-            Assert.AreEqual( point1 != point2, areNotEqual );
+            ClassicAssert.AreEqual( point1 != point2, areNotEqual );
         }
     }
 }

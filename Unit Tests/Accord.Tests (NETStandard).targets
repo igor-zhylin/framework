@@ -44,6 +44,18 @@
     <DefineConstants>NETCORE;NO_CODE_PROVIDER;NO_EXCEL;NO_BITMAP;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <DefineConstants>NETSTANDARD;NO_CODE_PROVIDER;NO_EXCEL;NO_BITMAP;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <!-- The top PropertyGroup's <RuntimeIdentifiers> pins old-style, non-portable RIDs
+       (win7-x64;ubuntu.16.10-x64) that the modern .NET SDK's RID graph no longer
+       recognizes (NETSDK1083). Clear it for net10.0 only; every other TFM keeps the
+       original value from the top PropertyGroup, unchanged. -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <RuntimeIdentifiers></RuntimeIdentifiers>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">
     <DefineConstants>NO_EXPRESSIONS;NO_BINARY_SERIALIZATION;NO_DATA_TABLE;NO_DEFAULT_ENCODING;NO_CULTURE;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
@@ -72,8 +84,9 @@
     <DefineConstants>NET46;NET462;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'!='netcoreapp1.1' 
-                        AND '$(TargetFramework)'!='netcoreapp2.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'!='netcoreapp1.1'
+                        AND '$(TargetFramework)'!='netcoreapp2.0'
+                        AND '$(TargetFramework)'!='net10.0'">
     <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
   </PropertyGroup>
 
