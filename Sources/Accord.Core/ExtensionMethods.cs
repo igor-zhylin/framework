@@ -626,14 +626,14 @@ namespace Accord
 #endif
 
 #if !NETSTANDARD1_4
+#if !NET10_0_OR_GREATER
         /// <summary>
         ///   Retrieves the memory address of a generic value type.
         /// </summary>
-        /// 
+        ///
         /// <typeparam name="T">The type of the object whose address needs to be retrieved.</typeparam>
         /// <param name="t">The object those address needs to be retrieved.</param>
-        /// 
-#if !NET10_0_OR_GREATER
+        ///
 #if NET45 || NET46 || NET462 || NETSTANDARD2_0
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
@@ -649,10 +649,10 @@ namespace Accord
         /// <summary>
         ///   Retrieves the memory address of a generic reference type.
         /// </summary>
-        /// 
+        ///
         /// <typeparam name="T">The type of the object whose address needs to be retrieved.</typeparam>
         /// <param name="t">The object those address needs to be retrieved.</param>
-        /// 
+        ///
 #if NET45 || NET46 || NET462 || NETSTANDARD2_0
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
@@ -665,6 +665,7 @@ namespace Accord
                 return (System.IntPtr)pRef; //(&pRef)
             }
         }
+#endif
 #endif
 
 #if !NET10_0_OR_GREATER
@@ -712,7 +713,6 @@ namespace Accord
                 }
             }
         }
-#endif
 #endif
 
 

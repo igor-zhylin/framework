@@ -42,7 +42,7 @@ namespace Accord
         public T Value { get { return value; } }
 
         /// <summary>
-        ///   Initializes a new instance of the <see cref="cast{T, U}"/> struct.
+        ///   Initializes a new instance of the <see cref="Cast{T, U}"/> struct.
         /// </summary>
         /// 
         public Cast(U value)
@@ -51,7 +51,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="U"/> to <see cref="cast{T, U}"/>.
+        /// Performs an implicit conversion from <typeparamref name="U"/> to <see cref="Cast{T, U}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -63,7 +63,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="cast{T, U}"/> to <typeparamref name="T"/>.
+        /// Performs an implicit conversion from <see cref="Cast{T, U}"/> to <typeparamref name="T"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -92,7 +92,7 @@ namespace Accord
         public T Value { get { return value; } }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="cast{T}"/> struct.
+        /// Initializes a new instance of the <see cref="Cast{T}"/> struct.
         /// </summary>
         /// <param name="value">The value.</param>
         public Cast(object value)
@@ -101,7 +101,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Double"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="System.Double"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -113,7 +113,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Single"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="System.Single"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -125,7 +125,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Decimal"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="Decimal"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -137,7 +137,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Byte"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="Byte"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -149,7 +149,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="SByte"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="SByte"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -161,7 +161,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Int16"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="Int16"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -173,7 +173,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="UInt16"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="UInt16"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -185,7 +185,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Int32"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="Int32"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -197,7 +197,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="UInt32"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="UInt32"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -209,7 +209,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Int64"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="Int64"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -221,7 +221,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="UInt64"/> to <see cref="cast{T}"/>.
+        /// Performs an implicit conversion from <see cref="UInt64"/> to <see cref="Cast{T}"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -233,7 +233,7 @@ namespace Accord
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="cast{T}"/> to <typeparamref name="T"/>.
+        /// Performs an implicit conversion from <see cref="Cast{T}"/> to <typeparamref name="T"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
